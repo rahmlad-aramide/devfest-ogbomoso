@@ -12,10 +12,7 @@ import { Button } from "@chakra-ui/react";
 import { BsArrowUpRight } from "react-icons/bs";
 import Schedule from "./components/schedule";
 
-// import sunset from "@public/icons/icon-sunset.svg";
-import mainVenue from "@public/venues/main-venue.png";
-import privateNetwork from "@public/venues/private-network.png";
-import workshopVenue from "@public/venues/workshop-venue.png";
+import mainVenue from "@public/venues/main-venue.jpg";
 
 
 export default function Home() {
@@ -26,21 +23,14 @@ export default function Home() {
       <SpeakerSection />
       <section className="bg-[#C3ECF6] py-10 lg:py-20">
         <div className="px-4 lg:px-20 container mx-auto">
-          <SectionTitle title="Venues" size="lg" />
+          <SectionTitle title="Venue" size="lg" />
 
-          <div className="mt-10 grid lg:grid-cols-3 gap-6 lg:gap-10">
-            <aside className="lg:col-span-2">
+          <div className="mt-10 flex">
               <Image
                 src={mainVenue}
                 alt="conference-day-venue"
                 className="w-full h-full flex flex-1"
               />
-            </aside>
-
-            <aside className="flex flex-col gap-6">
-              <Image src={workshopVenue} alt="workshop-venue" />
-              <Image src={privateNetwork} alt="private-network" />
-            </aside>
           </div>
         </div>
 

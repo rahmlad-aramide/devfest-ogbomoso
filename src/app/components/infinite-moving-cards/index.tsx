@@ -100,7 +100,7 @@ export const InfiniteMovingCards = ({
                   ? "h-[32px] w-[auto] object-fill"
                   : width80
                   ? "w-[90%]"
-                  : "h-full w-full"
+                  : "h-auto max-h-[300px] w-full"
               }`}
               unoptimized
             />
