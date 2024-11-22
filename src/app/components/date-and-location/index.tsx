@@ -10,7 +10,7 @@ import { ctaLinks } from "@/data";
 const DateAndLocation = () => {
   return (
     <div className="grid lg:grid-cols-2 gap-8 mt-8">
-      {/* <aside className="bg-[#34A853] border-4 border-primary-body rounded-xl p-4 w-full min-h-[200px] text-white space-y-5">
+      <aside className="bg-[#34A853] border-4 border-primary-body rounded-xl p-4 w-full min-h-[200px] text-white space-y-5">
         <div className="flex items-center justify-between">
           <p className="">Day 1</p>
           <Image src={layer} alt="layer" className="lg:w-[200px]" />
@@ -33,7 +33,7 @@ const DateAndLocation = () => {
         >
           Register Now <BsArrowUpRight />
         </Button>
-      </aside> */}
+      </aside>
 
       <aside className="bg-[#FF7DAF] border-4 border-primary-body rounded-xl p-4 w-full min-h-[200px] text-white space-y-5">
         <div className="flex items-center justify-between">
