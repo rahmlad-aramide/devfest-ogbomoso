@@ -95,7 +95,7 @@ export const InfiniteMovingCards = ({
             <Image
               src={item.src}
               alt={`recap-image${idx}`}
-              className={`${
+              className={`rounded-2xl ${
                 custom
                   ? "h-[32px] w-[auto] object-fill"
                   : width80

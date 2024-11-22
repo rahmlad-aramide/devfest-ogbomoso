@@ -10,9 +10,9 @@ import { usePathname } from "next/navigation";
 export default function SpeakerSection() {
   const pathname = usePathname();
   const featuredSpeakers = [
-    speakers.find((speaker) => speaker.name === "Jamiu Okanlawon"),
-    speakers.find((speaker) => speaker.name === "Elizabeth Alli"),
-    speakers.find((speaker) => speaker.name === "Dára Sọ́balójú"),
+    speakers.find((speaker) => speaker.name === "Sodiq Akinjobi"),
+    speakers.find((speaker) => speaker.name === "Adeola Adegoke"),
+    speakers.find((speaker) => speaker.name === "Paul Edward"),
   ] as Speaker[];
 
   return (

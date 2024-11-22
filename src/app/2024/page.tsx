@@ -32,6 +32,7 @@ export default function Home() {
       <section className="bg-[#C3ECF6] py-10 lg:py-20">
         <div className="px-4 lg:px-20 container mx-auto">
           <SectionTitle title="Venues" size="lg" />
+          <div className="text-center font-bold">The Hall, LAUTECH Ogbomoso</div>
 
           <div className="mt-10 grid lg:grid-cols-3 gap-6 lg:gap-10">
             <aside className="lg:col-span-2">
@@ -42,10 +43,10 @@ export default function Home() {
               />
             </aside>
 
-            <aside className="flex flex-col gap-6">
+            {/* <aside className="flex flex-col gap-6">
               <Image src={workshopVenue} alt="workshop-venue" />
               <Image src={privateNetwork} alt="private-network" />
-            </aside>
+            </aside> */}
           </div>
         </div>
 

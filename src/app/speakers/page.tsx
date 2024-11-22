@@ -32,7 +32,7 @@ export default function SpeakersPage() {
         </h1>
 
         <p className="text-wrap text-center text-[18px] text-primary-gray font-bold lg:w-[900px] mx-auto">
-          Join us at DevFest Ogbomoso 2024 from October 17 to 19 for 3 days of
+          Join us at DevFest Ogbomoso 2024 on November 30 for a day of
           inspiring talks, interactive workshops, and unparalleled networking
           opportunities.{" "}
         </p>
@@ -41,7 +41,7 @@ export default function SpeakersPage() {
       </section>
 
       <section className="py-10 lg:py-20">
-        <div className="flex flex-wrap gap-4 justify-center pt-6 pb-10">
+        {/* <div className="flex flex-wrap gap-4 justify-center pt-6 pb-10">
           {categories.map((category) => (
             <button
               key={category}
@@ -55,7 +55,7 @@ export default function SpeakersPage() {
               {category}
             </button>
           ))}
-        </div>
+        </div> */}
 
         <div className="grid lg:grid-cols-3 gap-10">
           {filteredSpeakers.length > 0 ? (

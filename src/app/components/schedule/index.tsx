@@ -16,20 +16,20 @@ const schedule = [
   //   background: "#F8D8D8",
   //   textColor: "#FF7DAF",
   // },
+  // {
+  //   day: 2,
+  //   type: "Private Network",
+  //   price: "₦15,000",
+  //   description: "Full day of workshop in web, mobile, cloud, Design",
+  //   button: {
+  //     text: "Buy Ticket",
+  //     link: ctaLinks.ticket.link,
+  //   },
+  //   background: "#FFE7A5",
+  //   textColor: "#FFD427",
+  // },
   {
-    day: 2,
-    type: "Private Network",
-    price: "₦15,000",
-    description: "Full day of workshop in web, mobile, cloud, Design",
-    button: {
-      text: "Buy Ticket",
-      link: ctaLinks.ticket.link,
-    },
-    background: "#FFE7A5",
-    textColor: "#FFD427",
-  },
-  {
-    day: 3,
+    day: 1,
     type: "Conference",
     price: "Free",
     description: "Full day of conference in web, mobile, cloud, Design",
@@ -49,7 +49,7 @@ const Schedule: React.FC = () => {
         <SectionTitle title="Schedule" size="lg" />
 
         <div className="mt-10">
-          <div className="grid lg:grid-cols-2 gap-10">
+          <div className="grid lg:grid-cols-1 justify-center items-center gap-10">
             {schedule.map((item) => (
               <ScheduleCard key={item.day} scheduleItem={item} />
             ))}

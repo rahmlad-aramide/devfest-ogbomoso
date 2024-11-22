@@ -28,7 +28,7 @@ const SpeakersCard: React.FC<SpeakersCardProps> = ({
       >
         {day}
       </div>
-      <Image src={image} alt={name} className="lg:w-[500px] rounded-t-lg" />
+      <Image src={image} alt={name} className="lg:w-[500px] object-cover h-[350px] rounded-t-lg" />
 
       <div className="p-4 bg-white rounded-b-xl h-full overflow-hidden">
         <div className="flex items-center justify-between">

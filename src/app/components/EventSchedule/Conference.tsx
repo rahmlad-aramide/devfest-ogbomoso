@@ -16,15 +16,16 @@ import {
   scheduleTwo,
 } from "@/data/schedule";
 
-import aliyu from "@public/speakers/aliyu.png";
-import tosin from "@public/speakers/tosin.png";
-import alaran from "@public/speakers/alaran.png";
-import etiene from "@public/speakers/etiene.png";
+import sodiq from "@public/speakers/sodiq.jpeg";
+import adeola from "@public/speakers/adeola.jpg";
+import courage from "@public/speakers/courage.png";
+import obum from "@public/speakers/obum.png";
 
-import taiye from "@public/speakers/taiye.png";
-import samuel from "@public/speakers/samuel.png";
-import goodness from "@public/speakers/goodness.png";
-import temi from "@public/speakers/temi.png";
+import joy from "@public/speakers/joy.jpg";
+import joel from "@public/speakers/joel.jpg";
+import danil from "@public/speakers/daniel.jpg";
+import paul from "@public/speakers/paul.jpg";
+import opeyimika from "@public/speakers/opeyimika.jpg";
 
 const Conference: React.FC = () => {
   return (
@@ -46,14 +47,14 @@ const Conference: React.FC = () => {
         <PanelEventScheduleCard
           session="Panel Discussion"
           title="AI, Ethics, and the Future of Work"
-          imgs={[aliyu, tosin, alaran, etiene]}
+          imgs={[sodiq, obum, joy, adeola]}
           time="12:10 PM - 12:35 PM"
           duration="25 minutes"
           speakers={[
-            "Aliyu Ramat",
-            "Tosin Yusuf",
-            "Alaran Khaerat",
-            "Etienne Essenoh",
+            "Sodiq Akinjobi",
+            "Obumneme Nwabude",
+            "Joy Ajiboye",
+            "Adeola Adegoke",
           ]}
         />
         {scheduleTwo.map((schedule, index) => (
@@ -77,7 +78,7 @@ const Conference: React.FC = () => {
         {scheduleThree.map((schedule, index) => (
           <ShortEventScheduleCard key={index} {...schedule} />
         ))}
-        <PanelEventScheduleCard
+        {/* <PanelEventScheduleCard
           session="Panel Discussion"
           title="Building Tech Solutions for African Challenges"
           imgs={[taiye, samuel, goodness, temi]}
@@ -89,7 +90,7 @@ const Conference: React.FC = () => {
             "Goodness Adebayo",
             "Temi Kolawole",
           ]}
-        />
+        /> */}
         {scheduleFour.map((schedule, index) => (
           <ShortEventScheduleCard key={index} {...schedule} />
         ))}
