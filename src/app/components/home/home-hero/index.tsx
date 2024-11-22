@@ -16,9 +16,9 @@ const HomeHero = () => {
         </h1>
 
         <p className="text-wrap text-center lg:max-w-[912px] text-[18px] text-primary-gray">
-          Join us at DevFest Ogbomoso 2024 from October 17 to 19 for 3 days of
+          Join us at DevFest Ogbomoso 2024 on November 30 for a day of
           inspiring talks, interactive workshops, and unparalleled networking
-          opportunities. With over 2,000 attendees, this event is your gateway
+          opportunities. With over 500 attendees, this event is your gateway
           to the latest in AI, Android, Cloud, and more. Don’t miss out on
           Ogbomoso&apos;s largest tech celebration of the year!
         </p>
@@ -32,7 +32,8 @@ const HomeHero = () => {
             py={8}
             className="flex items-center gap-2 !font-bold w-full"
           >
-            Register Now <BsArrowUpRight />
+            Register Now
+             {/* <BsArrowUpRight /> */}
             {/* for conference (Day 3 Main) */}
           </Button>
 
