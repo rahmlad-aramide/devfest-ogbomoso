@@ -28,8 +28,6 @@ export default function DrawerMenu({ currentPath }: NavMenuProps) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = useRef(null);
 
-  const linksToRender = pathname === "/" ? newMenuLinks : menuLinks;
-
   return (
     <>
       <IconButton
@@ -70,7 +68,7 @@ export default function DrawerMenu({ currentPath }: NavMenuProps) {
                   Home
                 </Link>
               </li>
-              {linksToRender.map((link) => {
+              {menuLinks.map((link) => {
                 return (
                   <li
                     key={link.path}

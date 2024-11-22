@@ -56,17 +56,6 @@ export default function Home() {
             Register Now <BsArrowUpRight />
           </Button>
 
-          {/* <Button
-            as={Link}
-            href={ctaLinks.ticket.link}
-            target="_blank"
-            borderRadius={50}
-            py={8}
-            className="!bg-[#FF7DAF] !text-white hover:opacity-80 flex items-center gap-2"
-          >
-            Buy Ticket
-            <Image src={sunset} alt="sunset" className="w-[20px]" />
-          </Button> */}
         </div>
       </section>
 
