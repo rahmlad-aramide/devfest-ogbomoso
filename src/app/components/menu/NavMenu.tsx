@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import DevFestLogo from "@public/devfest-ilorin.svg";
+import DevFestLogo from "@public/devfest-ogbomoso.svg";
 import Link from "next/link";
 import DrawerMenu from "./DrawerMenu";
 import MenuLinks from "./MenuLinks";
