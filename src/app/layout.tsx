@@ -9,10 +9,10 @@ import thumbnail from "@public/devfest-social-meta.png";
 
 const appName = config.appName;
 const appUrl = config.appUrl;
-const appMetaTitle = `${appName} - The Biggest Tech Conference In North Central`;
+const appMetaTitle = `${appName} - Ogbomoso's Biggest Tech Conference`;
 const imageAlt = "Google Developer Group Ogbomoso";
 const appMetaDescription =
-  "📢 The official DevFest Ogbomoso 2024 📢 Mark your calendars for October 17th - 19th, 2024. Don’t miss out on three incredible days of innovation, networking, Exclusive hangout and learning. Get your FREE TICKET now: https://bit.ly/devfestogbomoso24 #devfestogbomoso24 #DevFest2024 #devfest";
+  "📢 The official DevFest Ogbomoso 2024 📢 Mark your calendars for November 30, 2024. Don’t miss out on three incredible days of innovation, networking, Exclusive hangout and learning. Get your FREE TICKET now: https://bit.ly/devfest-ogbomoso-24 #devfestogbomoso24 #DevFest2024 #devfest";
 
 export const metadata: Metadata = {
   metadataBase: new URL(appUrl),
