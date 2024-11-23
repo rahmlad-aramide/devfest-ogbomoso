@@ -19,7 +19,7 @@ function Hero({ data }: any) {
           className="text-center mb-8"
         >
           <span className="inline-block px-4 py-1 bg-[#FFF5E1]/10 rounded-full text-sm mb-8 font-bold">
-            {data?.tag}
+            GDG Ogbomoso
           </span>
         </motion.div>
 
