@@ -12,7 +12,7 @@ import {
 import { speakers } from "../speakers";
 import Link from "next/link";
 
-export function SpeakersSection() {
+function SpeakersSection() {
   const [currentSpeaker, setCurrentSpeaker] = useState(2); // Index of Mercy
 
   const nextSpeaker = () => {
@@ -174,3 +174,5 @@ export function SpeakersSection() {
     </section>
   );
 }
+
+export default SpeakersSection;

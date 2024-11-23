@@ -2,7 +2,7 @@
 import { motion } from 'framer-motion';
 import { Ticket, Users, Calendar } from 'lucide-react';
 
-export function TicketSection() {
+function TicketSection() {
   return (
     <section className="py-24 bg-white">
       <div className="container mx-auto px-4">
@@ -45,3 +45,4 @@ export function TicketSection() {
     </section>
   );
 }
+export default TicketSection;

@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { Twitter, Linkedin, Github, Globe } from 'lucide-react';
 
-export function Footer() {
+function Footer() {
   return (
     <footer className="bg-black text-white py-16">
       <div className="container mx-auto px-4">
@@ -74,3 +74,4 @@ export function Footer() {
     </footer>
   );
 }
+export default Footer;

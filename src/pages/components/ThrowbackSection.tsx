@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 /* eslint-disable react/no-unescaped-entities */
 import { motion } from 'framer-motion';
 import { Play, Image } from 'lucide-react';
@@ -8,7 +9,7 @@ const images = [
   'https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=800&q=80',
 ];
 
-export function ThrowbackSection() {
+function ThrowbackSection() {
   return (
     <section className="py-24 bg-black text-white">
       <div className="container mx-auto px-4">
@@ -70,3 +71,5 @@ export function ThrowbackSection() {
     </section>
   );
 }
+
+export default ThrowbackSection;

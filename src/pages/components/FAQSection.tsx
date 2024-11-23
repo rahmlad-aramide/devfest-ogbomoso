@@ -22,7 +22,7 @@ const faqs = [
   }
 ];
 
-export function FAQSection() {
+function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
@@ -84,3 +84,5 @@ export function FAQSection() {
     </section>
   );
 }
+
+export default FAQSection;

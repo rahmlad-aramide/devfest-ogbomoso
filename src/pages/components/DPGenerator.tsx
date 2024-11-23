@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { Download, Image as ImageIcon, Wand2 } from 'lucide-react';
 import { useState } from 'react';
 
-export function DPGenerator() {
+function DPGenerator() {
   const [frame, setFrame] = useState(1);
   const [uploading, setUploading] = useState(false);
 
@@ -106,3 +106,4 @@ export function DPGenerator() {
     </section>
   );
 }
+export default DPGenerator;

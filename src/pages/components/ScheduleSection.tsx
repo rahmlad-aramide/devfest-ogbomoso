@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import { speakers } from '../speakers';
 
-export function ScheduleSection() {
+function ScheduleSection() {
   return (
     <section className="py-24 bg-white">
       <div className="container mx-auto px-4">
@@ -77,3 +77,4 @@ export function ScheduleSection() {
     </section>
   );
 }
+export default ScheduleSection;

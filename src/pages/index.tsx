@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
-import { FAQSection } from "./components/FAQSection";
-import { Footer } from "./components/Footer";
+import FAQSection from "./components/FAQSection";
+import Footer from "./components/Footer";
 import Hero from "./components/Hero";
-import { ScheduleSection } from "./components/ScheduleSection";
-import { SpeakersSection } from "./components/SpeakersSection";
-import { ThrowbackSection } from "./components/ThrowbackSection";
+import ScheduleSection from "./components/ScheduleSection";
+import SpeakersSection from "./components/SpeakersSection";
+import ThrowbackSection from "./components/ThrowbackSection";
 
 export default function Home({ data }: any) {
   console.log(data);
