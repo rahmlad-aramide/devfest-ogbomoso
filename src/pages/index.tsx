@@ -22,8 +22,8 @@ export default function Home({ data }: any) {
 }
 
 export async function getServerSideProps() {
-  const res = await fetch("http://localhost:3000/details.json");
-  const data = await res.json();
+  // const res = await fetch("http://localhost:3000/details.json");
+  const data = {} // await res.json();
   return {
     props: {
       data,
