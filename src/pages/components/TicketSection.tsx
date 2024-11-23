@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { motion } from 'framer-motion';
 import { Ticket, Users, Calendar } from 'lucide-react';
 

@@ -1,6 +1,4 @@
 import { Html, Head, Main, NextScript } from "next/document";
-import MetaTags from "./components/MetaTag";
-
 export default function Document() {
   return (
     <Html lang="en" suppressHydrationWarning>
