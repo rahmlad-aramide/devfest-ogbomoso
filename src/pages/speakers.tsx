@@ -3,6 +3,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Github, Hexagon, Linkedin, Twitter } from "lucide-react";
 import Header from "./components/Header";
+import MetaTags from "./components/MetaTag";
 
 const categories = [
   "All",
@@ -85,6 +86,7 @@ function Speakers() {
     <>
       <div className="min-h-screen bg-[#FFF5E1] w-screen overflow-hidden">
         <Header />
+        <MetaTags title="Speakers" description="Meet the DevFest Ogbomoso 2024 Speakers!" />
 
         {/* Hero Section */}
         <div className="relative px-8 py-24">
