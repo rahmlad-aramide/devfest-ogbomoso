@@ -1,0 +1,18 @@
+{
+  "metadata": {
+    "title": "DevFest Ogbomoso",
+    "description": "DevFest Ogbomoso is a community-run, developer event that offers speaker sessions across multiple product areas, codelabs, hackathon, and more."
+  },
+  "title": "DevFest Ogbomoso",
+  "date": "November 30, 2019",
+  "time": "9:00 AM",
+  "location": "LAUTECH, Ogbomoso",
+  "year": "2019",
+  "tag": "GDG Ogbomoso",
+  "throwback": {
+    "show": true,
+    "title": "Throwback to DevFest '23: Vibes and Tech All the Way",
+    "subtitle": "Remember the energy? The pictures, the jollof, the pure tech vibes? Last year, we turned up and showed out. From inspiring sessions to unforgettable connections, DevFest 2023 was everything and more."
+  },
+  "theme": "#FF9800"
+}
