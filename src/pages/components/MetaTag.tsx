@@ -1,6 +1,3 @@
-import Head from "next/head";
-import { useRouter } from "next/router";
-
 type MetaTagsProps = {
   title?: string;
   description?: string;

@@ -1,7 +1,8 @@
+/* eslint-disable @next/next/no-img-element */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useState } from "react";
 import { motion } from "framer-motion";
-import { Github, Hexagon, Linkedin, Twitter } from "lucide-react";
+import { Github, Linkedin, Twitter } from "lucide-react";
+import { useState } from "react";
 import Header from "./components/Header";
 import MetaTags from "./components/MetaTag";
 
@@ -15,7 +16,7 @@ const categories = [
   "Writing",
 ];
 
-const days = [];
+const days: any = [];
 
 export const speakers = [
   {
@@ -133,7 +134,7 @@ function Speakers() {
         {/* Filters */}
         <div className="px-8 py-8">
           <div className="flex gap-4 mb-8">
-            {days.map((day) => (
+            {days.map((day: any) => (
               <button
                 key={day}
                 onClick={() => setSelectedDay(day)}

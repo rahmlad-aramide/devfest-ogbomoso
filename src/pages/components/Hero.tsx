@@ -3,7 +3,7 @@ import { MapPin, Calendar, Globe } from "lucide-react";
 import Header from "./Header";
 import Typewriter from "typewriter-effect";
 
-function Hero({ data }: any) {
+function Hero() {
   return (
     <section className="min-h-screen relative bg-black text-[#FFF5E1] snap-both">
       <div className="absolute inset-0 bg-[url('/gdg-event-1.jpeg')] bg-cover bg-center">

@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 /* eslint-disable @next/next/no-img-element */
 import { motion } from 'framer-motion';
 import { speakers } from '../speakers';
