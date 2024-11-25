@@ -18,13 +18,13 @@ function ThrowbackSection({ data }: { data: any }) {
               THROWBACK
             </span>
             <h2 className="text-4xl font-bold mb-4">
-              {data.title}
+              {data?.title}
             </h2>
             <p className="text-xl text-gray-300">
-              {data.subtitle}
+              {data?.subtitle}
             </p>
           </motion.div>
-          <a href={data.driveLink} target='_blank'>
+          <a href={data?.driveLink} target='_blank'>
           <div className="grid md:grid-cols-2 gap-8">
             <motion.div
               whileHover={{ scale: 1.02 }}
@@ -34,14 +34,14 @@ function ThrowbackSection({ data }: { data: any }) {
                 <Play className="w-12 h-12" />
               </div>
               <img 
-                src={data.images[0]} 
+                src={data?.images[0]} 
                 alt="DevFest 2023 Highlights"
                 className="w-full h-[300px] object-cover rounded-xl"
               />
             </motion.div>
             
             <div className="grid gap-4">
-              {data.images.slice(1).map((img: string, i: number) => (
+              {data?.images.slice(1).map((img: string, i: number) => (
                 <motion.div
                   key={i}
                   whileHover={{ scale: 1.02 }}
