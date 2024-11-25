@@ -7,8 +7,8 @@ import Typewriter from "typewriter-effect";
 function Hero({ data }: any) {
   return (
     <section className="min-h-screen relative bg-black text-[#FFF5E1] snap-both">
-      <div className="absolute inset-0 bg-[url('/gdg-event-1.jpeg')] bg-cover bg-center">
-        <div className="absolute inset-0 bg-black/70" />
+      <div className="absolute inset-0 bg-[url('/devfest.jpeg')] bg-cover bg-center">
+        <div className="absolute inset-0 bg-black/50" />
       </div>
       <Header buttonText={data.actionButtonText} rsvpLink={data.rsvpLink} />
 
