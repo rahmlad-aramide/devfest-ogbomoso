@@ -1,6 +1,9 @@
 import Image from "next/image";
 
-const Header = () => {
+const Header = ({ buttonText, rsvpLink }: {
+  buttonText: string;
+  rsvpLink: string;
+}) => {
   return (
     <nav className="relative z-10 flex items-center justify-between px-6 py-4">
       <div className="flex items-center justify-center gap-2">
@@ -16,17 +19,15 @@ const Header = () => {
         <a href="#schedule" className="hover:text-white">
           Schedule
         </a>
-        <a href="#team" className="hover:text-white">
-          Team
-        </a>
         <a href="#faqs" className="hover:text-white">
           FAQs
         </a>
       </div>
-
+      <a href={rsvpLink} target="_blank">
       <button className="bg-[#FF9800] text-black px-4 py-2 rounded-full flex items-center gap-2">
-        Get Tickets <span className="text-xl">🎟️</span>
+      {buttonText} <span className="text-xl">🎟️</span>
       </button>
+      </a>
     </nav>
   );
 };

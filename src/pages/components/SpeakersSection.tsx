@@ -1,4 +1,4 @@
-/* eslint-disable @next/next/no-img-element */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import { useState } from "react";
 import { motion } from "framer-motion";
@@ -9,12 +9,11 @@ import {
   Linkedin,
   Github,
 } from "lucide-react";
-import { speakers } from "../speakers";
 import Link from "next/link";
 
-function SpeakersSection() {
-  const [currentSpeaker, setCurrentSpeaker] = useState(2); // Index of Mercy
-
+function SpeakersSection({ data }: any) {
+  const [speakers, _] = useState([...data.speakers]);
+  const [currentSpeaker, setCurrentSpeaker] = useState(0);
   const nextSpeaker = () => {
     setCurrentSpeaker((prev) => (prev + 1) % speakers.length);
   };
@@ -22,19 +21,22 @@ function SpeakersSection() {
   const prevSpeaker = () => {
     setCurrentSpeaker((prev) => (prev - 1 + speakers.length) % speakers.length);
   };
-
+  //(speakers, currentSpeaker);
   return (
-    <section className="py-24 bg-primary min-h-screen w-screen overflow-hidden">
+    <section
+      className="py-24 bg-primary min-h-screen w-screen overflow-hidden"
+      id="speakers"
+    >
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <span className="inline-block px-4 py-1 bg-black/10 rounded-full text-sm mb-4">
             SPEAKERS
           </span>
-          <h2 className="text-6xl font-bold mb-4">Meet Our Speakers</h2>
+          <h2 className="text-6xl font-bold mb-4">
+            {data.speakerSection.title}
+          </h2>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-            We&apos;ve raised the bar this year with our impressive lineup of
-            speakers, each prepared to share valuable insights on different
-            aspects of the tech community.
+            {data.speakerSection.subtitle}
           </p>
         </div>
 
@@ -47,14 +49,14 @@ function SpeakersSection() {
           </button>
 
           <div className="flex items-center justify-center gap-4 md:mt-[300px] mt-[200px]">
-            {speakers.map((speaker, index) => {
+            {speakers.map((speaker: any, index: number) => {
               const position = index - currentSpeaker;
               const isActive = index === currentSpeaker;
               let xPos = 200;
               if (typeof window !== "undefined") {
-               xPos =
-                (isActive ? 0 : 20) +
-                position * (window && window.innerWidth < 768 ? 180 : 200);
+                xPos =
+                  (isActive ? 0 : 20) +
+                  position * (window && window.innerWidth < 768 ? 180 : 200);
               }
               return (
                 <motion.div
@@ -94,11 +96,36 @@ function SpeakersSection() {
                                 {speakers[currentSpeaker].role}
                               </p>
                             </div>
+                            {speakers[currentSpeaker]?.socials &&
                             <div className="flex gap-4 items-center">
-                              <Twitter className="md:w-5 md:h-5 w-3 h-3 text-gray-400 hover:text-black cursor-pointer" />
-                              <Linkedin className="md:w-5 md:h-5 w-3 h-3 text-gray-400 hover:text-black cursor-pointer"  />
-                              <Github className="md:w-5 md:h-5 w-3 h-3 text-gray-400 hover:text-black cursor-pointer" />
+                              {speakers[currentSpeaker].socials.twitter && (
+                                <a
+                                  href={`https://twitter.com/${speakers[currentSpeaker].socials?.twitter}`}
+                                  target="_blank"
+                                >
+                                  <Twitter className="md:w-5 md:h-5 w-3 h-3 text-gray-400 hover:text-black cursor-pointer" />
+                                </a>
+                              )}
+
+                              {speakers[currentSpeaker].socials?.linkedin && (
+                                <a
+                                  href={`https://linkedin.com/in/${speakers[currentSpeaker].socials.linkedin}`}
+                                  target="_blank"
+                                >
+                                  <Linkedin className="md:w-5 md:h-5 w-3 h-3 text-gray-400 hover:text-black cursor-pointer" />
+                                </a>
+                              )}
+
+                              {speakers[currentSpeaker].socials?.github && (
+                                <a
+                                  href={`https://github.com/${speakers[currentSpeaker].socials.github}`}
+                                  target="_blank"
+                                >
+                                  <Github className="md:w-5 md:h-5 w-3 h-3 text-gray-400 hover:text-black cursor-pointer" />
+                                </a>
+                              )}
                             </div>
+            }
                           </div>
                         </motion.div>
                       </div>
@@ -165,9 +192,9 @@ function SpeakersSection() {
             </button>
           </div>
           <Link href="/speakers">
-          <button className="bg-[#FF9800] text-black px-6 py-3 rounded-full font-medium inline-flex items-center gap-2">
-            See all Speakers <span>👋</span>
-          </button>
+            <button className="bg-[#FF9800] text-black px-6 py-3 rounded-full font-medium inline-flex items-center gap-2">
+              See all Speakers <span>👋</span>
+            </button>
           </Link>
         </div>
       </div>

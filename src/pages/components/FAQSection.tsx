@@ -3,30 +3,11 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 import { Plus, Minus } from 'lucide-react';
 
-const faqs = [
-  {
-    question: 'What is DevFest Ogbomoso?',
-    answer: 'DevFest Ogbomoso is a community-led developer conference focused on community building and learning about Google\'s technologies.'
-  },
-  {
-    question: 'When and where is it happening?',
-    answer: 'DevFest Ogbomoso 2024 will take place on November 15-16, 2024, at the Landmark Event Center, Ogbomoso.'
-  },
-  {
-    question: 'Who can attend?',
-    answer: 'DevFest is open to anyone interested in technology, from students to professional developers, designers, and tech enthusiasts.'
-  },
-  {
-    question: 'What should I bring?',
-    answer: 'Bring your laptop, charger, and an open mind ready to learn and connect with fellow developers!'
-  }
-];
-
-function FAQSection() {
+function FAQSection({ data }: any) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section className="py-24 bg-gray-50">
+    <section className="py-24 bg-gray-50" id="faqs">
       <div className="container mx-auto px-4 text-black">
         <motion.div
           initial={{ opacity: 0 }}
@@ -44,7 +25,7 @@ function FAQSection() {
         </motion.div>
 
         <div className="max-w-2xl mx-auto">
-          {faqs.map((faq, index) => (
+          {data.faqs.map((faq: any, index: number) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}

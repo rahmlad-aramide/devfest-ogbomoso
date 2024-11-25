@@ -1,15 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable react/no-unescaped-entities */
 import { motion } from 'framer-motion';
 import { Play, Image } from 'lucide-react';
 
-const images = [
-  'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80',
-  'https://images.unsplash.com/photo-1591115765373-5207764f72e7?w=800&q=80',
-  'https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=800&q=80',
-];
-
-function ThrowbackSection() {
+function ThrowbackSection({ data }: { data: any }) {
   return (
     <section className="py-24 bg-black text-white">
       <div className="container mx-auto px-4">
@@ -23,15 +18,13 @@ function ThrowbackSection() {
               THROWBACK
             </span>
             <h2 className="text-4xl font-bold mb-4">
-              Throwback to DevFest '23: Vibes and Tech All the Way
+              {data.title}
             </h2>
             <p className="text-xl text-gray-300">
-              Remember the energy? The pictures, the jollof, the pure tech vibes? Last year, 
-              we turned up and showed out. From inspiring sessions to unforgettable 
-              connections, DevFest 2023 was everything and more.
+              {data.subtitle}
             </p>
           </motion.div>
-
+          <a href={data.driveLink} target='_blank'>
           <div className="grid md:grid-cols-2 gap-8">
             <motion.div
               whileHover={{ scale: 1.02 }}
@@ -41,14 +34,14 @@ function ThrowbackSection() {
                 <Play className="w-12 h-12" />
               </div>
               <img 
-                src={images[0]} 
+                src={data.images[0]} 
                 alt="DevFest 2023 Highlights"
                 className="w-full h-[300px] object-cover rounded-xl"
               />
             </motion.div>
             
             <div className="grid gap-4">
-              {images.slice(1).map((img, i) => (
+              {data.images.slice(1).map((img: string, i: number) => (
                 <motion.div
                   key={i}
                   whileHover={{ scale: 1.02 }}
@@ -66,6 +59,7 @@ function ThrowbackSection() {
               ))}
             </div>
           </div>
+          </a>
         </div>
       </div>
     </section>

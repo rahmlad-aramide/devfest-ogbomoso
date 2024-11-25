@@ -1,35 +1,47 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable @next/next/no-img-element */
 import { motion } from 'framer-motion';
-import { speakers } from '../speakers';
+import { useEffect, useState } from 'react';
 
-function ScheduleSection() {
+function ScheduleSection({ data }: any) {
+  const [hydrated, setHydrated] = useState(false);
+  useEffect(() => {
+    // this forces a rerender
+    setHydrated(true)
+  }, [])
+  
+  if(!hydrated) {
+    // this returns null on first render, so the client and server match
+    return null
+  }
+  
   return (
-    <section className="py-24 bg-white">
+    <section className="py-24 bg-white" id="schedule">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <span className="inline-block px-4 py-1 text-black bg-transparent border border-gray-200 rounded-full text-sm mb-4">
             TALKS
           </span>
-          <h2 className="text-6xl font-extrabold mb-4 text-black">Options For Everyone</h2>
+          <h2 className="text-6xl font-extrabold mb-4 text-black">{data.schedule.title}</h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            At DevFest Ogbomoso 2024, we're serving up a full menu of talks and sessions to match every
-            taste. No matter what you're into, there's something for you.
+          {data.schedule.subtitle}
           </p>
         </div>
 
         <div className="max-w-4xl mx-auto">
           <div className="flex gap-4 mb-12 justify-center">
             <button className="px-6 py-2 bg-[#FF9800] text-black rounded-full font-medium">
-              Saturday, 30, November, 2024
+              {data?.dateInWords}
             </button>
           </div>
 
           <div className="relative">
             <div className="absolute left-[150px] top-12 bottom-0 w-0.5 bg-gray-200 md:block hidden" />
 
-            {speakers.splice(0,3).map((session, index) => (
+            {data.speakers.splice(0,3).map((session: any, index: number) => (
               <motion.div
+                suppressHydrationWarning
                 key={index}
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}

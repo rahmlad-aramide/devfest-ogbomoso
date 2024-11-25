@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { Download, Image as ImageIcon, Wand2 } from 'lucide-react';
 import { useState } from 'react';
 
-function DPGenerator() {
+function DPGeneratorComponent() {
   const [frame, setFrame] = useState(1);
   const [uploading, setUploading] = useState(false);
 
@@ -13,17 +13,17 @@ function DPGenerator() {
   };
 
   return (
-    <section className="py-24 bg-white">
+    <section className="py-24 bg-white text-black">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           className="text-center mb-16"
         >
-          <span className="inline-block px-4 py-1 bg-primary rounded-full text-sm mb-4">
-            DP MAKER
+          <span className="inline-block px-4 py-1 bg-[#FFF5E1]/10 rounded-full text-sm mb-8 font-bold">
+            DP Maker
           </span>
-          <h2 className="text-4xl font-bold mb-4">Create Your DevFest DP</h2>
+          <h2 className="text-4xl font-bold mb-4 text-black">Create Your DevFest DP</h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             Show your excitement for DevFest Ogbomoso 2024! Generate your custom profile picture
             with our DP maker.
@@ -106,4 +106,4 @@ function DPGenerator() {
     </section>
   );
 }
-export default DPGenerator;
+export default DPGeneratorComponent;

@@ -1,15 +1,16 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { motion } from "framer-motion";
 import { MapPin, Calendar, Globe } from "lucide-react";
 import Header from "./Header";
 import Typewriter from "typewriter-effect";
 
-function Hero() {
+function Hero({ data }: any) {
   return (
     <section className="min-h-screen relative bg-black text-[#FFF5E1] snap-both">
       <div className="absolute inset-0 bg-[url('/gdg-event-1.jpeg')] bg-cover bg-center">
         <div className="absolute inset-0 bg-black/70" />
       </div>
-      <Header />
+      <Header buttonText={data.actionButtonText} rsvpLink={data.rsvpLink} />
 
       {/* Main Content */}
       <div className="relative z-10 container mx-auto px-4 pt-24 pb-16">
@@ -19,7 +20,7 @@ function Hero() {
           className="text-center mb-8"
         >
           <span className="inline-block px-4 py-1 bg-[#FFF5E1]/10 rounded-full text-sm mb-8 font-bold">
-            GDG Ogbomoso
+            {data?.tag}
           </span>
         </motion.div>
 
@@ -32,7 +33,7 @@ function Hero() {
           <Typewriter
             onInit={(typewriter) => {
               typewriter
-                .typeString("DevFest Ogbomoso")
+                .typeString(data.title)
                 .pauseFor(1000)
                 .deleteAll()
                 .start();
@@ -46,7 +47,7 @@ function Hero() {
           <Typewriter
             onInit={(typewriter) => {
               typewriter
-                .typeString("2024")
+                .typeString(data.year)
                 .pauseFor(3000)
                 .start();
             }}
@@ -59,9 +60,11 @@ function Hero() {
           transition={{ delay: 0.4 }}
           className="flex flex-col items-center gap-8"
         >
+          <a href={data.rsvpLink} target="_blank">
           <button className="bg-[#FF9800] text-black px-8 py-4 rounded-full text-lg font-medium">
-            Get Tickets 🎟️
+            {data?.actionButtonText}
           </button>
+          </a>
 
           <div className="grid md:grid-cols-3 gap-8 max-w-3xl mx-auto mt-16">
             <div className="flex items-center gap-3">
@@ -70,7 +73,7 @@ function Hero() {
               </div>
               <div className="text-left">
                 <p className="text-sm text-gray-400">Where</p>
-                <p className="font-medium">Landmark Event Center</p>
+                <p className="font-medium">{data.location}</p>
               </div>
             </div>
 
@@ -80,7 +83,7 @@ function Hero() {
               </div>
               <div className="text-left">
                 <p className="text-sm text-gray-400">When</p>
-                <p className="font-medium">15th - 16th November, 2024</p>
+                <p className="font-medium">{data.date}</p>
               </div>
             </div>
 
