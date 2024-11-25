@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 import { useState } from "react";
 import { motion } from "framer-motion";
@@ -12,7 +13,8 @@ import {
 import Link from "next/link";
 
 function SpeakersSection({ data }: any) {
-  const [speakers, _] = useState([...data.speakers]);
+  const dataSpeakers = data?.speakers || [];
+  const [speakers, _] = useState([...dataSpeakers]);
   const [currentSpeaker, setCurrentSpeaker] = useState(0);
   const nextSpeaker = () => {
     setCurrentSpeaker((prev) => (prev + 1) % speakers.length);
@@ -33,10 +35,10 @@ function SpeakersSection({ data }: any) {
             SPEAKERS
           </span>
           <h2 className="text-6xl font-bold mb-4">
-            {data.speakerSection.title}
+            {data?.speakerSection.title}
           </h2>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-            {data.speakerSection.subtitle}
+            {data?.speakerSection.subtitle}
           </p>
         </div>
 

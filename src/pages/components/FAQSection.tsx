@@ -1,4 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 import { Plus, Minus } from 'lucide-react';
@@ -25,7 +26,7 @@ function FAQSection({ data }: any) {
         </motion.div>
 
         <div className="max-w-2xl mx-auto">
-          {data.faqs.map((faq: any, index: number) => (
+          {data?.faqs.map((faq: any, index: number) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}

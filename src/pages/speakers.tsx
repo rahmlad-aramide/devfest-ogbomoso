@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { motion } from "framer-motion";
 import { Github, Linkedin, Twitter } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -10,7 +11,7 @@ import Footer from "./components/Footer";
 const days: any = [];
 
 function Speakers({ data }: any) {
-  const [speakers, _] = useState(data.speakers);
+  const [speakers, _] = useState(data?.speakers);
   const [selectedDay, setSelectedDay] = useState("All");
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [speaker, setSpeaker] = useState<any>(null);
@@ -37,9 +38,9 @@ function Speakers({ data }: any) {
 
   return (
     <>
-      <Header buttonText={data.actionButtonText} rsvpLink={data.rsvpLink} />
+      <Header buttonText={data?.actionButtonText} rsvpLink={data?.rsvpLink} />
       <div className="min-h-screen bg-[#FFF5E1] w-screen overflow-hidden">
-        <MetaTags title="Speakers" description={data.speakerSection.title} />
+        <MetaTags title="Speakers" description={data?.speakerSection.title} />
 
         {/* Hero Section */}
         <div className="relative px-8 py-24">
@@ -102,7 +103,7 @@ function Speakers({ data }: any) {
           </div>
 
           <div className="flex flex-wrap gap-4">
-            {data.speakerSection.categories.map((category: string) => (
+            {data?.speakerSection.categories.map((category: string) => (
               <button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
