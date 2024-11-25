@@ -6,10 +6,10 @@ const Header = ({ buttonText, rsvpLink }: {
 }) => {
   return (
     <nav className="relative z-10 flex items-center justify-between px-6 py-4">
-      <div className="flex items-center justify-center gap-2">
-        <Image src="/devfest.svg" alt="GDG Logo" width={32} height={32} />
-        <span className="font-bold">DevFest</span>
-        <span className="px-2 py-1 text-sm border rounded">Ogbomoso</span>
+      <div className="flex items-center justify-center m-2 gap-2">
+        <Image src="/devfest-ogbomoso-logo.svg" alt="GDG Logo" width={200} height={32} />
+        {/* <span className="font-bold">DevFest</span> */}
+        {/* <span className="px-2 py-1 text-sm border rounded">Ogbomoso</span> */}
       </div>
 
       <div className="hidden md:flex items-center gap-8">
