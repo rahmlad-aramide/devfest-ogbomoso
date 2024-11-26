@@ -96,7 +96,7 @@ function DPGeneratorComponent() {
               <div className="flex gap-4 mt-4">
                 <button
                   onClick={() => fileInputRef.current?.click()}
-                  className="flex-1 bg-gray-100 text-black px-6 py-4 rounded-xl flex items-center justify-center gap-2 hidden hover:bg-gray-200 transition-colors"
+                  className="flex-1 bg-gray-100 text-black px-6 py-4 rounded-xl items-center justify-center gap-2 hidden hover:bg-gray-200 transition-colors"
                 >
                   <Upload className="w-5 h-5" />
                   Upload Photo

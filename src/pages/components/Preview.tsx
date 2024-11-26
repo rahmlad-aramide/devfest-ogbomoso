@@ -1,3 +1,5 @@
+/* eslint-disable @next/next/no-img-element */
+/* eslint-disable react/no-unescaped-entities */
 import { motion } from 'framer-motion';
 import { Globe, Calendar } from 'lucide-react';
 import Confetti from 'react-confetti';

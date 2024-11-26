@@ -1,9 +1,11 @@
+/* eslint-disable @next/next/no-img-element */
+/* eslint-disable react/no-unescaped-entities */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
-import { MapPin, Calendar, Quote, ArrowUpRight } from "lucide-react";
-import Confetti from "react-confetti";
-import Preview from "./components/Preview";
+import { ArrowUpRight, Quote } from "lucide-react";
 import Image from "next/image";
+import { useEffect, useState } from "react";
+import Confetti from "react-confetti";
 
 interface DPData {
   name: string;
