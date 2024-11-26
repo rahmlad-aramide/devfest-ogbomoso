@@ -11,6 +11,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           name="viewport"
           content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=6,user-scalable=yes"
         />
+        <title>DevFest Ogbomoso</title>
         <MetaTags
           title={"DevFest Ogbomoso"}
           description={
