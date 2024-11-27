@@ -1,1 +1,1 @@
-export const apiurl = 'http://localhost:4000/gdg';
+export const apiurl = 'devfest-backend-production.up.railway.app/gdg';
