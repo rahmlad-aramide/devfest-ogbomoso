@@ -1,12 +1,13 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
 import DPGeneratorComponent from "./components/DPGenerator";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
-import Hero from "./components/Hero";
 import MetaTags from "./components/MetaTag";
 import { motion } from "framer-motion";
 
 function DPGenerator({ data }: any) {
-    console.log(data);
   return (
     <>
       <Header buttonText={data?.actionButtonText} rsvpLink={data?.rsvpLink} />

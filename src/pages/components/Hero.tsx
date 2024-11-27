@@ -10,8 +10,7 @@ function Hero({ data }: any) {
       <div className="absolute inset-0 bg-[url('/devfest.jpeg')] bg-cover bg-center">
         <div className="absolute inset-0 bg-black/50" />
       </div>
-      <Header buttonText={data.actionButtonText} rsvpLink={data.rsvpLink} />
-
+      <Header buttonText={data?.actionButtonText} rsvpLink={data?.rsvpLink} />
       {/* Main Content */}
       <div className="relative z-10 container mx-auto px-4 pt-24 pb-16">
         <motion.div
@@ -33,7 +32,7 @@ function Hero({ data }: any) {
           <Typewriter
             onInit={(typewriter) => {
               typewriter
-                .typeString(data.title)
+                .typeString(data?.title)
                 .pauseFor(1000)
                 .deleteAll()
                 .start();
@@ -47,7 +46,7 @@ function Hero({ data }: any) {
           <Typewriter
             onInit={(typewriter) => {
               typewriter
-                .typeString(data.year)
+                .typeString(data?.year)
                 .pauseFor(3000)
                 .start();
             }}
@@ -60,7 +59,7 @@ function Hero({ data }: any) {
           transition={{ delay: 0.4 }}
           className="flex flex-col items-center gap-8"
         >
-          <a href={data.rsvpLink} target="_blank">
+          <a href={data?.rsvpLink} target="_blank">
           <button className="bg-[#FF9800] text-black px-8 py-4 rounded-full text-lg font-medium">
             {data?.actionButtonText}
           </button>
@@ -73,7 +72,7 @@ function Hero({ data }: any) {
               </div>
               <div className="text-left">
                 <p className="text-sm text-gray-400">Where</p>
-                <p className="font-medium">{data.location}</p>
+                <p className="font-medium">{data?.location}</p>
               </div>
             </div>
 
@@ -83,7 +82,7 @@ function Hero({ data }: any) {
               </div>
               <div className="text-left">
                 <p className="text-sm text-gray-400">When</p>
-                <p className="font-medium">{data.date}</p>
+                <p className="font-medium">{data?.date}</p>
               </div>
             </div>
 

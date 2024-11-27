@@ -38,11 +38,11 @@ function Footer({ data }: any) {
                 </li>
                 <li>
                   <a
-                    href={data.rsvpLink}
+                    href={data?.rsvpLink}
                     target="_blank"
                     className="text-gray-300 hover:text-white"
                   >
-                    {data.actionButtonText}
+                    {data?.actionButtonText}
                   </a>
                 </li>
                 <li>

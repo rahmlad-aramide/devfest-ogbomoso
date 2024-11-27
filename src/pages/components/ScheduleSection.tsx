@@ -24,9 +24,9 @@ function ScheduleSection({ data }: any) {
           <span className="inline-block px-4 py-1 text-black bg-transparent border border-gray-200 rounded-full text-sm mb-4">
             TALKS
           </span>
-          <h2 className="text-6xl font-extrabold mb-4 text-black">{data.schedule.title}</h2>
+          <h2 className="text-6xl font-extrabold mb-4 text-black">{data?.schedule.title}</h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-          {data.schedule.subtitle}
+          {data?.schedule.subtitle}
           </p>
         </div>
 
@@ -40,7 +40,7 @@ function ScheduleSection({ data }: any) {
           <div className="relative">
             <div className="absolute left-[150px] top-12 bottom-0 w-0.5 bg-gray-200 md:block hidden" />
 
-            {data.speakers.splice(0,3).map((session: any, index: number) => (
+            {data?.speakers.splice(0,3).map((session: any, index: number) => (
               <motion.div
                 suppressHydrationWarning
                 key={index}
