@@ -11,6 +11,7 @@ import {
   Github,
 } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 function SpeakersSection({ data }: any) {
   const dataSpeakers = data?.speakers || [];
@@ -26,7 +27,7 @@ function SpeakersSection({ data }: any) {
   //(speakers, currentSpeaker);
   return (
     <section
-      className="py-24 bg-primary min-h-screen w-screen overflow-hidden"
+      className="pt-24 bg-[#f0f0f0] text-black min-h-screen w-screen overflow-hidden"
       id="speakers"
     >
       <div className="container mx-auto px-4">
@@ -37,8 +38,8 @@ function SpeakersSection({ data }: any) {
           <h2 className="text-6xl font-bold mb-4">
             {data?.speakerSection.title}
           </h2>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-            {data?.speakerSection.subtitle}
+          <p className="text-xl text-black max-w-2xl mx-auto">
+            {data.speakerSection.subtitle}
           </p>
         </div>
 
@@ -71,7 +72,7 @@ function SpeakersSection({ data }: any) {
                   transition={{ type: "spring", stiffness: 300, damping: 30 }}
                   className={`absolute ${
                     isActive
-                      ? "md:w-[350px] w-[250px] rounded-lg z-10"
+                      ? "md:w-[350px] w-[250px] rounded-xl border-4 border-black z-10"
                       : "w-32 rounded-full"
                   } md:h-[500px] h-[290px]  overflow-hidden cursor-pointer`}
                   onClick={() => setCurrentSpeaker(index)}
@@ -200,6 +201,9 @@ function SpeakersSection({ data }: any) {
           </Link>
         </div>
       </div>
+      <div className="w-full flex justify-center">
+      <Image src='/devfest-lanyard.png' alt="lanyard" className="px-20 py-6" width={800} height={100} />
+      </div> 
     </section>
   );
 }
