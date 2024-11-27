@@ -7,7 +7,7 @@ function FAQSection({ data }: any) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section className="py-24 bg-gray-50" id="faqs">
+    <section className="py-24 bg-[#f0f0f0]" id="faqs">
       <div className="container mx-auto px-4 text-black">
         <motion.div
           initial={{ opacity: 0 }}
