@@ -52,3 +52,5 @@ export function LastNameStep({ formData, updateFields, onNext }: StepProps) {
     </motion.div>
   );
 }
+
+export default LastNameStep;

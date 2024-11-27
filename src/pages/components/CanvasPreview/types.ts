@@ -30,3 +30,5 @@ export interface PreviewProps {
   height?: number;
   onError?: (error: Error) => void;
 }
+
+export default PreviewProps;

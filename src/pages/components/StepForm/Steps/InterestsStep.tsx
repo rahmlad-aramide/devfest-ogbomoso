@@ -37,3 +37,5 @@ export function InterestsStep({ formData, updateFields, onNext, loading }: any) 
     </motion.div>
   );
 }
+
+export default InterestsStep;

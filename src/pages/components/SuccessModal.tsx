@@ -112,3 +112,5 @@ export function SuccessModal({ isOpen, onClose, referralCode }: SuccessModalProp
     </AnimatePresence>
   );
 }
+
+export default SuccessModal;

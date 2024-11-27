@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { useCanvas } from './useCanvas';
+import useCanvas from './useCanvas';
 import { PreviewProps } from './types';
 import { Download } from 'lucide-react';
 

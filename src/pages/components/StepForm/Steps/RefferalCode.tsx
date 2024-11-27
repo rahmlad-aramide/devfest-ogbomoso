@@ -41,3 +41,5 @@ export function RefferalCodeStep({ formData, updateFields, onNext }: StepProps) 
     </motion.div>
   );
 }
+
+export default RefferalCodeStep;
