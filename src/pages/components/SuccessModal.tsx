@@ -51,8 +51,8 @@ export function SuccessModal({ isOpen, onClose, referralCode }: SuccessModalProp
             <Confetti
               width={windowSize.width}
               height={windowSize.height}
-              numberOfPieces={200}
-              recycle={false}
+              numberOfPieces={600}
+              recycle={true}
             />
 
             <button
