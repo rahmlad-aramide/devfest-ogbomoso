@@ -9,6 +9,7 @@ import { InterestsStep } from "./Steps/InterestsStep";
 import { FormData } from "./types";
 import { RefferalCodeStep } from "./Steps/RefferalCode";
 import { apiurl } from "../../config";
+import { SuccessModal } from '../SuccessModal';
 
 const INITIAL_DATA: FormData = {
   attendeeFirstName: "niyi",
@@ -24,6 +25,8 @@ export function StepForm() {
   const [formData, setFormData] = useState(INITIAL_DATA);
   const [currentStep, setCurrentStep] = useState(0);
   const [loading, setLoading] = useState(false);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [referralCode, setReferralCode] = useState("");
 
   function updateFields(fields: Partial<FormData>) {
     setFormData((prev) => ({ ...prev, ...fields }));
@@ -74,15 +77,19 @@ export function StepForm() {
     console.log(formData);
     fetch(apiurl+'/register', {
       method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify(formData)
-    }).then(response => {
+    }).then(response => response.json())
+    .then(response => {
       setLoading(false)
-      console.log(response);
+      setReferralCode(response.refferalCode)
+      setShowSuccessModal(true)
     })
     .catch(error => {
       setLoading(false)
-      console.error(error)
-      alert('An error occured, please try again')
+      alert(error)
     })
   }
 
@@ -115,6 +122,11 @@ export function StepForm() {
           <div className="w-[100px]" /> {/* Spacer for alignment */}
         </div>
       </div>
+      <SuccessModal
+        isOpen={showSuccessModal}
+        onClose={() => setShowSuccessModal(false)}
+        referralCode={referralCode}
+      />
     </div>
   );
 }
