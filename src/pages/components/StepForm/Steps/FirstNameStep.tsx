@@ -8,7 +8,7 @@ export function FirstNameStep({ formData, updateFields, onNext }: StepProps) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.attendeeFirstName.trim()) {
+    if (!formData?.attendeeFirstName.trim()) {
       setError('First name is required');
       return;
     }
@@ -27,13 +27,13 @@ export function FirstNameStep({ formData, updateFields, onNext }: StepProps) {
         <input
           autoFocus
           type="text"
-          value={formData.attendeeFirstName}
+          value={formData?.attendeeFirstName}
           onChange={e => {
             setError('');
             updateFields({ attendeeFirstName: e.target.value });
           }}
           onKeyDown={e => {
-            if (e.key === 'Enter' && formData.attendeeFirstName.trim()) {
+            if (e.key === 'Enter' && formData?.attendeeFirstName.trim()) {
               handleSubmit(e);
             }
           }}

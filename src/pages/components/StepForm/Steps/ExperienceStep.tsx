@@ -17,7 +17,7 @@ export function ExperienceStep({ formData, updateFields, onNext }: StepProps) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.attendeeExperience) {
+    if (!formData?.attendeeExperience) {
       setError('Please select your experience level');
       return;
     }
@@ -45,7 +45,7 @@ export function ExperienceStep({ formData, updateFields, onNext }: StepProps) {
                 type="radio"
                 name="experience"
                 value={exp}
-                checked={formData.attendeeExperience === exp}
+                checked={formData?.attendeeExperience === exp}
                 onChange={e => {
                   setError('');
                   updateFields({ attendeeExperience: e.target.value });

@@ -55,7 +55,7 @@ export default function ReferralStats() {
     }
   };
   const getUser = () => {
-    console.log(`Getting user with email: ${formData.attendeeEmail}`);
+    console.log(`Getting user with email: ${formData?.attendeeEmail}`);
     setLoading(true);
     // Here you would typically send the form data to your backend
     console.log(formData);
@@ -65,7 +65,7 @@ export default function ReferralStats() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        email: formData.attendeeEmail,
+        email: formData?.attendeeEmail,
       }),
     })
       .then((response) => response.json())

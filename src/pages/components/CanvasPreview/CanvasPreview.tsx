@@ -1,15 +1,19 @@
-import { motion } from 'framer-motion';
-import useCanvas from './useCanvas';
-import { PreviewProps } from './types';
-import { Download } from 'lucide-react';
+import { motion } from "framer-motion";
+import { useCanvas } from "./useCanvas";
+import { PreviewProps } from "./types";
+import { Download } from "lucide-react";
 
-export default function CanvasPreview({ 
-  config, 
-  width = 800, 
-  height = 600, 
-  onError 
+export default function CanvasPreview({
+  config,
+  width = 800,
+  height = 600,
+  onError,
 }: PreviewProps) {
-  const { canvasRef, error, isLoading, downloadImage } = useCanvas(config, width, height);
+  const { canvasRef, error, isLoading, downloadImage } = useCanvas(
+    config,
+    width,
+    height
+  );
 
   if (error) {
     onError?.(error);
@@ -37,7 +41,7 @@ export default function CanvasPreview({
           className="w-full h-full rounded-lg shadow-lg"
         />
       </motion.div>
-      
+
       <motion.button
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}

@@ -31,4 +31,6 @@ export interface PreviewProps {
   onError?: (error: Error) => void;
 }
 
-export default PreviewProps;
+export default function sample() {
+  return <>Hello World</>;
+}

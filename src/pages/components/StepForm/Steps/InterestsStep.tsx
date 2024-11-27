@@ -19,7 +19,7 @@ export function InterestsStep({ formData, updateFields, onNext, loading }: any) 
       <form onSubmit={handleSubmit} className="w-full">
         <textarea
           autoFocus
-          value={formData.attendeeLearning || ''}
+          value={formData?.attendeeLearning || ''}
           onChange={e => updateFields({ attendeeLearning: e.target.value })}
           className="w-full text-3xl bg-transparent border-b-2 border-gray-300 focus:border-[#FF9800] outline-none pb-2 min-h-[100px] resize-none"
           placeholder="Type your answer here... (optional)"

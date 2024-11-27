@@ -19,7 +19,7 @@ export function OrganizationStep({ formData, updateFields, onNext }: StepProps) 
         <input
           autoFocus
           type="text"
-          value={formData.attendeeOrg || ''}
+          value={formData?.attendeeOrg || ''}
           onChange={e => updateFields({ attendeeOrg: e.target.value })}
           onKeyDown={e => {
             if (e.key === 'Enter') {
