@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
+import DPSection from "./components/DPSection";
 import FAQSection from "./components/FAQSection";
 import Footer from "./components/Footer";
 import Hero from "./components/Hero";
@@ -14,6 +15,7 @@ export default function Home({ data }: any) {
       {data?.throwback.show && <ThrowbackSection data={data?.throwback} />}
        <SpeakersSection data={data}/>
       <ScheduleSection data={data} suppressHydrationWarning />
+      <DPSection />
       <FAQSection data={data}/>
       <Footer data={data}/>
     </>
