@@ -1,9 +1,9 @@
 import { motion } from 'framer-motion';
-import { useCanvas } from './useCanvas';
+import useCanvas from './useCanvas';
 import { PreviewProps } from './types';
 import { Download } from 'lucide-react';
 
-export function CanvasPreview({ 
+export default function CanvasPreview({ 
   config, 
   width = 800, 
   height = 600, 

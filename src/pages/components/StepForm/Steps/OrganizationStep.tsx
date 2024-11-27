@@ -41,3 +41,4 @@ export function OrganizationStep({ formData, updateFields, onNext }: StepProps) 
     </motion.div>
   );
 }
+export default OrganizationStep;

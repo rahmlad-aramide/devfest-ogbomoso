@@ -69,3 +69,5 @@ export function EmailStep({
     </motion.div>
   );
 }
+
+export default EmailStep;

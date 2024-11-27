@@ -13,3 +13,7 @@ export type StepProps = {
   updateFields: (fields: Partial<FormData>) => void;
   onNext: () => void;
 };
+
+export default function sample() {
+  return <>Hello World</>;
+}

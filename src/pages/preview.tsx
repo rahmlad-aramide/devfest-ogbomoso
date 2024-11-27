@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import Confetti from "react-confetti";
 import { CanvasConfig } from "./components/CanvasPreview/types";
-import { CanvasPreview } from "./components/CanvasPreview/CanvasPreview";
+import CanvasPreview from "./components/CanvasPreview/CanvasPreview";
 
 interface DPData {
   name: string;

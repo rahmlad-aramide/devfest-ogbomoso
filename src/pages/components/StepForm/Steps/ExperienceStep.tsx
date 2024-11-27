@@ -69,3 +69,4 @@ export function ExperienceStep({ formData, updateFields, onNext }: StepProps) {
     </motion.div>
   );
 }
+export default ExperienceStep;
