@@ -12,13 +12,13 @@ import { apiurl } from "../../config";
 import { SuccessModal } from '../SuccessModal';
 
 const INITIAL_DATA: FormData = {
-  attendeeFirstName: "niyi",
-  attendeeLastName: "bambwa",
-  attendeeEmail: "dev@gmail.com",
-  attendeeExperience: "4",
-  attendeeOrg: "Moniep",
-  refferedBy: "39e9b7",
-  attendeeLearning: "djdjdj",
+  attendeeFirstName: "",
+  attendeeLastName: "",
+  attendeeEmail: "",
+  attendeeExperience: "",
+  attendeeOrg: "",
+  refferedBy: "",
+  attendeeLearning: "",
 };
 
 export function StepForm() {
