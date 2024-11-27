@@ -14,4 +14,6 @@ export type StepProps = {
   onNext: () => void;
 };
 
-export default StepProps;
+export default function sample() {
+  return <>Hello World</>;
+}
