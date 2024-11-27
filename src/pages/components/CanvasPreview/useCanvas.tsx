@@ -72,7 +72,7 @@ function drawTextWithBackground(
   ctx.restore();
 }
 
-function useCanvas(config: CanvasConfig, width: number, height: number) {
+export function useCanvas(config: CanvasConfig, width: number, height: number) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [error, setError] = useState<Error | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -182,4 +182,6 @@ function useCanvas(config: CanvasConfig, width: number, height: number) {
 
   return { canvasRef, error, isLoading, downloadImage };
 }
-export default useCanvas;
+export default function sample() {
+  return <>Hello World</>;
+}

@@ -19,7 +19,7 @@ export function RefferalCodeStep({ formData, updateFields, onNext }: StepProps) 
         <input
           autoFocus
           type="text"
-          value={formData.refferedBy || ''}
+          value={formData?.refferedBy || ''}
           onChange={e => updateFields({ refferedBy: e.target.value })}
           onKeyDown={e => {
             if (e.key === 'Enter') {

@@ -19,11 +19,11 @@ export function EmailStep({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.attendeeEmail.trim()) {
+    if (!formData?.attendeeEmail.trim()) {
       setError("Email is required");
       return;
     }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.attendeeEmail)) {
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData?.attendeeEmail)) {
       setError("Please enter a valid email address");
       return;
     }
@@ -42,13 +42,13 @@ export function EmailStep({
         <input
           autoFocus
           type="email"
-          value={formData.attendeeEmail}
+          value={formData?.attendeeEmail}
           onChange={(e) => {
             setError("");
             updateFields({ attendeeEmail: e.target.value });
           }}
           onKeyDown={(e) => {
-            if (e.key === "Enter" && formData.attendeeEmail.trim()) {
+            if (e.key === "Enter" && formData?.attendeeEmail.trim()) {
               handleSubmit(e);
             }
           }}
