@@ -1,7 +1,16 @@
 import { motion } from 'framer-motion';
 import { StepProps } from '../types';
+import { useEffect } from 'react';
 
 export function RefferalCodeStep({ formData, updateFields, onNext }: StepProps) {
+  // get url search param code to prefilled refferal code
+  const urlParams = new URLSearchParams(window.location.search);
+  const code = urlParams.get('code');
+  useEffect(()=> {
+    if (code) {
+      updateFields({ refferedBy: code });
+    }
+  }, [])
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     onNext();

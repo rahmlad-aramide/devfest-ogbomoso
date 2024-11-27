@@ -45,13 +45,13 @@ export default function ReferralStats() {
   const shareCode = () => {
     if (navigator.share) {
       navigator.share({
-        title: "Register for DevFest 2021 ",
-        text: `Join DevFest 2021 using my referral code! - ${user?.code}`,
-        url: "https://devfest.xyz/register?ref=dididi",
+        title: "Register for DevFest 2024",
+        text: `Register for DevFest 2024 using my referral code! - ${user?.code}`,
+        url: `https://devfest.xyz/register?coe=${user?.code}`,
       });
     } else {
       //copy to clipboard
-      navigator.clipboard.writeText("dididi");
+      navigator.clipboard.writeText(user.code);
     }
   };
   const getUser = () => {
