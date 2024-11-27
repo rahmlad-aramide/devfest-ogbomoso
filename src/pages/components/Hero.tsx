@@ -1,8 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { motion } from "framer-motion"
-import { MapPin, Calendar, Globe, Clock } from "lucide-react"
+// import { motion } from "framer-motion"
+import { MapPin, Calendar, Clock } from "lucide-react"
 import Header from "./Header"
-import Typewriter from "typewriter-effect"
+import Image from "next/image"
+// import Typewriter from "typewriter-effect"
 
 function Hero({ data }: any) {
   return (
@@ -11,7 +12,7 @@ function Hero({ data }: any) {
         <div className="absolute inset-0 bg-black" />
       </div> */}
       <div>
-        <img
+        <Image
           src="/devfest2.jpg"
           alt=""
           className="absolute inset-0 w-screen h-screen object-cover"
@@ -107,7 +108,7 @@ function Hero({ data }: any) {
               Biggest Tech Event
             </p>
             <h1 className="text-[30px] lg:text-[70px] leading-[50px] lg:leading-[90px] text-center lg:text-start font-bold lg:w-[700px]">
-              Developer's Festival <span className="text-amber-500">Ogbomoso - 24</span>
+              Developer&apos;s Festival <span className="text-amber-500">Ogbomoso - 24</span>
             </h1>
             <p className="text-center lg:text-start text-[14px] mt-[20px] lg:w-[700px] leading-[30px]">
               Step into the future of technology at DevFest! Discover the latest trends, sharpen
