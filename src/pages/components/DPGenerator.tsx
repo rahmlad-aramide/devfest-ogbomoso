@@ -28,7 +28,7 @@ function DPGeneratorComponent() {
         photo: previewImage,
       };
       localStorage.setItem("dp", JSON.stringify(dpData));
-      alert("DP Generated Successfully!");
+      window.location.href = "/preview";
     } else {
       alert("Please provide both name and photo");
     }
