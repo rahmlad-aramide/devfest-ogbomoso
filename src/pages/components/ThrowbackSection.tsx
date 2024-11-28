@@ -8,7 +8,6 @@ import Image from "next/image";
 function ThrowbackSection({ data }: { data: any }) {
   return (
     <section className="py-24 lg:pb-24 bg-black text-white">
-elative pt-24 bg-blue text-white"> 
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           <motion.div
@@ -23,6 +22,7 @@ elative pt-24 bg-blue text-white">
             <h2 className="text-5xl font-bold mb-4">{data && data.title}</h2>
             <p className="text-xl text-[#c3ecf6]]">{data && data.subtitle}</p>
           </motion.div>
+
           <a href={data && data.driveLink} target="_blank">
 
             <div className="grid md:grid-cols-2 gap-8">
