@@ -113,7 +113,7 @@ function Hero({ data }: any) {
             <p className="text-center lg:text-start text-[14px] mt-[20px] lg:w-[700px] leading-[30px]">
               Step into the future of technology at DevFest! Discover the latest trends, sharpen
               your skills with expert-led sessions, and explore innovative ideas shaping the tech
-              world. Together, let's code the future.
+              world. Together, let&apos;s code the future.
             </p>
           </div>
 

@@ -78,7 +78,7 @@ function SpeakersSection({ data }: any) {
                   onClick={() => setCurrentSpeaker(index)}
                 >
                   <div className="relative w-full h-full">
-                    <img
+                    <Image
                       src={speaker.image}
                       alt={speaker.name}
                       className="w-full h-full object-cover"

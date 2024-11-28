@@ -2,7 +2,8 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable react/no-unescaped-entities */
 import { motion } from "framer-motion";
-import { Play, Image } from "lucide-react";
+import { Play, ImageIcon } from "lucide-react";
+import Image from "next/image";
 
 function ThrowbackSection({ data }: { data: any }) {
   return (
@@ -43,7 +44,7 @@ function ThrowbackSection({ data }: { data: any }) {
                 <div className="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition-colors flex items-center justify-center">
                   <Play className="w-12 h-12" />
                 </div>
-                <img
+                <Image
                   src={data.images[0]}
                   alt="DevFest 2023 Highlights"
                   className="w-full h-[300px] object-cover rounded-xl"
@@ -58,9 +59,9 @@ function ThrowbackSection({ data }: { data: any }) {
                     className="relative group cursor-pointer"
                   >
                     <div className="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition-colors flex items-center justify-center">
-                      <Image className="w-8 h-8" />
+                      <ImageIcon className="w-8 h-8"  />
                     </div>
-                    <img
+                    <Image
                       src={img}
                       alt={`DevFest 2023 Moment ${i + 1}`}
                       className="w-full h-[140px] object-cover rounded-xl"
@@ -73,7 +74,7 @@ function ThrowbackSection({ data }: { data: any }) {
         </div>
       </div>
       <div className="w-full flex justify-center">
-      <img src='/devfest-lanyard.png' alt="lanyard" className="px-20 py-6" width={800} height={100} />
+      <Image src='/devfest-lanyard.png' alt="lanyard" className="px-20 py-6" width={800} height={100} />
       </div> 
     </section>
   );

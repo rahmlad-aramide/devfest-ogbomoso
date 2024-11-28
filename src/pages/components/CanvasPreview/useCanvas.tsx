@@ -178,7 +178,7 @@ export function useCanvas(config: CanvasConfig, width: number, height: number) {
       overlayImage.onload = null;
       overlayImage.onerror = null;
     };
-  }, [config, width, height, scale, scaledWidth, scaledHeight]);
+  }, [config, width, height, scale, scaledWidth, scaledHeight, drawCanvas]);
 
   return { canvasRef, error, isLoading, downloadImage };
 }

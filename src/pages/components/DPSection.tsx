@@ -1,5 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import { motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 
 function DPSection() {
@@ -33,7 +34,7 @@ function DPSection() {
                     </div>
                   </div>
                   <div className="bg-yellow-300 rounded-lg row-span-2 relative">
-                    <img
+                    <Image
                       src="/devfest.jpeg"
                       alt="Profile"
                       className="w-full h-full object-cover rounded-lg"
