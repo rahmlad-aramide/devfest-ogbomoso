@@ -77,6 +77,7 @@ function SpeakersSection({ data }: any) {
                       src={speaker.image}
                       alt={speaker.name}
                       className="w-full h-full object-cover"
+                      layout="fill"
                     />
                     {isActive && (
                       <div className="absolute bottom-16 left-0 right-0 text-white text-center transform -rotate-30 flex justify-center">
@@ -148,6 +149,7 @@ function SpeakersSection({ data }: any) {
                   src={speakers[currentSpeaker].image}
                   alt={speakers[currentSpeaker].name}
                   className="w-24 h-24 rounded-full object-cover"
+                  layout="fill"
                 />
                 <div>
                   <h3 className="text-xl font-bold">{speakers[currentSpeaker].name}</h3>

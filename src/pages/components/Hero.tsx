@@ -14,6 +14,7 @@ function Hero({ data }: any) {
           src="/devfest2.jpg"
           alt=""
           className="absolute inset-0 w-screen h-screen object-cover"
+          layout="fill"
         />
         <div className="bg-gradient-to-r from-[#000000] w-screen  absolute bg-opacity-80" />
       </div>

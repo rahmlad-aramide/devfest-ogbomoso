@@ -35,3 +35,10 @@ body::-webkit-scrollbar {
 body::-webkit-scrollbar-thumb {
   @apply bg-slate-200 rounded-full;
 }
+
+.dp-shadow {
+  box-shadow: 5px 5px 0px rgba(0, 0, 0, 1); /* Right and bottom shadow */
+}
+.div-shadow {
+  box-shadow: -4px 4px 0px rgba(0, 0, 0, 1);
+}

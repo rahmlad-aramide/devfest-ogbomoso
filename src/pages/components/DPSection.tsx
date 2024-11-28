@@ -33,11 +33,13 @@ function DPSection() {
                       WITH 100% STEEZE,
                     </div>
                   </div>
-                  <div className="bg-yellow-300 rounded-lg row-span-2 relative">
+                  <div className="bg-yellow-300 rounded-lg row-span-2">
                     <Image
                       src="/devfest.jpeg"
                       alt="Profile"
                       className="w-full h-full object-cover rounded-lg"
+                      layout="fill"
+                      
                     />
                   </div>
 

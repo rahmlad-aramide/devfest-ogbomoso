@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useCanvas } from "./useCanvas";
 import { PreviewProps } from "./types";
 import { Download } from "lucide-react";
+import Image from "next/image";
 
 export default function CanvasPreview({
   config,
@@ -9,7 +10,7 @@ export default function CanvasPreview({
   height = 600,
   onError,
 }: PreviewProps) {
-  const { canvasRef, error, isLoading, downloadImage } = useCanvas(
+  const { error, isLoading, downloadImage } = useCanvas(
     config,
     width,
     height
@@ -36,10 +37,15 @@ export default function CanvasPreview({
             <div className="w-8 h-8 border-4 border-[#FF9800] border-t-transparent rounded-full animate-spin" />
           </div>
         )}
-        <canvas
+        {/* <canvas
           ref={canvasRef}
           className="w-full h-full rounded-lg shadow-lg"
-        />
+        /> */}
+        <div className="relative">
+          <Image src={"/amber-frame.png"} alt="dp" layout="fill" />
+        </div>
+
+
       </motion.div>
 
       <motion.button
