@@ -10,7 +10,7 @@ export function RefferalCodeStep({ formData, updateFields, onNext }: StepProps) 
     if (code) {
       updateFields({ refferedBy: code });
     }
-  }, [code])
+  }, [code, updateFields])
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     onNext();

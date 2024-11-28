@@ -149,7 +149,7 @@ function SpeakersSection({ data }: any) {
               className="hidden mt-8 bg-white p-6 rounded-2xl shadow-lg max-w-2xl mx-auto"
             >
               <div className="flex items-center gap-4">
-                <img
+                <Image
                   src={speakers[currentSpeaker].image}
                   alt={speakers[currentSpeaker].name}
                   className="w-24 h-24 rounded-full object-cover"
