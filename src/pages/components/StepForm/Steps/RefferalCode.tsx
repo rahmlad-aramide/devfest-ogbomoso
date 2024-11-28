@@ -1,6 +1,12 @@
+// <<<<<<< hero-section-changes
+// import { motion } from "framer-motion"
+// import { StepProps } from "../types"
+// import { useEffect } from "react"
+// =======
 import { motion } from 'framer-motion';
 import { StepProps } from '../types';
 import { useEffect, useState } from 'react';
+// >>>>>>> main
 
 export function RefferalCodeStep({ formData, updateFields, onNext }: StepProps) {
   const [hydrated, setHydrated] = useState(false);
@@ -14,23 +20,38 @@ export function RefferalCodeStep({ formData, updateFields, onNext }: StepProps) 
     return null;
   }
   // get url search param code to prefilled refferal code
-  const urlParams = new URLSearchParams(window.location.search);
-  const code = urlParams.get('code');
-  useEffect(()=> {
-    if (code) {
-      updateFields({ refferedBy: code });
+  // const urlParams = new URLSearchParams(window.location.search);
+  // const code = urlParams.get('code');
+  // useEffect(() => {
+  //   if (typeof window !== "undefined") {
+  //     // Access `window.location.search` safely
+  //     const urlParams = new URLSearchParams(window.location.search)
+  //     const code = urlParams.get("code")
+  //     if (code) {
+  //       updateFields({ refferedBy: code })
+  //     }
+  //   }
+  // }, [code, updateFields])
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      // Access `window.location.search` safely
+      const urlParams = new URLSearchParams(window.location.search)
+      const code = urlParams.get("code")
+      if (code) {
+        updateFields({ refferedBy: code })
+      }
     }
-  }, [])
+  }, [updateFields])
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    onNext();
-  };
+    e.preventDefault()
+    onNext()
+  }
 
   return (
     <motion.div
-      initial={{ x: '100%', opacity: 0 }}
+      initial={{ x: "100%", opacity: 0 }}
       animate={{ x: 0, opacity: 1 }}
-      exit={{ x: '-100%', opacity: 0 }}
+      exit={{ x: "-100%", opacity: 0 }}
       className="flex flex-col items-start justify-center min-h-[400px] w-full max-w-2xl mx-auto p-8"
     >
       <h2 className="text-4xl font-bold mb-8">If someone invited you, Enter their refferal code</h2>
@@ -38,11 +59,11 @@ export function RefferalCodeStep({ formData, updateFields, onNext }: StepProps) 
         <input
           autoFocus
           type="text"
-          value={formData?.refferedBy || ''}
-          onChange={e => updateFields({ refferedBy: e.target.value })}
-          onKeyDown={e => {
-            if (e.key === 'Enter') {
-              handleSubmit(e);
+          value={formData?.refferedBy || ""}
+          onChange={(e) => updateFields({ refferedBy: e.target.value })}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              handleSubmit(e)
             }
           }}
           className="w-full text-3xl bg-transparent border-b-2 border-gray-300 focus:border-[#FF9800] outline-none pb-2"
@@ -58,7 +79,7 @@ export function RefferalCodeStep({ formData, updateFields, onNext }: StepProps) 
         </motion.button>
       </form>
     </motion.div>
-  );
+  )
 }
 
-export default RefferalCodeStep;
+export default RefferalCodeStep

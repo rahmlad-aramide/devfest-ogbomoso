@@ -8,9 +8,7 @@ import Image from "next/image"
 function Hero({ data }: any) {
   return (
     <section className="min-h-screen relative bg-black text-[#FFF5E1] snap-both">
-      {/* <div className="absolute inset-0 bg-[url('/devfest.jpeg')] bg-cover bg-center">
-        <div className="absolute inset-0 bg-black" />
-      </div> */}
+      
       <div>
         <Image
           src="/devfest2.jpg"
@@ -19,7 +17,7 @@ function Hero({ data }: any) {
         />
         <div className="bg-gradient-to-r from-[#000000] w-screen  absolute bg-opacity-80" />
       </div>
-      <Header buttonText={data?.actionButtonText} rsvpLink={data?.rsvpLink} />
+      <Header buttonText={data && data.actionButtonText} rsvpLink={data && data.rsvpLink} />
       {/* Main Content */}
       {/* <div className="relative z-10 container mx-auto px-4 pt-24 pb-16">
         <motion.div
@@ -113,7 +111,7 @@ function Hero({ data }: any) {
             <p className="text-center lg:text-start text-[14px] mt-[20px] lg:w-[700px] leading-[30px]">
               Step into the future of technology at DevFest! Discover the latest trends, sharpen
               your skills with expert-led sessions, and explore innovative ideas shaping the tech
-              world. Together, let's code the future.
+              world. Together, let&apos;s code the future.
             </p>
           </div>
 

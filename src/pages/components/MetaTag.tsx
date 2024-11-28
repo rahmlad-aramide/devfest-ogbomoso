@@ -14,7 +14,7 @@ const MetaTags = ({
   const WEBSITE_URL = process.env.WEBSITE_URL || "https://devfestogbomoso.com";
   return (
     <>
-      <title>{title}</title>
+      <title>{title!}</title>
       <meta name="description" content={description} />
       <meta
         name="keywords"
@@ -38,11 +38,11 @@ const MetaTags = ({
       {/* START TWITTER - OG */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:url" content={WEBSITE_URL} />
-      <meta name="twitter:title" content={title} />
+      <meta name="twitter:title" content={title!} />
       <meta name="twitter:desc" content={description} />
       <meta name="twitter:description" content={description} />
 
-      <meta property="og:title" content={title} />
+      <meta property="og:title" content={title!} />
       <meta property="og:desc" content={description} />
       <meta property="og:description" content={description} />
       <meta property="og:type" content="website" />

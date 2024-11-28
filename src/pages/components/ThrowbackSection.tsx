@@ -2,12 +2,12 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable react/no-unescaped-entities */
 import { motion } from "framer-motion";
-import { Play, Image } from "lucide-react";
+import { Play, ImageIcon } from "lucide-react";
+import Image from "next/image";
 
 function ThrowbackSection({ data }: { data: any }) {
   return (
     <section className="py-24 lg:pb-24 bg-black text-white">
-
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           <motion.div
@@ -18,10 +18,13 @@ function ThrowbackSection({ data }: { data: any }) {
             <span className="inline-block px-4 py-1 font-bold bg-white/10 rounded-full text-sm mb-4">
               THROWBACK
             </span>
-            <h2 className="text-5xl font-bold mb-4">{data?.title}</h2>
-            <p className="text-xl text-[#c3ecf6]]">{data?.subtitle}</p>
+
+            <h2 className="text-5xl font-bold mb-4">{data && data.title}</h2>
+            <p className="text-xl text-[#c3ecf6]]">{data && data.subtitle}</p>
           </motion.div>
-          <a href={data?.driveLink} target="_blank">
+
+          <a href={data && data.driveLink} target="_blank">
+
             <div className="grid md:grid-cols-2 gap-8">
               <motion.div
                 whileHover={{ scale: 1.02 }}
@@ -30,24 +33,26 @@ function ThrowbackSection({ data }: { data: any }) {
                 <div className="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition-colors flex items-center justify-center">
                   <Play className="w-12 h-12" />
                 </div>
-                <img
-                  src={data?.images[0]}
+                <Image
+                  src={data && data.images[0]}
+
                   alt="DevFest 2023 Highlights"
                   className="w-full h-[300px] object-cover rounded-xl"
                 />
               </motion.div>
 
               <div className="grid gap-4">
-                {data?.images.slice(1).map((img: string, i: number) => (
+                {data && data.images.slice(1).map((img: string, i: number) => (
+
                   <motion.div
                     key={i}
                     whileHover={{ scale: 1.02 }}
                     className="relative group cursor-pointer"
                   >
                     <div className="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition-colors flex items-center justify-center">
-                      <Image className="w-8 h-8" />
+                      <ImageIcon className="w-8 h-8"  />
                     </div>
-                    <img
+                    <Image
                       src={img}
                       alt={`DevFest 2023 Moment ${i + 1}`}
                       className="w-full h-[140px] object-cover rounded-xl"
@@ -60,7 +65,7 @@ function ThrowbackSection({ data }: { data: any }) {
         </div>
       </div>
       <div className="w-full flex justify-center">
-      <img src='/devfest-lanyard.png' alt="lanyard" className="px-20 py-6" width={800} height={100} />
+      <Image src='/devfest-lanyard.png' alt="lanyard" className="px-20 py-6" width={800} height={100} />
       </div> 
     </section>
   );

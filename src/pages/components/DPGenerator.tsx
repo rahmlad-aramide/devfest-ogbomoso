@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Image as ImageIcon, Upload, PencilIcon } from "lucide-react";
+import Image from "next/image";
 import { useState, useRef } from "react";
 
 function DPGeneratorComponent() {
@@ -79,7 +80,7 @@ function DPGeneratorComponent() {
                     <div className="w-16 h-16 border-4 border-white border-t-transparent rounded-full animate-spin" />
                   </div>
                 ) : previewImage ? (
-                  <img
+                  <Image
                     src={previewImage}
                     alt="Profile Preview"
                     className="w-full h-full object-cover rounded-lg"
