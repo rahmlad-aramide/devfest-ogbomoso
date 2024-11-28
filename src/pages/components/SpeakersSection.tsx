@@ -33,7 +33,9 @@ function SpeakersSection({ data }: any) {
             {data && data.speakerSection && data.speakerSection.title}
           </h2>
           <p className="text-xl text-black max-w-2xl mx-auto">
+
             {data && data.speakerSection && data.speakerSection.subtitle}
+
           </p>
         </div>
 

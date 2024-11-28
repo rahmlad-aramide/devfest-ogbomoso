@@ -10,7 +10,9 @@ function Footer({ data }: any) {
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-4 gap-12 mb-12">
             <div>
+
               <h3 className="font-bold text-xl mb-4">{data && data.community && data.community.title}</h3>
+
               <p className="text-gray-300">
                 A community-led tech conference bringing together developers,
                 designers, and tech enthusiasts.
@@ -69,6 +71,7 @@ function Footer({ data }: any) {
                   <Twitter className="w-5 h-5" />
                 </a>
                 <a href={data && data.community && data.community.gdg} className="text-gray-300 hover:text-white">
+
                   <Globe className="w-5 h-5" />
                 </a>
               </div>
