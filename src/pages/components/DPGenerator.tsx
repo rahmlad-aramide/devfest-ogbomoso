@@ -1,39 +1,42 @@
-import { motion } from "framer-motion";
-import { Image as ImageIcon, Upload, PencilIcon } from "lucide-react";
-import Image from "next/image";
-import { useState, useRef } from "react";
+import { motion } from "framer-motion"
+import { Image as ImageIcon, Upload, PencilIcon } from "lucide-react"
+import Image from "next/image"
+import { useState, useRef } from "react"
+
+const dbBgColors = ["#4285f4", "#ea4335", "#34a853", "#f9ab00"]
 
 function DPGeneratorComponent() {
-  const [name, setName] = useState("");
-  const [previewImage, setPreviewImage] = useState<string | null>(null);
-  const [uploading, setUploading] = useState(false);
-  const fileInputRef = useRef<HTMLInputElement>(null);
+  const [name, setName] = useState("")
+  const [previewImage, setPreviewImage] = useState<string | null>(null)
+  const [uploading, setUploading] = useState(false)
+  const fileInputRef = useRef<HTMLInputElement>(null)
+  const [dpBackground, setDpBackground] = useState<number>(0)
 
   const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
+    const file = event.target.files?.[0]
     if (file) {
-      setUploading(true);
-      const reader = new FileReader();
+      setUploading(true)
+      const reader = new FileReader()
       reader.onloadend = () => {
-        setPreviewImage(reader.result as string);
-        setUploading(false);
-      };
-      reader.readAsDataURL(file);
+        setPreviewImage(reader.result as string)
+        setUploading(false)
+      }
+      reader.readAsDataURL(file)
     }
-  };
+  }
 
   const handleGenerateDP = () => {
     if (name && previewImage) {
       const dpData = {
         name,
         photo: previewImage,
-      };
-      localStorage.setItem("dp", JSON.stringify(dpData));
-      window.location.href = "/preview";
+      }
+      localStorage.setItem("dp", JSON.stringify(dpData))
+      window.location.href = `/preview/?bg=${dpBackground}`
     } else {
-      alert("Please provide both name and photo");
+      alert("Please provide both name and photo")
     }
-  };
+  }
 
   return (
     <section className="py-24 bg-white text-black">
@@ -48,8 +51,8 @@ function DPGeneratorComponent() {
           </span>
           <h2 className="text-4xl font-bold mb-4">Create Your DevFest DP</h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Show your excitement for DevFest 2024! Generate your custom profile
-            picture with our DP maker.
+            Show your excitement for DevFest 2024! Generate your custom profile picture with our DP
+            maker.
           </p>
         </motion.div>
 
@@ -57,14 +60,10 @@ function DPGeneratorComponent() {
           {/* Configuration Section */}
           <div className="space-y-6 w-full max-w-[500px]">
             <div className="bg-gray-100 p-6 rounded-xl">
-              <h3 className="font-bold mb-4 flex items-center gap-2">
-                Your Information
-              </h3>
+              <h3 className="font-bold mb-4 flex items-center gap-2">Your Information</h3>
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium mb-2">
-                    Your Name
-                  </label>
+                  <label className="block text-sm font-medium mb-2">Your Name</label>
                   <input
                     type="text"
                     value={name}
@@ -84,14 +83,39 @@ function DPGeneratorComponent() {
                     src={previewImage}
                     alt="Profile Preview"
                     className="w-full h-full object-cover rounded-lg"
+                    layout="fill"
                   />
                 ) : (
-                  <div className="bg-white flex items-center justify-center flex-col gap-2" onClick={() => fileInputRef.current?.click()}>
+                  <div
+                    className="bg-white flex items-center justify-center flex-col gap-2"
+                    onClick={() => fileInputRef.current?.click()}
+                  >
                     Upload Photo
                     <ImageIcon className="w-12 h-12 text-black bg-white" />
                     <span className="text-xs text-gray-500">Click to upload photo</span>
                   </div>
                 )}
+              </div>
+
+              <div className="flex flex-col mt-5">
+                <h1 className="block text-sm text-center font-medium">Select DP background</h1>
+                <div className="flex items-center justify-center gap-5 mt-5">
+                  {Array.from({ length: 4 }).map((_, index) => (
+                    <div
+                      key={index}
+                      onClick={() => setDpBackground(index)}
+                      style={{ borderColor: dbBgColors[index] }}
+                      className={`w-[40px] h-[40px] rounded-full grid place-content-center ${
+                        dpBackground === index ? "border-2" : ""
+                      }`}
+                    >
+                      <div
+                        style={{ backgroundColor: dbBgColors[index] }}
+                        className={`w-[30px] h-[30px] rounded-full cursor-pointer transition-all duration-300 ease-linear hover:scale-110`}
+                      />
+                    </div>
+                  ))}
+                </div>
               </div>
 
               <div className="flex gap-4 mt-4">
@@ -123,7 +147,7 @@ function DPGeneratorComponent() {
         </div>
       </div>
     </section>
-  );
+  )
 }
 
-export default DPGeneratorComponent;
+export default DPGeneratorComponent

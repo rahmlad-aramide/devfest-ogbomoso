@@ -1,17 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable react/no-unescaped-entities */
-import { motion } from "framer-motion";
-import { Play, ImageIcon } from "lucide-react";
-import Image from "next/image";
+import { motion } from "framer-motion"
+import { Play, ImageIcon } from "lucide-react"
+import Image from "next/image"
 
 function ThrowbackSection({ data }: { data: any }) {
   return (
-// <!-- <<<<<<< hero-section-changes -->
     <section className="py-24 lg:pb-24 bg-black text-white">
-{/* =======
-<!--     <section className="relative pt-24 bg-blue text-white"> -->
-<!-- >>>>>>> main --> */}
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           <motion.div
@@ -37,10 +33,7 @@ function ThrowbackSection({ data }: { data: any }) {
               </div>
             </div> */}
             <div className="grid md:grid-cols-2 gap-8">
-              <motion.div
-                whileHover={{ scale: 1.02 }}
-                className="relative group cursor-pointer"
-              >
+              <motion.div whileHover={{ scale: 1.02 }} className="relative group cursor-pointer">
                 <div className="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition-colors flex items-center justify-center">
                   <Play className="w-12 h-12" />
                 </div>
@@ -48,36 +41,46 @@ function ThrowbackSection({ data }: { data: any }) {
                   src={data && data.images[0]}
                   alt="DevFest 2023 Highlights"
                   className="w-full h-[300px] object-cover rounded-xl"
+                  height={100}
+                  width={100}
                 />
               </motion.div>
 
               <div className="grid gap-4">
-                {data && data.images.slice(1).map((img: string, i: number) => (
-                  <motion.div
-                    key={i}
-                    whileHover={{ scale: 1.02 }}
-                    className="relative group cursor-pointer"
-                  >
-                    <div className="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition-colors flex items-center justify-center">
-                      <ImageIcon className="w-8 h-8"  />
-                    </div>
-                    <Image
-                      src={img}
-                      alt={`DevFest 2023 Moment ${i + 1}`}
-                      className="w-full h-[140px] object-cover rounded-xl"
-                    />
-                  </motion.div>
-                ))}
+                {data &&
+                  data.images.slice(1).map((img: string, i: number) => (
+                    <motion.div
+                      key={i}
+                      whileHover={{ scale: 1.02 }}
+                      className="relative group cursor-pointer"
+                    >
+                      <div className="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition-colors flex items-center justify-center">
+                        <ImageIcon className="w-8 h-8" />
+                      </div>
+                      <Image
+                        src={`${img}`}
+                        alt={`DevFest 2023 Moment ${i + 1}`}
+                        className="w-full h-[140px] object-cover rounded-xl"
+                        layout="fill"
+                      />
+                    </motion.div>
+                  ))}
               </div>
             </div>
           </a>
         </div>
       </div>
       <div className="w-full flex justify-center">
-      <Image src='/devfest-lanyard.png' alt="lanyard" className="px-20 py-6" width={800} height={100} />
-      </div> 
+        <Image
+          src="/devfest-lanyard.png"
+          alt="lanyard"
+          className="px-20 py-6"
+          width={800}
+          height={100}
+        />
+      </div>
     </section>
-  );
+  )
 }
 
-export default ThrowbackSection;
+export default ThrowbackSection
