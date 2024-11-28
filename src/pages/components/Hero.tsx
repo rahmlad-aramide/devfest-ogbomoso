@@ -8,9 +8,7 @@ import Image from "next/image"
 function Hero({ data }: any) {
   return (
     <section className="min-h-screen relative bg-black text-[#FFF5E1] snap-both">
-      {/* <div className="absolute inset-0 bg-[url('/devfest.jpeg')] bg-cover bg-center">
-        <div className="absolute inset-0 bg-black" />
-      </div> */}
+      
       <div>
         <Image
           src="/devfest2.jpg"
