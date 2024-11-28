@@ -19,7 +19,7 @@ function Hero({ data }: any) {
         />
         <div className="bg-gradient-to-r from-[#000000] w-screen  absolute bg-opacity-80" />
       </div>
-      <Header buttonText={data?.actionButtonText} rsvpLink={data?.rsvpLink} />
+      <Header buttonText={data && data.actionButtonText} rsvpLink={data && data.rsvpLink} />
       {/* Main Content */}
       {/* <div className="relative z-10 container mx-auto px-4 pt-24 pb-16">
         <motion.div

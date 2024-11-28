@@ -1,29 +1,23 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-"use client";
-import { useState } from "react";
-import { motion } from "framer-motion";
-import {
-  ChevronLeft,
-  ChevronRight,
-  Twitter,
-  Linkedin,
-  Github,
-} from "lucide-react";
-import Link from "next/link";
-import Image from "next/image";
+"use client"
+import { useState } from "react"
+import { motion } from "framer-motion"
+import { ChevronLeft, ChevronRight, Twitter, Linkedin, Github } from "lucide-react"
+import Link from "next/link"
+import Image from "next/image"
 
 function SpeakersSection({ data }: any) {
-  const dataSpeakers = data?.speakers || [];
-  const [speakers, _] = useState([...dataSpeakers]);
-  const [currentSpeaker, setCurrentSpeaker] = useState(0);
+  const dataSpeakers = data?.speakers || []
+  const [speakers, _] = useState([...dataSpeakers])
+  const [currentSpeaker, setCurrentSpeaker] = useState(0)
   const nextSpeaker = () => {
-    setCurrentSpeaker((prev) => (prev + 1) % speakers.length);
-  };
+    setCurrentSpeaker((prev) => (prev + 1) % speakers.length)
+  }
 
   const prevSpeaker = () => {
-    setCurrentSpeaker((prev) => (prev - 1 + speakers.length) % speakers.length);
-  };
+    setCurrentSpeaker((prev) => (prev - 1 + speakers.length) % speakers.length)
+  }
   //(speakers, currentSpeaker);
   return (
     <section
@@ -36,10 +30,10 @@ function SpeakersSection({ data }: any) {
             SPEAKERS
           </span>
           <h2 className="text-6xl font-bold mb-4">
-            {data?.speakerSection.title}
+            {data && data.speakerSection && data.speakerSection.title}
           </h2>
           <p className="text-xl text-black max-w-2xl mx-auto">
-            {data.speakerSection.subtitle}
+            {data && data.speakerSection && data.speakerSection.subtitle}
           </p>
         </div>
 
@@ -53,13 +47,12 @@ function SpeakersSection({ data }: any) {
 
           <div className="flex items-center justify-center gap-4 md:mt-[300px] mt-[200px]">
             {speakers.map((speaker: any, index: number) => {
-              const position = index - currentSpeaker;
-              const isActive = index === currentSpeaker;
-              let xPos = 200;
+              const position = index - currentSpeaker
+              const isActive = index === currentSpeaker
+              let xPos = 200
               if (typeof window !== "undefined") {
                 xPos =
-                  (isActive ? 0 : 20) +
-                  position * (window && window.innerWidth < 768 ? 180 : 200);
+                  (isActive ? 0 : 20) + position * (window && window.innerWidth < 768 ? 180 : 200)
               }
               return (
                 <motion.div
@@ -99,36 +92,36 @@ function SpeakersSection({ data }: any) {
                                 {speakers[currentSpeaker].role}
                               </p>
                             </div>
-                            {speakers[currentSpeaker]?.socials &&
-                            <div className="flex gap-4 items-center">
-                              {speakers[currentSpeaker].socials.twitter && (
-                                <a
-                                  href={`https://twitter.com/${speakers[currentSpeaker].socials?.twitter}`}
-                                  target="_blank"
-                                >
-                                  <Twitter className="md:w-5 md:h-5 w-3 h-3 text-gray-400 hover:text-black cursor-pointer" />
-                                </a>
-                              )}
+                            {speakers[currentSpeaker]?.socials && (
+                              <div className="flex gap-4 items-center">
+                                {speakers[currentSpeaker].socials.twitter && (
+                                  <a
+                                    href={`https://twitter.com/${speakers[currentSpeaker].socials?.twitter}`}
+                                    target="_blank"
+                                  >
+                                    <Twitter className="md:w-5 md:h-5 w-3 h-3 text-gray-400 hover:text-black cursor-pointer" />
+                                  </a>
+                                )}
 
-                              {speakers[currentSpeaker].socials?.linkedin && (
-                                <a
-                                  href={`https://linkedin.com/in/${speakers[currentSpeaker].socials.linkedin}`}
-                                  target="_blank"
-                                >
-                                  <Linkedin className="md:w-5 md:h-5 w-3 h-3 text-gray-400 hover:text-black cursor-pointer" />
-                                </a>
-                              )}
+                                {speakers[currentSpeaker].socials?.linkedin && (
+                                  <a
+                                    href={`https://linkedin.com/in/${speakers[currentSpeaker].socials.linkedin}`}
+                                    target="_blank"
+                                  >
+                                    <Linkedin className="md:w-5 md:h-5 w-3 h-3 text-gray-400 hover:text-black cursor-pointer" />
+                                  </a>
+                                )}
 
-                              {speakers[currentSpeaker].socials?.github && (
-                                <a
-                                  href={`https://github.com/${speakers[currentSpeaker].socials.github}`}
-                                  target="_blank"
-                                >
-                                  <Github className="md:w-5 md:h-5 w-3 h-3 text-gray-400 hover:text-black cursor-pointer" />
-                                </a>
-                              )}
-                            </div>
-            }
+                                {speakers[currentSpeaker].socials?.github && (
+                                  <a
+                                    href={`https://github.com/${speakers[currentSpeaker].socials.github}`}
+                                    target="_blank"
+                                  >
+                                    <Github className="md:w-5 md:h-5 w-3 h-3 text-gray-400 hover:text-black cursor-pointer" />
+                                  </a>
+                                )}
+                              </div>
+                            )}
                           </div>
                         </motion.div>
                       </div>
@@ -138,7 +131,7 @@ function SpeakersSection({ data }: any) {
                     </div>
                   </div>
                 </motion.div>
-              );
+              )
             })}
           </div>
 
@@ -155,12 +148,8 @@ function SpeakersSection({ data }: any) {
                   className="w-24 h-24 rounded-full object-cover"
                 />
                 <div>
-                  <h3 className="text-xl font-bold">
-                    {speakers[currentSpeaker].name}
-                  </h3>
-                  <p className="text-gray-600">
-                    {speakers[currentSpeaker].role}
-                  </p>
+                  <h3 className="text-xl font-bold">{speakers[currentSpeaker].name}</h3>
+                  <p className="text-gray-600">{speakers[currentSpeaker].role}</p>
                   <div className="flex gap-4 mt-2">
                     <Twitter className="w-5 h-5 text-gray-400 hover:text-black cursor-pointer" />
                     <Linkedin className="w-5 h-5 text-gray-400 hover:text-black cursor-pointer" />
@@ -202,10 +191,16 @@ function SpeakersSection({ data }: any) {
         </div>
       </div>
       <div className="w-full flex justify-center">
-      <Image src='/devfest-lanyard.png' alt="lanyard" className="px-20 py-6" width={800} height={100} />
-      </div> 
+        <Image
+          src="/devfest-lanyard.png"
+          alt="lanyard"
+          className="px-20 py-6"
+          width={800}
+          height={100}
+        />
+      </div>
     </section>
-  );
+  )
 }
 
-export default SpeakersSection;
+export default SpeakersSection

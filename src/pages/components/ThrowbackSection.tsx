@@ -22,10 +22,10 @@ function ThrowbackSection({ data }: { data: any }) {
             <span className="inline-block px-4 py-1 font-bold bg-white/10 rounded-full text-sm mb-4">
               THROWBACK
             </span>
-            <h2 className="text-5xl font-bold mb-4">{data.title}</h2>
-            <p className="text-xl text-[#c3ecf6]]">{data.subtitle}</p>
+            <h2 className="text-5xl font-bold mb-4">{data && data.title}</h2>
+            <p className="text-xl text-[#c3ecf6]]">{data && data.subtitle}</p>
           </motion.div>
-          <a href={data.driveLink} target="_blank">
+          <a href={data && data.driveLink} target="_blank">
             {/* <div className="absolute flex inset-0 justify-between px-10">
               <div className="flex flex-col justify-around">
                 <img src="/sticker.png" alt="throwback" className="w-22" />
@@ -45,14 +45,14 @@ function ThrowbackSection({ data }: { data: any }) {
                   <Play className="w-12 h-12" />
                 </div>
                 <Image
-                  src={data.images[0]}
+                  src={data && data.images[0]}
                   alt="DevFest 2023 Highlights"
                   className="w-full h-[300px] object-cover rounded-xl"
                 />
               </motion.div>
 
               <div className="grid gap-4">
-                {data.images.slice(1).map((img: string, i: number) => (
+                {data && data.images.slice(1).map((img: string, i: number) => (
                   <motion.div
                     key={i}
                     whileHover={{ scale: 1.02 }}
