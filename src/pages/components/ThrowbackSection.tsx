@@ -6,11 +6,8 @@ import { Play, Image } from "lucide-react";
 
 function ThrowbackSection({ data }: { data: any }) {
   return (
-// <!-- <<<<<<< hero-section-changes -->
     <section className="py-24 lg:pb-24 bg-black text-white">
-{/* =======
-<!--     <section className="relative pt-24 bg-blue text-white"> -->
-<!-- >>>>>>> main --> */}
+
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           <motion.div
@@ -25,16 +22,6 @@ function ThrowbackSection({ data }: { data: any }) {
             <p className="text-xl text-[#c3ecf6]]">{data?.subtitle}</p>
           </motion.div>
           <a href={data?.driveLink} target="_blank">
-            {/* <div className="absolute flex inset-0 justify-between px-10">
-              <div className="flex flex-col justify-around">
-                <img src="/sticker.png" alt="throwback" className="w-22" />
-                  <img src="/sticker-2.png" alt="throwback" className="w-40" />
-                  <img src="/sticker-1.png" alt="throwback" className="w-40" />
-              </div>
-              <div className="pt-52">
-                <img src="/sticker-3.png" alt="throwback" className="w-40" />
-              </div>
-            </div> */}
             <div className="grid md:grid-cols-2 gap-8">
               <motion.div
                 whileHover={{ scale: 1.02 }}
