@@ -1,8 +1,24 @@
-import { motion } from "framer-motion"
-import { StepProps } from "../types"
-import { useEffect } from "react"
+// <<<<<<< hero-section-changes
+// import { motion } from "framer-motion"
+// import { StepProps } from "../types"
+// import { useEffect } from "react"
+// =======
+import { motion } from 'framer-motion';
+import { StepProps } from '../types';
+import { useEffect, useState } from 'react';
+// >>>>>>> main
 
 export function RefferalCodeStep({ formData, updateFields, onNext }: StepProps) {
+  const [hydrated, setHydrated] = useState(false);
+  useEffect(() => {
+    // this forces a rerender
+    setHydrated(true);
+  }, []);
+
+  if (!hydrated) {
+    // this returns null on first render, so the client and server match
+    return null;
+  }
   // get url search param code to prefilled refferal code
   // const urlParams = new URLSearchParams(window.location.search);
   // const code = urlParams.get('code');

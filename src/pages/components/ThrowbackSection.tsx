@@ -7,11 +7,8 @@ import Image from "next/image";
 
 function ThrowbackSection({ data }: { data: any }) {
   return (
-// <!-- <<<<<<< hero-section-changes -->
     <section className="py-24 lg:pb-24 bg-black text-white">
-{/* =======
-<!--     <section className="relative pt-24 bg-blue text-white"> -->
-<!-- >>>>>>> main --> */}
+elative pt-24 bg-blue text-white"> 
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           <motion.div
@@ -22,20 +19,12 @@ function ThrowbackSection({ data }: { data: any }) {
             <span className="inline-block px-4 py-1 font-bold bg-white/10 rounded-full text-sm mb-4">
               THROWBACK
             </span>
+
             <h2 className="text-5xl font-bold mb-4">{data && data.title}</h2>
             <p className="text-xl text-[#c3ecf6]]">{data && data.subtitle}</p>
           </motion.div>
           <a href={data && data.driveLink} target="_blank">
-            {/* <div className="absolute flex inset-0 justify-between px-10">
-              <div className="flex flex-col justify-around">
-                <img src="/sticker.png" alt="throwback" className="w-22" />
-                  <img src="/sticker-2.png" alt="throwback" className="w-40" />
-                  <img src="/sticker-1.png" alt="throwback" className="w-40" />
-              </div>
-              <div className="pt-52">
-                <img src="/sticker-3.png" alt="throwback" className="w-40" />
-              </div>
-            </div> */}
+
             <div className="grid md:grid-cols-2 gap-8">
               <motion.div
                 whileHover={{ scale: 1.02 }}
@@ -46,6 +35,7 @@ function ThrowbackSection({ data }: { data: any }) {
                 </div>
                 <Image
                   src={data && data.images[0]}
+
                   alt="DevFest 2023 Highlights"
                   className="w-full h-[300px] object-cover rounded-xl"
                 />
@@ -53,6 +43,7 @@ function ThrowbackSection({ data }: { data: any }) {
 
               <div className="grid gap-4">
                 {data && data.images.slice(1).map((img: string, i: number) => (
+
                   <motion.div
                     key={i}
                     whileHover={{ scale: 1.02 }}
