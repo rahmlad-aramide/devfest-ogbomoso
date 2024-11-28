@@ -39,7 +39,7 @@ function SpeakersSection({ data }: any) {
             {data?.speakerSection.title}
           </h2>
           <p className="text-xl text-black max-w-2xl mx-auto">
-            {data.speakerSection.subtitle}
+            {data?.speakerSection.subtitle}
           </p>
         </div>
 
