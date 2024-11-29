@@ -31,13 +31,13 @@ const DpCard: React.FC<{
             <Image
               src={"/Vector2.png"}
               alt="vector"
-              width={isMobile ? 130 : 211.5}
-              height={isMobile ? 150 : 100}
+              width={isMobile ? 150 : 211.5}
+              height={isMobile ? 170 : 100}
               className=""
             />
             <h1
               style={{ color: textColor }}
-              className="text-lg lg:text-2xl font-bold absolute top-4 left-3"
+              className="text-lg lg:text-2xl font-bold absolute top-1 left-3"
             >
               {name}
             </h1>

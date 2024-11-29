@@ -224,7 +224,7 @@ function DPPreview() {
             Here's your DP
           </h1>
         </motion.div>
-        <div className="w-[350px] lg:w-[500px] h-[200px] lg:h-[300px] mx-auto">
+        <div className="w-[350px] lg:w-[500px] h-[220px] lg:h-[300px] mx-auto">
           <DpCard
             id={divRef}
             background={dpBackground[parseInt(dpBgColor)]}
