@@ -7,7 +7,7 @@ const DpCard: React.FC<{
   textColor: string
   name: string
   image: string
-  id: string
+  id: React.RefObject<HTMLDivElement>
 }> = ({ background, textColor, name, image, id }) => {
   const [isMobile, setIsMobile] = useState<boolean>(false)
   useEffect(() => {
@@ -21,7 +21,7 @@ const DpCard: React.FC<{
   }, [])
   return (
     <div
-      id={id}
+      ref={id}
       className="w-full h-full flex items-center rounded-lg"
       style={{ backgroundColor: background }}
     >
@@ -37,7 +37,7 @@ const DpCard: React.FC<{
             />
             <h1
               style={{ color: textColor }}
-              className="text-lg lg:text-2xl font-bold absolute top-2 left-3"
+              className="text-lg lg:text-2xl font-bold absolute top-4 left-3"
             >
               {name}
             </h1>
