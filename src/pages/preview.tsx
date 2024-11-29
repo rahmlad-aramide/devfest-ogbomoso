@@ -9,8 +9,9 @@ import Confetti from "react-confetti"
 import DpCard from "./DpCard"
 import { useSearchParams } from "next/navigation"
 import { Download } from "lucide-react"
-import html2canvas from "html2canvas"
+// import html2canvas from "html2canvas"
 // import CanvasPreview from "./components/CanvasPreview/CanvasPreview";
+import { toPng } from "html-to-image"
 
 interface DPData {
   name: string
@@ -18,7 +19,8 @@ interface DPData {
 }
 
 function DPPreview() {
-  const canvasRef = useRef<HTMLCanvasElement>(null)
+  // const canvasRef = useRef<HTMLCanvasElement>(null)
+  const divRef = useRef<HTMLDivElement>(null)
   const [dpData, setDpData] = useState<DPData | null>(null)
   const [showConfetti, setShowConfetti] = useState(true)
   const searchParams = useSearchParams()
@@ -143,20 +145,34 @@ function DPPreview() {
   //   }
   // }
 
-  const downloadImage = async () => {
-    const dpCardElement = document.getElementById("dp-card")
-    if (!dpCardElement) return
+  // const downloadImage = async () => {
+  //   const dpCardElement = document.getElementById("dp-card")
+  //   if (!dpCardElement) return
 
-    try {
-      const canvas = await html2canvas(dpCardElement, { useCORS: true })
-      const link = document.createElement("a")
-      link.download = "devfest-dp.jpeg"
-      link.href = canvas.toDataURL("image/jpeg", 0.95)
-      document.body.appendChild(link)
-      link.click()
-      document.body.removeChild(link)
-    } catch (error) {
-      console.error("Error generating the image:", error)
+  //   try {
+  //     const canvas = await html2canvas(dpCardElement, { useCORS: true })
+  //     const link = document.createElement("a")
+  //     link.download = "devfest-dp.jpeg"
+  //     link.href = canvas.toDataURL("image/jpeg", 0.95)
+  //     document.body.appendChild(link)
+  //     link.click()
+  //     document.body.removeChild(link)
+  //   } catch (error) {
+  //     console.error("Error generating the image:", error)
+  //   }
+  // }
+
+  const downloadImage = async () => {
+    if (divRef.current) {
+      try {
+        const dataUrl = await toPng(divRef.current)
+        const link = document.createElement("a")
+        link.download = "screenshot.png"
+        link.href = dataUrl
+        link.click()
+      } catch (error) {
+        console.error("Failed to capture image:", error)
+      }
     }
   }
 
@@ -210,7 +226,7 @@ function DPPreview() {
         </motion.div>
         <div className="w-[350px] lg:w-[500px] h-[200px] lg:h-[300px] mx-auto">
           <DpCard
-            id="dp-card"
+            id={divRef}
             background={dpBackground[parseInt(dpBgColor)]}
             textColor={dbTextColors[parseInt(dpBgColor)]}
             name={dpData.name}
@@ -218,7 +234,7 @@ function DPPreview() {
           />
         </div>
 
-        <canvas ref={canvasRef} width={500} height={300} className="hidden" />
+        {/* <canvas ref={divRef} width={500} height={300} className="hidden" /> */}
 
         <button
           onClick={downloadImage}
