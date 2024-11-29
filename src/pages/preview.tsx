@@ -11,7 +11,7 @@ import { useSearchParams } from "next/navigation"
 import { Download } from "lucide-react"
 // import html2canvas from "html2canvas"
 // import CanvasPreview from "./components/CanvasPreview/CanvasPreview";
-import { toPng } from "html-to-image"
+import { toJpeg } from "html-to-image"
 
 interface DPData {
   name: string
@@ -165,7 +165,7 @@ function DPPreview() {
   const downloadImage = async () => {
     if (divRef.current) {
       try {
-        const dataUrl = await toPng(divRef.current)
+        const dataUrl = await toJpeg(divRef.current)
         const link = document.createElement("a")
         link.download = "screenshot.png"
         link.href = dataUrl
