@@ -37,7 +37,7 @@ const DpCard: React.FC<{
             />
             <h1
               style={{ color: textColor }}
-              className="text-lg lg:text-2xl font-bold absolute top-1 left-3"
+              className="text-lg lg:text-2xl font-bold absolute top-2 left-3"
             >
               {name}
             </h1>
@@ -74,7 +74,7 @@ const DpCard: React.FC<{
             src={image}
             layout="fill"
             alt="attendee"
-            className="rounded-xl border-r-4 border-black border-b-4"
+            className="rounded-xl border-r-4 border-black border-b-4 object-cover"
           />
         </aside>
       </div>
