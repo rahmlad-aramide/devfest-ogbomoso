@@ -19,11 +19,10 @@ const Header = ({ buttonText, rsvpLink }: { buttonText: string; rsvpLink: string
     <nav className="relative z-10 flex items-center justify-between px-6 py-4">
       <div className="flex items-center justify-center m-2 gap-2">
         <Image
-          src="/devfest-ogbomoso-logo.svg"
+          src="/devfedt-logo-white.png"
           alt="GDG Logo"
           width={isMobile ? 100 : 200}
           height={isMobile ? 20 : 32}
-          className=" invert"
         />
         {/* <span className="font-bold">DevFest</span> */}
         {/* <span className="px-2 py-1 text-sm border rounded">Ogbomoso</span> */}
