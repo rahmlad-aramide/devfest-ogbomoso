@@ -1,6 +1,6 @@
 import { Calendar, Clock, MapPin } from "lucide-react"
 import Image from "next/image"
-import React from "react"
+import React, { useEffect, useState } from "react"
 
 const DpCard: React.FC<{
   background: string
@@ -9,6 +9,16 @@ const DpCard: React.FC<{
   image: string
   id: string
 }> = ({ background, textColor, name, image, id }) => {
+  const [isMobile, setIsMobile] = useState<boolean>(false)
+  useEffect(() => {
+    const checkDevice = () => setIsMobile(window.innerWidth < 768)
+
+    checkDevice()
+
+    window.addEventListener("resize", checkDevice)
+
+    return () => window.removeEventListener("resize", checkDevice)
+  }, [])
   return (
     <div
       id={id}
@@ -21,8 +31,8 @@ const DpCard: React.FC<{
             <Image
               src={"/Vector2.png"}
               alt="vector"
-              width={window.innerWidth < 768 ? 130 : 211.5}
-              height={window.innerWidth < 768 ? 150 : 100}
+              width={isMobile ? 130 : 211.5}
+              height={isMobile ? 150 : 100}
               className=""
             />
             <h1
