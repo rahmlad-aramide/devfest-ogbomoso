@@ -1,14 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // import { motion } from "framer-motion"
-import { MapPin, Calendar, Clock } from "lucide-react"
+import { MapPin, Calendar, Clock, ImageIcon } from "lucide-react"
 import Header from "./Header"
 import Image from "next/image"
+import Link from "next/link"
 // import Typewriter from "typewriter-effect"
 
 function Hero({ data }: any) {
   return (
     <section className="min-h-screen relative bg-black text-[#FFF5E1] snap-both">
-      
       <div>
         <Image
           src="/devfest2.jpg"
@@ -133,6 +133,14 @@ function Hero({ data }: any) {
                 </div>
               </div>
 
+              <Link
+                href={"/dp"}
+                className="w-[150px] h-[50px] bg-[#34A853] rounded lg:flex items-center gap-2  hidden absolute right-[-280px] justify-center "
+              >
+                Get DP
+                <ImageIcon className="w-5 h-5" />
+              </Link>
+
               <button className="w-[150px] h-[50px] bg-[#FF9800] hidden absolute right-[-100px] rounded lg:flex items-center gap-2 justify-center">
                 RSVP NOW <span className="text-xl">🎟️</span>
               </button>
@@ -140,6 +148,16 @@ function Hero({ data }: any) {
             <button className="w-full h-[50px] bg-[#FF9800] rounded flex items-center gap-2 justify-center mt-10 lg:hidden">
               RSVP NOW <span className="text-xl">🎟️</span>
             </button>
+            {/* <button className="w-full h-[50px] bg-[#FF9800] rounded flex items-center gap-2 justify-center mt-10 lg:hidden">
+              RSVP NOW <span className="text-xl">🎟️</span>
+            </button> */}
+            <Link
+              href={"/dp"}
+              className="w-full h-[50px] bg-[#34A853] rounded flex items-center gap-2 justify-center mt-5 lg:hidden"
+            >
+              Get DP
+              <ImageIcon className="w-5 h-5" />
+            </Link>
           </div>
         </div>
       </div>

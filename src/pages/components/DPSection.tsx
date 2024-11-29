@@ -81,7 +81,7 @@ function DPSection() {
               DP GENERATOR
             </div>
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Generate your Devfest Lagos '24 DP
+              Generate your Devfest Ogbomoso '24 DP
             </h1>
             <p className="text-gray-600 mb-8 text-lg">
               Let everyone know that you will be at Devfest 2024 no matter what.

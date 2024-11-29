@@ -60,7 +60,7 @@ function ScheduleSection({ data }: any) {
                     <div className="flex items-start gap-6 md:flex-row flex-col-reverse">
                       <div className="flex-1">
                         <div className="flex items-center gap-4 mb-4">
-                          <span className="px-3 py-1 text-white rounded-full bg-green-600 font-medium text-sm border border-black">
+                          <span className="px-3 py-1 text-black rounded-full bg-green-600 font-medium text-sm border border-black">
                             {session.name}
                           </span>
                         </div>
