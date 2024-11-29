@@ -208,7 +208,7 @@ function DPPreview() {
             Here's your DP
           </h1>
         </motion.div>
-        <div className="w-[500px] h-[300px] mx-auto">
+        <div className="w-[350px] lg:w-[500px] h-[200px] lg:h-[300px] mx-auto">
           <DpCard
             id="dp-card"
             background={dpBackground[parseInt(dpBgColor)]}
@@ -226,7 +226,7 @@ function DPPreview() {
             backgroundColor: dbTextColors[parseInt(dpBgColor)],
             color: dpBackground[parseInt(dpBgColor)],
           }}
-          className="w-[500px] h-[40px] rounded-full flex items-center gap-2 justify-center mx-auto mt-7"
+          className="w-[350px] lg:w-[500px] h-[40px] rounded-full flex items-center gap-2 justify-center mx-auto mt-7"
         >
           Download Your DP <Download className="w-5 h-5" />
         </button>
