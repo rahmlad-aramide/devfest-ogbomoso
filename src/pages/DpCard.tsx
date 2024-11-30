@@ -29,7 +29,7 @@ const DpCard: React.FC<{
         <aside className="flex flex-col gap-[10px] h-full w-[50%]">
           <div className="relative">
             <Image
-              src={"/Vector2.png"}
+              src={"/Group 2.png"}
               alt="vector"
               width={isMobile ? 150 : 211.5}
               height={isMobile ? 170 : 100}
