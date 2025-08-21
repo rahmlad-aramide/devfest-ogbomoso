@@ -7,7 +7,7 @@ const DpCard: React.FC<{
   textColor: string
   name: string
   image: string
-  id: React.RefObject<HTMLDivElement>
+  id: React.RefObject<HTMLDivElement | null>
 }> = ({ background, textColor, name, image, id }) => {
   const [isMobile, setIsMobile] = useState<boolean>(false)
   useEffect(() => {
