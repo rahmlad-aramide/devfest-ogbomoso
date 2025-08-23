@@ -1,80 +1,241 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @next/next/no-img-element */
-/* eslint-disable react/no-unescaped-entities */
-import { motion } from "framer-motion"
-import { Play, ImageIcon } from "lucide-react"
+import { motion, AnimatePresence } from "framer-motion"
+import { Play, ImageIcon, ChevronRight, X } from "lucide-react"
 import Image from "next/image"
+import { useState } from "react"
 
 function ThrowbackSection({ data }: { data: any }) {
+  const [selectedImage, setSelectedImage] = useState<number | null>(null)
+
+  // Sample data structure for the throwback content
+  const throwbackData = {
+    images: data?.images || [
+      "/devfest1.jpg", "/gdg-event-2.jpeg", "/devfest3.jpg", 
+      "/devfest4.jpg", "/devfest5.jpg", "/devfest6.jpg",
+      "/devfest7.jpg", "/devfest8.jpg", "/devfest9.jpg"
+    ],
+    testimonials: [
+      { text: "An unforgettable experience that shaped my career!", author: "Sarah D.", role: "Frontend Developer" },
+      { text: "The energy and knowledge sharing was incredible!", author: "Mike T.", role: "UX Designer" }
+    ]
+  }
+
+  const filteredImages = throwbackData.images.slice(0, 9)
+
   return (
-    <section className="py-24 lg:pb-24 bg-black text-white">
-      <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto">
+    <section className="py-20 lg:py-28 bg-black text-white relative overflow-hidden">
+      {/* Animated background elements */}
+      <div className="absolute inset-0">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-[#4285f4]/10 rounded-full blur-3xl animate-pulse-slow" />
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#ea4335]/10 rounded-full blur-3xl animate-pulse-slow delay-1000" />
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-[#f9ab00]/10 rounded-full blur-3xl animate-pulse-slow delay-2000" />
+      </div>
+
+      <div className="container mx-auto px-4 relative z-10">
+        {/* Header Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <motion.span 
+            initial={{ scale: 0.8, opacity: 0 }}
+            whileInView={{ scale: 1, opacity: 1 }}
+            transition={{ delay: 0.2, duration: 0.6 }}
+            className="inline-block px-6 py-2 font-semibold bg-[#4285f4]/20 backdrop-blur-sm rounded-full text-sm mb-6 border border-[#4285f4]/30"
+          >
+            🎉 RELIVE DEVFEST 2023
+          </motion.span>
+
+          <motion.h2 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.8 }}
+            className="text-4xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent"
+          >
+            Moments That Made History
+          </motion.h2>
+          
+          <motion.p 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.8 }}
+            className="text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed"
+          >
+            Step back into the energy, innovation, and connections that made DevFest 2023 an unforgettable experience.
+          </motion.p>
+        </motion.div>
+
+        {/* Masonry Grid Gallery */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+          viewport={{ once: true }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16"
+        >
+          {filteredImages.map((img, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1, duration: 0.7 }}
+              viewport={{ once: true }}
+              whileHover={{ y: -10, scale: 1.02 }}
+              className="relative group cursor-pointer rounded-2xl overflow-hidden shadow-2xl"
+              onClick={() => setSelectedImage(index)}
+            >
+              {/* Glassmorphism Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500" />
+              
+              {/* Hover Info */}
+              <div className="absolute bottom-0 left-0 right-0 p-6 transform translate-y-10 group-hover:translate-y-0 transition-transform duration-500">
+                <div className="bg-black/50 backdrop-blur-md rounded-xl p-4 border border-white/20">
+                  <h3 className="font-semibold text-white mb-1">DevFest Moment #{index + 1}</h3>
+                  <p className="text-gray-300 text-sm">Click to view full size</p>
+                </div>
+              </div>
+
+              <Image
+                src={img}
+                alt={`DevFest 2023 Moment ${index + 1}`}
+                width={400}
+                height={300}
+                className="w-full h-[250px] object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* Testimonial Section with GIF Layout */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.9, duration: 0.8 }}
+          viewport={{ once: true }}
+          className="mb-12"
+        >
+          <motion.h3 
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ delay: 1, duration: 0.7 }}
+            className="text-2xl lg:text-3xl font-bold text-center mb-8 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent"
+          >
+            Voices From Our Community
+          </motion.h3>
+
+          <div className="grid lg:grid-cols-2 gap-8 items-center">
+            {/* Testimonials on the Left - Now 2 instead of 3 */}
+            <div className="space-y-4">
+              {throwbackData.testimonials.map((testimonial, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, x: -50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 1.1 + index * 0.2, duration: 0.8 }}
+                  viewport={{ once: true }}
+                  className={`p-4 rounded-xl backdrop-blur-sm border text-sm ${
+                    index === 0 
+                      ? "bg-[#4285f4]/10 border-[#4285f4]/30" 
+                      : "bg-[#34a853]/10 border-[#34a853]/30"
+                  }`}
+                >
+                  <div className="text-amber-400 text-xl mb-2">"</div>
+                  <p className="text-gray-200 mb-3 text-base leading-relaxed italic">
+                    {testimonial.text}
+                  </p>
+                  <div className="border-t border-white/10 pt-2">
+                    <p className="font-semibold text-white text-sm">{testimonial.author}</p>
+                    <p className="text-gray-400 text-xs">{testimonial.role}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* GIF on the Right */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ delay: 1.3, duration: 0.8 }}
+              viewport={{ once: true }}
+              className="relative"
+            >
+              <div className="bg-gradient-to-br from-[#4285f4]/10 to-[#ea4335]/10 rounded-2xl p-2 backdrop-blur-md border border-white/20">
+                <img
+                  src="/makenewfriends.gif"
+                  alt="DevFest attendees making new friends and connections"
+                  className="w-full h-auto rounded-xl shadow-lg"
+                />
+              </div>
+              
+              {/* Optional: Add a subtle decorative element */}
+              <div className="absolute -top-3 -right-3 w-6 h-6 bg-[#f9ab00]/30 rounded-full blur-sm" />
+              <div className="absolute -bottom-3 -left-3 w-8 h-8 bg-[#34a853]/30 rounded-full blur-sm" />
+            </motion.div>
+          </div>
+        </motion.div>
+
+        {/* CTA Section - Updated Button Style */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.2, duration: 0.7 }}
+          viewport={{ once: true }}
+          className="text-center"
+        >
+          <a
+            href={data?.driveLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-3 border-2 border-[#4285f4] text-[#4285f4] hover:bg-[#4285f4] hover:text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl group/cta"
+          >
+            <span>Explore Full Gallery</span>
+            <ChevronRight className="w-5 h-5 group-hover/cta:translate-x-2 transition-transform duration-300" />
+          </a>
+          
+          <p className="text-gray-400 mt-4 text-sm">
+            {throwbackData.images.length}+ unforgettable moments waiting
+          </p>
+        </motion.div>
+      </div>
+
+      {/* Lightbox Modal */}
+      <AnimatePresence>
+        {selectedImage !== null && (
           <motion.div
             initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            className="text-center mb-12"
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/90 backdrop-blur-2xl z-50 flex items-center justify-center p-4"
+            onClick={() => setSelectedImage(null)}
           >
-            <span className="inline-block px-4 py-1 font-bold bg-white/10 rounded-full text-sm mb-4">
-              THROWBACK
-            </span>
-
-            <h2 className="text-5xl font-bold mb-4">{data && data.title}</h2>
-            <p className="text-xl text-[#c3ecf6]]">{data && data.subtitle}</p>
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              transition={{ type: "spring", damping: 25 }}
+              className="relative max-w-4xl max-h-full"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                onClick={() => setSelectedImage(null)}
+                className="absolute -top-12 right-0 text-white hover:text-[#ea4335] transition-colors duration-300 z-10"
+              >
+                <X className="w-8 h-8" />
+              </button>
+              
+              <Image
+                src={filteredImages[selectedImage]}
+                alt={`DevFest 2023 Moment ${selectedImage + 1}`}
+                width={800}
+                height={600}
+                className="rounded-2xl shadow-2xl"
+              />
+            </motion.div>
           </motion.div>
-
-          <a href={data && data.driveLink} target="_blank">
-
-            <div className="grid md:grid-cols-2 gap-8">
-              <motion.div whileHover={{ scale: 1.02 }} className="relative group cursor-pointer">
-                <div className="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition-colors flex items-center justify-center">
-                  <Play className="w-12 h-12" />
-                </div>
-                <Image
-                  src={data && data.images[0]}
-
-                  alt="DevFest 2023 Highlights"
-                  className="w-full h-[300px] object-cover rounded-xl"
-                  height={100}
-                  width={100}
-                />
-              </motion.div>
-
-              <div className="grid gap-4">
-
-                {data &&
-                  data.images.slice(1).map((img: string, i: number) => (
-                    <motion.div
-                      key={i}
-                      whileHover={{ scale: 1.02 }}
-                      className="relative group cursor-pointer"
-                    >
-                      <div className="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition-colors flex items-center justify-center">
-                        <ImageIcon className="w-8 h-8" />
-                      </div>
-                      <Image
-                        src={`${img}`}
-                        alt={`DevFest 2023 Moment ${i + 1}`}
-                        className="w-full h-[140px] object-cover rounded-xl"
-                        layout="fill"
-                      />
-                    </motion.div>
-                  ))}
-
-              </div>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div className="w-full flex justify-center">
-        <Image
-          src="/devfest-lanyard.png"
-          alt="lanyard"
-          className="px-20 py-6"
-          width={800}
-          height={100}
-        />
-      </div>
+        )}
+      </AnimatePresence>
     </section>
   )
 }

@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@next/font": "^14.2.15",
     "@react-three/drei": "10.7.3",
     "@react-three/fiber": "9.3.0",
     "dom-to-image": "^2.6.0",
