@@ -4,11 +4,11 @@
     "description": "DevFest Ogbomoso is a community-run, developer event that offers speaker sessions across multiple product areas, codelabs, hackathon, and more."
   },
   "title": "DevFest Ogbomoso",
-  "date": "November 30, 2024",
+  "date": "November 30, 2025",
   "time": "9:00 AM",
-  "dateInWords": "Saturday, 30, November, 2024",
-  "location": "The Hall, LAUTECH, Ogbomoso",
-  "year": "2024",
+  "dateInWords": "Saturday, 30, November, 2025",
+  "location": "To be announced",
+  "year": "2025",
   "rsvpLink": "https://devfestogbomoso.xyz/register",
   "tag": "GDG Ogbomoso",
   "throwback": {
@@ -146,7 +146,7 @@
   ],
   "speakerSection": {
     "title": "Meet the DevFest Ogbomoso 2024 Speakers",
-    "subtitle": "We&apos;ve raised the bar this year with our impressive lineup of speakers, each prepared to share valuable insights on different aspects of the tech community.",
+    "subtitle": "We've raised the bar this year with our impressive lineup of speakers, each prepared to share valuable insights on different aspects of the tech community.",
     "categories": [
       "All",
       "Cloud",

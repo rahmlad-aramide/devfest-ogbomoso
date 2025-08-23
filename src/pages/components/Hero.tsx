@@ -70,18 +70,18 @@ function Hero({ data }: any) {
   }, []);
 
   // Animation for main heading - EXACTLY your original formatting
-  const letterVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: (i: number) => ({
-      opacity: 1,
-      y: 0,
-      transition: {
-        delay: i * 0.05,
-        duration: 0.5,
-        ease: "easeOut"
-      }
-    })
-  };
+  // const letterVariants = {
+  //   hidden: { opacity: 0, y: 20 },
+  //   visible: (i: number) => ({
+  //     opacity: 1,
+  //     y: 0,
+  //     transition: {
+  //       delay: i * 0.05,
+  //       duration: 0.5,
+  //       ease: "easeOut"
+  //     }
+  //   })
+  // };
 
   return (
     <section className="min-h-[60vh] lg:min-h-[70vh] relative bg-black text-white pt-20 pb-5">
@@ -114,11 +114,20 @@ function Hero({ data }: any) {
             {/* Main Heading - EXACTLY YOUR ORIGINAL FORMATTING with animation */}
             <motion.h1 
               className="text-6xl lg:text-9xl font-black leading-tight lg:leading-none px-4"
-              initial="hidden"
+              initial="visible"
               whileInView="visible"
               viewport={{ once: true }}
             >
-              <motion.span variants={letterVariants} custom={0} className="text-[#4285f4]">D</motion.span>
+              <motion.span custom={0} className="text-[#4285f4]">D</motion.span>
+              <motion.span custom={1} className="text-[#ea4335]">e</motion.span>
+              <motion.span custom={2} className="text-[#f9ab00]">v</motion.span>
+              <motion.span custom={3} className="text-[#4285f4]">F</motion.span>
+              <motion.span custom={4} className="text-[#34a853]">e</motion.span>
+              <motion.span custom={5} className="text-[#ea4335]">s</motion.span>
+              <motion.span custom={6} className="text-[#4285f4]">t</motion.span>
+              <motion.span custom={7} className="text-[#fff7e0]"> Ogbomoso</motion.span>
+              <motion.span custom={8} className="text-[#ea4335]"> - 25</motion.span>
+              {/* <motion.span variants={letterVariants} custom={0} className="text-[#4285f4]">D</motion.span>
               <motion.span variants={letterVariants} custom={1} className="text-[#ea4335]">e</motion.span>
               <motion.span variants={letterVariants} custom={2} className="text-[#f9ab00]">v</motion.span>
               <motion.span variants={letterVariants} custom={3} className="text-[#4285f4]">F</motion.span>
@@ -126,7 +135,7 @@ function Hero({ data }: any) {
               <motion.span variants={letterVariants} custom={5} className="text-[#ea4335]">s</motion.span>
               <motion.span variants={letterVariants} custom={6} className="text-[#4285f4]">t</motion.span>
               <motion.span variants={letterVariants} custom={7} className="text-[#fff7e0]"> Ogbomoso</motion.span>
-              <motion.span variants={letterVariants} custom={8} className="text-[#ea4335]"> - 25</motion.span>
+              <motion.span variants={letterVariants} custom={8} className="text-[#ea4335]"> - 25</motion.span> */}
             </motion.h1>
 
             {/* Theme Header */}
@@ -159,7 +168,7 @@ function Hero({ data }: any) {
                   { value: timeLeft.seconds, label: 'Seconds'}
                 ].map((item, index) => (
                   <div key={index} className="text-center">
-                    <div className={`${item.color} rounded-xl p-3 lg:p-4 shadow-lg`}>
+                    <div className={`rounded-xl p-3 lg:p-4 shadow-lg`}>
                       <span className="text-xl lg:text-3xl font-bold text-white block">
                         {item.value.toString().padStart(2, '0')}
                       </span>

@@ -1,12 +1,6 @@
-// <<<<<<< hero-section-changes
-// import { motion } from "framer-motion"
-// import { StepProps } from "../types"
-// import { useEffect } from "react"
-// =======
 import { motion } from 'framer-motion';
 import { StepProps } from '../types';
 import { useEffect, useState } from 'react';
-// >>>>>>> main
 
 export function RefferalCodeStep({ formData, updateFields, onNext }: StepProps) {
   const [hydrated, setHydrated] = useState(false);
@@ -15,23 +9,6 @@ export function RefferalCodeStep({ formData, updateFields, onNext }: StepProps) 
     setHydrated(true);
   }, []);
 
-  if (!hydrated) {
-    // this returns null on first render, so the client and server match
-    return null;
-  }
-  // get url search param code to prefilled refferal code
-  // const urlParams = new URLSearchParams(window.location.search);
-  // const code = urlParams.get('code');
-  // useEffect(() => {
-  //   if (typeof window !== "undefined") {
-  //     // Access `window.location.search` safely
-  //     const urlParams = new URLSearchParams(window.location.search)
-  //     const code = urlParams.get("code")
-  //     if (code) {
-  //       updateFields({ refferedBy: code })
-  //     }
-  //   }
-  // }, [code, updateFields])
   useEffect(() => {
     if (typeof window !== "undefined") {
       // Access `window.location.search` safely
@@ -42,6 +19,13 @@ export function RefferalCodeStep({ formData, updateFields, onNext }: StepProps) 
       }
     }
   }, [updateFields])
+
+  if (!hydrated) {
+    // this returns null on first render, so the client and server match
+    return null;
+  }
+
+  
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     onNext()

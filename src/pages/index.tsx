@@ -23,9 +23,9 @@ export default function Home({ data }: any) {
 }
 
 export async function getServerSideProps() {
-  const apiURL = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://devfestogbomoso.netlify.app';
+  const apiURL = process.env.NODE_ENV === 'development' ? 'http://localhost:3002' : 'https://devfestogbomoso.netlify.app';
   console.log(apiURL, process.env.NODE_ENV)
-  const res = await fetch('http://localhost:3000/details.json');
+  const res = await fetch('http://localhost:3002/details.json');
   const data = await res.json();
   return {
     props: {

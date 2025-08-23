@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion"
-import { Play, ImageIcon, ChevronRight, X } from "lucide-react"
+import { ChevronRight, X } from "lucide-react"
 import Image from "next/image"
 import { useState } from "react"
 
@@ -75,7 +75,7 @@ function ThrowbackSection({ data }: { data: any }) {
           viewport={{ once: true }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16"
         >
-          {filteredImages.map((img, index) => (
+          {filteredImages.map((img: any, index: number) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 50 }}
@@ -141,7 +141,7 @@ function ThrowbackSection({ data }: { data: any }) {
                       : "bg-[#34a853]/10 border-[#34a853]/30"
                   }`}
                 >
-                  <div className="text-amber-400 text-xl mb-2">"</div>
+                  <div className="text-amber-400 text-xl mb-2">&lsquo;</div>
                   <p className="text-gray-200 mb-3 text-base leading-relaxed italic">
                     {testimonial.text}
                   </p>
@@ -162,10 +162,13 @@ function ThrowbackSection({ data }: { data: any }) {
               className="relative"
             >
               <div className="bg-gradient-to-br from-[#4285f4]/10 to-[#ea4335]/10 rounded-2xl p-2 backdrop-blur-md border border-white/20">
-                <img
+                <Image
                   src="/makenewfriends.gif"
+                  width={960}
+                  height={540}
                   alt="DevFest attendees making new friends and connections"
                   className="w-full h-auto rounded-xl shadow-lg"
+                  unoptimized
                 />
               </div>
               
