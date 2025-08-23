@@ -1,3 +1,4 @@
+import { motion } from "framer-motion"
 import { MapPin, Calendar, Clock, ImageIcon } from "lucide-react"
 import Header from "./Header"
 import Image from "next/image"
@@ -68,8 +69,22 @@ function Hero({ data }: any) {
     return () => clearInterval(timerId);
   }, []);
 
+  // Animation for main heading - EXACTLY your original formatting
+  // const letterVariants = {
+  //   hidden: { opacity: 0, y: 20 },
+  //   visible: (i: number) => ({
+  //     opacity: 1,
+  //     y: 0,
+  //     transition: {
+  //       delay: i * 0.05,
+  //       duration: 0.5,
+  //       ease: "easeOut"
+  //     }
+  //   })
+  // };
+
   return (
-    <section className="min-h-[60vh] lg:min-h-[70vh] relative bg-black text-white pt-20 pb-16">
+    <section className="min-h-[60vh] lg:min-h-[70vh] relative bg-black text-white pt-20 pb-5">
       {/* Background Image */}
       <div className="absolute inset-0 w-full h-full">
         <Image
@@ -96,18 +111,42 @@ function Hero({ data }: any) {
               </span>
             </div>
 
-            {/* Main Heading - Google Colors */}
-            <h1 className="text-6xl lg:text-9xl font-black leading-tight lg:leading-none px-4">
-              <span className="text-[#4285f4]">D</span>
-              <span className="text-[#ea4335]">e</span>
-              <span className="text-[#f9ab00]">v</span>
-              <span className="text-[#4285f4]">F</span>
-              <span className="text-[#34a853]">e</span>
-              <span className="text-[#ea4335]">s</span>
-              <span className="text-[#4285f4]">t</span>
-              <span className="text-[#fff7e0]"> Ogbomoso</span>
-              <span className="text-[#ea4335]"> - 25</span>
-            </h1>
+            {/* Main Heading - EXACTLY YOUR ORIGINAL FORMATTING with animation */}
+            <motion.h1 
+              className="text-6xl lg:text-9xl font-black leading-tight lg:leading-none px-4"
+              initial="visible"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
+              <motion.span custom={0} className="text-[#4285f4]">D</motion.span>
+              <motion.span custom={1} className="text-[#ea4335]">e</motion.span>
+              <motion.span custom={2} className="text-[#f9ab00]">v</motion.span>
+              <motion.span custom={3} className="text-[#4285f4]">F</motion.span>
+              <motion.span custom={4} className="text-[#34a853]">e</motion.span>
+              <motion.span custom={5} className="text-[#ea4335]">s</motion.span>
+              <motion.span custom={6} className="text-[#4285f4]">t</motion.span>
+              <motion.span custom={7} className="text-[#fff7e0]"> Ogbomoso</motion.span>
+              <motion.span custom={8} className="text-[#ea4335]"> - 25</motion.span>
+              {/* <motion.span variants={letterVariants} custom={0} className="text-[#4285f4]">D</motion.span>
+              <motion.span variants={letterVariants} custom={1} className="text-[#ea4335]">e</motion.span>
+              <motion.span variants={letterVariants} custom={2} className="text-[#f9ab00]">v</motion.span>
+              <motion.span variants={letterVariants} custom={3} className="text-[#4285f4]">F</motion.span>
+              <motion.span variants={letterVariants} custom={4} className="text-[#34a853]">e</motion.span>
+              <motion.span variants={letterVariants} custom={5} className="text-[#ea4335]">s</motion.span>
+              <motion.span variants={letterVariants} custom={6} className="text-[#4285f4]">t</motion.span>
+              <motion.span variants={letterVariants} custom={7} className="text-[#fff7e0]"> Ogbomoso</motion.span>
+              <motion.span variants={letterVariants} custom={8} className="text-[#ea4335]"> - 25</motion.span> */}
+            </motion.h1>
+
+            {/* Theme Header */}
+            <div className="bg-[#34a853]/10 backdrop-blur-md rounded-2xl p-6 border border-[#34a853]/20 mx-auto max-w-2xl">
+              <h2 className="text-xl lg:text-2xl font-bold text-white mb-2">
+                Theme:
+              </h2>
+              <p className="text-lg lg:text-xl text-gray-200 font-medium">
+                DevFest 2025: Building Safe, Secure and Scalable Solutions with AI and Cloud
+              </p>
+            </div>
 
             {/* Description */}
             <p className="text-lg lg:text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed px-4">
@@ -116,7 +155,7 @@ function Hero({ data }: any) {
               world. Together, let&apos;s code the future.
             </p>
 
-            {/* Countdown Timer - Google Colors */}
+            {/* Combined Countdown + Event Details */}
             <div className="bg-black/40 backdrop-blur-xl rounded-2xl p-6 lg:p-8 border border-white/10 shadow-2xl max-w-2xl mx-auto">
               <h3 className="text-sm lg:text-base text-gray-300 mb-6 uppercase tracking-widest font-semibold">
                 Event Starts In
@@ -129,7 +168,7 @@ function Hero({ data }: any) {
                   { value: timeLeft.seconds, label: 'Seconds'}
                 ].map((item, index) => (
                   <div key={index} className="text-center">
-                    <div className={`${item.color} rounded-xl p-3 lg:p-4 shadow-lg`}>
+                    <div className={`rounded-xl p-3 lg:p-4 shadow-lg`}>
                       <span className="text-xl lg:text-3xl font-bold text-white block">
                         {item.value.toString().padStart(2, '0')}
                       </span>
@@ -141,8 +180,26 @@ function Hero({ data }: any) {
                 ))}
               </div>
               
-              {/* Live Current Time & Date */}
+              {/* Event Details moved here - stacked inline as requested */}
               <div className="mt-6 pt-4 border-t border-white/10">
+                <div className="flex flex-col items-center gap-1 text-gray-200">
+                  <div className="flex items-center gap-2">
+                    <Calendar className="w-4 h-4 text-[#34a853]" />
+                    <span className="font-semibold">Fri & Sat, December 5-6, 2025</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Clock className="w-4 h-4 text-[#34a853]" />
+                    <span className="font-semibold">10:00 AM WAT</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <MapPin className="w-4 h-4 text-[#34a853]" />
+                    <span className="font-semibold">T.B.A (To be announced)</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Live Current Time & Date */}
+              <div className="mt-4 pt-4 border-t border-white/10">
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-xs lg:text-sm text-gray-400">
                   <div className="flex items-center gap-2">
                     <Clock className="w-3 h-3 lg:w-4 lg:h-4 text-[#34a853]" />
@@ -154,24 +211,6 @@ function Hero({ data }: any) {
                     <Calendar className="w-3 h-3 lg:w-4 lg:h-4 text-[#4285f4]" />
                     <span>{currentDate}</span>
                   </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Event Details - Google Green */}
-            <div className="bg-[#34a853]/10 backdrop-blur-md rounded-xl p-6 border border-[#34a853]/20 max-w-2xl mx-auto">
-              <div className="grid gap-4 text-left">
-                <div className="flex items-center gap-3 text-gray-200">
-                  <Calendar className="w-5 h-5 text-[#34a853] flex-shrink-0" />
-                  <span className="font-semibold text-sm lg:text-base">Fri & Sat, December 5-6, 2025</span>
-                </div>
-                <div className="flex items-center gap-3 text-gray-200">
-                  <Clock className="w-5 h-5 text-[#34a853] flex-shrink-0" />
-                  <span className="font-semibold text-sm lg:text-base">10:00 AM WAT</span>
-                </div>
-                <div className="flex items-center gap-3 text-gray-200">
-                  <MapPin className="w-5 h-5 text-[#34a853] flex-shrink-0" />
-                  <span className="font-semibold text-sm lg:text-base">T.B.A (To be announced)</span>
                 </div>
               </div>
             </div>
@@ -196,8 +235,6 @@ function Hero({ data }: any) {
           </div>
         </div>
       </div>
-
-      
     </section>
   )
 }

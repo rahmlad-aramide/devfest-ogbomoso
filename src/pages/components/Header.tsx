@@ -1,5 +1,5 @@
 import Image from "next/image"
-import { Phone, X, Menu, ChevronDown, Calendar, Users, Clock, HelpCircle } from "lucide-react"
+import { Phone, X, Menu, ChevronDown, Users, Clock, HelpCircle } from "lucide-react"
 import { useEffect, useState } from "react"
 
 interface HeaderProps {
