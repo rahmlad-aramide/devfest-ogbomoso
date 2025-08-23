@@ -1,76 +1,76 @@
+export default DPGenerator
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
-import DPGeneratorComponent from "./components/DPGenerator";
-import Footer from "./components/Footer";
-import Header from "./components/Header";
-import MetaTags from "./components/MetaTag";
-import { motion } from "framer-motion";
+import DPGeneratorComponent from "./components/DPGenerator"
+import Footer from "./components/Footer"
+import Header from "./components/Header"
+import MetaTags from "./components/MetaTag"
+import { motion } from "framer-motion"
 
 function DPGenerator({ data }: any) {
   return (
     <>
       <Header buttonText={data?.actionButtonText} rsvpLink={data?.rsvpLink} />
       <MetaTags title="Generate your DP" description={data?.metadata?.title} />
-      <div className="h-fit bg-[#FFF5E1] w-screen overflow-hidden">
-        <div className="relative px-8 py-24">
+      {/* Modern White Layout */}
+      <main className="w-full min-h-screen bg-white flex flex-col items-center justify-center px-4">
+        <section className="w-full max-w-2xl mx-auto flex flex-col items-center justify-center py-16">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="max-w-4xl"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.7 }}
+            className="w-full"
           >
-            <div className="relative">
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
-                className="absolute -top-12 -left-12 text-blue-500"
-              >
-                <div className="w-16 h-16 transform rotate-45 bg-blue-500" />
-              </motion.div>
-              <motion.div
-                animate={{ rotate: -360 }}
-                transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-                className="absolute top-0 right-0 text-green-500"
-              >
-                <div className="w-12 h-12 transform -rotate-45 bg-green-500" />
-              </motion.div>
-              <h1 className="md:ml-24 md:text-8xl text-6xl font-bold leading-tight text-black">
-                Generate your DP
-                <br />
-                for DevFest
-                <br />
-                Ogbomoso 2024
-              </h1>
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-                className="absolute -bottom-32 left-48 text-[#FF9800]"
-              >
-                <div className="w-20 h-20 transform rotate-45 bg-[#FF9800]" />
-              </motion.div>
+            <h1 className="text-4xl md:text-5xl font-extrabold text-[#23234a] mb-4 text-center tracking-tight">
+              Create Your DevFest 2025 DP
+            </h1>
+            <p className="text-base md:text-lg text-gray-500 mb-8 text-center">
+              Show your excitement for DevFest Ogbomoso! Upload, customize, and
+              share your unique DP.
+            </p>
+            <div className="flex gap-6 mb-2 lg:mb-8 justify-center">
+              <div className="flex items-center gap-2">
+                <span className="w-8 h-8 flex items-center justify-center rounded-full bg-[#FF9800] text-white font-bold">
+                  1
+                </span>
+                <span className="text-gray-700 text-xs">Upload your photo</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="w-8 h-8 flex items-center justify-center rounded-full bg-[#FF9800] text-white font-bold">
+                  2
+                </span>
+                <span className="text-gray-700 text-xs">Customize your DP</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="w-8 h-8 flex items-center justify-center rounded-full bg-[#FF9800] text-white font-bold">
+                  3
+                </span>
+                <span className="text-gray-700 text-xs">Download or Share</span>
+              </div>
+            </div>
+            <div className="flex justify-center">
+              <DPGeneratorComponent />
             </div>
           </motion.div>
-        </div>
-      </div>
-      <DPGeneratorComponent />
+        </section>
+      </main>
       <Footer data={data} />
     </>
-  );
+  )
 }
-
-export default DPGenerator;
 
 export async function getServerSideProps() {
   const apiURL =
     process.env.NODE_ENV === "development"
       ? "http://localhost:3000"
-      : "https://devfestogbomoso.netlify.app";
-  console.log(apiURL, process.env.NODE_ENV);
-  const res = await fetch(`${apiURL}/details.json`);
-  const data = await res.json();
+      : "https://devfestogbomoso.netlify.app"
+  console.log(apiURL, process.env.NODE_ENV)
+  const res = await fetch(`${apiURL}/details.json`)
+  const data = await res.json()
   return {
     props: {
       data,
     },
-  };
+  }
 }
