@@ -14,8 +14,8 @@ function ThrowbackSection({ data }: { data: any }) {
       "/devfest7.jpg", "/devfest8.jpg", "/devfest9.jpg"
     ],
     testimonials: [
-      { text: "An unforgettable experience that shaped my career!", author: "Sarah D.", role: "Frontend Developer" },
-      { text: "The energy and knowledge sharing was incredible!", author: "Mike T.", role: "UX Designer" }
+      { text: "An unforgettable experience that shaped my career!", author: "Olusegun O.", role: "Frontend Engineer" },
+      { text: "The energy and knowledge sharing was incredible!", author: "Veronica A.", role: "UX Designer" }
     ]
   }
 
@@ -45,7 +45,7 @@ function ThrowbackSection({ data }: { data: any }) {
             transition={{ delay: 0.2, duration: 0.6 }}
             className="inline-block px-6 py-2 font-semibold bg-[#4285f4]/20 backdrop-blur-sm rounded-full text-sm mb-6 border border-[#4285f4]/30"
           >
-            🎉 RELIVE DEVFEST 2023
+            🎉 RELIVE DEVFEST 2024
           </motion.span>
 
           <motion.h2 
@@ -63,7 +63,7 @@ function ThrowbackSection({ data }: { data: any }) {
             transition={{ delay: 0.4, duration: 0.8 }}
             className="text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed"
           >
-            Step back into the energy, innovation, and connections that made DevFest 2023 an unforgettable experience.
+            Step back into the energy, innovation, and connections that made DevFest 2024 an unforgettable experience.
           </motion.p>
         </motion.div>
 
