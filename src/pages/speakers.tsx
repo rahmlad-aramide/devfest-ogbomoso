@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import Header from "./components/Header";
 import MetaTags from "./components/MetaTag";
 import Footer from "./components/Footer";
+import Image from "next/image";
 
 const days: any = [];
 
@@ -137,10 +138,11 @@ function Speakers({ data }: any) {
                       .map((name: string) => name[0])
                       .join("")}
                   </span>
-                  <img
+                  <Image
                     src={speaker.image}
                     alt={speaker.name}
                     className="w-44 h-44 rounded-2xl object-cover float-right ml-4 -mt-24"
+                    unoptimized
                   />
                 </div>
                 <h3 className="text-2xl font-bold mb-4 text-black">
@@ -180,10 +182,11 @@ function Speakers({ data }: any) {
                     .map((name: string) => name[0])
                     .join("")}
                 </span>
-                <img
+                <Image
                   src={speaker.image}
                   alt={speaker.name}
                   className="w-44 h-44 rounded-2xl object-cover float-right ml-4 -mt-24"
+                  unoptimized
                 />
               </div>
               <h3 className="text-2xl font-bold mb-4">{speaker.name}</h3>
