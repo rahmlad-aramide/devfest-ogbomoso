@@ -135,7 +135,7 @@ function Hero({ data }: any) {
                 Theme:
               </h2>
               <p className="text-lg lg:text-xl text-gray-200 font-medium">
-                DevFest 2025: Building Safe, Secure and Scalable Solutions with AI and Cloud
+                DevFest: Building Safe, Secure and Scalable Solutions with AI and Cloud
               </p>
             </div>
 
