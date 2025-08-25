@@ -38,8 +38,8 @@ function DPSection() {
                       src="/devfest.jpeg"
                       alt="Profile"
                       className="w-full h-full object-cover rounded-lg"
-                      layout="fill"
-                      
+                      sizes="100vw"
+                      fill
                     />
                   </div>
 
