@@ -1,6 +1,7 @@
 import Image from "next/image"
+
 import { Phone, X, Menu, ChevronDown, Users, Clock, HelpCircle } from "lucide-react"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 
 interface HeaderProps {
   buttonText: string
@@ -13,20 +14,35 @@ const Header = ({ buttonText, rsvpLink }: HeaderProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false)
   const [isScrolled, setIsScrolled] = useState<boolean>(false)
   const [isAnimating, setIsAnimating] = useState<boolean>(false)
+  
+  const supportRef = useRef<HTMLDivElement>(null)
+  const mobileMenuRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const checkDevice = () => setIsMobile(window.innerWidth < 768)
     const handleScroll = () => setIsScrolled(window.scrollY > 10)
 
+    // Handle click outside to close dropdowns
+    const handleClickOutside = (event: MouseEvent) => {
+      if (supportRef.current && !supportRef.current.contains(event.target as Node)) {
+        setOpenSupport(false)
+      }
+      if (isMenuOpen && mobileMenuRef.current && !mobileMenuRef.current.contains(event.target as Node)) {
+        toggleMenu()
+      }
+    }
+
     checkDevice()
     window.addEventListener("resize", checkDevice)
     window.addEventListener("scroll", handleScroll)
+    document.addEventListener("mousedown", handleClickOutside)
 
     return () => {
       window.removeEventListener("resize", checkDevice)
       window.removeEventListener("scroll", handleScroll)
+      document.removeEventListener("mousedown", handleClickOutside)
     }
-  }, [])
+  }, [isMenuOpen])
 
   const toggleMenu = () => {
     if (isMenuOpen) {
@@ -82,7 +98,7 @@ const Header = ({ buttonText, rsvpLink }: HeaderProps) => {
             ))}
             
             {/* Support Dropdown */}
-            <div className="relative">
+            <div className="relative" ref={supportRef}>
               <button
                 onClick={() => setOpenSupport(!openSupport)}
                 className="flex items-center gap-2 text-white/90 hover:text-white transition-all duration-200 font-medium text-sm lg:text-base group"
@@ -93,7 +109,7 @@ const Header = ({ buttonText, rsvpLink }: HeaderProps) => {
               </button>
               
               {openSupport && (
-                <div className="absolute top-full right-0 mt-3 w-56 bg-white/95 backdrop-blur-md rounded-lg shadow-xl border border-gray-200 animate-in fade-in-50 duration-200">
+                <div className="absolute top-full right-0 mt-3 w-56 bg-white/10 backdrop-blur-xl rounded-lg shadow-xl border border-white/20 animate-in fade-in-50 duration-200 overflow-hidden">
                   <ListOfSupporters onClose={() => setOpenSupport(false)} />
                 </div>
               )}
@@ -104,18 +120,18 @@ const Header = ({ buttonText, rsvpLink }: HeaderProps) => {
           <div className="flex items-center gap-4">
             {/* RSVP Button */}
             <a href={rsvpLink} target="_blank" rel="noopener noreferrer" className="hidden sm:block">
-              <button className="border-2 border-[#FF9800] hover:bg-[#E68900] text-[#FF9800] hover:text-white px-4 lg:px-5 py-2 rounded-full transition-all duration-300 text-sm font-medium shadow-md hover:shadow-lg">
+              <button className="bg-[#FF9800] hover:bg-[#E68900] text-white hover:text-white px-4 lg:px-5 py-2 rounded-full transition-all duration-300 text-sm font-medium shadow-md hover:shadow-lg">
                 {buttonText}
               </button>
             </a>
 
-            {/* Mobile Menu Button - Professional */}
+            {/* Mobile Menu Button - Centered properly */}
             <button
               onClick={toggleMenu}
-              className="md:hidden p-2 text-white hover:text-[#FF9800] transition-colors duration-200"
+              className="md:hidden flex items-center justify-center w-10 h-10 text-white hover:text-[#FF9800] transition-colors duration-200"
               aria-label="Toggle menu"
             >
-              <div className="relative w-5 h-5">
+              <div className="relative w-5 h-4 flex flex-col justify-center">
                 <span className={`absolute block w-5 h-0.5 bg-current transition-all duration-300 ${
                   isMenuOpen ? 'rotate-45 translate-y-0' : '-translate-y-1.5'
                 }`} />
@@ -130,13 +146,16 @@ const Header = ({ buttonText, rsvpLink }: HeaderProps) => {
           </div>
         </div>
 
-        {/* Mobile Menu - Professional */}
+        {/* Mobile Menu - Professional with Glassmorphism */}
         {(isMenuOpen || isAnimating) && (
-          <div className={`md:hidden absolute top-full left-0 right-0 bg-black/95 backdrop-blur-xl border-t border-white/10 ${
-            isMenuOpen && !isAnimating
-              ? 'animate-in fade-in-50 slide-in-from-top-4 duration-300'
-              : 'animate-out fade-out-50 slide-out-to-top-4 duration-250'
-          }`}>
+          <div 
+            ref={mobileMenuRef}
+            className={`md:hidden absolute top-full left-0 right-0 bg-black/80 backdrop-blur-xl border-t border-white/10 ${
+              isMenuOpen && !isAnimating
+                ? 'animate-in fade-in-50 slide-in-from-top-4 duration-300'
+                : 'animate-out fade-out-50 slide-out-to-top-4 duration-250'
+            }`}
+          >
             <div className="container mx-auto px-4 py-4">
               <div className="flex flex-col space-y-1">
                 {navItems.map((item) => (
@@ -166,7 +185,7 @@ const Header = ({ buttonText, rsvpLink }: HeaderProps) => {
                   </button>
                   
                   {openSupport && (
-                    <div className="mt-2 ml-7">
+                    <div className="mt-2 ml-7 bg-white/10 backdrop-blur-xl rounded-lg border border-white/20 overflow-hidden">
                       <ListOfSupporters onClose={() => setOpenSupport(false)} />
                     </div>
                   )}
@@ -200,15 +219,15 @@ const ListOfSupporters = ({ onClose }: ListOfSupportersProps) => {
   ]
 
   return (
-    <div className="w-full bg-white/95 backdrop-blur-md rounded-lg p-3 relative border border-gray-200 shadow-lg">
+    <div className="w-full bg-white/10 backdrop-blur-xl p-3 relative border border-white/20">
       <button
         onClick={onClose}
-        className="absolute right-2 top-2 p-1 text-gray-400 hover:text-gray-600 transition-colors duration-200"
+        className="absolute right-2 top-2 p-1 text-white/70 hover:text-white transition-colors duration-200"
       >
         <X className="w-3 h-3" />
       </button>
       
-      <h3 className="text-xs font-semibold text-gray-600 mb-2 uppercase tracking-wide">
+      <h3 className="text-xs font-semibold text-white/80 mb-2 uppercase tracking-wide">
         Support Team
       </h3>
       
@@ -217,7 +236,7 @@ const ListOfSupporters = ({ onClose }: ListOfSupportersProps) => {
           <a
             key={number}
             href={`tel:${number}`}
-            className="block text-xs text-gray-600 hover:text-[#FF9800] transition-colors duration-200 p-1.5 rounded hover:bg-gray-50/50"
+            className="block text-xs text-white/90 hover:text-[#FF9800] transition-colors duration-200 p-1.5 rounded"
           >
             {number}
           </a>
