@@ -198,7 +198,7 @@ function ThrowbackSection({ data }: { data: any }) {
           </a>
           
           <p className="text-gray-400 mt-4 text-sm">
-            {throwbackData.images.length}+ unforgettable moments waiting
+            50+ unforgettable moments waiting
           </p>
         </motion.div>
       </div>

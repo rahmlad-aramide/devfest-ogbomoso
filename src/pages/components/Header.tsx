@@ -109,7 +109,7 @@ const Header = ({ buttonText, rsvpLink }: HeaderProps) => {
               </button>
               
               {openSupport && (
-                <div className="absolute top-full right-0 mt-3 w-56 bg-white/10 backdrop-blur-xl rounded-lg shadow-xl border border-white/20 animate-in fade-in-50 duration-200 overflow-hidden">
+                <div className="absolute top-full right-0 mt-3 w-56 backdrop-blur-xl rounded-lg shadow-xl animate-in fade-in-50 duration-200 overflow-hidden">
                   <ListOfSupporters onClose={() => setOpenSupport(false)} />
                 </div>
               )}
@@ -119,7 +119,7 @@ const Header = ({ buttonText, rsvpLink }: HeaderProps) => {
           {/* CTA Button & Mobile Menu */}
           <div className="flex items-center gap-4">
             {/* RSVP Button */}
-            <a href={rsvpLink} target="_blank" rel="noopener noreferrer" className="hidden sm:block">
+            <a href="https://tinyurl.com/devfestogbo2025" target="_blank" rel="noopener noreferrer" className="hidden sm:block">
               <button className="bg-[#FF9800] hover:bg-[#E68900] text-white hover:text-white px-4 lg:px-5 py-2 rounded-full transition-all duration-300 text-sm font-medium shadow-md hover:shadow-lg">
                 {buttonText}
               </button>
@@ -192,7 +192,7 @@ const Header = ({ buttonText, rsvpLink }: HeaderProps) => {
                 </div>
 
                 {/* Mobile RSVP Button */}
-                <a href={rsvpLink} target="_blank" rel="noopener noreferrer" className="mt-3">
+                <a href="https://tinyurl.com/devfestogbo2025" target="_blank" rel="noopener noreferrer" className="mt-3">
                   <button className="w-full bg-[#FF9800] hover:bg-[#E68900] text-white py-2.5 rounded-lg transition-all duration-300 text-sm font-medium shadow-md">
                     {buttonText}
                   </button>
