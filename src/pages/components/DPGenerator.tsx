@@ -10,13 +10,6 @@ function DPGeneratorComponent() {
           whileInView={{ opacity: 1 }}
           className="text-center mb-16"
         >
-          <span className="inline-block px-4 py-1 bg-[#FFF5E1] rounded-full text-sm mb-8 font-bold">
-            Coming Soon
-          </span>
-          <h2 className="text-4xl font-bold mb-4">DevFest DP Generator</h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            We're crafting something special! Soon you'll be able to create your custom DevFest profile picture.
-          </p>
         </motion.div>
 
         <div className="max-w-4xl mx-auto flex items-center justify-center">
