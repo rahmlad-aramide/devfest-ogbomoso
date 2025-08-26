@@ -70,7 +70,7 @@ function SpeakersSection({ data }: any) {
             transition={{ delay: 0.4, duration: 0.8 }}
             className="text-xl text-gray-600 max-w-2xl mx-auto mb-12"
           >
-            We're curating an incredible lineup of experts for DevFest 2025. The wait will be worth it!
+            We&apos;re curating an incredible lineup of experts for DevFest 2025. The wait will be worth it!
           </motion.p>
 
           {/* Side-by-side layout */}
@@ -229,7 +229,7 @@ function SpeakersSection({ data }: any) {
                   Share Your Knowledge
                 </h3>
                 <p className="text-gray-600 text-sm">
-                  We're looking for passionate speakers to share their expertise at DevFest Ogbomoso 2025.
+                  We&apos;re looking for passionate speakers to share their expertise at DevFest Ogbomoso 2025.
                 </p>
               </div>
 
@@ -337,7 +337,7 @@ function SpeakersSection({ data }: any) {
                   <h3 className="text-2xl lg:text-3xl font-bold text-[#4285f4] mb-2">
                     2024 Speakers
                   </h3>
-                  <p className="text-gray-600">The amazing minds from last year's DevFest</p>
+                  <p className="text-gray-600">The amazing minds from last year&apos;s DevFest</p>
                 </div>
                 <button
                   onClick={() => setShowPastSpeakers(false)}
