@@ -124,7 +124,7 @@ function Hero({ data }: any) {
       {/* Background Image */}
       <div className="absolute inset-0 w-full h-full">
         <Image
-          src="/devfest-2.jpeg"
+          src="/hero.jpg"
           alt="DevFest Ogbomoso Background"
           fill
           className="object-cover"
