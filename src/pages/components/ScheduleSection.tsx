@@ -265,7 +265,6 @@ function ScheduleSection({ data }: any) {
                                 onError={(e) => {
                                   // Fallback if image fails to load
                                   e.currentTarget.style.display = 'none';
-                                  e.currentTarget.nextSibling.style.display = 'flex';
                                 }}
                               />
                             ) : null}

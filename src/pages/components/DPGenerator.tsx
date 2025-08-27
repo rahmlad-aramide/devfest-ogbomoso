@@ -3,7 +3,7 @@ import { Image as ImageIcon, Clock, Palette, Sparkles } from "lucide-react"
 
 function DPGeneratorComponent() {
   return (
-    <section className="py-24 bg-white text-black">
+    <section className="py-24 bg-[#FFEDB8] text-black">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0 }}
