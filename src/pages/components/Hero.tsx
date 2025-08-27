@@ -1,4 +1,5 @@
-import { motion } from "framer-motion"
+'use client'
+import { motion, Transition } from "framer-motion"
 import { MapPin, Calendar, Clock, ImageIcon } from "lucide-react"
 import Header from "./Header"
 import Image from "next/image"
@@ -17,8 +18,7 @@ function Hero({ data }: any) {
   const [currentDate, setCurrentDate] = useState("")
 
   useEffect(() => {
-    // Create the target date properly for November 30, 2024, 10:00 AM WAT
-    const targetDate = new Date(Date.UTC(2024, 10, 30, 9, 0, 0)); // 9:00 UTC = 10:00 AM WAT (UTC+1)
+    const targetDate = new Date(Date.UTC(2025, 11, 5, 9, 0, 0));
     
     const updateTime = () => {
       const now = new Date();
@@ -69,19 +69,19 @@ function Hero({ data }: any) {
     return () => clearInterval(timerId);
   }, []);
 
-  // Animation for main heading - EXACTLY your original formatting
   const letterVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: (i: number) => ({
-      opacity: 1,
-      y: 0,
-      transition: {
-        delay: i * 0.05,
-        duration: 0.5,
-        ease: "easeOut"
-      }
-    })
-  };
+  hidden: { opacity: 0, scale: 0.5 },
+  visible: (i: any) => ({
+    opacity: 1,
+    scale: 1,
+    transition: {
+      type: "spring",
+      stiffness: 100,
+      damping: 10,
+      delay: i * 0.05
+    } as Transition
+  })
+};
 
   // Animation variants for other components
   const containerVariants = {
@@ -102,7 +102,7 @@ function Hero({ data }: any) {
       opacity: 1,
       transition: {
         duration: 0.5,
-        ease: "easeOut"
+        ease: ["easeOut"] as unknown as any
       }
     }
   };
@@ -114,7 +114,7 @@ function Hero({ data }: any) {
       opacity: 1,
       transition: {
         duration: 0.5,
-        ease: "easeOut"
+        ease: ["easeOut"] as unknown as any
       }
     }
   };
@@ -180,13 +180,13 @@ function Hero({ data }: any) {
             {/* Theme Header */}
             <motion.div 
               variants={scaleVariants}
-              className="bg-[#34a853]/10 backdrop-blur-md rounded-2xl p-6 border border-[#34a853]/20 mx-auto max-w-2xl"
+              className="hidden bg-[#34a853]/10 backdrop-blur-md rounded-2xl p-6 border border-[#34a853]/20 mx-auto max-w-2xl"
             >
               <h2 className="text-xl lg:text-2xl font-bold text-white mb-2">
                 Theme:
               </h2>
               <p className="text-lg lg:text-xl text-gray-200 font-medium">
-                DevFest: Building Safe, Secure and Scalable Solutions with AI and Cloud
+                 Building Safe, Secure and Scalable Solutions with AI and Cloud
               </p>
             </motion.div>
 
@@ -236,12 +236,12 @@ function Hero({ data }: any) {
                 ))}
               </div>
               
-              {/* Event Details moved here - stacked inline as requested */}
+              {/* Event Details */}
               <motion.div 
                 variants={itemVariants}
                 className="mt-6 pt-4 border-t border-white/10"
               >
-                <div className="flex flex-col items-center gap-1 text-gray-200">
+                <div className="flex flex-col gap-1 text-gray-200 w-max mx-auto">
                   <div className="flex items-center gap-2">
                     <Calendar className="w-4 h-4 text-[#34a853]" />
                     <span className="font-semibold">Fri & Sat, December 5-6, 2025</span>
@@ -260,8 +260,12 @@ function Hero({ data }: any) {
               {/* Live Current Time & Date */}
               <motion.div 
                 variants={itemVariants}
-                className="mt-4 pt-4 border-t border-white/10"
+                className="mt-4 pt-4 border-t border-white/10 flex flex-col sm:flex-row items-center justify-center gap-4"
               >
+                <div className="text-xs lg:text-sm text-gray-400">
+                  Current Time & Date
+                </div>
+                <div className="hidden sm:block text-white/20">•</div>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-xs lg:text-sm text-gray-400">
                   <div className="flex items-center gap-2">
                     <Clock className="w-3 h-3 lg:w-4 lg:h-4 text-[#34a853]" />
