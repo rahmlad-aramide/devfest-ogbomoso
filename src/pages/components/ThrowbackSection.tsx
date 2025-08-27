@@ -1,3 +1,4 @@
+
 import { motion, AnimatePresence } from "framer-motion"
 import { ChevronRight, X } from "lucide-react"
 import Image from "next/image"
@@ -6,12 +7,12 @@ import { useState } from "react"
 function ThrowbackSection({ data }: { data: any }) {
   const [selectedImage, setSelectedImage] = useState<number | null>(null)
 
-  // Sample data structure for the throwback content
+  // Updated image paths
   const throwbackData = {
-    images: data?.images || [
-      "/devfest1.jpg", "/gdg-event-2.jpeg", "/devfest3.jpg", 
-      "/devfest4.jpg", "/devfest5.jpg", "/devfest6.jpg",
-      "/devfest7.jpg", "/devfest8.jpg", "/devfest9.jpg"
+    images: [
+      "/1.jpg", 
+      "/3.jpg", 
+      "/2.jpg",
     ],
     testimonials: [
       { text: "An unforgettable experience that shaped my career!", author: "Olusegun O.", role: "Frontend Engineer" },
@@ -97,13 +98,17 @@ function ThrowbackSection({ data }: { data: any }) {
                 </div>
               </div>
 
-              <Image
-                src={img}
-                alt={`DevFest 2023 Moment ${index + 1}`}
-                width={400}
-                height={300}
-                className="w-full h-[250px] object-cover group-hover:scale-110 transition-transform duration-700"
-              />
+              <div className="w-full h-[250px] overflow-hidden">
+                <Image
+                  src={img}
+                  alt={`DevFest 2023 Moment ${index + 1}`}
+                  width={400}
+                  height={300}
+                  className={`w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ${
+                    index === 0 ? 'object-top' : 'object-center'
+                  }`}
+                />
+              </div>
             </motion.div>
           ))}
         </motion.div>
@@ -188,7 +193,7 @@ function ThrowbackSection({ data }: { data: any }) {
           className="text-center"
         >
           <a
-            href={data?.driveLink}
+            href="https://drive.google.com/drive/folders/1K14ZyWATbvsgd9Hl3zd0dRYwEoef9Zgl?usp=drive_link"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-3 border-2 border-[#4285f4] text-[#4285f4] hover:bg-[#4285f4] hover:text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl group/cta"
