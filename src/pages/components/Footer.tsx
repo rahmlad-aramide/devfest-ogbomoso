@@ -109,7 +109,7 @@ function Footer({ data }: any) {
 
           <div className="border-t border-white/20 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-gray-300 text-sm order-2 md:order-1">
-              © 2024 GDG Ogbomoso. All rights reserved.
+              © 2025 GDG Ogbomoso. All rights reserved.
             </p>
             
             <motion.div
