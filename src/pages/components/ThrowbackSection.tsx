@@ -1,10 +1,10 @@
-import { motion, AnimatePresence } from "framer-motion";
-import { ChevronRight, X } from "lucide-react";
-import Image from "next/image";
-import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion"
+import { ChevronRight, X } from "lucide-react"
+import Image from "next/image"
+import { useState } from "react"
 
 function ThrowbackSection({ data }: { data: any }) {
-  const [selectedImage, setSelectedImage] = useState<number | null>(null);
+  const [selectedImage, setSelectedImage] = useState<number | null>(null)
 
   // Updated image paths
   const throwbackData = {
@@ -12,7 +12,8 @@ function ThrowbackSection({ data }: { data: any }) {
       {
         image: "/1.jpg",
         text: "Keynote Session",
-        subtext: "Sodiq Akinjobi, GDG Regional Lead, delivering the keynote session",
+        subtext:
+          "Sodiq Akinjobi, GDG Regional Lead, delivering the keynote session",
       },
       {
         image: "/2.jpg",
@@ -27,16 +28,18 @@ function ThrowbackSection({ data }: { data: any }) {
       {
         image: "/4.jpg",
         text: "W/ D Lead Organizers",
-        subtext: "GDG Ogbomoso Lead Organizers (Miracle and Boluwatife) and Sodiq Akinjobi",
+        subtext:
+          "GDG Ogbomoso Lead Organizers (Miracle and Boluwatife) and Sodiq Akinjobi",
       },
       {
         image: "/5.jpg",
         text: "GDSC Leads at Devfest",
-        subtext: "Lautech Past and Present GDGoC (formerly GDSC) Leads in a group picture with Sodiq",
+        subtext:
+          "Lautech Past and Present GDGoC (formerly GDSC) Leads in a group picture with Sodiq",
       },
       {
         image: "/6.jpg",
-        text: "Endarae and Rahmlad",
+        text: "Enda Rae and Rahmlad",
         subtext: "Preparing for the Panelist session and Website showcase",
       },
       {
@@ -47,7 +50,8 @@ function ThrowbackSection({ data }: { data: any }) {
       {
         image: "/8.jpg",
         text: "Organizers in action",
-        subtext: "Boluwatife Adebisi, Miracle Olabode, Abdrahman Oladimeji, Glory Olaifa",
+        subtext:
+          "Boluwatife Adebisi, Miracle Olabode, Abdrahman Oladimeji, Glory Olaifa",
       },
     ],
     testimonials: [
@@ -62,9 +66,9 @@ function ThrowbackSection({ data }: { data: any }) {
         role: "UX Designer",
       },
     ],
-  };
+  }
 
-  const filteredImages = throwbackData.images.slice(0, 9);
+  const filteredImages = throwbackData.images.slice(0, 9)
 
   return (
     <section className="py-20 lg:py-28 bg-black text-white relative overflow-hidden">
@@ -138,12 +142,8 @@ function ThrowbackSection({ data }: { data: any }) {
               {/* Hover Info */}
               <div className="absolute bottom-0 left-0 right-0 p-6 transform translate-y-10 group-hover:translate-y-0 transition-transform duration-500">
                 <div className="bg-black/50 backdrop-blur-md rounded-xl p-4 border border-white/20">
-                  <h3 className="font-semibold text-white mb-1">
-                    {img.text}
-                  </h3>
-                  <p className="text-gray-300 text-sm">
-                    {img.subtext}
-                  </p>
+                  <h3 className="font-semibold text-white mb-1">{img.text}</h3>
+                  <p className="text-gray-300 text-sm">{img.subtext}</p>
                 </div>
               </div>
 
@@ -308,7 +308,7 @@ function ThrowbackSection({ data }: { data: any }) {
         )}
       </AnimatePresence>
     </section>
-  );
+  )
 }
 
-export default ThrowbackSection;
+export default ThrowbackSection
