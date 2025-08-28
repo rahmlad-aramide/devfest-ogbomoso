@@ -1,29 +1,30 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable react/no-unescaped-entities */
-import { motion } from 'framer-motion';
-import { Globe, Calendar } from 'lucide-react';
-import Confetti from 'react-confetti';
-import { useEffect, useState } from 'react';
+import { motion } from "framer-motion"
+import { Globe, Calendar } from "lucide-react"
+import Confetti from "react-confetti"
+import { useEffect, useState } from "react"
+import Image from "next/image"
 
 function Preview() {
-  const [showConfetti, setShowConfetti] = useState(true);
+  const [showConfetti, setShowConfetti] = useState(true)
 
   useEffect(() => {
-    const timer = setTimeout(() => setShowConfetti(false), 5000);
-    return () => clearTimeout(timer);
-  }, []);
+    const timer = setTimeout(() => setShowConfetti(false), 5000)
+    return () => clearTimeout(timer)
+  }, [])
 
   const decorativeElements = [
-    { type: 'square', color: '#FFD700', rotate: 45 },
-    { type: 'circle', color: '#FF69B4', rotate: 0 },
-    { type: 'bracket', color: '#32CD32', rotate: 0 },
-    { type: 'arrow', color: '#FFA500', rotate: 0 },
-  ];
+    { type: "square", color: "#FFD700", rotate: 45 },
+    { type: "circle", color: "#FF69B4", rotate: 0 },
+    { type: "bracket", color: "#32CD32", rotate: 0 },
+    { type: "arrow", color: "#FFA500", rotate: 0 },
+  ]
 
   return (
     <section className="min-h-screen bg-[#90EE90] py-16 relative overflow-hidden">
       {showConfetti && <Confetti recycle={false} numberOfPieces={200} />}
-      
+
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           <motion.div
@@ -31,9 +32,7 @@ function Preview() {
             animate={{ opacity: 1, y: 0 }}
             className="text-center mb-12"
           >
-            <h1 className="text-3xl font-bold mb-8">
-              See you @
-            </h1>
+            <h1 className="text-3xl font-bold mb-8">See you @</h1>
           </motion.div>
 
           <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -95,7 +94,13 @@ function Preview() {
                   whileHover={{ scale: 1.05 }}
                   className="bg-white rounded-full py-2 px-4 inline-flex items-center gap-2"
                 >
-                  <img src="/gdg-ogbomoso-logo.svg" alt="GDG Logo" className="w-5 h-5" />
+                  <Image
+                    src="/gdg-ogbomoso-logo.svg"
+                    alt="GDG Logo"
+                    width={20}
+                    height={20}
+                    className="w-5 h-5"
+                  />
                   <span>Metropolitan Square</span>
                 </motion.div>
               </div>
@@ -110,10 +115,10 @@ function Preview() {
               style={{
                 top: `${Math.random() * 100}%`,
                 left: `${Math.random() * 100}%`,
-                width: '30px',
-                height: '30px',
+                width: "30px",
+                height: "30px",
                 background: element.color,
-                borderRadius: element.type === 'circle' ? '50%' : '0',
+                borderRadius: element.type === "circle" ? "50%" : "0",
                 transform: `rotate(${element.rotate}deg)`,
               }}
               animate={{
@@ -141,7 +146,7 @@ function Preview() {
         </div>
       </div>
     </section>
-  );
+  )
 }
 
-export default Preview;
+export default Preview

@@ -6,17 +6,66 @@ import { useState } from "react"
 function ThrowbackSection({ data }: { data: any }) {
   const [selectedImage, setSelectedImage] = useState<number | null>(null)
 
-  // Sample data structure for the throwback content
+  // Updated image paths
   const throwbackData = {
-    images: data?.images || [
-      "/devfest1.jpg", "/gdg-event-2.jpeg", "/devfest3.jpg", 
-      "/devfest4.jpg", "/devfest5.jpg", "/devfest6.jpg",
-      "/devfest7.jpg", "/devfest8.jpg", "/devfest9.jpg"
+    images: [
+      {
+        image: "/1.jpg",
+        text: "Keynote Session",
+        subtext:
+          "Sodiq Akinjobi, GDG Regional Lead, delivering the keynote session",
+      },
+      {
+        image: "/2.jpg",
+        text: "Group Picture",
+        subtext: "Faces of the attendees at Devfest '24",
+      },
+      {
+        image: "/3.jpg",
+        text: "Check-in point",
+        subtext: "Volunteers on duty, checking the attendees in to the hall",
+      },
+      {
+        image: "/4.jpg",
+        text: "W/ D Lead Organizers",
+        subtext:
+          "GDG Ogbomoso Lead Organizers (Miracle and Boluwatife) and Sodiq Akinjobi",
+      },
+      {
+        image: "/5.jpg",
+        text: "GDSC Leads at Devfest",
+        subtext:
+          "Lautech Past and Present GDGoC (formerly GDSC) Leads in a group picture with Sodiq",
+      },
+      {
+        image: "/6.jpg",
+        text: "Enda Rae and Rahmlad",
+        subtext: "Preparing for the Panelist session and Website showcase",
+      },
+      {
+        image: "/7.jpg",
+        text: "Gaming Session w/ Splash",
+        subtext: "Splash anchoring the gaming session on Menti",
+      },
+      {
+        image: "/8.jpg",
+        text: "Organizers in action",
+        subtext:
+          "Boluwatife Adebisi, Miracle Olabode, Abdrahman Oladimeji, Glory Olaifa",
+      },
     ],
     testimonials: [
-      { text: "An unforgettable experience that shaped my career!", author: "Olusegun O.", role: "Frontend Engineer" },
-      { text: "The energy and knowledge sharing was incredible!", author: "Veronica A.", role: "UX Designer" }
-    ]
+      {
+        text: "An unforgettable experience that shaped my career!",
+        author: "Olusegun O.",
+        role: "Frontend Engineer",
+      },
+      {
+        text: "The energy and knowledge sharing was incredible!",
+        author: "Veronica A.",
+        role: "UX Designer",
+      },
+    ],
   }
 
   const filteredImages = throwbackData.images.slice(0, 9)
@@ -39,7 +88,7 @@ function ThrowbackSection({ data }: { data: any }) {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <motion.span 
+          <motion.span
             initial={{ scale: 0.8, opacity: 0 }}
             whileInView={{ scale: 1, opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.6 }}
@@ -48,7 +97,7 @@ function ThrowbackSection({ data }: { data: any }) {
             🎉 RELIVE DEVFEST 2024
           </motion.span>
 
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.8 }}
@@ -56,14 +105,15 @@ function ThrowbackSection({ data }: { data: any }) {
           >
             Moments That Made History
           </motion.h2>
-          
-          <motion.p 
+
+          <motion.p
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.8 }}
             className="text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed"
           >
-            Step back into the energy, innovation, and connections that made DevFest 2024 an unforgettable experience.
+            Step back into the energy, innovation, and connections that made
+            DevFest 2024 an unforgettable experience.
           </motion.p>
         </motion.div>
 
@@ -73,7 +123,7 @@ function ThrowbackSection({ data }: { data: any }) {
           whileInView={{ opacity: 1 }}
           transition={{ duration: 1 }}
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16"
         >
           {filteredImages.map((img: any, index: number) => (
             <motion.div
@@ -88,22 +138,26 @@ function ThrowbackSection({ data }: { data: any }) {
             >
               {/* Glassmorphism Overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500" />
-              
+
               {/* Hover Info */}
               <div className="absolute bottom-0 left-0 right-0 p-6 transform translate-y-10 group-hover:translate-y-0 transition-transform duration-500">
                 <div className="bg-black/50 backdrop-blur-md rounded-xl p-4 border border-white/20">
-                  <h3 className="font-semibold text-white mb-1">DevFest Moment #{index + 1}</h3>
-                  <p className="text-gray-300 text-sm">Click to view full size</p>
+                  <h3 className="font-semibold text-white mb-1">{img.text}</h3>
+                  <p className="text-gray-300 text-sm">{img.subtext}</p>
                 </div>
               </div>
 
-              <Image
-                src={img}
-                alt={`DevFest 2023 Moment ${index + 1}`}
-                width={400}
-                height={300}
-                className="w-full h-[250px] object-cover group-hover:scale-110 transition-transform duration-700"
-              />
+              <div className="w-full h-[250px] overflow-hidden">
+                <Image
+                  src={img.image}
+                  alt={`DevFest 2023 Moment ${index + 1}`}
+                  width={400}
+                  height={300}
+                  className={`w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ${
+                    index === 0 ? "object-top" : "object-center"
+                  }`}
+                />
+              </div>
             </motion.div>
           ))}
         </motion.div>
@@ -116,7 +170,7 @@ function ThrowbackSection({ data }: { data: any }) {
           viewport={{ once: true }}
           className="mb-12"
         >
-          <motion.h3 
+          <motion.h3
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ delay: 1, duration: 0.7 }}
@@ -136,8 +190,8 @@ function ThrowbackSection({ data }: { data: any }) {
                   transition={{ delay: 1.1 + index * 0.2, duration: 0.8 }}
                   viewport={{ once: true }}
                   className={`p-4 rounded-xl backdrop-blur-sm border text-sm ${
-                    index === 0 
-                      ? "bg-[#4285f4]/10 border-[#4285f4]/30" 
+                    index === 0
+                      ? "bg-[#4285f4]/10 border-[#4285f4]/30"
                       : "bg-[#34a853]/10 border-[#34a853]/30"
                   }`}
                 >
@@ -146,7 +200,9 @@ function ThrowbackSection({ data }: { data: any }) {
                     {testimonial.text}
                   </p>
                   <div className="border-t border-white/10 pt-2">
-                    <p className="font-semibold text-white text-sm">{testimonial.author}</p>
+                    <p className="font-semibold text-white text-sm">
+                      {testimonial.author}
+                    </p>
                     <p className="text-gray-400 text-xs">{testimonial.role}</p>
                   </div>
                 </motion.div>
@@ -171,7 +227,7 @@ function ThrowbackSection({ data }: { data: any }) {
                   unoptimized
                 />
               </div>
-              
+
               {/* Optional: Add a subtle decorative element */}
               <div className="absolute -top-3 -right-3 w-6 h-6 bg-[#f9ab00]/30 rounded-full blur-sm" />
               <div className="absolute -bottom-3 -left-3 w-8 h-8 bg-[#34a853]/30 rounded-full blur-sm" />
@@ -188,7 +244,7 @@ function ThrowbackSection({ data }: { data: any }) {
           className="text-center"
         >
           <a
-            href={data?.driveLink}
+            href="https://drive.google.com/drive/folders/1K14ZyWATbvsgd9Hl3zd0dRYwEoef9Zgl?usp=drive_link"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-3 border-2 border-[#4285f4] text-[#4285f4] hover:bg-[#4285f4] hover:text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl group/cta"
@@ -196,9 +252,9 @@ function ThrowbackSection({ data }: { data: any }) {
             <span>Explore Full Gallery</span>
             <ChevronRight className="w-5 h-5 group-hover/cta:translate-x-2 transition-transform duration-300" />
           </a>
-          
+
           <p className="text-gray-400 mt-4 text-sm">
-            {throwbackData.images.length}+ unforgettable moments waiting
+            600+ unforgettable moments waiting
           </p>
         </motion.div>
       </div>
@@ -227,14 +283,26 @@ function ThrowbackSection({ data }: { data: any }) {
               >
                 <X className="w-8 h-8" />
               </button>
-              
+
               <Image
-                src={filteredImages[selectedImage]}
+                src={filteredImages[selectedImage].image}
                 alt={`DevFest 2023 Moment ${selectedImage + 1}`}
                 width={800}
                 height={600}
                 className="rounded-2xl shadow-2xl"
+                onClick={() => setSelectedImage(null)}
               />
+              {/* Hover Info */}
+              <div className="absolute bottom-0 left-0 right-0 p-6 transform translate-y-10 group-hover:translate-y-0 transition-transform duration-500">
+                <div className="bg-black/50 backdrop-blur-md rounded-xl p-4 border border-white/20">
+                  <h3 className="font-semibold text-white mb-1">
+                    {filteredImages[selectedImage].text}
+                  </h3>
+                  <p className="text-gray-300 text-sm">
+                    {filteredImages[selectedImage].subtext}
+                  </p>
+                </div>
+              </div>
             </motion.div>
           </motion.div>
         )}
