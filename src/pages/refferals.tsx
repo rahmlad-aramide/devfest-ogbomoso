@@ -17,7 +17,7 @@ export default function Referrals({ data }: any) {
       />
       <Header buttonText={data?.actionButtonText} rsvpLink={data?.rsvpLink} />
       <ReferralStats />
-      <Footer data={data} />
+      <Footer />
     </>
   );
 }
