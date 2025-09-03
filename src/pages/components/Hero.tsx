@@ -19,7 +19,6 @@ function Hero({ data }: any) {
 
   useEffect(() => {
     const targetDate = new Date(Date.UTC(2025, 11, 5, 9, 0, 0));
-
     const updateTime = () => {
       const now = new Date();
 

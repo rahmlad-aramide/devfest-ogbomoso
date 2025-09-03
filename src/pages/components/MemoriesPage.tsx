@@ -5,50 +5,50 @@ import Link from "next/link"
 import { useState } from "react"
 import Footer from '../components/Footer' 
 
-function MemoriesPage() {
+function MemoriesPage({data}: any) {
   const [selectedImage, setSelectedImage] = useState<number | null>(null)
 
   const memories = [
       {
-        image: "1.jpg",
+        image: "/webp/1.webp",
         text: "Keynote Session",
         subtext:
           "Sodiq Akinjobi, GDG Regional Lead, delivering the keynote session",
       },
       {
-        image: "2.jpg",
+        image: "/webp/2.webp",
         text: "Group Picture",
         subtext: "Faces of the attendees at Devfest '24",
       },
       {
-        image: "3.jpg",
+        image: "/webp/3.webp",
         text: "Check-in point",
         subtext: "Volunteers on duty, checking the attendees in to the hall",
       },
       {
-        image: "4.jpg",
+        image: "/webp/4.webp",
         text: "W/ D Lead Organizers",
         subtext:
           "GDG Ogbomoso Lead Organizers (Miracle and Boluwatife) and Sodiq Akinjobi",
       },
       {
-        image: "5.jpg",
+        image: "/webp/5.webp",
         text: "GDSC Leads at Devfest",
         subtext:
           "Lautech Past and Present GDGoC (formerly GDSC) Leads in a group picture with Sodiq",
       },
       {
-        image: "6.jpg",
+        image: "/webp/6.webp",
         text: "Enda_rae and Rahmlad",
         subtext: "Organizers Preparing for a couple of other upcoming sessions",
       },
       {
-        image: "7.jpg",
+        image: "/webp/7.webp",
         text: "Gaming Session w/ Splash",
         subtext: "Splash anchoring the gaming session on Menti",
       },
       {
-        image: "8.jpg",
+        image: "/webp/8.webp",
         text: "Organizers in action",
         subtext:
           "Boluwatife Adebisi, Miracle Olabode, Abdrahman Oladimeji, Glory Olaifa",
@@ -63,12 +63,6 @@ function MemoriesPage() {
 
   return (
     <div className="min-h-screen bg-black text-white relative overflow-hidden">
-   
-      <div className="absolute inset-0">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-[#4285f4]/10 rounded-full blur-3xl animate-pulse-slow" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#ea4335]/10 rounded-full blur-3xl animate-pulse-slow delay-1000" />
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-[#f9ab00]/10 rounded-full blur-3xl animate-pulse-slow delay-2000" />
-      </div>
 
       <div className="container mx-auto px-4 relative z-10">
        
@@ -170,7 +164,7 @@ function MemoriesPage() {
       </div>
 
      
-      <Footer data={null} />
+      <Footer data={data} />
 
       <AnimatePresence>
         {selectedImage !== null && (

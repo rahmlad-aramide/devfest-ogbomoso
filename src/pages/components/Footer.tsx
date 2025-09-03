@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Globe, Twitter } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 function Footer({ data }: any) {
   return (
@@ -31,37 +32,28 @@ function Footer({ data }: any) {
               <h4 className="font-bold mb-4">Quick Links</h4>
               <ul className="space-y-2">
                 <li>
-                  <a
+                  <Link
                     href="#schedule"
                     className="text-gray-300 hover:text-white transition-colors"
                   >
                     Schedule
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
+                  <Link
                     href="#cfp"
                     className="text-gray-300 hover:text-white transition-colors"
                   >
                     Speakers
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href={data && data.rsvpLink}
-                    target="_blank"
-                    className="text-gray-300 hover:text-white transition-colors"
-                  >
-                    {data && data.actionButtonText}
-                  </a>
-                </li>
-                <li>
-                  <a
+                  <Link
                     href="#faqs"
                     className="text-gray-300 hover:text-white transition-colors"
                   >
                     FAQs
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -69,18 +61,20 @@ function Footer({ data }: any) {
             <div>
               <h4 className="font-bold mb-4">Connect With Us</h4>
               <div className="flex gap-4 mb-4">
-                <a
+                <Link
                   href={data && data.community && data.community.twitter}
+                  target="_blank"
                   className="text-gray-300 hover:text-white transition-colors p-2 bg-white/10 rounded-full hover:bg-white/20"
                 >
                   <Twitter className="w-5 h-5" />
-                </a>
-                <a
+                </Link>
+                <Link
                   href={data && data.community && data.community.gdg}
+                  target="_blank"
                   className="text-gray-300 hover:text-white transition-colors p-2 bg-white/10 rounded-full hover:bg-white/20"
                 >
                   <Globe className="w-5 h-5" />
-                </a>
+                </Link>
               </div>
               <p className="text-gray-300 text-sm">
                 Join our community for updates and announcements

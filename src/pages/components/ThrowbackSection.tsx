@@ -11,23 +11,23 @@ function ThrowbackSection({ data }: { data: any }) {
   const throwbackData = {
     images: [
       {
-        image: "/1.jpg",
+        image: "/webp/1.webp",
         text: "Keynote Session",
         subtext:
           "Sodiq Akinjobi, GDG Regional Lead, delivering the keynote session",
       },
       {
-        image: "/2.jpg",
+        image: "/webp/2.webp",
         text: "Group Picture",
         subtext: "Faces of the attendees at Devfest '24",
       },
       {
-        image: "/3.jpg",
+        image: "/webp/3.webp",
         text: "Check-in point",
         subtext: "Volunteers on duty, checking the attendees in to the hall",
       },
       {
-        image: "/4.jpg",
+        image: "/webp/4.webp",
         text: "W/ D Lead Organizers",
         subtext:
           "GDG Ogbomoso Lead Organizers (Miracle and Boluwatife) and Sodiq Akinjobi",

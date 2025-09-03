@@ -1,17 +1,25 @@
-import { motion, AnimatePresence } from 'framer-motion';
-import Image from 'next/image';
-import { useState, useEffect } from 'react';
-import { Calendar, Clock, Users, MapPin, ExternalLink, X, Mic } from 'lucide-react';
+import { motion, AnimatePresence } from "framer-motion"
+import Image from "next/image"
+import { useState, useEffect } from "react"
+import {
+  Calendar,
+  Clock,
+  Users,
+  MapPin,
+  ExternalLink,
+  X,
+  Mic,
+} from "lucide-react"
 
 function ScheduleSection({ data }: any) {
-  const [show2024Agenda, setShow2024Agenda] = useState(false);
-  const [currentBg, setCurrentBg] = useState(0);
-  
-  
+  const [show2024Agenda, setShow2024Agenda] = useState(false)
+  const [currentBg, setCurrentBg] = useState(0)
+
+  // Background images for the fading effect
   const backgroundImages = [
-    '/Bold-glyphs.png',
-    
-  ];
+    "/Bold-glyphs.png",
+    // We can add more images here if you want a slideshow effect
+  ]
 
   
   const agenda2024 = [
@@ -20,40 +28,48 @@ function ScheduleSection({ data }: any) {
       title: "From Concept to Prototype: Rapid Prototyping",
       speaker: "Adeola Adegoke",
       track: "Product Design",
-      description: "This session explored how ideas quickly transform into functional prototypes, emphasizing speed, user feedback, and iterative design to validate concepts before full development.",
-      image: "/speakers/adeola-adegoke.jpg"
+      description:
+        "This session explored how ideas quickly transform into functional prototypes, emphasizing speed, user feedback, and iterative design to validate concepts before full development.",
+      image: "/speakers/adeola-adegoke.jpg",
     },
     {
       time: "12:30 - 12:45 PM",
-      title: "Design Systems: A Unified Language Between Designers and Developers",
+      title:
+        "Design Systems: A Unified Language Between Designers and Developers",
       speaker: "Courage Egbude",
       track: "UI/UX Track",
-      description: "This session discussed building design systems as shared frameworks, improving collaboration, ensuring consistency, and streamlining workflows between designers and developers across projects.",
-      image: "/speakers/courage-egbude.jpg"
+      description:
+        "This session discussed building design systems as shared frameworks, improving collaboration, ensuring consistency, and streamlining workflows between designers and developers across projects.",
+      image: "/speakers/courage-egbude.jpg",
     },
     {
       time: "1:00 - 1:15 PM",
       title: "Authentication Strategies in iOS with Firebase",
       speaker: "Daniel Jermaine",
       track: "Mobile Developement",
-      description: "This session covered implementing secure authentication in iOS apps using Firebase, highlighting email, social logins, and best practices for user data protection.",
-      image: "/speakers/daniel-jermaine.jpg"
-    }
-  ];
+      description:
+        "This session covered implementing secure authentication in iOS apps using Firebase, highlighting email, social logins, and best practices for user data protection.",
+      image: "/speakers/daniel-jermaine.jpg",
+    },
+  ]
 
 
   useEffect(() => {
     if (backgroundImages.length > 1) {
       const interval = setInterval(() => {
-        setCurrentBg((prev) => (prev + 1) % backgroundImages.length);
-      }, 5000); 
-      return () => clearInterval(interval);
+        setCurrentBg((prev) => (prev + 1) % backgroundImages.length)
+      }, 5000) // Change every 5 seconds
+      return () => clearInterval(interval)
     }
-  }, []);
+  }, [])
 
   return (
-    <section className="py-20 relative overflow-hidden" id="schedule" style={{ backgroundColor: '#FFEDB8' }}>
- 
+    <section
+      className="py-20 relative overflow-hidden"
+      id="schedule"
+      style={{ backgroundColor: "#FFEDB8" }}
+    >
+      {/* Enhanced background image with more prominence and blur */}
       <div className="absolute inset-0">
         {backgroundImages.map((image, index) => (
           <motion.div
@@ -64,15 +80,15 @@ function ScheduleSection({ data }: any) {
             className="absolute inset-0"
             style={{
               backgroundImage: `url(${image})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              backgroundRepeat: 'no-repeat',
-              filter: 'blur(5px) brightness(1.1)',
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              backgroundRepeat: "no-repeat",
+              filter: "blur(5px) brightness(1.1)",
             }}
           />
         ))}
-        
-  
+
+        {/* Semi-transparent overlay to ensure text readability */}
         <div className="absolute inset-0 bg-yellow/70"></div>
       </div>
 
@@ -90,7 +106,7 @@ function ScheduleSection({ data }: any) {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <motion.span 
+          <motion.span
             initial={{ scale: 0.8, opacity: 0 }}
             whileInView={{ scale: 1, opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.6 }}
@@ -100,7 +116,7 @@ function ScheduleSection({ data }: any) {
             SCHEDULE
           </motion.span>
 
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.8 }}
@@ -108,14 +124,15 @@ function ScheduleSection({ data }: any) {
           >
             Agenda Coming Soon!
           </motion.h2>
-          
-          <motion.p 
+
+          <motion.p
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.8 }}
             className="text-xl text-gray-800 max-w-2xl mx-auto mb-8"
           >
-            We're crafting an incredible lineup of sessions and speakers for DevFest 2025.
+            We're crafting an incredible lineup of sessions and speakers for
+            DevFest 2025.
           </motion.p>
 
           <motion.div
@@ -124,8 +141,7 @@ function ScheduleSection({ data }: any) {
             transition={{ delay: 0.5, duration: 0.6 }}
             className="flex flex-col items-center"
           >
-
-            
+            {/* Rewind to 2024 button - Changed to blue */}
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -149,20 +165,28 @@ function ScheduleSection({ data }: any) {
             
             <div className="absolute -top-10 -left-10 w-32 h-32 bg-[#4285f4]/20 rounded-full blur-xl" />
             <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-[#34a853]/20 rounded-full blur-xl" />
-            
+
             <div className="relative z-10 text-center">
-              <h3 className="text-2xl font-bold text-black mb-4">Save the Date!</h3>
-              
-            
+              <h3 className="text-2xl font-bold text-black mb-4">
+                Save the Date!
+              </h3>
+
+              {/* GIF Container */}
               <div className="rounded-2xl overflow-hidden border-4 border-white shadow-2xl mx-auto max-w-md">
-                <img 
-                  src="/DF25_SocialGifs_SaveTheDate_v01.gif" 
-                  alt="DevFest Ogbomoso 2025 Save the Date" 
+                <Image
+                  src="/DF25_SocialGifs_SaveTheDate_v01.gif"
+                  alt="DevFest Ogbomoso 2025 Save the Date"
+                  width={400}
+                  height={300}
                   className="w-full h-auto object-cover"
+                  unoptimized
+                  priority
                 />
               </div>
-              
-              <p className="text-sm text-gray-600 mt-4">Stay tuned for the amazing sessions we're preparing for you!</p>
+
+              <p className="text-sm text-gray-600 mt-4">
+                Stay tuned for the amazing sessions we're preparing for you!
+              </p>
             </div>
           </div>
         </motion.div>
@@ -223,7 +247,9 @@ function ScheduleSection({ data }: any) {
                   <h3 className="text-2xl lg:text-3xl font-bold text-[#4285f4] mb-2">
                     DevFest 2024 Agenda
                   </h3>
-                  <p className="text-gray-600">Saturday, 30, November, 2024 • Single Day Event</p>
+                  <p className="text-gray-600">
+                    Saturday, 30, November, 2024 • Single Day Event
+                  </p>
                 </div>
                 <button
                   onClick={() => setShow2024Agenda(false)}
@@ -236,7 +262,7 @@ function ScheduleSection({ data }: any) {
               
               <div className="relative z-10">
                 <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-gray-200" />
-                
+
                 {agenda2024.map((session, index) => (
                   <motion.div
                     key={index}
@@ -245,52 +271,66 @@ function ScheduleSection({ data }: any) {
                     transition={{ delay: index * 0.1 }}
                     className="mb-8 relative pl-10"
                   >
-                    <div className="absolute left-0 top-4 w-4 h-4 bg-[#FF9800] rounded-full border-4 border-white" 
-                         style={{ boxShadow: '0 0 0 2px #FF9800', marginLeft: '-8px' }} />
-                    
-                   
+                    <div
+                      className="absolute left-0 top-4 w-4 h-4 bg-[#FF9800] rounded-full border-4 border-white"
+                      style={{
+                        boxShadow: "0 0 0 2px #FF9800",
+                        marginLeft: "-8px",
+                      }}
+                    />
+
+                    {/* Time badge */}
                     <div className="mb-2">
                       <span className="px-3 py-1 bg-[#4285f4]/10 text-[#4285f4] rounded-full text-sm font-medium">
                         {session.time}
                       </span>
                     </div>
-                    
-                   
+
+                    {/* Session card */}
                     <div className="bg-white/80 backdrop-blur-sm rounded-xl p-5 border border-gray-200/50 shadow-sm hover:shadow-md transition-shadow duration-300">
                       <div className="flex flex-col md:flex-row gap-5">
                         
                         <div className="flex-shrink-0">
                           <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-[#4285f4]/30 shadow-md bg-gray-200 flex items-center justify-center">
                             {session.image ? (
-                              <img
+                              <Image
                                 src={session.image}
                                 alt={session.speaker}
-                                className="w-full h-full object-cover"
+                                width={80}
+                                height={80}
+                                className="w-full h-full object-cover rounded-full"
                                 onError={(e) => {
-                                 
-                                  e.currentTarget.style.display = 'none';
+                                  // Fallback if image fails to load
+                                  e.currentTarget.style.display = "none"
                                 }}
                               />
                             ) : null}
                             <div className="hidden w-full h-full items-center justify-center bg-[#4285f4]/20 text-[#4285f4] font-bold text-lg">
-                              {session.speaker.split(' ').map(name => name[0]).join('')}
+                              {session.speaker
+                                .split(" ")
+                                .map((name) => name[0])
+                                .join("")}
                             </div>
                           </div>
                         </div>
-                        
-                    
+
+                        {/* Session details */}
                         <div className="flex-1">
-                          <h4 className="text-lg font-bold text-gray-800 mb-2">{session.title}</h4>
-                          
+                          <h4 className="text-lg font-bold text-gray-800 mb-2">
+                            {session.title}
+                          </h4>
+
                           <div className="flex flex-wrap items-center gap-3 mb-3">
                             <span className="px-3 py-1 bg-[#34a853]/10 text-[#34a853] rounded-full text-xs font-medium flex items-center gap-1">
                               <MapPin className="w-3 h-3" />
                               {session.track}
                             </span>
                           </div>
-                          
-                          <p className="text-gray-600 text-sm mb-3">{session.description}</p>
-                          
+
+                          <p className="text-gray-600 text-sm mb-3">
+                            {session.description}
+                          </p>
+
                           <div className="flex items-center gap-2 text-sm text-[#ea4335] font-medium">
                             <Mic className="w-4 h-4" />
                             <span>{session.speaker}</span>
@@ -342,7 +382,7 @@ function ScheduleSection({ data }: any) {
         )}
       </AnimatePresence>
     </section>
-  );
+  )
 }
 
-export default ScheduleSection;
+export default ScheduleSection
