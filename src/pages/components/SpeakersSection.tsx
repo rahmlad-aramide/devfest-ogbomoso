@@ -9,7 +9,7 @@ function SpeakersSection({ data }: any) {
   const [pastSpeakers, setPastSpeakers] = useState([...dataSpeakers])
   const [showPastSpeakers, setShowPastSpeakers] = useState(false)
 
-  // Call for Speakers data
+ 
   const cfsData = {
     submissionDeadline: "30th September",
     eventDate: "December 5-6, 2025",
@@ -30,14 +30,14 @@ function SpeakersSection({ data }: any) {
 
   return (
     <section className="py-20 bg-white text-black relative overflow-hidden" id="speakers">
-      {/* Background decorative elements */}
+      
       <div className="absolute inset-0">
         <div className="absolute top-20 right-20 w-80 h-80 bg-[#4285f4]/5 rounded-full blur-3xl" />
         <div className="absolute bottom-20 left-20 w-96 h-96 bg-[#34a853]/5 rounded-full blur-3xl" />
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
-        {/* Header */}
+       
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -73,16 +73,16 @@ function SpeakersSection({ data }: any) {
             We&apos;re curating an incredible lineup of experts for DevFest 2025. The wait will be worth it!
           </motion.p>
 
-          {/* Side-by-side layout */}
+          
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Left Column - Coming Soon Content */}
+            
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.5, duration: 0.8 }}
               className="flex flex-col items-center justify-center space-y-8"
             >
-              {/* Enhanced Coming Soon Illustration */}
+              
               <div className="flex justify-center relative">
                 <motion.div 
                   className="relative"
@@ -111,7 +111,7 @@ function SpeakersSection({ data }: any) {
                       🎤
                     </motion.div>
                     
-                    {/* Floating elements */}
+                   
                     <motion.div 
                       className="absolute -top-3 -left-3 w-12 h-12 bg-[#4285f4]/20 rounded-full blur-sm"
                       animate={{
@@ -152,7 +152,7 @@ function SpeakersSection({ data }: any) {
                       }}
                     />
                     
-                    {/* Sound waves animation */}
+                  
                     <motion.div 
                       className="absolute inset-0 rounded-3xl border-2 border-[#4285f4]/30"
                       animate={{
@@ -182,7 +182,7 @@ function SpeakersSection({ data }: any) {
                 </motion.div>
               </div>
 
-              {/* Stats */}
+              
               <div className="grid grid-cols-3 gap-4 max-w-md mx-auto">
                 <div className="text-center">
                   <div className="w-10 h-10 bg-[#4285f4]/10 rounded-full flex items-center justify-center mx-auto mb-2">
@@ -208,7 +208,7 @@ function SpeakersSection({ data }: any) {
               </div>
             </motion.div>
 
-            {/* Right Column - Call for Speakers */}
+            
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -234,7 +234,7 @@ function SpeakersSection({ data }: any) {
               </div>
 
               <div className="space-y-4 mb-6">
-                {/* Preferred Topics */}
+                
                 <div className="bg-white/80 backdrop-blur-md rounded-xl p-4 border border-gray-200">
                   <div className="flex items-center gap-3 mb-3">
                     <div className="w-8 h-8 bg-[#4285f4]/10 rounded-full flex items-center justify-center">
@@ -252,7 +252,7 @@ function SpeakersSection({ data }: any) {
                   </ul>
                 </div>
 
-                {/* Important Dates */}
+               
                 <div className="bg-white/80 backdrop-blur-md rounded-xl p-4 border border-gray-200">
                   <div className="flex items-center gap-3 mb-3">
                     <div className="w-8 h-8 bg-[#ea4335]/10 rounded-full flex items-center justify-center">
@@ -273,7 +273,7 @@ function SpeakersSection({ data }: any) {
                 </div>
               </div>
 
-              {/* CTA Button */}
+              
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -294,7 +294,7 @@ function SpeakersSection({ data }: any) {
             </motion.div>
           </div>
           
-          {/* See Past Speakers Button - Now placed below both columns */}
+         
           <motion.button
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -308,8 +308,8 @@ function SpeakersSection({ data }: any) {
           </motion.button>
         </motion.div>
       </div>
-
-      {/* Past Speakers Modal - Fixed */}
+ 
+      
       <AnimatePresence>
         {showPastSpeakers && (
           <motion.div
@@ -327,11 +327,11 @@ function SpeakersSection({ data }: any) {
               className="bg-white/95 backdrop-blur-2xl rounded-3xl p-6 lg:p-8 max-w-6xl w-full max-h-[90vh] overflow-y-auto relative"
               onClick={(e) => e.stopPropagation()}
             >
-              {/* Background decorative elements */}
+              
               <div className="absolute top-0 right-0 w-32 h-32 bg-[#4285f4]/10 rounded-full blur-2xl -translate-y-16 translate-x-16" />
               <div className="absolute bottom-0 left-0 w-40 h-40 bg-[#34a853]/10 rounded-full blur-2xl translate-y-16 -translate-x-16" />
 
-              {/* Modal Header */}
+             
               <div className="flex items-center justify-between mb-8 relative z-10">
                 <div>
                   <h3 className="text-2xl lg:text-3xl font-bold text-[#4285f4] mb-2">
@@ -347,7 +347,7 @@ function SpeakersSection({ data }: any) {
                 </button>
               </div>
 
-              {/* Speakers Grid */}
+            
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10">
                 {pastSpeakers.map((speaker, index) => (
                   <motion.div
@@ -358,11 +358,11 @@ function SpeakersSection({ data }: any) {
                     whileHover={{ y: -5, scale: 1.02 }}
                     className="bg-white/80 backdrop-blur-md rounded-2xl p-6 border border-gray-200/50 shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden group"
                   >
-                    {/* Decorative circles */}
+                   
                     <div className="absolute -top-3 -left-3 w-8 h-8 bg-[#4285f4]/20 rounded-full blur-sm group-hover:bg-[#4285f4]/30 transition-colors" />
                     <div className="absolute -bottom-3 -right-3 w-10 h-10 bg-[#34a853]/20 rounded-full blur-sm group-hover:bg-[#34a853]/30 transition-colors" />
 
-                    {/* Speaker Image */}
+                   
                     <div className="relative w-32 h-32 mx-auto mb-4 rounded-2xl overflow-hidden border-4 border-white shadow-lg group-hover:border-[#4285f4]/20 transition-colors duration-300">
                       <Image
                         src={speaker.image}
@@ -373,7 +373,7 @@ function SpeakersSection({ data }: any) {
                       <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     </div>
 
-                    {/* Speaker Info */}
+                   
                     <div className="text-center">
                       <h4 className="font-bold text-lg text-[#4285f4] mb-1 group-hover:text-[#3367d6] transition-colors">
                         {speaker.name}
@@ -382,7 +382,7 @@ function SpeakersSection({ data }: any) {
                         {speaker.role}
                       </p>
 
-                      {/* Social Links */}
+                      
                       {speaker.socials && (
                         <div className="flex justify-center gap-2">
                           {speaker.socials.twitter && (
@@ -419,7 +419,7 @@ function SpeakersSection({ data }: any) {
                 ))}
               </div>
 
-              {/* Close Button */}
+             
               <div className="text-center mt-8 relative z-10">
                 <button
                   onClick={() => setShowPastSpeakers(false)}
@@ -437,3 +437,6 @@ function SpeakersSection({ data }: any) {
 }
 
 export default SpeakersSection
+
+
+

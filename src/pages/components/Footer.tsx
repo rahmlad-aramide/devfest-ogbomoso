@@ -83,7 +83,7 @@ function Footer({ data }: any) {
             </div>
           </div>
 
-          {/* GDG Ogbomoso text with stronger fade-out effect and icon on the left */}
+          
           <div className="mt-12 text-center mb-8">
             <div className="flex flex-col md:flex-row items-center justify-center">
               <Image 
