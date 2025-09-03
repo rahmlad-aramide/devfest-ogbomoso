@@ -160,7 +160,7 @@ function Speakers({ data }: any) {
             ))}
           </div>
         </div>
-        <Footer data={data} />
+        <Footer />
       </div>
       {speaker && (
         <motion.div

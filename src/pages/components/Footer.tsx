@@ -3,7 +3,7 @@ import { Globe, Twitter } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-function Footer({ data }: any) {
+function Footer() {
   return (
     <footer className="bg-[319047] text-white pt-16 pb-8">
       <div className="container mx-auto px-4">
@@ -19,7 +19,7 @@ function Footer({ data }: any) {
                   className="w-10 h-10"
                 />
                 <h3 className="font-bold text-xl">
-                  {data && data.community && data.community.title}
+                  GDG Ogbomoso
                 </h3>
               </div>
               <p className="text-gray-300">
@@ -62,14 +62,14 @@ function Footer({ data }: any) {
               <h4 className="font-bold mb-4">Connect With Us</h4>
               <div className="flex gap-4 mb-4">
                 <Link
-                  href={data && data.community && data.community.twitter}
+                  href={`https://x.com/gdgogbomoso`}
                   target="_blank"
                   className="text-gray-300 hover:text-white transition-colors p-2 bg-white/10 rounded-full hover:bg-white/20"
                 >
                   <Twitter className="w-5 h-5" />
                 </Link>
                 <Link
-                  href={data && data.community && data.community.gdg}
+                  href={'https://gdg.community.dev/events/details/google-gdg-ogbomoso-presents-devfest-ogbomoso-2025/'}
                   target="_blank"
                   className="text-gray-300 hover:text-white transition-colors p-2 bg-white/10 rounded-full hover:bg-white/20"
                 >

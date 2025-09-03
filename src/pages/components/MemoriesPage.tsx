@@ -5,7 +5,7 @@ import Link from "next/link"
 import { useState } from "react"
 import Footer from '../components/Footer' 
 
-function MemoriesPage({data}: any) {
+function MemoriesPage() {
   const [selectedImage, setSelectedImage] = useState<number | null>(null)
 
   const memories = [
@@ -164,7 +164,7 @@ function MemoriesPage({data}: any) {
       </div>
 
      
-      <Footer data={data} />
+      <Footer />
 
       <AnimatePresence>
         {selectedImage !== null && (
