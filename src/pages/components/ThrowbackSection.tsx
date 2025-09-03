@@ -32,28 +32,6 @@ function ThrowbackSection({ data }: { data: any }) {
         subtext:
           "GDG Ogbomoso Lead Organizers (Miracle and Boluwatife) and Sodiq Akinjobi",
       },
-      {
-        image: "/5.jpg",
-        text: "GDSC Leads at Devfest",
-        subtext:
-          "Lautech Past and Present GDGoC (formerly GDSC) Leads in a group picture with Sodiq",
-      },
-      {
-        image: "/6.jpg",
-        text: "Endarae and Rahmlad",
-        subtext: "Preparing for the Panelist session and Website showcase",
-      },
-      {
-        image: "/7.jpg",
-        text: "Gaming Session w/ Splash",
-        subtext: "Splash anchoring the gaming session on Menti",
-      },
-      {
-        image: "/8.jpg",
-        text: "Organizers in action",
-        subtext:
-          "Boluwatife Adebisi, Miracle Olabode, Abdrahman Oladimeji, Glory Olaifa",
-      },
     ],
     testimonials: [
       {
@@ -121,7 +99,7 @@ function ThrowbackSection({ data }: { data: any }) {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8, duration: 0.7 }}
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16"
         >
           {filteredImages.map((img: any, index: number) => (
             <motion.div
@@ -131,7 +109,7 @@ function ThrowbackSection({ data }: { data: any }) {
               transition={{ delay: index * 0.1, duration: 0.7 }}
               viewport={{ once: true }}
               whileHover={{ y: -10, scale: 1.02 }}
-              className="relative group cursor-pointer rounded-2xl overflow-hidden shadow-2xl"
+              className={`relative group cursor-pointer rounded-2xl overflow-hidden shadow-2xl ${index === 3? 'hidden md:flex lg:hidden' : ''}`}
               onClick={() => setSelectedImage(index)}
             >
               {/* Glassmorphism Overlay */}
@@ -170,11 +148,11 @@ function ThrowbackSection({ data }: { data: any }) {
             href="/memories"
             className="inline-flex items-center gap-3 border-2 border-[#34a853] text-[#34a853] hover:bg-[#34a853] hover:text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl group/cta"
           >
-            <span>See Memories</span>
+            <span>More Memories</span>
             <ChevronRight className="w-5 h-5 group-hover/cta:translate-x-2 transition-transform duration-300" />
           </Link>
 
-          <a
+          <Link
             href="https://drive.google.com/drive/folders/1K14ZyWATbvsgd9Hl3zd0dRYwEoef9Zgl?usp=drive_link"
             target="_blank"
             rel="noopener noreferrer"
@@ -182,7 +160,7 @@ function ThrowbackSection({ data }: { data: any }) {
           >
             <span>Explore Drive</span>
             <ChevronRight className="w-5 h-5 group-hover/cta:translate-x-2 transition-transform duration-300" />
-          </a>
+          </Link>
         </motion.div>
 
         <motion.div
@@ -272,28 +250,32 @@ function ThrowbackSection({ data }: { data: any }) {
                 className="relative max-w-4xl max-h-full"
                 onClick={(e) => e.stopPropagation()}
               >
-                <X className="w-8 h-8" />
-              </motion.div>
-
-              <Image
-                src={filteredImages[selectedImage].image}
-                alt={`DevFest 2023 Moment ${selectedImage + 1}`}
-                width={800}
-                height={600}
-                className="rounded-2xl shadow-2xl"
-                onClick={() => setSelectedImage(null)}
-              />
-              {/* Hover Info */}
-              <div className="absolute bottom-0 left-0 right-0 p-6 transform translate-y-10 group-hover:translate-y-0 transition-transform duration-500">
-                <div className="bg-black/50 backdrop-blur-md rounded-xl p-4 border border-white/20">
-                  <h3 className="font-semibold text-white mb-1">
-                    {filteredImages[selectedImage].text}
-                  </h3>
-                  <p className="text-gray-300 text-sm">
-                    {filteredImages[selectedImage].subtext}
-                  </p>
+                <button
+                  className="cursor-pointer flex ml-auto mb-4"
+                  onClick={() => setSelectedImage(null)}
+                >
+                  <X className="w-8 h-8" />
+                </button>
+                <Image
+                  src={filteredImages[selectedImage].image}
+                  alt={`DevFest 2023 Moment ${selectedImage + 1}`}
+                  width={800}
+                  height={600}
+                  className="rounded-2xl shadow-2xl"
+                  onClick={() => setSelectedImage(null)}
+                />
+                {/* Hover Info */}
+                <div className="absolute -bottom-16 left-0 right-0 p-6 transform translate-y-10 group-hover:translate-y-0 transition-transform duration-500">
+                  <div className="bg-black/50 backdrop-blur-md rounded-xl p-4 border border-white/20">
+                    <h3 className="font-semibold text-white mb-1">
+                      {filteredImages[selectedImage].text}
+                    </h3>
+                    <p className="text-gray-300 text-sm">
+                      {filteredImages[selectedImage].subtext}
+                    </p>
+                  </div>
                 </div>
-              </div>
+              </motion.div>
             </motion.div>
           )}
         </AnimatePresence>

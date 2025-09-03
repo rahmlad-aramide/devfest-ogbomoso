@@ -1,36 +1,65 @@
 import { motion, AnimatePresence } from "framer-motion"
-import { ChevronLeft, Download, Share, Heart, X } from "lucide-react"
+import { ChevronLeft, X } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { useState } from "react"
 import Footer from '../components/Footer' 
 
 function MemoriesPage() {
-  const [selectedCategory, setSelectedCategory] = useState("all")
   const [selectedImage, setSelectedImage] = useState<number | null>(null)
-  
+
   const memories = [
-    { id: 1, src: "/1.jpg", category: "event", likes: 42, caption: "Opening ceremony of DevFest 2024" },
-    { id: 2, src: "/3.jpg", category: "workshop", likes: 38, caption: "Hands-on AI workshop session" },
-    { id: 3, src: "/2.jpg", category: "networking", likes: 56, caption: "Participants connecting and sharing ideas" },
-    { id: 4, src: "/4.jpg", category: "event", likes: 29, caption: "Keynote speech by our special guest" },
-    { id: 5, src: "/5.jpg", category: "workshop", likes: 34, caption: "Cloud computing deep dive session" },
-    { id: 6, src: "/6.jpg", category: "networking", likes: 47, caption: "Community members collaborating" },
-    { id: 7, src: "/7.jpg", category: "event", likes: 63, caption: "Closing ceremony and awards" },
-    { id: 8, src: "/8.jpg", category: "workshop", likes: 31, caption: "Participants working on projects" },
-    { id: 9, src: "/9.jpg", category: "networking", likes: 52, caption: "Making new connections at the event" },
-  ]
-
-  const filteredMemories = selectedCategory === "all" 
-    ? memories 
-    : memories.filter(memory => memory.category === selectedCategory)
-
-  const categories = [
-    { id: "all", name: "All Memories", count: memories.length },
-    { id: "event", name: "Main Event", count: memories.filter(m => m.category === "event").length },
-    { id: "workshop", name: "Workshops", count: memories.filter(m => m.category === "workshop").length },
-    { id: "networking", name: "Networking", count: memories.filter(m => m.category === "networking").length },
-  ]
+      {
+        image: "1.jpg",
+        text: "Keynote Session",
+        subtext:
+          "Sodiq Akinjobi, GDG Regional Lead, delivering the keynote session",
+      },
+      {
+        image: "2.jpg",
+        text: "Group Picture",
+        subtext: "Faces of the attendees at Devfest '24",
+      },
+      {
+        image: "3.jpg",
+        text: "Check-in point",
+        subtext: "Volunteers on duty, checking the attendees in to the hall",
+      },
+      {
+        image: "4.jpg",
+        text: "W/ D Lead Organizers",
+        subtext:
+          "GDG Ogbomoso Lead Organizers (Miracle and Boluwatife) and Sodiq Akinjobi",
+      },
+      {
+        image: "5.jpg",
+        text: "GDSC Leads at Devfest",
+        subtext:
+          "Lautech Past and Present GDGoC (formerly GDSC) Leads in a group picture with Sodiq",
+      },
+      {
+        image: "6.jpg",
+        text: "Enda_rae and Rahmlad",
+        subtext: "Organizers Preparing for a couple of other upcoming sessions",
+      },
+      {
+        image: "7.jpg",
+        text: "Gaming Session w/ Splash",
+        subtext: "Splash anchoring the gaming session on Menti",
+      },
+      {
+        image: "8.jpg",
+        text: "Organizers in action",
+        subtext:
+          "Boluwatife Adebisi, Miracle Olabode, Abdrahman Oladimeji, Glory Olaifa",
+      },
+      {
+        image: "/9.jpg",
+        text: "Recap of a session",
+        subtext:
+          "A speaker's session recap being displayed on the screen.",
+      },
+    ];
 
   return (
     <div className="min-h-screen bg-black text-white relative overflow-hidden">
@@ -72,29 +101,6 @@ function MemoriesPage() {
             Relive every moment of DevFest 2024 through our collection of memories.
           </motion.p>
         </motion.div>
-
-        
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="flex flex-wrap gap-3 justify-center mb-12"
-        >
-          {categories.map((category) => (
-            <button
-              key={category.id}
-              onClick={() => setSelectedCategory(category.id)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                selectedCategory === category.id
-                  ? "bg-[#4285f4] text-white"
-                  : "bg-white/10 text-gray-300 hover:bg-white/20 hover:text-white"
-              }`}
-            >
-              {category.name} ({category.count})
-            </button>
-          ))}
-        </motion.div>
-
         
         <motion.div
           initial={{ opacity: 0 }}
@@ -102,9 +108,9 @@ function MemoriesPage() {
           transition={{ duration: 0.8, delay: 0.5 }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pb-12"
         >
-          {filteredMemories.map((memory, index) => (
+          {memories.map((memory, index) => (
             <motion.div
-              key={memory.id}
+              key={index}
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1, duration: 0.7 }}
@@ -118,45 +124,27 @@ function MemoriesPage() {
               
               <div className="absolute bottom-0 left-0 right-0 p-6 transform translate-y-10 group-hover:translate-y-0 transition-transform duration-500 z-20">
                 <div className="bg-black/50 backdrop-blur-md rounded-xl p-4 border border-white/20">
-                  <h3 className="font-semibold text-white mb-1">{memory.caption}</h3>
-                  <p className="text-gray-300 text-sm">Click to view full size</p>
+                  <h3 className="font-semibold text-white mb-1">{memory.text}</h3>
+                  <p className="text-gray-300 text-sm">{memory.subtext}</p>
                 </div>
               </div>
 
              
               <div className="w-full h-[250px] overflow-hidden">
                 <Image
-                  src={memory.src}
-                  alt={memory.caption}
+                  src={memory.image}
+                  alt={memory.text}
                   width={400}
                   height={300}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 />
               </div>
 
-              
-              <div className="absolute top-4 left-4 flex items-center gap-1 text-white z-20">
-                <Heart className="w-4 h-4 fill-current" />
-                <span className="text-sm font-medium">{memory.likes}</span>
-              </div>
             </motion.div>
           ))}
         </motion.div>
 
-       
-        {filteredMemories.length === 0 && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="text-center py-12"
-          >
-            <div className="text-6xl mb-4">📸</div>
-            <h3 className="text-xl text-gray-400 mb-2">No memories found</h3>
-            <p className="text-gray-500">Try selecting a different category</p>
-          </motion.div>
-        )}
-
-       
+      
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -209,8 +197,8 @@ function MemoriesPage() {
               </button>
               
               <Image
-                src={filteredMemories[selectedImage].src}
-                alt={filteredMemories[selectedImage].caption}
+                src={memories[selectedImage].image}
+                alt={memories[selectedImage].text}
                 width={800}
                 height={600}
                 className="rounded-2xl shadow-2xl"

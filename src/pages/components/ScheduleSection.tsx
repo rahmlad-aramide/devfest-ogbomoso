@@ -180,8 +180,12 @@ function ScheduleSection({ data }: any) {
               <div className="text-sm text-gray-700">Month</div>
             </div>
             <div className="text-center px-4 py-2">
-              <div className="text-2xl font-bold text-[#34a853]">5-6</div>
-              <div className="text-sm text-gray-700">Days</div>
+              <div className="text-2xl font-bold text-[#34a853]">5th</div>
+              <div className="text-sm text-gray-700">Workshop</div>
+            </div>
+            <div className="text-center px-4 py-2">
+              <div className="text-2xl font-bold text-[#f9ab00]">6th</div>
+              <div className="text-sm text-gray-700">Main Event</div>
             </div>
             <div className="text-center px-4 py-2">
               <div className="text-2xl font-bold text-[#ea4335]">2025</div>

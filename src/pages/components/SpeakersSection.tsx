@@ -29,7 +29,7 @@ function SpeakersSection({ data }: any) {
   }
 
   return (
-    <section className="py-20 bg-white text-black relative overflow-hidden" id="speakers">
+    <section className="py-20 bg-white text-black relative overflow-hidden" id="cfp">
       
       <div className="absolute inset-0">
         <div className="absolute top-20 right-20 w-80 h-80 bg-[#4285f4]/5 rounded-full blur-3xl" />
@@ -59,7 +59,7 @@ function SpeakersSection({ data }: any) {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.8 }}
-            className="text-4xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-black to-gray-700 bg-clip-text text-transparent"
+            className="text-4xl lg:text-6xl font-bold pb-6 bg-gradient-to-r from-black to-gray-700 bg-clip-text text-transparent"
           >
             Amazing Speakers Coming Soon
           </motion.h2>

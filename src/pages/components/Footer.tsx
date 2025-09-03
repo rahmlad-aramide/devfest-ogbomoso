@@ -10,14 +10,16 @@ function Footer({ data }: any) {
           <div className="grid md:grid-cols-4 gap-12 mb-12">
             <div>
               <div className="flex items-center gap-3 mb-4">
-                <Image 
-                  src="/icon.svg" 
-                  alt="GDG Ogbomoso" 
-                  width={40} 
-                  height={40} 
+                <Image
+                  src="/icon.svg"
+                  alt="GDG Ogbomoso"
+                  width={40}
+                  height={40}
                   className="w-10 h-10"
                 />
-                <h3 className="font-bold text-xl">{data && data.community && data.community.title}</h3>
+                <h3 className="font-bold text-xl">
+                  {data && data.community && data.community.title}
+                </h3>
               </div>
               <p className="text-gray-300">
                 A community-led tech conference bringing together developers,
@@ -38,7 +40,7 @@ function Footer({ data }: any) {
                 </li>
                 <li>
                   <a
-                    href="#speakers"
+                    href="#cfp"
                     className="text-gray-300 hover:text-white transition-colors"
                   >
                     Speakers
@@ -54,7 +56,10 @@ function Footer({ data }: any) {
                   </a>
                 </li>
                 <li>
-                  <a href="#faqs" className="text-gray-300 hover:text-white transition-colors">
+                  <a
+                    href="#faqs"
+                    className="text-gray-300 hover:text-white transition-colors"
+                  >
                     FAQs
                   </a>
                 </li>
@@ -64,14 +69,14 @@ function Footer({ data }: any) {
             <div>
               <h4 className="font-bold mb-4">Connect With Us</h4>
               <div className="flex gap-4 mb-4">
-                <a 
-                  href={data && data.community && data.community.twitter} 
+                <a
+                  href={data && data.community && data.community.twitter}
                   className="text-gray-300 hover:text-white transition-colors p-2 bg-white/10 rounded-full hover:bg-white/20"
                 >
                   <Twitter className="w-5 h-5" />
                 </a>
-                <a 
-                  href={data && data.community && data.community.gdg} 
+                <a
+                  href={data && data.community && data.community.gdg}
                   className="text-gray-300 hover:text-white transition-colors p-2 bg-white/10 rounded-full hover:bg-white/20"
                 >
                   <Globe className="w-5 h-5" />
@@ -83,20 +88,20 @@ function Footer({ data }: any) {
             </div>
           </div>
 
-          
           <div className="mt-12 text-center mb-8">
             <div className="flex flex-col md:flex-row items-center justify-center">
-              <Image 
-                src="/icon.svg" 
-                alt="GDG Ogbomoso" 
-                width={150} 
-                height={150} 
+              <Image
+                src="/icon.svg"
+                alt="GDG Ogbomoso"
+                width={150}
+                height={150}
                 className="md:mr-4 opacity-90 mb-4 md:mb-0 w-20 h-20 md:w-32 md:h-32"
               />
-              <h2 
+              <h2
                 className="text-4xl sm:text-5xl md:text-8xl font-bold tracking-wide"
                 style={{
-                  background: "linear-gradient(to bottom, white 0%, rgba(255,255,255,0.7) 30%, rgba(255,255,255,0.3) 70%, transparent 100%)",
+                  background:
+                    "linear-gradient(to bottom, white 0%, rgba(255,255,255,0.7) 30%, rgba(255,255,255,0.3) 70%, transparent 100%)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                   backgroundClip: "text",
@@ -111,7 +116,7 @@ function Footer({ data }: any) {
             <p className="text-gray-300 text-sm order-2 md:order-1">
               © 2025 GDG Ogbomoso. All rights reserved.
             </p>
-            
+
             <motion.div
               animate={{
                 rotate: [0, 360],
