@@ -17,13 +17,12 @@ function Hero({ data }: any) {
   const [currentDate, setCurrentDate] = useState("")
 
   useEffect(() => {
-    // Create the target date properly for November 30, 2024, 10:00 AM WAT
-    const targetDate = new Date(Date.UTC(2024, 10, 30, 9, 0, 0)); // 9:00 UTC = 10:00 AM WAT (UTC+1)
+    const targetDate = new Date(Date.UTC(2024, 10, 30, 9, 0, 0)); 
     
     const updateTime = () => {
       const now = new Date();
       
-      // Update current time and date in WAT (UTC+1)
+      
       const watOptions: Intl.DateTimeFormatOptions = {
         timeZone: 'Africa/Lagos',
         hour12: true,
@@ -43,7 +42,7 @@ function Hero({ data }: any) {
       setCurrentTime(now.toLocaleTimeString('en-NG', watOptions));
       setCurrentDate(now.toLocaleDateString('en-NG', dateOptions));
 
-      // Update countdown
+      
       const difference = targetDate.getTime() - now.getTime();
       
       if (difference > 0) {
@@ -54,22 +53,22 @@ function Hero({ data }: any) {
 
         setTimeLeft({ days, hours, minutes, seconds });
       } else {
-        // Event has started
+        
         setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
       }
     }
 
-    // Initial update
+  
     updateTime();
 
-    // Set up intervals
+   
     const timerId = setInterval(updateTime, 1000);
 
-    // Clean up
+   
     return () => clearInterval(timerId);
   }, []);
 
-  // Animation for main heading - EXACTLY your original formatting
+  
   const letterVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: (i: number) => ({
@@ -83,7 +82,7 @@ function Hero({ data }: any) {
     })
   };
 
-  // Animation variants for other components
+  
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -121,7 +120,7 @@ function Hero({ data }: any) {
 
   return (
     <section className="min-h-[60vh] lg:min-h-[70vh] relative bg-black text-white pt-20 pb-5">
-      {/* Background Image */}
+     
       <div className="absolute inset-0 w-full h-full">
         <Image
           src="/hero.jpg"
@@ -130,18 +129,18 @@ function Hero({ data }: any) {
           className="object-cover"
           priority
         />
-        {/* Gradient overlay - fade to black at the top */}
+       
         <div className="absolute inset-0 bg-gradient-to-b from-black via-black/70 to-black/30" />
-        {/* Additional gradient for better text contrast */}
+       
         <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/30 to-black/10" />
       </div>
 
       <Header buttonText={data?.actionButtonText} rsvpLink={data?.rsvpLink} />
 
-      {/* Main Content */}
+      
       <div className="pt-10 relative z-10 flex items-center justify-center min-h-[60vh] lg:min-h-[70vh]">
         <div className="w-full max-w-6xl mx-auto px-4 lg:px-6">
-          {/* Centered Content */}
+         
           <motion.div 
             className="text-center space-y-6 lg:space-y-8"
             variants={containerVariants}
@@ -149,7 +148,7 @@ function Hero({ data }: any) {
             whileInView="visible"
             viewport={{ once: true }}
           >
-            {/* Badge - Google Blue */}
+           
             <motion.div 
               variants={itemVariants}
               className="inline-flex items-center justify-center px-4 py-2 bg-[#4285f4]/10 backdrop-blur-sm rounded-full border border-[#4285f4]/30"
@@ -159,7 +158,7 @@ function Hero({ data }: any) {
               </span>
             </motion.div>
 
-            {/* Main Heading - EXACTLY YOUR ORIGINAL FORMATTING with animation */}
+           
             <motion.h1 
               className="text-6xl lg:text-9xl font-black leading-tight lg:leading-none px-4"
               initial="hidden"
@@ -177,7 +176,7 @@ function Hero({ data }: any) {
               <motion.span variants={letterVariants} custom={8} className="text-[#ea4335]"> - 25</motion.span>
             </motion.h1>
 
-            {/* Theme Header */}
+           
             <motion.div 
               variants={scaleVariants}
               className="bg-[#34a853]/10 backdrop-blur-md rounded-2xl p-6 border border-[#34a853]/20 mx-auto max-w-2xl"
@@ -190,7 +189,7 @@ function Hero({ data }: any) {
               </p>
             </motion.div>
 
-            {/* Description */}
+           
             <motion.p 
               variants={itemVariants}
               className="text-lg lg:text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed px-4"
@@ -200,7 +199,7 @@ function Hero({ data }: any) {
               world. Together, let&apos;s code the future.
             </motion.p>
 
-            {/* Combined Countdown + Event Details */}
+            
             <motion.div 
               variants={scaleVariants}
               className="bg-black/40 backdrop-blur-xl rounded-2xl p-6 lg:p-8 border border-white/10 shadow-2xl max-w-2xl mx-auto"
@@ -236,7 +235,7 @@ function Hero({ data }: any) {
                 ))}
               </div>
               
-              {/* Event Details moved here - stacked inline as requested */}
+             
               <motion.div 
                 variants={itemVariants}
                 className="mt-6 pt-4 border-t border-white/10"
@@ -257,7 +256,7 @@ function Hero({ data }: any) {
                 </div>
               </motion.div>
 
-              {/* Live Current Time & Date */}
+              
               <motion.div 
                 variants={itemVariants}
                 className="mt-4 pt-4 border-t border-white/10"
@@ -277,12 +276,12 @@ function Hero({ data }: any) {
               </motion.div>
             </motion.div>
 
-            {/* CTA Buttons - Google Colors */}
+            
             <motion.div 
               variants={itemVariants}
               className="flex flex-col sm:flex-row gap-3 lg:gap-4 justify-center items-center pt-4 px-4 pb-8"
             >
-              {/* RSVP Button - Google Blue */}
+              
               <a href="https://tinyurl.com/devfestogbo2025" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
                 <motion.button 
                   whileHover={{ scale: 1.05 }}
@@ -293,7 +292,7 @@ function Hero({ data }: any) {
                 </motion.button>
               </a>
               
-              {/* Get DP Button - Transparent with Green Outline */}
+          
               <Link href="/dp" className="w-full sm:w-auto">
                 <motion.button 
                   whileHover={{ scale: 1.05 }}

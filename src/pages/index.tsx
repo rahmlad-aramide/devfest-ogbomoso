@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+
 "use client";
 import DPSection from "./components/DPSection";
 import FAQSection from "./components/FAQSection";

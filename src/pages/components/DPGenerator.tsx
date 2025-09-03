@@ -19,7 +19,7 @@ function DPGeneratorComponent() {
           </p>
         </motion.div>
         <div className="max-w-4xl mx-auto flex items-center justify-center">
-          {/* Coming Soon Card */}
+         
           <div className="w-full max-w-[500px]">
             <motion.div 
               initial={{ y: 20, opacity: 0 }}
@@ -28,14 +28,14 @@ function DPGeneratorComponent() {
               className="bg-gray-50/80 backdrop-blur-md p-8 rounded-2xl border border-white/20 shadow-xl"
             >
               <div className="text-center space-y-6">
-                {/* Icon */}
+              
                 <div className="flex justify-center">
                   <div className="w-24 h-24 rounded-full bg-[#4285f4] flex items-center justify-center">
                     <Palette className="w-12 h-12 text-white" />
                   </div>
                 </div>
                 
-                {/* Message */}
+             
                 <div className="space-y-4">
                   <h3 className="text-2xl font-bold text-gray-800">Feature Coming Soon</h3>
                   <p className="text-gray-600">
@@ -44,7 +44,7 @@ function DPGeneratorComponent() {
                   </p>
                 </div>
                 
-                {/* Status Indicators */}
+               
                 <div className="flex justify-center space-x-4">
                   {[
                     { label: "Design", color: "#EA4335", icon: <Sparkles className="w-4 h-4" /> },
@@ -69,7 +69,7 @@ function DPGeneratorComponent() {
                   ))}
                 </div>
                 
-                {/* Progress Bar */}
+                
                 <div className="pt-4">
                   <div className="w-full bg-gray-200/50 rounded-full h-2.5">
                     <motion.div 
@@ -82,7 +82,7 @@ function DPGeneratorComponent() {
                   <p className="text-sm text-gray-500 mt-2">Development in progress: 65% complete</p>
                 </div>
                 
-                {/* Feature Highlights (replaced the button) */}
+                
                 <motion.div 
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}

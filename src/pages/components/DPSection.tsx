@@ -6,7 +6,7 @@ import { Upload, Palette, Eye, Download, Share2 } from "lucide-react";
 function DPSection() {
   return (
     <section className="relative bg-white overflow-hidden">
-      {/* Top decorative image - full width, no margins, no spacing */}
+     
       <div className="w-full">
         <Image
           src="/Screenshot 2025-08-24 at 21.21.37.png"
@@ -17,7 +17,7 @@ function DPSection() {
         />
       </div>
 
-      {/* Background decorative elements */}
+      
       <div className="absolute inset-0">
         <div className="absolute top-20 right-20 w-80 h-80 bg-[#4285f4]/10 rounded-full blur-3xl" />
         <div className="absolute bottom-20 left-20 w-96 h-96 bg-[#34a853]/10 rounded-full blur-3xl" />
@@ -60,7 +60,7 @@ function DPSection() {
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
-          {/* Left side - Enhanced DP Preview with Glassmorphism */}
+          
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -74,12 +74,12 @@ function DPSection() {
                 transition={{ duration: 0.7, type: "spring" }}
                 className="bg-white/90 backdrop-blur-xl rounded-3xl shadow-2xl p-6 md:p-8 border-2 border-white/70 relative overflow-hidden"
               >
-                {/* Glassmorphism effect elements */}
+               
                 <div className="absolute -top-4 -left-4 w-16 h-16 bg-[#4285f4]/20 rounded-full blur-md" />
                 <div className="absolute -bottom-4 -right-4 w-20 h-20 bg-[#34a853]/20 rounded-full blur-md" />
                 
                 <div className="grid grid-cols-3 grid-rows-3 gap-3 md:gap-4 aspect-square relative z-10">
-                  {/* Top Row */}
+               
                   <div className="bg-gradient-to-br from-[#34a853] to-[#34a853]/90 col-span-2 rounded-2xl p-3 md:p-4 relative overflow-hidden">
                     <div className="absolute inset-0 bg-gradient-to-br from-transparent to-black/10"></div>
                     <div className="flex space-x-2 absolute top-2 md:top-3 left-2 md:left-3">
@@ -102,14 +102,14 @@ function DPSection() {
                     />
                   </div>
 
-                  {/* Middle Row */}
+                  
                   <div className="bg-gradient-to-br from-[#ea4335] to-[#ea4335]/90 col-span-2 rounded-2xl p-3 md:p-4 relative overflow-hidden">
                     <div className="absolute inset-0 bg-gradient-to-br from-transparent to-black/10"></div>
                     <div className="text-white text-base md:text-lg font-bold">Osamudiame</div>
                     <div className="text-white text-xs opacity-90">WILL BE AT</div>
                   </div>
 
-                  {/* Bottom Row */}
+                
                   <div className="bg-gradient-to-br from-[#4285f4] to-[#4285f4]/90 col-span-2 rounded-2xl p-3 md:p-4 relative overflow-hidden">
                     <div className="absolute inset-0 bg-gradient-to-br from-transparent to-black/10"></div>
                     <div className="text-white text-sm md:text-md font-bold flex items-center gap-1">
@@ -132,7 +132,7 @@ function DPSection() {
             </div>
           </motion.div>
 
-          {/* Right side - Content and Steps */}
+          
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -141,9 +141,9 @@ function DPSection() {
           >
             <h3 className="text-2xl font-bold mb-6 md:mb-8">Create your DP in 4 simple steps:</h3>
             
-            {/* Steps */}
+            
             <div className="space-y-4 md:space-y-6 mb-8 md:mb-10">
-              {/* Step 1 */}
+              
               <motion.div 
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -162,7 +162,7 @@ function DPSection() {
                 </div>
               </motion.div>
 
-              {/* Step 2 */}
+             
               <motion.div 
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -181,7 +181,7 @@ function DPSection() {
                 </div>
               </motion.div>
 
-              {/* Step 3 */}
+              
               <motion.div 
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -200,7 +200,7 @@ function DPSection() {
                 </div>
               </motion.div>
 
-              {/* Step 4 */}
+            
               <motion.div 
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -244,7 +244,7 @@ function DPSection() {
         </div>
       </div>
 
-      {/* Bottom decorative image - full width, no margins */}
+      
       <div className="w-full">
         <Image
           src="/Screenshot 2025-08-24 at 21.21.37.png"

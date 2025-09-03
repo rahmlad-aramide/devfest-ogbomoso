@@ -22,7 +22,7 @@ const Header = ({ buttonText, rsvpLink }: HeaderProps) => {
     const checkDevice = () => setIsMobile(window.innerWidth < 768)
     const handleScroll = () => setIsScrolled(window.scrollY > 10)
 
-    // Handle click outside to close dropdowns
+   
     const handleClickOutside = (event: MouseEvent) => {
       if (supportRef.current && !supportRef.current.contains(event.target as Node)) {
         setOpenSupport(false)
@@ -71,7 +71,7 @@ const Header = ({ buttonText, rsvpLink }: HeaderProps) => {
     }`}>
       <div className="container mx-auto px-4 lg:px-6">
         <div className="flex items-center justify-between">
-          {/* Logo */}
+  
           <div className="flex items-center">
             <Image
               src="/devfedt-logo-white.png"
@@ -82,7 +82,7 @@ const Header = ({ buttonText, rsvpLink }: HeaderProps) => {
             />
           </div>
 
-          {/* Desktop Navigation */}
+          
           <div className="hidden md:flex items-center gap-8 lg:gap-12">
             {navItems.map((item) => (
               <a
@@ -97,7 +97,7 @@ const Header = ({ buttonText, rsvpLink }: HeaderProps) => {
               </a>
             ))}
             
-            {/* Support Dropdown */}
+          
             <div className="relative" ref={supportRef}>
               <button
                 onClick={() => setOpenSupport(!openSupport)}
@@ -116,16 +116,16 @@ const Header = ({ buttonText, rsvpLink }: HeaderProps) => {
             </div>
           </div>
 
-          {/* CTA Button & Mobile Menu */}
+         
           <div className="flex items-center gap-4">
-            {/* RSVP Button */}
+           
             <a href="https://tinyurl.com/devfestogbo2025" target="_blank" rel="noopener noreferrer" className="hidden sm:block">
               <button className="bg-[#FF9800] hover:bg-[#E68900] text-white hover:text-white px-4 lg:px-5 py-2 rounded-full transition-all duration-300 text-sm font-medium shadow-md hover:shadow-lg">
                 {buttonText}
               </button>
             </a>
 
-            {/* Mobile Menu Button - Centered properly */}
+            
             <button
               onClick={toggleMenu}
               className="md:hidden flex items-center justify-center w-10 h-10 text-white hover:text-[#FF9800] transition-colors duration-200"
@@ -146,7 +146,7 @@ const Header = ({ buttonText, rsvpLink }: HeaderProps) => {
           </div>
         </div>
 
-        {/* Mobile Menu - Professional with Glassmorphism */}
+       
         {(isMenuOpen || isAnimating) && (
           <div 
             ref={mobileMenuRef}
@@ -173,7 +173,7 @@ const Header = ({ buttonText, rsvpLink }: HeaderProps) => {
                   </a>
                 ))}
                 
-                {/* Mobile Support */}
+                
                 <div className="pt-2 border-t border-white/10 mt-2">
                   <button
                     onClick={() => setOpenSupport(!openSupport)}
@@ -191,7 +191,7 @@ const Header = ({ buttonText, rsvpLink }: HeaderProps) => {
                   )}
                 </div>
 
-                {/* Mobile RSVP Button */}
+                
                 <a href="https://tinyurl.com/devfestogbo2025" target="_blank" rel="noopener noreferrer" className="mt-3">
                   <button className="w-full bg-[#FF9800] hover:bg-[#E68900] text-white py-2.5 rounded-lg transition-all duration-300 text-sm font-medium shadow-md">
                     {buttonText}
