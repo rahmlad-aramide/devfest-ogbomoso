@@ -72,7 +72,13 @@ const Header = ({ buttonText, rsvpLink }: HeaderProps) => {
 
   const navItems = [
     { href: "#", label: "Home", icon: <Menu className="w-4 h-4" /> },
-    { href: "#cfp", label: "Speakers", icon: <Users className="w-4 h-4" /> },
+
+    {
+      href: "#speakers",
+      label: "Speakers",
+      icon: <Users className="w-4 h-4" />,
+    },
+
     {
       href: "#schedule",
       label: "Schedule",
@@ -85,7 +91,7 @@ const Header = ({ buttonText, rsvpLink }: HeaderProps) => {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-out font-sans ${
         isScrolled
-          ? "bg-black/20 backdrop-blur-xl shadow-lg border-b border-white/10 py-3"
+          ? "bg-black/10 backdrop-blur-xl shadow-lg border-b border-white/10 py-3"
           : "bg-transparent py-4"
       }`}
     >
@@ -106,7 +112,11 @@ const Header = ({ buttonText, rsvpLink }: HeaderProps) => {
               <a
                 key={item.label}
                 href={item.href}
-                className="text-white/90 hover:text-white transition-all duration-200 font-medium text-sm lg:text-base relative group"
+                className="relative text-white/90 hover:text-white transition-all duration-300 font-medium text-sm lg:text-base px-5 py-2.5 rounded-full 
+bg-white/10 backdrop-blur-md border border-white/20 overflow-hidden
+before:absolute before:inset-0 before:bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.3),transparent_60%)]
+hover:before:bg-[radial-gradient(circle_at_70%_70%,rgba(255,255,255,0.4),transparent_60%)]
+before:transition-all before:duration-700"
               >
                 <span className="relative z-10 flex items-center gap-2">
                   {item.label}
@@ -114,6 +124,8 @@ const Header = ({ buttonText, rsvpLink }: HeaderProps) => {
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#FF9800] transition-all duration-300 group-hover:w-full" />
               </a>
             ))}
+
+            {/* Support Dropdown */}
 
             <div className="relative" ref={supportRef}>
               <button
@@ -138,6 +150,9 @@ const Header = ({ buttonText, rsvpLink }: HeaderProps) => {
           </div>
 
           <div className="flex items-center gap-4">
+
+            {/* RSVP Button */}
+
             <a
               href="https://tinyurl.com/devfestogbo2025"
               target="_blank"
@@ -201,6 +216,9 @@ const Header = ({ buttonText, rsvpLink }: HeaderProps) => {
                   </a>
                 ))}
 
+
+                {/* Mobile Support */}
+
                 <div className="pt-2 border-t border-white/10 mt-2">
                   <button
                     onClick={() => setOpenSupport(!openSupport)}
@@ -221,6 +239,9 @@ const Header = ({ buttonText, rsvpLink }: HeaderProps) => {
                     </div>
                   )}
                 </div>
+
+
+                {/* Mobile RSVP Button */}
 
                 <a
                   href="https://tinyurl.com/devfestogbo2025"
