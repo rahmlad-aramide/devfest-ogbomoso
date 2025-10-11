@@ -160,7 +160,7 @@ function Speakers({ data }: any) {
             ))}
           </div>
         </div>
-        <Footer data={data} />
+        <Footer />
       </div>
       {speaker && (
         <motion.div
@@ -242,7 +242,7 @@ export async function getServerSideProps() {
   const apiURL =
     process.env.NODE_ENV === "development"
       ? "http://localhost:3000"
-      : "https://devfestogbomoso.netlify.app";
+      : "https://www.devfestogbomoso.com";
   console.log(apiURL, process.env.NODE_ENV);
   const res = await fetch(`${apiURL}/details.json`);
   const data = await res.json();

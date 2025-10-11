@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+
 "use client";
 import DPSection from "./components/DPSection";
 import FAQSection from "./components/FAQSection";
@@ -16,8 +16,10 @@ export default function Home({ data }: any) {
       <SpeakersSection data={data} />
       <ScheduleSection data={data} suppressHydrationWarning />
       <DPSection />
+
       <FAQSection data={data} />
       <Footer data={data} />
+
     </>
   );
 }

@@ -2,11 +2,11 @@ export default DPGenerator;
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
-import DPGeneratorComponent from "./components/DPGenerator"
-import Footer from "./components/Footer"
-import Header from "./components/Header"
-import MetaTags from "./components/MetaTag"
-import { motion } from "framer-motion"
+import DPGeneratorComponent from "./components/DPGenerator";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+import MetaTags from "./components/MetaTag";
+import { motion } from "framer-motion";
 
 function DPGenerator({ data }: any) {
   return (
@@ -58,22 +58,22 @@ function DPGenerator({ data }: any) {
           </motion.div>
         </section>
       </main>
-      <Footer data={data} />
+      <Footer />
     </>
-  )
+  );
 }
 
 export async function getServerSideProps() {
   const apiURL =
     process.env.NODE_ENV === "development"
       ? "http://localhost:3000"
-      : "https://devfestogbomoso.netlify.app"
-  console.log(apiURL, process.env.NODE_ENV)
-  const res = await fetch(`${apiURL}/details.json`)
-  const data = await res.json()
+      : "https://www.devfestogbomoso.com";
+  console.log(apiURL, process.env.NODE_ENV);
+  const res = await fetch(`${apiURL}/details.json`);
+  const data = await res.json();
   return {
     props: {
       data,
     },
-  }
+  };
 }

@@ -9,10 +9,17 @@ function DPGeneratorComponent() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           className="text-center mb-16"
-        ></motion.div>
-
+        >
+          <span className="inline-block px-4 py-1 bg-[#FFF5E1] rounded-full text-sm mb-8 font-bold">
+            Coming Soon
+          </span>
+          <h2 className="text-4xl font-bold mb-4">DevFest DP Generator</h2>
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            We're crafting something special! Soon you'll be able to create your custom DevFest profile picture.
+          </p>
+        </motion.div>
         <div className="max-w-4xl mx-auto flex items-center justify-center">
-          {/* Coming Soon Card */}
+         
           <div className="w-full max-w-[500px]">
             <motion.div
               initial={{ y: 20, opacity: 0 }}
@@ -21,14 +28,14 @@ function DPGeneratorComponent() {
               className="bg-gray-50/80 backdrop-blur-md p-8 rounded-2xl border border-white/20 shadow-xl"
             >
               <div className="text-center space-y-6">
-                {/* Icon */}
+              
                 <div className="flex justify-center">
                   <div className="w-24 h-24 rounded-full bg-[#4285f4] flex items-center justify-center">
                     <Palette className="w-12 h-12 text-white" />
                   </div>
                 </div>
-
-                {/* Message */}
+                
+             
                 <div className="space-y-4">
                   <h3 className="text-2xl font-bold text-gray-800">
                     Feature Coming Soon
@@ -39,8 +46,8 @@ function DPGeneratorComponent() {
                     and DevFest branding.
                   </p>
                 </div>
-
-                {/* Status Indicators */}
+                
+               
                 <div className="flex justify-center space-x-4">
                   {[
                     {
@@ -78,8 +85,8 @@ function DPGeneratorComponent() {
                     </motion.div>
                   ))}
                 </div>
-
-                {/* Progress Bar */}
+                
+                
                 <div className="pt-4">
                   <div className="w-full bg-gray-200/50 rounded-full h-2.5">
                     <motion.div
@@ -93,9 +100,9 @@ function DPGeneratorComponent() {
                     Development in progress: 65% complete
                   </p>
                 </div>
-
-                {/* Feature Highlights (replaced the button) */}
-                <motion.div
+                
+                
+                <motion.div 
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
                   transition={{ delay: 0.8 }}
