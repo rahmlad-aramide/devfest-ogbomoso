@@ -22,7 +22,7 @@ function ThrowbackSection({ data }: { data: any }) {
         subtext: "Faces of the attendees at Devfest '24",
       },
       {
-        image: "/webp/3.webp",
+        image: "/webp/3.jpg",
         text: "Check-in point",
         subtext: "Volunteers on duty, checking the attendees in to the hall",
       },
@@ -109,11 +109,13 @@ function ThrowbackSection({ data }: { data: any }) {
               transition={{ delay: index * 0.1, duration: 0.7 }}
               viewport={{ once: true }}
               whileHover={{ y: -10, scale: 1.02 }}
-              className={`relative group cursor-pointer rounded-2xl overflow-hidden shadow-2xl ${index === 3? 'hidden md:flex lg:hidden' : ''}`}
+              className={`relative group cursor-pointer rounded-2xl overflow-hidden shadow-2xl ${
+                index === 3 ? "hidden md:flex lg:hidden" : ""
+              }`}
               onClick={() => setSelectedImage(index)}
             >
               {/* Glassmorphism Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-80 group-hover:opacity-100 transition-all duration-500" />
 
               {/* Hover Info */}
               <div className="absolute bottom-0 left-0 right-0 p-6 transform translate-y-10 group-hover:translate-y-0 transition-transform duration-500">
