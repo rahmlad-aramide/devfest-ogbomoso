@@ -538,7 +538,7 @@ const Header = ({ buttonText, rsvpLink }: HeaderProps) => {
           <div className="hidden md:flex items-center gap-8 lg:gap-12">
             {navItems.map((item) => (
               <a
-                key={item.label}
+                key={item.label} 
                 href={item.href}
                 className={`relative transition-all duration-300 font-medium text-sm lg:text-base px-5 py-2.5 rounded-full backdrop-blur-md border overflow-hidden
                   ${
