@@ -116,7 +116,7 @@ function Hero({ data }: any) {
   };
 
   return (
-    <section className="min-h-[60vh] lg:min-h-[70vh] relative bg-black text-white pt-20 pb-5">
+    <section className="min-h-[50vh] lg:min-h-[60vh] relative bg-black text-white pt-20 pb-5">
       <div className="absolute inset-0 w-full h-full">
         <Image
           src="/hero.jpg"
@@ -126,9 +126,9 @@ function Hero({ data }: any) {
           priority
         />
 
-        <div className="absolute inset-0 bg-gradient-to-b from-black via-black/70 to-black/30" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black via-black/70 to-black/10" />
 
-        <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/30 to-black/10" />
+        <div className="absolute inset-0 bg-gradient-to-l from-black/40 via-black/20 to-black/10" />
       </div>
 
       <Header buttonText={data?.actionButtonText} rsvpLink={data?.rsvpLink} />
@@ -146,19 +146,19 @@ function Hero({ data }: any) {
               variants={itemVariants}
               className="inline-flex items-center justify-center px-4 py-2 bg-[#4285f4]/10 backdrop-blur-sm rounded-full border border-[#4285f4]/30"
             >
-              <span className="text-[#4285f4] text-sm lg:text-base font-semibold tracking-wide">
+              <span className="text-[#4285f4] text-sm lg:text-base font-bold tracking-wide">
                 Biggest Tech Event
               </span>
             </motion.div>
 
             <motion.hgroup
-              className="text-6xl lg:text-9xl font-black leading-tight lg:leading-none"
+              className="text-6xl lg:text-8xl font-extrabold leading-tight lg:leading-none"
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
             >
               <motion.h1
-                className="text-6xl lg:text-9xl font-black leading-tight lg:leading-none"
+                className="text-6xl lg:text-9xl font-extrabold leading-tight lg:leading-none"
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
@@ -225,7 +225,7 @@ function Hero({ data }: any) {
                 <motion.span
                   variants={letterVariants}
                   custom={8}
-                  className="text-[#ea4335] text-5xl md:text-7xl lg:text-9xl leading-none"
+                  className="text-[#ea4335] text-5xl md:text-7xl lg:text-8xl leading-none"
                 >
                   {" "}
                   &apos;25
