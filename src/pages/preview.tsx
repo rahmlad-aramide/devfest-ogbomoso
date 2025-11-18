@@ -1,23 +1,23 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { motion } from "framer-motion"
-import { useEffect, useRef, useState } from "react"
-import Confetti from "react-confetti"
+import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import Confetti from "react-confetti";
 // import { CanvasConfig } from "./components/CanvasPreview/types"
-import Image from "next/image"
-import DpCard from "./DpCard"
-import { useSearchParams } from "next/navigation"
-import { Download, MapPin, Calendar, Clock } from "lucide-react"
+import Image from "next/image";
+import DpCard from "./DpCard";
+import { useSearchParams } from "next/navigation";
+import { Download, MapPin, Calendar, Clock } from "lucide-react";
 // import html2canvas from "html2canvas"
 // import CanvasPreview from "./components/CanvasPreview/CanvasPreview";
-import { toJpeg } from "html-to-image"
-import { CanvasConfig } from "./components/CanvasPreview/types"
-import { renderToString } from "react-dom/server"
+import { toJpeg } from "html-to-image";
+import { CanvasConfig } from "./components/CanvasPreview/types";
+import { renderToString } from "react-dom/server";
 
 interface DPData {
-  name: string
-  photo: string
+  name: string;
+  photo: string;
 }
 
 // function DPPreview() {
@@ -261,49 +261,49 @@ interface DPData {
 
 // export default DPPreview
 
-import CanvasPreview from "./components/CanvasPreview/CanvasPreview"
+import CanvasPreview from "./components/CanvasPreview/CanvasPreview";
 
 export default function DPPreview() {
-  const [dpData, setDpData] = useState<DPData | null>(null)
-  const [showConfetti, setShowConfetti] = useState(true)
-  const canvasRef = useRef<HTMLCanvasElement>(null)
-  const searchParams = useSearchParams()
-  const dpBgColor = searchParams.get("bg") || "0"
-  const dpBackground = ["#DBE8FF", "#FFF9F9", "#ECFFF5", "#FFF8E8"]
-  const dbTextColors = ["#4285f4", "#ea4335", "#34a853", "#f9ab00"]
+  const [dpData, setDpData] = useState<DPData | null>(null);
+  const [showConfetti, setShowConfetti] = useState(true);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const searchParams = useSearchParams();
+  const dpBgColor = searchParams.get("bg") || "0";
+  const dpBackground = ["#DBE8FF", "#FFF9F9", "#ECFFF5", "#FFF8E8"];
+  const dbTextColors = ["#4285f4", "#ea4335", "#34a853", "#f9ab00"];
 
   // Function to convert Lucide icon to data URL
   const createIconDataUrl = (IconComponent: any, color = "#444", size = 16) => {
-    const svg = renderToString(<IconComponent size={size} color={color} />)
+    const svg = renderToString(<IconComponent size={size} color={color} />);
 
-    const svgBlob = new Blob([svg], { type: "image/svg+xml" })
-    return URL.createObjectURL(svgBlob)
-  }
+    const svgBlob = new Blob([svg], { type: "image/svg+xml" });
+    return URL.createObjectURL(svgBlob);
+  };
 
   useEffect(() => {
-    const storedData = localStorage.getItem("dp")
+    const storedData = localStorage.getItem("dp");
     if (storedData) {
-      setDpData(JSON.parse(storedData))
+      setDpData(JSON.parse(storedData));
     }
-  }, [])
+  }, []);
 
   useEffect(() => {
     // Hide confetti after 3 seconds
-    const timer = setTimeout(() => setShowConfetti(false), 3000)
-    return () => clearTimeout(timer)
-  }, [])
+    const timer = setTimeout(() => setShowConfetti(false), 3000);
+    return () => clearTimeout(timer);
+  }, []);
 
   const downloadImage = () => {
-    const canvas = canvasRef.current
-    if (!canvas) return
+    const canvas = canvasRef.current;
+    if (!canvas) return;
 
-    const link = document.createElement("a")
-    link.download = "devfest-dp.png"
-    link.href = canvas.toDataURL("image/png")
-    document.body.appendChild(link)
-    link.click()
-    document.body.removeChild(link)
-  }
+    const link = document.createElement("a");
+    link.download = "devfest-dp.png";
+    link.href = canvas.toDataURL("image/png");
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   if (!dpData) {
     return (
@@ -312,7 +312,7 @@ export default function DPPreview() {
           No DP generated yet. Please create one first.
         </p>
       </div>
-    )
+    );
   }
 
   const config = {
@@ -325,37 +325,37 @@ export default function DPPreview() {
         ? "/2025/Doodles - Section Divider - Green.svg"
         : "/2025/Doodles - Section Divider - Amber.svg", // Use an existing image from public folder as background
     userImage: dpData?.photo || "", // user photo
-    userBox: { x: 180, y: 90, width: 130, height: 130 },
+    userBox: { x: 170, y: 60, width: 160, height: 180 },
     backgroundColor: dpBackground[parseInt(dpBgColor)], // User-selected background color
     images: [
       {
         src: "/2025/devfest-2025.svg",
-        position: { x: 40, y: 120 },
+        position: { x: 20, y: 100 },
         size: { width: 120, height: 35 },
       },
       // Location icon
       {
         src: createIconDataUrl(MapPin, "#444", 16),
-        position: { x: 40, y: 170 },
+        position: { x: 20, y: 162 },
         size: { width: 16, height: 16 },
       },
       // Calendar icon for date
       {
         src: createIconDataUrl(Calendar, "#444", 16),
-        position: { x: 40, y: 195 },
+        position: { x: 20, y: 190 },
         size: { width: 16, height: 16 },
       },
       // Clock icon for time
       {
         src: createIconDataUrl(Clock, "#444", 16),
-        position: { x: 40, y: 220 },
+        position: { x: 20, y: 218 },
         size: { width: 16, height: 16 },
       },
     ],
     texts: [
       {
         content: "I will be attending",
-        position: { x: 40, y: 100 },
+        position: { x: 20, y: 80 },
         font: "Arial",
         color: "#2b2b2b",
         size: 16,
@@ -363,15 +363,15 @@ export default function DPPreview() {
       // Location
       {
         content: "Ogbomoso, Nigeria",
-        position: { x: 62, y: 182 },
+        position: { x: 41, y: 175 },
         font: "Arial",
         color: "#444",
         size: 12,
       },
       // Date
       {
-        content: "December 14, 2025",
-        position: { x: 62, y: 207 },
+        content: "December 5&6, 2025",
+        position: { x: 41, y: 204 },
         font: "Arial",
         color: "#444",
         size: 12,
@@ -379,18 +379,20 @@ export default function DPPreview() {
       // Time
       {
         content: "9:00 AM - 5:00 PM",
-        position: { x: 62, y: 232 },
+        position: { x: 41, y: 231 },
         font: "Arial",
         color: "#444",
         size: 12,
       },
       {
-        content: dpData.name,
-        position: { x:250, y: 240 },
+        content: dpData.name.toUpperCase(),
+        position: { x: 175, y: 290 },
         font: "600 Arial",
         color: "#000",
         size: 13,
         textAlign: "center",
+        hasGlassmorphism: true,
+        glassPadding: { top: 15, right: 125, bottom: 15, left: 125 },
       },
       {
         content: "DevFest Attendee",
@@ -400,7 +402,7 @@ export default function DPPreview() {
         size: 18,
       },
     ],
-  }
+  };
 
   return (
     <section className="min-h-screen bg-[#FFF5E1] py-16 text-black">
@@ -435,5 +437,5 @@ export default function DPPreview() {
         </div>
       </div>
     </section>
-  )
+  );
 }
