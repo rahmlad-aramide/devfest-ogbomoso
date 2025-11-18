@@ -21,7 +21,7 @@ function ScheduleSection({ data }: any) {
     // We can add more images here if you want a slideshow effect
   ]
 
-  // 2024 agenda data with the sessions you provided
+  
   const agenda2024 = [
     {
       time: "1:00 - 1:15 PM",
@@ -53,7 +53,7 @@ function ScheduleSection({ data }: any) {
     },
   ]
 
-  // Background image rotation (if you want to add more images later)
+
   useEffect(() => {
     if (backgroundImages.length > 1) {
       const interval = setInterval(() => {
@@ -92,7 +92,7 @@ function ScheduleSection({ data }: any) {
         <div className="absolute inset-0 bg-yellow/70"></div>
       </div>
 
-      {/* Background decorative elements with glassmorphism */}
+      
       <div className="absolute inset-0">
         <div className="absolute top-20 left-20 w-80 h-80 bg-[#4285f4]/15 rounded-full blur-3xl" />
         <div className="absolute bottom-20 right-20 w-96 h-96 bg-[#34a853]/15 rounded-full blur-3xl" />
@@ -154,7 +154,7 @@ function ScheduleSection({ data }: any) {
           </motion.div>
         </motion.div>
 
-        {/* Animated GIF Section */}
+        
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -162,7 +162,7 @@ function ScheduleSection({ data }: any) {
           className="flex justify-center mb-16"
         >
           <div className="relative bg-white/80 backdrop-blur-md rounded-3xl p-6 border-2 border-dashed border-white/30 shadow-2xl overflow-hidden max-w-2xl mx-auto">
-            {/* Decorative elements */}
+            
             <div className="absolute -top-10 -left-10 w-32 h-32 bg-[#4285f4]/20 rounded-full blur-xl" />
             <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-[#34a853]/20 rounded-full blur-xl" />
 
@@ -191,7 +191,7 @@ function ScheduleSection({ data }: any) {
           </div>
         </motion.div>
 
-        {/* Countdown/Date Info */}
+        
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -204,8 +204,12 @@ function ScheduleSection({ data }: any) {
               <div className="text-sm text-gray-700">Month</div>
             </div>
             <div className="text-center px-4 py-2">
-              <div className="text-2xl font-bold text-[#34a853]">5-6</div>
-              <div className="text-sm text-gray-700">Days</div>
+              <div className="text-2xl font-bold text-[#34a853]">5th</div>
+              <div className="text-sm text-gray-700">Workshop</div>
+            </div>
+            <div className="text-center px-4 py-2">
+              <div className="text-2xl font-bold text-[#f9ab00]">6th</div>
+              <div className="text-sm text-gray-700">Main Event</div>
             </div>
             <div className="text-center px-4 py-2">
               <div className="text-2xl font-bold text-[#ea4335]">2025</div>
@@ -215,7 +219,7 @@ function ScheduleSection({ data }: any) {
         </motion.div>
       </div>
 
-      {/* 2024 Agenda Modal */}
+     
       <AnimatePresence>
         {show2024Agenda && (
           <motion.div
@@ -233,11 +237,11 @@ function ScheduleSection({ data }: any) {
               className="bg-white/95 backdrop-blur-2xl rounded-3xl p-6 lg:p-8 max-w-4xl w-full max-h-[90vh] overflow-y-auto relative"
               onClick={(e) => e.stopPropagation()}
             >
-              {/* Background decorative elements */}
+             
               <div className="absolute top-0 right-0 w-32 h-32 bg-[#4285f4]/10 rounded-full blur-2xl -translate-y-16 translate-x-16" />
               <div className="absolute bottom-0 left-0 w-40 h-40 bg-[#34a853]/10 rounded-full blur-2xl translate-y-16 -translate-x-16" />
 
-              {/* Modal Header */}
+           
               <div className="flex items-center justify-between mb-8 relative z-10">
                 <div>
                   <h3 className="text-2xl lg:text-3xl font-bold text-[#4285f4] mb-2">
@@ -255,7 +259,7 @@ function ScheduleSection({ data }: any) {
                 </button>
               </div>
 
-              {/* Timeline */}
+              
               <div className="relative z-10">
                 <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-gray-200" />
 
@@ -285,7 +289,7 @@ function ScheduleSection({ data }: any) {
                     {/* Session card */}
                     <div className="bg-white/80 backdrop-blur-sm rounded-xl p-5 border border-gray-200/50 shadow-sm hover:shadow-md transition-shadow duration-300">
                       <div className="flex flex-col md:flex-row gap-5">
-                        {/* Speaker image - Fixed to use proper image paths */}
+                        
                         <div className="flex-shrink-0">
                           <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-[#4285f4]/30 shadow-md bg-gray-200 flex items-center justify-center">
                             {session.image ? (
@@ -338,7 +342,7 @@ function ScheduleSection({ data }: any) {
                 ))}
               </div>
 
-              {/* Event timeline overview */}
+           
               <div className="mt-10 p-5 bg-gray-50/50 rounded-xl border border-gray-200/50">
                 <h4 className="font-bold text-gray-800 mb-3 flex items-center gap-2">
                   <Clock className="w-4 h-4 text-[#4285f4]" />
@@ -364,7 +368,7 @@ function ScheduleSection({ data }: any) {
                 </div>
               </div>
 
-              {/* Close Button */}
+            
               <div className="text-center mt-8 relative z-10">
                 <button
                   onClick={() => setShow2024Agenda(false)}

@@ -31,13 +31,13 @@ body::-webkit-scrollbar-thumb {
 }
 
 .dp-shadow {
-  box-shadow: 5px 5px 0px rgba(0, 0, 0, 1); /* Right and bottom shadow */
+  box-shadow: 5px 5px 0px rgba(0, 0, 0, 1); 
 }
 .div-shadow {
   box-shadow: -4px 4px 0px rgba(0, 0, 0, 1);
 }
 
-/*font smoothing for better appearance */
+
 * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

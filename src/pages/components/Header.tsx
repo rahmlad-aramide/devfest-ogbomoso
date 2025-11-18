@@ -30,7 +30,6 @@ const Header = ({ buttonText, rsvpLink }: HeaderProps) => {
     const checkDevice = () => setIsMobile(window.innerWidth < 768);
     const handleScroll = () => setIsScrolled(window.scrollY > 10);
 
-    // Handle click outside to close dropdowns
     const handleClickOutside = (event: MouseEvent) => {
       if (
         supportRef.current &&
@@ -73,11 +72,13 @@ const Header = ({ buttonText, rsvpLink }: HeaderProps) => {
 
   const navItems = [
     { href: "#", label: "Home", icon: <Menu className="w-4 h-4" /> },
+
     {
       href: "#speakers",
       label: "Speakers",
       icon: <Users className="w-4 h-4" />,
     },
+
     {
       href: "#schedule",
       label: "Schedule",
@@ -96,7 +97,6 @@ const Header = ({ buttonText, rsvpLink }: HeaderProps) => {
     >
       <div className="container mx-auto px-4 lg:px-6">
         <div className="flex items-center justify-between">
-          {/* Logo */}
           <div className="flex items-center">
             <Image
               src="/devfedt-logo-white.png"
@@ -107,7 +107,6 @@ const Header = ({ buttonText, rsvpLink }: HeaderProps) => {
             />
           </div>
 
-          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8 lg:gap-12">
             {navItems.map((item) => (
               <a
@@ -127,6 +126,7 @@ before:transition-all before:duration-700"
             ))}
 
             {/* Support Dropdown */}
+
             <div className="relative" ref={supportRef}>
               <button
                 onClick={() => setOpenSupport(!openSupport)}
@@ -149,9 +149,10 @@ before:transition-all before:duration-700"
             </div>
           </div>
 
-          {/* CTA Button & Mobile Menu */}
           <div className="flex items-center gap-4">
+
             {/* RSVP Button */}
+
             <a
               href="https://tinyurl.com/devfestogbo2025"
               target="_blank"
@@ -163,7 +164,6 @@ before:transition-all before:duration-700"
               </button>
             </a>
 
-            {/* Mobile Menu Button - Centered properly */}
             <button
               onClick={toggleMenu}
               className="md:hidden flex items-center justify-center w-10 h-10 text-white hover:text-[#FF9800] transition-colors duration-200"
@@ -190,7 +190,6 @@ before:transition-all before:duration-700"
           </div>
         </div>
 
-        {/* Mobile Menu - Professional with Glassmorphism */}
         {(isMenuOpen || isAnimating) && (
           <div
             ref={mobileMenuRef}
@@ -217,7 +216,9 @@ before:transition-all before:duration-700"
                   </a>
                 ))}
 
+
                 {/* Mobile Support */}
+
                 <div className="pt-2 border-t border-white/10 mt-2">
                   <button
                     onClick={() => setOpenSupport(!openSupport)}
@@ -239,7 +240,9 @@ before:transition-all before:duration-700"
                   )}
                 </div>
 
+
                 {/* Mobile RSVP Button */}
+
                 <a
                   href="https://tinyurl.com/devfestogbo2025"
                   target="_blank"

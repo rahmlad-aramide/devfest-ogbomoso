@@ -1,8 +1,9 @@
 import { motion } from "framer-motion";
 import { Globe, Twitter } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
-function Footer({ data }: any) {
+function Footer() {
   return (
     <footer className="bg-[319047] text-white pt-16 pb-8">
       <div className="container mx-auto px-4">
@@ -10,14 +11,16 @@ function Footer({ data }: any) {
           <div className="grid md:grid-cols-4 gap-12 mb-12">
             <div>
               <div className="flex items-center gap-3 mb-4">
-                <Image 
-                  src="/icon.svg" 
-                  alt="GDG Ogbomoso" 
-                  width={40} 
-                  height={40} 
+                <Image
+                  src="/icon.svg"
+                  alt="GDG Ogbomoso"
+                  width={40}
+                  height={40}
                   className="w-10 h-10"
                 />
-                <h3 className="font-bold text-xl">{data && data.community && data.community.title}</h3>
+                <h3 className="font-bold text-xl">
+                  GDG Ogbomoso
+                </h3>
               </div>
               <p className="text-gray-300">
                 A community-led tech conference bringing together developers,
@@ -29,34 +32,28 @@ function Footer({ data }: any) {
               <h4 className="font-bold mb-4">Quick Links</h4>
               <ul className="space-y-2">
                 <li>
-                  <a
+                  <Link
                     href="#schedule"
                     className="text-gray-300 hover:text-white transition-colors"
                   >
                     Schedule
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href="#speakers"
+                  <Link
+                    href="#cfp"
                     className="text-gray-300 hover:text-white transition-colors"
                   >
                     Speakers
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href={data && data.rsvpLink}
-                    target="_blank"
+                  <Link
+                    href="#faqs"
                     className="text-gray-300 hover:text-white transition-colors"
                   >
-                    {data && data.actionButtonText}
-                  </a>
-                </li>
-                <li>
-                  <a href="#faqs" className="text-gray-300 hover:text-white transition-colors">
                     FAQs
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -64,18 +61,20 @@ function Footer({ data }: any) {
             <div>
               <h4 className="font-bold mb-4">Connect With Us</h4>
               <div className="flex gap-4 mb-4">
-                <a 
-                  href={data && data.community && data.community.twitter} 
+                <Link
+                  href={`https://x.com/gdgogbomoso`}
+                  target="_blank"
                   className="text-gray-300 hover:text-white transition-colors p-2 bg-white/10 rounded-full hover:bg-white/20"
                 >
                   <Twitter className="w-5 h-5" />
-                </a>
-                <a 
-                  href={data && data.community && data.community.gdg} 
+                </Link>
+                <Link
+                  href={'https://gdg.community.dev/events/details/google-gdg-ogbomoso-presents-devfest-ogbomoso-2025/'}
+                  target="_blank"
                   className="text-gray-300 hover:text-white transition-colors p-2 bg-white/10 rounded-full hover:bg-white/20"
                 >
                   <Globe className="w-5 h-5" />
-                </a>
+                </Link>
               </div>
               <p className="text-gray-300 text-sm">
                 Join our community for updates and announcements
@@ -83,20 +82,20 @@ function Footer({ data }: any) {
             </div>
           </div>
 
-          {/* GDG Ogbomoso text with stronger fade-out effect and icon on the left */}
           <div className="mt-12 text-center mb-8">
             <div className="flex flex-col md:flex-row items-center justify-center">
-              <Image 
-                src="/icon.svg" 
-                alt="GDG Ogbomoso" 
-                width={150} 
-                height={150} 
+              <Image
+                src="/icon.svg"
+                alt="GDG Ogbomoso"
+                width={150}
+                height={150}
                 className="md:mr-4 opacity-90 mb-4 md:mb-0 w-20 h-20 md:w-32 md:h-32"
               />
-              <h2 
+              <h2
                 className="text-4xl sm:text-5xl md:text-8xl font-bold tracking-wide"
                 style={{
-                  background: "linear-gradient(to bottom, white 0%, rgba(255,255,255,0.7) 30%, rgba(255,255,255,0.3) 70%, transparent 100%)",
+                  background:
+                    "linear-gradient(to bottom, white 0%, rgba(255,255,255,0.7) 30%, rgba(255,255,255,0.3) 70%, transparent 100%)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                   backgroundClip: "text",
@@ -111,7 +110,7 @@ function Footer({ data }: any) {
             <p className="text-gray-300 text-sm order-2 md:order-1">
               © 2025 GDG Ogbomoso. All rights reserved.
             </p>
-            
+
             <motion.div
               animate={{
                 rotate: [0, 360],
