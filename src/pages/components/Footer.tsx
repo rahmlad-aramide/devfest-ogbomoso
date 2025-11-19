@@ -18,9 +18,7 @@ function Footer() {
                   height={40}
                   className="w-10 h-10"
                 />
-                <h3 className="font-bold text-xl">
-                  GDG Ogbomoso
-                </h3>
+                <h3 className="font-bold text-xl">GDG Ogbomoso</h3>
               </div>
               <p className="text-gray-300">
                 A community-led tech conference bringing together developers,
@@ -69,7 +67,9 @@ function Footer() {
                   <Twitter className="w-5 h-5" />
                 </Link>
                 <Link
-                  href={'https://gdg.community.dev/events/details/google-gdg-ogbomoso-presents-devfest-ogbomoso-2025/'}
+                  href={
+                    "https://gdg.community.dev/events/details/google-gdg-ogbomoso-presents-devfest-ogbomoso-2025/"
+                  }
                   target="_blank"
                   className="text-gray-300 hover:text-white transition-colors p-2 bg-white/10 rounded-full hover:bg-white/20"
                 >
