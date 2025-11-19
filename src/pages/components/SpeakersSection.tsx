@@ -626,7 +626,7 @@ function SpeakersSection({ data }: any) {
   //       day: "Day 1 - Workshop",
   //     },
   //   },
-  //   // Day 2 - Main Conference
+  //   // Main Conference
   //   {
   //     id: "jd-keynote",
   //     name: "JD",
@@ -636,7 +636,7 @@ function SpeakersSection({ data }: any) {
   //       title: "Keynote Address 1",
   //       track: "Keynote",
   //       time: "9:30 AM - 10:00 AM",
-  //       day: "Day 2 - Main Conference",
+  //       day: "Main Conference",
   //     },
   //   },
   //   {
@@ -648,7 +648,7 @@ function SpeakersSection({ data }: any) {
   //       title: "Keynote Address 2",
   //       track: "Keynote",
   //       time: "10:00 AM - 10:30 AM",
-  //       day: "Day 2 - Main Conference",
+  //       day: "Main Conference",
   //     },
   //   },
   //   {
@@ -661,7 +661,7 @@ function SpeakersSection({ data }: any) {
   //         "The Fine Art of Prompting: Getting Unbeatable Results with Gemini",
   //       track: "AI & ML",
   //       time: "10:30 AM - 11:15 AM",
-  //       day: "Day 2 - Main Conference",
+  //       day: "Main Conference",
   //     },
   //   },
   //   {
@@ -791,7 +791,7 @@ function SpeakersSection({ data }: any) {
           "Designing the Invisible: Prototyping Trust and Feedback in Intelligent Interfaces",
         track: "Design and Product",
         time: "10:00 AM - 11:00 AM",
-        day: "Day 1 - Workshop",
+        day: "Workshop",
       },
     },
     {
@@ -806,7 +806,7 @@ function SpeakersSection({ data }: any) {
           "Flutter + WebAssembly: Building High-Performance Cross-Platform Apps",
         track: "Engineering and Security",
         time: "10:00 AM - 11:00 AM",
-        day: "Day 1 - Workshop",
+        day: "Workshop",
       },
     },
     {
@@ -821,7 +821,7 @@ function SpeakersSection({ data }: any) {
         description: "Secure, Scalable, and Hands-On",
         track: "AI and Cloud",
         time: "10:00 AM - 11:00 AM",
-        day: "Day 1 - Workshop",
+        day: "Workshop",
       },
     },
     {
@@ -835,7 +835,7 @@ function SpeakersSection({ data }: any) {
         title: "Design - Intentional Creativity, Not Automation",
         track: "Design and Product",
         time: "11:00 AM - 12:00 PM",
-        day: "Day 1 - Workshop",
+        day: "Workshop",
       },
     },
     {
@@ -843,13 +843,13 @@ function SpeakersSection({ data }: any) {
       name: "Adeniji Oluwaferanmi",
       role: "Software Engineer",
       company: "Moniepoint",
-      image: "./speakers/adenijio.jpg",
+      image: "./speakers/adenijio.png",
       bio: "A Senior Software Engineer at Moniepoint specializing in React, TypeScript, and microfrontend architectures with open-source libraries used across 15+ projects.",
       session: {
         title: "Migration to Microfrontends",
         track: "Engineering and Security",
         time: "11:00 AM - 12:00 PM",
-        day: "Day 1 - Workshop",
+        day: "Workshop",
       },
     },
     {
@@ -864,7 +864,7 @@ function SpeakersSection({ data }: any) {
           "Hands-On with Gemini and Google ADK: Building Full-Stack AI Agents MaaS",
         track: "AI and Cloud",
         time: "11:00 AM - 12:00 PM",
-        day: "Day 1 - Workshop",
+        day: "Workshop",
       },
     },
     {
@@ -879,7 +879,7 @@ function SpeakersSection({ data }: any) {
           "Designing Trust: Building Human-Centered Brands and Interfaces in the Age of AI",
         track: "Design and Product",
         time: "12:00 PM - 1:00 PM",
-        day: "Day 1 - Workshop",
+        day: "Workshop",
       },
     },
 
@@ -896,7 +896,7 @@ function SpeakersSection({ data }: any) {
           "The Fine Art of Prompting: Getting Unbeatable Results with Gemini",
         track: "AI & ML",
         time: "10:30 AM - 11:15 AM",
-        day: "Day 2 - Main Conference",
+        day: "Main Conference",
       },
     },
     {
@@ -910,7 +910,7 @@ function SpeakersSection({ data }: any) {
         title: "From Logs to Insights: AI-Powered Observability with GCP",
         track: "Cloud & DevOps",
         time: "11:15 AM - 12:00 PM",
-        day: "Day 2 - Main Conference",
+        day: "Main Conference",
       },
     },
     {
@@ -924,7 +924,7 @@ function SpeakersSection({ data }: any) {
         title: "Community & People: Leveraging Community for Growth",
         track: "Community",
         time: "12:00 PM - 12:45 PM",
-        day: "Day 2 - Main Conference",
+        day: "Main Conference",
       },
     },
     {
@@ -938,7 +938,7 @@ function SpeakersSection({ data }: any) {
         title: "Becoming a 10x engineer with AI",
         track: "Engineering",
         time: "12:45 PM - 1:30 PM",
-        day: "Day 2 - Main Conference",
+        day: "Main Conference",
       },
     },
     {
@@ -953,7 +953,7 @@ function SpeakersSection({ data }: any) {
           "How AI Is Powering the Future of Communities: Lessons for Builders & Creators",
         track: "AI & Community",
         time: "3:15 PM - 4:00 PM",
-        day: "Day 2 - Main Conference",
+        day: "Main Conference",
       },
     },
   ];
@@ -965,9 +965,9 @@ function SpeakersSection({ data }: any) {
           if (activeTab === "pre-devfest")
             return speaker.session?.day === "Pre-DevFest";
           if (activeTab === "day1")
-            return speaker.session?.day === "Day 1 - Workshop";
+            return speaker.session?.day === "Workshop";
           if (activeTab === "day2")
-            return speaker.session?.day === "Day 2 - Main Conference";
+            return speaker.session?.day === "Main Conference";
           return true;
         });
 
@@ -1072,7 +1072,7 @@ function SpeakersSection({ data }: any) {
               { id: "all", label: "All Speakers" },
               { id: "pre-devfest", label: "Pre-DevFest" },
               { id: "day1", label: "Day 1 - Workshop" },
-              { id: "day2", label: "Day 2 - Conference" },
+              { id: "day2", label: "Conference" },
             ].map((tab) => (
               <button
                 key={tab.id}
@@ -1098,7 +1098,7 @@ function SpeakersSection({ data }: any) {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.05, duration: 0.5 }}
               viewport={{ once: true }}
-              className="relative h-[420px]"
+              className="relative h-[480px]"
               style={{ perspective: "1000px" }}
               onMouseEnter={() => setFlippedCard(speaker.id)}
               onMouseLeave={() => setFlippedCard(null)}
@@ -1111,16 +1111,16 @@ function SpeakersSection({ data }: any) {
               >
                 {/* Front of Card */}
                 <div
-                  className="absolute inset-0 bg-white rounded-2xl p-6 border-2 border-[#f0f0f0] shadow-lg hover:shadow-xl transition-all duration-300"
+                  className="absolute inset-0 bg-white rounded-2xl border-2 border-[#f0f0f0] shadow-lg hover:shadow-xl transition-all duration-300"
                   style={{ backfaceVisibility: "hidden" }}
                 >
-                  <div className="relative w-40 h-40 mx-auto mb-4 rounded-2xl overflow-hidden border-4 border-[#4285f4]/20 shadow-lg bg-gradient-to-br from-[#c3ecf6] to-[#c2f6c5]">
+                  <div className="relative w-90 h-60 m-6 -mb-4 rounded-2xl p-1 bg-gradient-to-br from-[#4d8bee] to-[#47a760] overflow-hidden">
                     {speaker.image ? (
                       // eslint-disable-next-line @next/next/no-img-element
                       <img
                         src={speaker.image}
                         alt={speaker.name}
-                        className="w-full h-full object-cover"
+                        className="object-cover object-[center_30%] w-full h-full rounded-xl"
                       />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center text-5xl font-extrabold text-[#4285f4]/30">
@@ -1133,23 +1133,26 @@ function SpeakersSection({ data }: any) {
                     )}
                   </div>
 
-                  <div className="text-center">
-                    <h4 className="font-extrabold text-lg text-[#1e1e1e] mb-1">
-                      {speaker.name}
-                    </h4>
+                  <div className="text-left p-6">
+                    <div className="flex items-center justify-between">
+                      <h4 className="font-extrabold text-lg text-[#1e1e1e] mb-1 w-1/2">
+                        {speaker.name}
+                      </h4>
+                      <div className="inline-block px-3 py-1 bg-gradient-to-r from-[#4285f4]/10 to-[#34a853]/10 rounded-full">
+                        <p className="text-xs text-[#1e1e1e]/70 font-bold">
+                          {speaker.session?.day}
+                        </p>
+                      </div>
+                    </div>
                     <p className="text-sm text-[#4285f4] mb-1 font-bold">
                       {speaker.role}
                     </p>
-                    {speaker.company && (
-                      <p className="text-xs text-[#1e1e1e]/60 mb-3 font-semibold">
-                        {speaker.company}
-                      </p>
-                    )}
-
-                    <div className="inline-block px-3 py-1 bg-gradient-to-r from-[#4285f4]/10 to-[#34a853]/10 rounded-full mb-3">
-                      <p className="text-xs text-[#1e1e1e]/70 font-bold">
-                        {speaker.session?.day}
-                      </p>
+                    <div className="flex gap-6 items-center">
+                      {speaker.company && (
+                        <p className="text-xs text-[#1e1e1e]/60 mb-3 font-semibold">
+                          {speaker.company}
+                        </p>
+                      )}
                     </div>
 
                     <p className="text-xs text-[#1e1e1e]/60 mt-4 font-semibold">
@@ -1160,7 +1163,7 @@ function SpeakersSection({ data }: any) {
 
                 {/* Back of Card */}
                 <div
-                  className="absolute inset-0 bg-gradient-to-br from-[#4285f4] to-[#34a853] rounded-2xl p-6 shadow-lg text-white"
+                  className="absolute inset-0 bg-gradient-to-br from-[#4d8bee] to-[#47a760] rounded-2xl p-6 shadow-lg text-white"
                   style={{
                     backfaceVisibility: "hidden",
                     transform: "rotateY(180deg)",

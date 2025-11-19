@@ -302,6 +302,7 @@
 import { motion } from "framer-motion";
 import { div } from "framer-motion/client";
 import { Linkedin, Users2 } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -320,64 +321,51 @@ function TeamSection({ data }: { data: any }) {
     {
       name: "Miracle Olabode",
       role: "Lead Organizer",
-      image: "./team/miracle.jpg",
+      image: "/team/miracle.jpg",
       team: "Organizers",
     },
     {
       name: "Boluwatife Adebisi",
       role: "Lead Organizer",
-      image: "./team/boluwatife.jpg",
+      image: "/team/boluwatife.jpg",
       team: "Organizers",
     },
     {
       name: "Esuola Daniel",
       role: "Co-Organizer",
-      image: "./team/daniel.jpg",
+      image: "/team/daniel.png",
       team: "Organizers",
     },
     {
       name: "Glory Olaifa",
       role: "Co-Organizer",
-      image: "./team/glory.jpg",
+      image: "/team/glory.jpg",
       team: "Organizers",
     },
     {
       name: "Blessed-Agboola Jesujoba",
       role: "Co-Organizer",
-      image: "./team/blessed.jpg",
-      team: "Organizers",
-    },
-    {
-      name: "Esuola Daniel",
-      role: "Co-Organizer",
-      image: "./team/daniel.jpg",
+      image: "/team/blessed.jpeg",
       team: "Organizers",
     },
     {
       name: "Abdrahman Oladimeji",
       role: "Co-Organizer",
-      image: "./team/abdrahman.jpg",
+      image: "/team/abdrahman.jpeg",
       team: "Organizers",
-    },
-    {
-      name: "Team Member",
-      role: "Social Media Team",
-      image: "/api/placeholder/400/400",
-      team: "Social Media Team",
     },
   ];
 
   const filters = [
     "All",
     "Organizers",
-    "Social Media Team",
+    "Media and Publicity Team",
     "Graphics Design Team",
-    "LASU Team",
     "Dev Team",
-    "Volunteers",
+    "Operations Team",
   ];
 
-  const filteredTeam =teamData.filter(
+  const filteredTeam = teamData.filter(
     (member) => member.team === "Organizers"
   );
 
@@ -444,17 +432,31 @@ function TeamSection({ data }: { data: any }) {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 0.7 }}
               whileHover={{ y: -10, scale: 1.02 }}
-              className="relative group cursor-pointer rounded-2xl overflow-hidden shadow-xl bg-white border-2 border-[#f0f0f0] hover:border-[#4285f4] transition-all duration-300"
+              className="relative group cursor-pointer rounded-2xl overflow-hidden shadow-xl bg-white border border-[#f0f0f0] transition-all duration-300"
             >
-              <div className="relative w-full h-[320px] overflow-hidden bg-gradient-to-br from-[#c3ecf6] to-[#c2f6c5]">
-                <div className="w-full h-full flex items-center justify-center text-6xl font-extrabold text-[#4285f4]/30">
-                  {member.name
-                    .split(" ")
-                    .map((n) => n[0])
-                    .join("")}
+              {member.image ? (
+                // <div className="relative w-full h-[280px] overflow-hidden">
+                <div className="relative w-full h-[320px] overflow-hidden border border-red-500">
+                  <Image
+                    src={member.image}
+                    alt={member.name}
+                    fill
+                    className="object-cover object-[center_10%] group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0  bg-gradient-to-bl from-[#4d8bee] via-transparent to-[#47a760] opacity-80 group-hover:opacity-0 transition-all duration-500" />
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/50 opacity-80 group-hover:opacity-0 transition-all duration-500" />
-              </div>
+              ) : (
+                /* Image/Placeholder Container */
+                <div className="relative w-full h-[320px] overflow-hidden bg-gradient-to-br from-[#c3ecf6] to-[#c2f6c5]">
+                  <div className="w-full h-full flex items-center justify-center text-6xl font-extrabold text-[#4285f4]/30">
+                    {member.name
+                      .split(" ")
+                      .map((n) => n[0])
+                      .join("")}
+                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/50 opacity-80 group-hover:opacity-0 transition-all duration-500" />
+                </div>
+              )}
 
               <div className="absolute bottom-0 left-0 right-0 pb-8 p-6 transform translate-y-10 group-hover:hidden duration-500">
                 <div className="bg-black/50 backdrop-blur-md rounded-xl p-4 border-2 border-white/20">
@@ -466,10 +468,10 @@ function TeamSection({ data }: { data: any }) {
                       {member.role}
                     </p>
                     <div className="flex gap-2 items-center w-full justify-end">
-                      <div className="w-5 h-5 bg-[#4285f4] rounded-full flex items-center justify-center">
+                      <div className="w-5 h-5 bg-gradient-to-bl from-[#4d8bee] to-[#47a760] rounded-full flex items-center justify-center">
                         <span className="text-white text-xs font-bold">X</span>
                       </div>
-                      <div className="w-5 h-5 bg-[#4285f4] rounded-full flex items-center justify-center">
+                      <div className="w-5 h-5 bg-gradient-to-bl from-[#4d8bee] to-[#47a760] rounded-full flex items-center justify-center">
                         <Linkedin className="w-3 h-3 text-white" />
                       </div>
                     </div>
@@ -477,7 +479,7 @@ function TeamSection({ data }: { data: any }) {
                 </div>
               </div>
 
-              <div className="absolute inset-0 border-2 border-transparent group-hover:border-[#4285f4]/50 rounded-2xl transition-all duration-300" />
+              {/* <div className="absolute inset-0 border-2 border-transparent group-hover:border-[#4285f4]/50 rounded-2xl transition-all duration-300" /> */}
             </motion.div>
           ))}
         </motion.div>
