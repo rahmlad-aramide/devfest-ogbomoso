@@ -61,6 +61,12 @@ function TeamMembers() {
       isTeamLead: true,
     },
     {
+      name: "Adewole Ridwan",
+      role: "Member",
+      image: "/speakers/ridwan.jpg",
+      team: "Dev Team",
+    },
+    {
       name: "Isaac Oke",
       role: "Member",
       image: "/team/isaac.jpg",
@@ -85,10 +91,16 @@ function TeamMembers() {
       team: "Media and Publicity Team",
     },
     {
-      name: "Adewole Ridwan",
+      name: "Peter Awoniyi",
       role: "Member",
-      image: "/Cover.png",
-      team: "Dev Team",
+      image: "/team/peter.jpg",
+      team: "Media and Publicity Team",
+    },
+    {
+      name: "Gbadero Hiqmah Fadeke",
+      role: "Member",
+      image: "/team/hiqmah.jpg",
+      team: "Media and Publicity Team",
     },
     {
       name: "Afolabi William",
