@@ -3,15 +3,19 @@ import { Linkedin, Users2, ChevronLeft } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 
+import Footer from "./Footer";
+
 interface TeamMember {
   name: string;
   role: string;
   image: string;
   team: string;
+  subTeam?: Array<string>;
+  isTeamLead?: Array<boolean> | boolean;
 }
 
 function TeamMembers() {
-  const [activeFilter, setActiveFilter] = useState<string>("All");
+  const [activeFilter, setActiveFilter] = useState<string>("Organizers");
 
   const teamData: TeamMember[] = [
     {
@@ -31,6 +35,8 @@ function TeamMembers() {
       role: "Co-Organizer",
       image: "/team/daniel.png",
       team: "Organizers",
+      subTeam: ["Design Team"],
+      isTeamLead: true,
     },
     {
       name: "Glory Olaifa",
@@ -43,47 +49,57 @@ function TeamMembers() {
       role: "Co-Organizer",
       image: "/team/blessed.jpeg",
       team: "Organizers",
+      subTeam: ["Media and Publicity Team", "Dev Team"],
+      isTeamLead: [true, false],
     },
     {
       name: "Abdrahman Oladimeji",
       role: "Co-Organizer",
-      image: "/team/abdrahman.jpeg",
+      image: "/team/abdrahman.jpg",
       team: "Organizers",
+      subTeam: ["Dev Team"],
+      isTeamLead: true,
     },
     {
       name: "Isaac Oke",
-      role: "Volunteer",
+      role: "Member",
       image: "/team/isaac.jpg",
       team: "Design Team",
     },
     {
       name: "Olatunji Ezekiel",
-      role: "Volunteer",
-      image: "/team/olatunji.jpg",
-      team: "Design Team",
-    },
-    {
-      name: "Isaac Oke",
-      role: "Volunteer",
-      image: "/team/isaac.jpg",
-      team: "Design Team",
-    },
-    {
-      name: "Olatunji Ezekiel",
-      role: "Volunteer",
+      role: "Member",
       image: "/team/olatunji.jpg",
       team: "Design Team",
     },
     {
       name: "Olurinto Boluwatife",
-      role: "Volunteer",
+      role: "Member",
       image: "/team/olurinto.jpeg",
       team: "Design Team",
     },
     {
       name: "Eniola Adesina",
-      role: "Volunteer",
+      role: "Member",
       image: "/team/eniola.jpg",
+      team: "Media and Publicity Team",
+    },
+    {
+      name: "Adewole Ridwan",
+      role: "Member",
+      image: "/Cover.png",
+      team: "Dev Team",
+    },
+    {
+      name: "Afolabi William",
+      role: "Member",
+      image: "/Cover.png",
+      team: "Dev Team",
+    },
+    {
+      name: "Babatunde Abdullah",
+      role: "Member",
+      image: "/Cover.png",
       team: "Media and Publicity Team",
     },
   ];
@@ -94,13 +110,77 @@ function TeamMembers() {
     "Media and Publicity Team",
     "Design Team",
     "Dev Team",
-    "Operations Team",
   ];
 
-  const filteredTeam =
+  // Helper function to check if a member is a lead for the currently active team filter
+  const isMemberLeadForFilter = (
+    member: TeamMember,
+    activeFilter: string
+  ): boolean => {
+    // Case 1: Simple boolean check (Applies to main team or if they lead all listed teams)
+    if (typeof member.isTeamLead === "boolean") {
+      // If the main team or any subteam is the active filter, and isTeamLead is true.
+      const isMemberOfFilter =
+        member.team === activeFilter ||
+        (member.subTeam && member.subTeam.includes(activeFilter));
+      //@ts-ignore subteam can be undefined
+      return member.isTeamLead && isMemberOfFilter;
+    }
+
+    // Case 2: Array<boolean> check (Tied to subTeam indices)
+    if (Array.isArray(member.isTeamLead) && member.subTeam) {
+      const filterIndex = member.subTeam.indexOf(activeFilter);
+      // The main 'team' property is not indexed in subTeam, so it's not checked here.
+
+      // If the active filter is found in subTeam, check the corresponding boolean in isTeamLead array
+      if (filterIndex !== -1) {
+        return member.isTeamLead[filterIndex] === true;
+      }
+    }
+    if(member.role === "Lead Organizer") return true
+
+    return false;
+  };
+
+  const filterTeamMembers = (member: TeamMember, activeFilter: string) => {
+    // Check the main team
+    if (member.team === activeFilter) {
+      return true;
+    }
+
+    // Check the subTeam array (if it exists)
+    if (member.subTeam && member.subTeam.includes(activeFilter)) {
+      return true;
+    }
+
+    return false;
+  };
+
+  // 1. Filter the data based on the active filter
+  let filteredTeam =
     activeFilter === "All"
       ? teamData
-      : teamData.filter((member) => member.team === activeFilter);
+      : teamData.filter((member) => filterTeamMembers(member, activeFilter));
+
+  // 2. Sort the filtered array to prioritize Team Leads for the CURRENT activeFilter
+  filteredTeam = filteredTeam.sort((a, b) => {
+    // Determine lead status for the current filter for both members
+    const aIsLead = isMemberLeadForFilter(a, activeFilter);
+    const bIsLead = isMemberLeadForFilter(b, activeFilter);
+
+    // If 'a' is a lead and 'b' is not, 'a' comes first (-1)
+    if (aIsLead && !bIsLead) {
+      return -1;
+    }
+
+    // If 'b' is a lead and 'a' is not, 'b' comes first (1)
+    if (!aIsLead && bIsLead) {
+      return 1;
+    }
+
+    // If both have the same lead status, maintain existing order (0)
+    return 0;
+  });
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#f8d8d8] via-[#f0f0f0] to-[#f8d8d8] text-[#1e1e1e] relative overflow-hidden">
@@ -232,19 +312,19 @@ function TeamMembers() {
                   <h3 className="font-bold text-white text-lg mb-1">
                     {member.name}
                   </h3>
-                  <div className="flex gap-2">
-                    <p className="text-white flex w-full text-sm font-semibold">
-                      {member.role}
-                    </p>
-                    <div className="flex gap-2 items-center w-full justify-end">
-                      <div className="w-5 h-5 bg-gradient-to-bl from-[#4d8bee] to-[#47a760] rounded-full flex items-center justify-center">
-                        <span className="text-white text-xs font-bold">X</span>
-                      </div>
-                      <div className="w-5 h-5 bg-gradient-to-bl from-[#4d8bee] to-[#47a760] rounded-full flex items-center justify-center">
-                        <Linkedin className="w-3 h-3 text-white" />
-                      </div>
-                    </div>
-                  </div>
+
+                  {/* Display Main Role/Title */}
+                  <p className="text-white text-sm font-semibold mb-2">
+                    {member.role}
+                  </p>
+
+                  {/* 👇 **New: Display Team Lead Badge only if they are the lead of the current active filter** */}
+                  {isMemberLeadForFilter(member, activeFilter) &&
+                    activeFilter !== "Organizers" && (
+                      <span className="bg-[#47a760] text-white text-xs font-bold px-2 py-0.5 rounded-full mb-2 inline-block">
+                        Team LEAD
+                      </span>
+                    )}
                 </div>
               </div>
 
@@ -258,7 +338,7 @@ function TeamMembers() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8, duration: 0.7 }}
-          className="mt-16 bg-white/80 backdrop-blur-sm rounded-2xl p-8 border-2 border-[#f0f0f0] max-w-4xl mx-auto"
+          className="hidden mt-16 bg-white/80 backdrop-blur-sm rounded-2xl p-8 border-2 border-[#f0f0f0] max-w-4xl mx-auto"
         >
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             <div>
@@ -271,7 +351,10 @@ function TeamMembers() {
             </div>
             <div>
               <p className="text-4xl font-extrabold text-[#ea4335] mb-2">
-                {teamData.filter((m) => m.team === "Media and Publicity Team").length}
+                {
+                  teamData.filter((m) => m.team === "Media and Publicity Team")
+                    .length
+                }
               </p>
               <p className="text-sm text-[#1e1e1e]/70 font-semibold">
                 Social Media
@@ -295,6 +378,9 @@ function TeamMembers() {
             </div>
           </div>
         </motion.div>
+      </div>
+      <div className="bg-black">
+        <Footer />
       </div>
     </div>
   );

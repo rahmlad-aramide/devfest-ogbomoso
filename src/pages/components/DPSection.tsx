@@ -91,17 +91,17 @@ function DPSection() {
                   <div className="bg-gradient-to-br from-[#fbbc04] to-[#fbbc04]/90 rounded-2xl row-span-2 relative overflow-hidden">
                     <div className="absolute inset-0 bg-gradient-to-br from-transparent to-black/10"></div>
                     <Image
-                      src="/devfest.jpeg"
+                      src="/devfest.svg"
                       alt="Profile"
                       fill
-                      className="object-cover rounded-2xl"
+                      className="object-center rounded-2xl"
                     />
                   </div>
 
                   <div className="bg-gradient-to-br from-[#ea4335] to-[#ea4335]/90 col-span-2 rounded-2xl p-3 md:p-4 relative overflow-hidden">
                     <div className="absolute inset-0 bg-gradient-to-br from-transparent to-black/10"></div>
                     <div className="text-white text-base md:text-lg font-bold">
-                      Wazobia
+                      Google Devs
                     </div>
                     <div className="text-white text-xs opacity-90">
                       WILL BE AT

@@ -8,11 +8,16 @@ import Header from "./components/Header";
 import MetaTags from "./components/MetaTag";
 import { motion } from "framer-motion";
 
-function DPGenerator({ data }: any) {
+function DPGenerator() {
   return (
     <>
-      <Header buttonText={data?.actionButtonText} rsvpLink={data?.rsvpLink} />
-      <MetaTags title="Generate your DP" description={data?.metadata?.title} />
+      <Header
+        buttonText={"RSVP Now"}
+        rsvpLink={
+          "https://gdg.community.dev/events/details/google-gdg-ogbomoso-presents-devfest-ogbomoso-2025/"
+        }
+      />
+      <MetaTags title="Generate your DP" description={"DevFest Ogbomoso"} />
       {/* Modern White Layout */}
       <main className="w-full min-h-screen bg-[#FFEDB8] flex flex-col items-center justify-center px-4">
         <section
@@ -58,22 +63,7 @@ function DPGenerator({ data }: any) {
           </motion.div>
         </section>
       </main>
-      <Footer data={data} />
+      <Footer />
     </>
   );
-}
-
-export async function getServerSideProps() {
-  const apiURL =
-    process.env.NODE_ENV === "development"
-      ? "http://localhost:3000"
-      : "https://devfestogbomoso.netlify.app";
-  console.log(apiURL, process.env.NODE_ENV);
-  const res = await fetch(`${apiURL}/details.json`);
-  const data = await res.json();
-  return {
-    props: {
-      data,
-    },
-  };
 }
