@@ -39,8 +39,8 @@ function DPGeneratorComponent() {
   };
 
   return (
-    <section className="py-10 lg:py-16 bg-white min-h-screen w-full flex flex-col items-center justify-center rounded-3xl">
-      <div className="w-full max-w-lg mx-auto rounded-2xl shadow-xl border border-gray-100 p-10 flex flex-col gap-8">
+    <section className="py-6 md:py-10 lg:py-16 bg-white min-h-screen shadow-xl w-full flex flex-col items-center justify-center rounded-3xl">
+      <div className="w-full max-w-lg mx-auto p-5 md:p-10 flex flex-col gap-8">
         <h1 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-2 text-center tracking-tight">
           DevFest DP Generator
         </h1>
@@ -57,11 +57,11 @@ function DPGeneratorComponent() {
             value={name}
             onChange={(e) => setName(e.target.value)}
             placeholder="Enter your name"
-            className="w-full p-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#FF9800] bg-white text-gray-900"
+            className="w-full p-3 rounded-lg border border-[#FF9800] focus:outline-none focus:ring-2 focus:ring-[#FF9800] bg-white text-gray-900"
           />
         </div>
         <div className="flex flex-col gap-4 items-center">
-          <div className="relative aspect-square w-36 rounded-xl bg-gray-50 flex items-center justify-center overflow-hidden border border-gray-200">
+          <div className="relative aspect-square w-36 rounded-xl bg-gray-50 flex items-center justify-center overflow-hidden border border-[#FF9800]">
             {uploading ? (
               <div className="absolute inset-0 bg-black/10 flex items-center justify-center">
                 <div className="w-10 h-10 border-4 border-gray-300 border-t-transparent rounded-full animate-spin" />
@@ -75,7 +75,7 @@ function DPGeneratorComponent() {
               />
             ) : (
               <div
-                className="flex flex-col items-center justify-center gap-2 cursor-pointer"
+                className="flex flex-col items-center justify-center gap-2 cursor-pointer border-[#FF9800]"
                 onClick={() => fileInputRef.current?.click()}
               >
                 <ImageIcon className="w-8 h-8 text-[#FF9800]" />
@@ -116,7 +116,7 @@ function DPGeneratorComponent() {
         <button
           disabled={!previewImage || !name}
           onClick={handleGenerateDP}
-          className="disabled:bg-gray-200 w-full bg-[#FF9800] text-white px-6 py-3 rounded-lg flex items-center justify-center gap-2 hover:bg-[#FF9800]/90 transition-colors font-semibold text-base shadow-md"
+          className="disabled:bg-gray-500 disabled:cursor-not-allowed cursor-pointer w-full bg-[#FF9800] text-white px-6 py-3 rounded-lg flex items-center justify-center gap-2 hover:bg-[#FF9800]/90 transition-colors font-semibold text-base shadow-md"
         >
           <PencilIcon className="w-5 h-5" /> Generate DP
         </button>

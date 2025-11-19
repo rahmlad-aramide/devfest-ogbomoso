@@ -37,7 +37,7 @@ function DPGenerator() {
               Show your excitement for DevFest Ogbomoso! Upload, customize, and
               share your unique DP.
             </p>
-            <div className="gap-6 mb-2 lg:mb-8 flex flex-col lg:flex-row justify-center ">
+            <div className="gap-6 mb-4 lg:mb-8 flex flex-row flex-wrap justify-center ">
               <div className="flex items-center gap-2">
                 <span className="w-8 h-8 flex items-center justify-center rounded-full bg-[#FF9800] text-white font-bold">
                   1
@@ -54,7 +54,13 @@ function DPGenerator() {
                 <span className="w-8 h-8 flex items-center justify-center rounded-full bg-[#FF9800] text-white font-bold">
                   3
                 </span>
-                <span className="text-gray-700 text-xs">Download or Share</span>
+                <span className="text-gray-700 text-xs">Preview DP</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="w-8 h-8 flex items-center justify-center rounded-full bg-[#FF9800] text-white font-bold">
+                  4
+                </span>
+                <span className="text-gray-700 text-xs">Download and Share</span>
               </div>
             </div>
             <div className="flex justify-center">
