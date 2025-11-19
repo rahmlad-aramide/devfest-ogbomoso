@@ -271,7 +271,7 @@ function TeamMembers() {
             </div>
             <div>
               <p className="text-4xl font-extrabold text-[#ea4335] mb-2">
-                {teamData.filter((m) => m.team === "Social Media Team").length}
+                {teamData.filter((m) => m.team === "Media and Publicity Team").length}
               </p>
               <p className="text-sm text-[#1e1e1e]/70 font-semibold">
                 Social Media
