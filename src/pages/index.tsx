@@ -18,7 +18,7 @@ export default function Home({ data }: any) {
       <ScheduleSection data={data} suppressHydrationWarning />
       <DPSection />
       <FAQSection data={data} />
-      <Footer data={data} />
+      <Footer />
     </>
   );
 }
