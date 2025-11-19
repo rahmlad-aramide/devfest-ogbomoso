@@ -540,7 +540,7 @@ const Header = ({ buttonText, rsvpLink }: HeaderProps) => {
               <a
                 key={item.label} 
                 href={item.href}
-                className={`relative transition-all duration-300 font-medium text-sm lg:text-base px-5 py-2.5 rounded-full backdrop-blur-md border overflow-hidden
+                className={`relative transition-all duration-300 font-medium text-sm lg:text-base px-5 py-2.5 rounded-full backdrop-blur-md border-2 overflow-hidden
                   ${
                     isOnWhiteBg && isScrolled
                       ? "text-gray-800 hover:text-gray-900 bg-gray-100/80 border-gray-300 before:bg-[radial-gradient(circle_at_30%_30%,rgba(0,0,0,0.1),transparent_60%)] hover:before:bg-[radial-gradient(circle_at_70%_70%,rgba(0,0,0,0.15),transparent_60%)]"
