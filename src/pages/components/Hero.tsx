@@ -178,9 +178,8 @@ function Hero({ data }: any) {
               </span>
             </motion.div>
 
-            {/* Main Heading - EXACTLY YOUR ORIGINAL FORMATTING with animation */}
             <motion.h1
-              className="text-6xl lg:text-9xl font-black leading-tight lg:leading-none px-4"
+              className="text-6xl lg:text-9xl font-black lg:font-extrabold leading-tight lg:leading-none px-4"
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
@@ -268,7 +267,7 @@ function Hero({ data }: any) {
             {/* Description */}
             <motion.p
               variants={itemVariants}
-              className="text-lg lg:text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed px-4"
+              className="text-sm lg:text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed px-4"
             >
               Step into the future of technology at DevFest! Discover the latest
               trends, sharpen your skills with expert-led sessions, and explore

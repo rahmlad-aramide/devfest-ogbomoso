@@ -1098,7 +1098,7 @@ function SpeakersSection({ data }: any) {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.05, duration: 0.5 }}
               viewport={{ once: true }}
-              className="relative h-[480px]"
+              className="relative h-[485px]"
               style={{ perspective: "1000px" }}
               onMouseEnter={() => setFlippedCard(speaker.id)}
               onMouseLeave={() => setFlippedCard(null)}
@@ -1155,7 +1155,7 @@ function SpeakersSection({ data }: any) {
                       )}
                     </div>
 
-                    <p className="text-xs text-[#1e1e1e]/60 mt-4 font-semibold">
+                    <p className="text-xs text-[#1e1e1e]/60 mt-2 font-semibold">
                       {speaker.bio}
                     </p>
                   </div>
