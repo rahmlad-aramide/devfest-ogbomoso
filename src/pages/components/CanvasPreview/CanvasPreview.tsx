@@ -233,7 +233,11 @@ const CanvasPreview = forwardRef<HTMLCanvasElement, CanvasPreviewProps>(
 
               ctx.fillStyle = text.color;
               ctx.textAlign = text.textAlign || "left";
-              ctx.fillText(text.content.toUpperCase(), text.position.x, text.position.y);
+              ctx.fillText(
+                text.content.toUpperCase(),
+                text.position.x,
+                text.position.y
+              );
             });
 
             // Draw additional images if any
@@ -344,11 +348,66 @@ const CanvasPreview = forwardRef<HTMLCanvasElement, CanvasPreviewProps>(
             ctx.fillRect(0, 0, width, height);
           }
 
-          // === Draw top imageU ===
-          ctx.drawImage(baseImage, 0, 0, width, 30);
+          // === Draw top imageU with object-cover ===
+          const topHeight = 140;
+          const baseImgAspect = baseImage.width / baseImage.height;
+          const topBoxAspect = width / topHeight;
 
-          // === Draw bottom imageU ===
-          ctx.drawImage(baseImage, 0, height - 30, width, 30);
+          let topSrcX, topSrcY, topSrcWidth, topSrcHeight;
+          if (baseImgAspect > topBoxAspect) {
+            // Image is wider, crop sides
+            topSrcHeight = baseImage.height;
+            topSrcWidth = baseImage.height * topBoxAspect;
+            topSrcX = (baseImage.width - topSrcWidth) / 2;
+            topSrcY = 0;
+          } else {
+            // Image is taller, crop top/bottom
+            topSrcWidth = baseImage.width;
+            topSrcHeight = baseImage.width / topBoxAspect;
+            topSrcX = 0;
+            topSrcY = (baseImage.height - topSrcHeight) / 2;
+          }
+          ctx.drawImage(
+            baseImage,
+            topSrcX,
+            topSrcY,
+            topSrcWidth,
+            topSrcHeight,
+            0,
+            0,
+            width,
+            topHeight
+          );
+
+          // === Draw bottom imageU with object-cover ===
+          const bottomHeight = 140;
+          const bottomBoxAspect = width / bottomHeight;
+
+          let bottomSrcX, bottomSrcY, bottomSrcWidth, bottomSrcHeight;
+          if (baseImgAspect > bottomBoxAspect) {
+            // Image is wider, crop sides
+            bottomSrcHeight = baseImage.height;
+            bottomSrcWidth = baseImage.height * bottomBoxAspect;
+            bottomSrcX = (baseImage.width - bottomSrcWidth) / 2;
+            bottomSrcY = 0;
+          } else {
+            // Image is taller, crop top/bottom
+            bottomSrcWidth = baseImage.width;
+            bottomSrcHeight = baseImage.width / bottomBoxAspect;
+            bottomSrcX = 0;
+            bottomSrcY = (baseImage.height - bottomSrcHeight) / 2;
+          }
+          ctx.drawImage(
+            baseImage,
+            bottomSrcX,
+            bottomSrcY,
+            bottomSrcWidth,
+            bottomSrcHeight,
+            0,
+            height - bottomHeight,
+            width,
+            bottomHeight
+          );
 
           // === Draw user photo on right ===
           const { x, y, width: uW, height: uH } = config.userBox;
@@ -445,7 +504,7 @@ const CanvasPreview = forwardRef<HTMLCanvasElement, CanvasPreviewProps>(
             // Draw glassmorphism box if needed
             if (text.hasGlassmorphism) {
               const padding = text.glassPadding || {
-                top: 8  ,
+                top: 8,
                 right: 16,
                 bottom: 8,
                 left: 16,
@@ -565,7 +624,8 @@ const CanvasPreview = forwardRef<HTMLCanvasElement, CanvasPreviewProps>(
         ref={canvasRef}
         width={width}
         height={height}
-        className="border rounded-lg shadow-lg"
+        className="border rounded-lg shadow-lg w-full h-full"
+        style={{ maxWidth: "100%", maxHeight: "100%" }}
       />
     );
   }

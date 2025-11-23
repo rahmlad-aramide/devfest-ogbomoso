@@ -2,13 +2,20 @@ import "./globals.css";
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import MetaTags from "./components/MetaTag";
-import { Raleway } from "next/font/google";
+import { Raleway, Poppins } from "next/font/google";
 
 const raleway = Raleway({
   subsets: ['latin'],
   weight: ['300', '400', '500', '600', '700', '800', '900'],
   display: 'swap',
   variable: '--font-raleway',
+});
+
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700', '800', '900'],
+  display: 'swap',
+  variable: '--font-poppins',
 });
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -29,7 +36,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta name="theme-color" content="#FF9800" />
       </Head>
       
-      <main className={`${raleway.variable}`}>
+      <main className={`${raleway.variable} ${poppins.variable} font-sans`}>
         <Component {...pageProps} />
       </main>
     </>
