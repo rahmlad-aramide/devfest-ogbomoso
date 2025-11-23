@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import DPSection from "./components/DPSection";
 import FAQSection from "./components/FAQSection";
@@ -7,6 +6,7 @@ import Hero from "./components/Hero";
 import ScheduleSection from "./components/ScheduleSection";
 import SpeakersSection from "./components/SpeakersSection";
 import ThrowbackSection from "./components/ThrowbackSection";
+import TeamSection from "./components/TeamSection";
 
 export default function Home({ data }: any) {
   return (
@@ -14,10 +14,11 @@ export default function Home({ data }: any) {
       <Hero data={data} />
       {data?.throwback.show && <ThrowbackSection data={data?.throwback} />}
       <SpeakersSection data={data} />
+      <TeamSection data={data} />
       <ScheduleSection data={data} suppressHydrationWarning />
       <DPSection />
       <FAQSection data={data} />
-      <Footer data={data} />
+      <Footer />
     </>
   );
 }

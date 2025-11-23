@@ -23,7 +23,7 @@ const MetaTags = ({
           "ogbomoso devfest",
           "gdg ogbomoso",
           "gdg devfest",
-          "devfest 2024",
+          "devfest 2025",
           "ogbomoso",
           "ogbomoso devs",
           "gdg",
