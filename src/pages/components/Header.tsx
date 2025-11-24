@@ -117,18 +117,23 @@ const Header = ({ buttonText, rsvpLink }: HeaderProps) => {
   };
 
   const navItems = [
-    { href: "#", label: "Home", icon: <Menu className="w-4 h-4" /> },
+    { href: "/#", label: "Home", icon: <Menu className="w-4 h-4" /> },
     {
-      href: "#speakers",
+      href: "/#speakers",
       label: "Speakers",
       icon: <Users className="w-4 h-4" />,
     },
     {
-      href: "#schedule",
+      href: "/#team",
+      label: "Team",
+      icon: <Users className="w-4 h-4" />
+    },
+    {
+      href: "/#schedule",
       label: "Schedule",
       icon: <Clock className="w-4 h-4" />,
     },
-    { href: "#faqs", label: "FAQs", icon: <HelpCircle className="w-4 h-4" /> },
+    { href: "/#faqs", label: "FAQs", icon: <HelpCircle className="w-4 h-4" /> },
   ];
 
   return (
