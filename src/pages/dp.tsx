@@ -12,7 +12,7 @@ function DPGenerator() {
   return (
     <>
       <Header
-        buttonText={"RSVP Now"}
+        buttonText={"Register Now"}
         rsvpLink={
           "https://gdg.community.dev/events/details/google-gdg-ogbomoso-presents-devfest-ogbomoso-2025/"
         }

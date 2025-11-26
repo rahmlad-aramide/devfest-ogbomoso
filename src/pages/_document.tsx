@@ -23,16 +23,16 @@ export default function Document() {
               : "noindex,nofollow"
           }
         />
-        <meta name="author" content="Feranmi Adeniji" />
-        <meta name="referrer" content="no-referrer" />
+        <meta name="author" content="GDG Ogbomoso" />
+        <meta name="referrer" content="origin" />
         <meta name="format-detection" content="telephone=no" />
         <meta httpEquiv="x-dns-prefetch-control" content="off" />
         <meta httpEquiv="Window-Target" content="_value" />
         <meta name="mobile-web-app-capable" content="yes" />
-        <meta name="application-name" content="Moniepoint Inc." />
+        <meta name="application-name" content="DevFest Ogbomoso" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <meta name="apple-mobile-web-app-title" content="Moniepoint Inc." />
+        <meta name="apple-mobile-web-app-title" content="DevFest Ogbomoso" />
         {/* END META */}
         <link rel="manifest" href="/manifest.json" />
         <link href="/icon.svg" rel="icon" type="image/svg" sizes="16x16" />

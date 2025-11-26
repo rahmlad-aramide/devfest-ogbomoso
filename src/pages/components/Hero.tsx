@@ -3,8 +3,8 @@ import { motion, Transition } from "framer-motion";
 import { MapPin, Calendar, Clock, ImageIcon } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-
 import Header from "./Header";
+import { RSVPModal } from "./RSVPModal";
 
 type EventStatus = "COUNTDOWN" | "ON_DAY" | "SUCCESSFUL";
 
@@ -18,6 +18,7 @@ function Hero({ data }: any) {
 
   const [currentTime, setCurrentTime] = useState("");
   const [currentDate, setCurrentDate] = useState("");
+  const [showRSVPModal, setShowRSVPModal] = useState<boolean>(false);
 
   const [eventStatus, setEventStatus] = useState<EventStatus>("COUNTDOWN");
 
@@ -136,6 +137,24 @@ function Hero({ data }: any) {
     },
   };
 
+  useEffect(() => {
+    if (showRSVPModal) {
+      // Prevent background scroll
+      document.body.style.overflow = "hidden";
+      document.documentElement.style.overflow = "hidden";
+    } else {
+      // Re-enable scroll
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
+    }
+
+    // Cleanup
+    return () => {
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
+    };
+  }, [showRSVPModal]);
+
   return (
     <section className="min-h-[60vh] lg:min-h-[70vh] relative bg-black text-white pt-20 pb-5">
       {/* Background Image */}
@@ -149,9 +168,7 @@ function Hero({ data }: any) {
         >
           <source src={"/2d.mp4"} type="video/mp4" />
         </video>
-        {/* Gradient overlay - fade to black at the top */}
         <div className="absolute inset-0 bg-gradient-to-b from-black via-black/70 to-black/30" />
-        {/* Additional gradient for better text contrast */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/30 to-black/10" />
       </div>
 
@@ -160,7 +177,6 @@ function Hero({ data }: any) {
       {/* Main Content */}
       <div className="pt-10 relative z-10 flex items-center justify-center min-h-[60vh] lg:min-h-[70vh]">
         <div className="w-full max-w-6xl mx-auto px-4 lg:px-6">
-          {/* Centered Content */}
           <motion.div
             className="text-center space-y-6 lg:space-y-8"
             variants={containerVariants}
@@ -168,7 +184,6 @@ function Hero({ data }: any) {
             whileInView="visible"
             viewport={{ once: true }}
           >
-            {/* Badge - Google Blue */}
             <motion.div
               variants={itemVariants}
               className="inline-flex items-center justify-center px-4 py-2 bg-[#4285f4]/10 backdrop-blur-sm rounded-full border border-[#4285f4]/30"
@@ -380,28 +395,32 @@ function Hero({ data }: any) {
               </motion.div>
             </motion.div>
 
-            {/* CTA Buttons - Google Colors */}
             <motion.div
               variants={itemVariants}
               className="flex flex-col sm:flex-row gap-3 lg:gap-4 justify-center items-center pt-4 px-4 pb-8"
             >
-              {/* RSVP Button - Google Blue */}
-              <a
-                href="https://tinyurl.com/devfestogbo2025"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full sm:w-auto"
-              >
+              <div className="w-full sm:w-auto">
                 <motion.button
+                  onClick={() => {
+                    setShowRSVPModal(true);
+                  }}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className="w-full bg-[#4285f4] hover:bg-[#3367d6] text-white px-6 py-3 lg:px-8 lg:py-4 rounded-full font-semibold text-base lg:text-lg transition-all duration-300 shadow-lg hover:shadow-xl"
                 >
-                  RSVP NOW
+                  Get Your Free Ticket
                 </motion.button>
-              </a>
+              </div>
 
-              {/* Get DP Button - Transparent with Green Outline */}
+              {/* RSVP Modal */}
+              {showRSVPModal && (
+                <RSVPModal
+                  isOpen={showRSVPModal}
+                  onClose={() => setShowRSVPModal(false)}
+                  eventType="devfest"
+                />
+              )}
+
               <Link href="/dp" className="w-full sm:w-auto">
                 <motion.button
                   whileHover={{ scale: 1.05 }}

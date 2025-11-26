@@ -670,7 +670,7 @@ function ScheduleSection({ data }: any) {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.7 }}
           viewport={{ once: true }}
-          className="flex flex-wrap justify-center gap-4 mb-12"
+          className="grid grid-cols-3 md:gap-8 px-4 items-center flex-wrap justify-center gap-4 mb-12"
         >
           {days.map((day, index) => (
             <button
@@ -807,10 +807,10 @@ function ScheduleSection({ data }: any) {
               <Download className="w-5 h-5" />
               Download Full Schedule
             </button>
-            <button className="inline-flex items-center gap-2 border-2 border-[#34a853] text-[#34a853] hover:bg-[#34a853] hover:text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105">
+            {/* <button className="inline-flex items-center gap-2 border-2 border-[#34a853] text-[#34a853] hover:bg-[#34a853] hover:text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105">
               <Calendar className="w-5 h-5" />
               Add to Calendar
-            </button>
+            </button> */}
           </div>
         </motion.div>
       </div>
