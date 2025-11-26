@@ -11,8 +11,8 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState, useRef } from "react";
-import { RSVPModal } from "./RSVPModal";
 import Link from "next/link";
+import { RSVPModal } from "./RSVPModal";
 
 interface HeaderProps {
   buttonText: string;
