@@ -325,82 +325,82 @@ export default function DPPreview() {
         ? "/2025/Doodles - Section Divider - Green.svg"
         : "/2025/Doodles - Section Divider - Amber.svg", // Use an existing image from public folder as background
     userImage: dpData?.photo || "", // user photo
-    userBox: { x: 170, y: 60, width: 160, height: 180 },
-    backgroundColor: dpBackground[parseInt(dpBgColor)], // User-selected background color
+    userBox: { x: 613, y: 213, width: 533, height: 560 },
+    backgroundColor: dpBackground[Number.parseInt(dpBgColor)], // User-selected background color
     images: [
       {
         src: "/2025/devfest-2025.svg",
-        position: { x: 20, y: 100 },
-        size: { width: 120, height: 35 },
+        position: { x: 53, y: 320 },
+        size: { width: 453, height: 133 },
       },
       // Location icon
       {
         src: createIconDataUrl(MapPin, "#444", 16),
-        position: { x: 20, y: 162 },
-        size: { width: 16, height: 16 },
+        position: { x: 53, y: 507 },
+        size: { width: 53, height: 53 },
       },
       // Calendar icon for date
       {
         src: createIconDataUrl(Calendar, "#444", 16),
-        position: { x: 20, y: 190 },
-        size: { width: 16, height: 16 },
+        position: { x: 53, y: 600 },
+        size: { width: 53, height: 53 },
       },
       // Clock icon for time
       {
         src: createIconDataUrl(Clock, "#444", 16),
-        position: { x: 20, y: 218 },
-        size: { width: 16, height: 16 },
+        position: { x: 53, y: 707 },
+        size: { width: 53, height: 53 },
       },
     ],
     texts: [
       {
         content: "I will be attending",
-        position: { x: 20, y: 80 },
-        font: "Arial",
+        position: { x: 53, y: 267 },
+        font: "'poppins', sans-serif",
         color: "#2b2b2b",
-        size: 16,
+        size: 48,
       },
       // Location
       {
         content: "Ogbomoso, Nigeria",
-        position: { x: 41, y: 175 },
-        font: "Arial",
+        position: { x: 133, y: 547 },
+        font: "poppins",
         color: "#444",
-        size: 12,
+        size: 43,
       },
       // Date
       {
         content: "December 5&6, 2025",
-        position: { x: 41, y: 204 },
-        font: "Arial",
+        position: { x: 133, y: 640 },
+        font: "poppins",
         color: "#444",
-        size: 12,
+        size: 40,
       },
       // Time
       {
         content: "9:00 AM - 5:00 PM",
-        position: { x: 41, y: 231 },
-        font: "Arial",
+        position: { x: 133, y: 747 },
+        font: "poppins",
         color: "#444",
-        size: 12,
+        size: 43,
       },
       {
         content: dpData.name.toUpperCase(),
-        position: { x: 175, y: 290 },
-        font: "600 Arial",
+        position: { x: 600, y: 960 },
+        font: "600 poppins",
         color: "#000",
-        size: 13,
+        size: 53,
         textAlign: "center",
         hasGlassmorphism: true,
-        glassPadding: { top: 15, right: 125, bottom: 15, left: 125 },
+        glassPadding: { top: 48, right: 427, bottom: 48, left: 427 },
       },
-      {
-        content: "DevFest Attendee",
-        position: { x: 320, y: 390 },
-        font: "Arial",
-        color: "#555",
-        size: 18,
-      },
+      //       {
+      //         content: "DevFest Attendee",
+      //         position: { x: 320, y: 390 },
+      //         font: "poppins",
+      //         color: "#555",
+      //         size: 18,
+      //       },
     ],
   };
 
@@ -421,12 +421,14 @@ export default function DPPreview() {
         </motion.div>
 
         <div className="flex flex-col items-center gap-6">
-          <CanvasPreview
-            ref={canvasRef}
-            config={config as any}
-            width={350}
-            height={350}
-          />
+          <div className="w-[450px] h-[450px]">
+            <CanvasPreview
+              ref={canvasRef}
+              config={config as any}
+              width={1200}
+              height={1200}
+            />
+          </div>
 
           <button
             onClick={downloadImage}

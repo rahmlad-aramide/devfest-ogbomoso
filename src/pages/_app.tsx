@@ -2,13 +2,20 @@ import "./globals.css";
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import MetaTags from "./components/MetaTag";
-import { Raleway } from "next/font/google";
+import { Raleway, Poppins } from "next/font/google";
 
 const raleway = Raleway({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800", "900"],
-  display: "swap",
-  variable: "--font-raleway",
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700', '800', '900'],
+  display: 'swap',
+  variable: '--font-raleway',
+});
+
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700', '800', '900'],
+  display: 'swap',
+  variable: '--font-poppins',
 });
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -26,43 +33,10 @@ function MyApp({ Component, pageProps }: AppProps) {
             "DevFest Ogbomoso is a community-run, developer event that offers speaker sessions across multiple product areas, codelabs, hackathon, and more."
           }
         />
-        <meta name="theme-color" content="#0357EE" />
-        {/* <!-- HTML Meta Tags --> */}
-        <meta
-          name="description"
-          content="DevFest Ogbomoso is a community-run, developer event that offers speaker sessions across multiple product areas, codelabs, hackathon, and more."
-        />
-        {/* <!-- Facebook Meta Tags --> */}
-        <meta property="og:url" content="https://www.devfestogbomoso.com" />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content="DevFest Ogbomoso" />
-        <meta
-          property="og:description"
-          content="DevFest Ogbomoso is a community-run, developer event that offers speaker sessions across multiple product areas, codelabs, hackathon, and more."
-        />
-        <meta
-          property="og:image"
-          content="https://www.devfestogbomoso.com/2.jpg"
-        />
-        {/* <!-- Twitter Meta Tags --> */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta property="twitter:domain" content="devfestogbomoso.com" />
-        <meta
-          property="twitter:url"
-          content="https://www.devfestogbomoso.com"
-        />
-        <meta name="twitter:title" content="DevFest Ogbomoso" />
-        <meta
-          name="twitter:description"
-          content="DevFest Ogbomoso is a community-run, developer event that offers speaker sessions across multiple product areas, codelabs, hackathon, and more."
-        />
-        <meta
-          name="twitter:image"
-          content="https://www.devfestogbomoso.com/2.jpg"
-        />
+        <meta name="theme-color" content="#FF9800" />
       </Head>
-
-      <main className={`${raleway.variable}`}>
+      
+      <main className={`${raleway.variable} ${poppins.variable} font-sans`}>
         <Component {...pageProps} />
       </main>
     </>
