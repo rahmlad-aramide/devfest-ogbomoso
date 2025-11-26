@@ -19,7 +19,7 @@
     "images": ["/devfest-1.jpg", "/devfest-2.jpg", "/devfest-3.jpg"]
   },
   "theme": "#FF9800",
-  "actionButtonText": "RSVP Now",
+  "actionButtonText": "Register Now",
   "speakers": [
     {
       "id": "adeola",

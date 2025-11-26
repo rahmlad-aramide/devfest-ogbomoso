@@ -67,7 +67,10 @@ function TeamSection({ data }: { data: any }) {
   );
 
   return (
-    <section id="team" className="pb-20 lg:pb-28 bg-gradient-to-br from-[#f8d8d8] via-[#f0f0f0] to-[#f8d8d8] text-[#1e1e1e] relative overflow-hidden">
+    <section
+      id="team"
+      className="pb-20 lg:pb-28 bg-gradient-to-br from-[#f8d8d8] via-[#f0f0f0] to-[#f8d8d8] text-[#1e1e1e] relative overflow-hidden"
+    >
       <div className="absolute inset-0 opacity-30">
         <div className="absolute top-20 left-10 w-72 h-72 bg-[#4285f4]/10 rounded-full blur-3xl animate-pulse-slow" />
         <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#ea4335]/10 rounded-full blur-3xl animate-pulse-slow delay-1000" />
@@ -107,7 +110,7 @@ function TeamSection({ data }: { data: any }) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.4, duration: 0.8 }}
-            className="text-xl text-[#1e1e1e]/80 max-w-2xl mx-auto leading-relaxed font-semibold"
+            className="text-sm lg:text-xl text-[#1e1e1e]/80 max-w-2xl mx-auto leading-relaxed font-semibold"
           >
             Our passionate and dedicated team has been preparing hard to deliver
             an incredible DevFest experience!

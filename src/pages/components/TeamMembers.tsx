@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 
 import Footer from "./Footer";
+import Link from "next/link";
 
 interface TeamMember {
   name: string;
@@ -210,13 +211,13 @@ function TeamMembers() {
           transition={{ duration: 0.5 }}
           className="mb-8"
         >
-          <a
+          <Link
             href="/#team"
             className="inline-flex items-center gap-2 text-[#4285f4] hover:text-[#3367d6] font-bold transition-colors"
           >
             <ChevronLeft className="w-5 h-5" />
             Home
-          </a>
+          </Link>
         </motion.div>
 
         {/* Header */}
@@ -249,7 +250,7 @@ function TeamMembers() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.8 }}
-            className="text-xl text-[#1e1e1e]/80 max-w-3xl mx-auto leading-relaxed font-semibold"
+            className="text-sm lg:text-xl text-[#1e1e1e]/80 max-w-3xl mx-auto leading-relaxed font-semibold"
           >
             Meet all the passionate individuals working tirelessly behind the
             scenes to make DevFest Ogbomoso 2025 an unforgettable experience!

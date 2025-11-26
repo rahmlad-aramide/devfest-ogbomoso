@@ -435,12 +435,14 @@ import {
   MapPin,
   Clock,
 } from "lucide-react";
+import Link from "next/link";
 
 interface Speaker {
   id: string;
   name: string;
   role: string;
   bio: string;
+  bioLong: string; // Add this field
   company?: string;
   image?: string;
   socials?: {
@@ -465,256 +467,6 @@ function SpeakersSection({ data }: any) {
   const dataSpeakers = data?.speakers || [];
   const pastSpeakers = [...dataSpeakers];
 
-  // Current speakers data from CSV
-  // const currentSpeakers: Speaker[] = [
-  //   // Pre-DevFest Series
-  //   {
-  //     id: "paul-edward",
-  //     name: "Paul Edward",
-  //     role: "Database Expert",
-  //     image: "/api/placeholder/400/400",
-  //     session: {
-  //       title:
-  //         "Scaling Databases for the Future: Strategies That Power Millions",
-  //       track: "Pre-DevFest Series",
-  //       time: "Online",
-  //       day: "Pre-DevFest",
-  //     },
-  //   },
-  //   {
-  //     id: "asoluka-tochukwu",
-  //     name: "Asoluka Tochukwu Austin",
-  //     role: "CTO/Co-Founder",
-  //     company: "Preview AI",
-  //     image:
-  //       "https://drive.google.com/file/d/1JhKBqsUub_vBAuVCAdxEFpxCjSOCEDnM/view?usp=sharing",
-  //     session: {
-  //       title:
-  //         "Testing the Limits of Frontier AI Models - Understanding their Strengths and Differences",
-  //       track: "Pre-DevFest Series",
-  //       time: "Online",
-  //       day: "Pre-DevFest",
-  //     },
-  //   },
-  //   {
-  //     id: "tashinga-pemhiwa",
-  //     name: "Tashinga Pemhiwa",
-  //     role: "Android Technology Lead",
-  //     company: "Absa",
-  //     image: "https://ibb.co/9k4kSTpY",
-  //     session: {
-  //       title:
-  //         "AI on Android: Enriching User Experience on Africa's Mobile Platform of Choice",
-  //       track: "Pre-DevFest Series",
-  //       time: "Online",
-  //       day: "Pre-DevFest",
-  //     },
-  //   },
-  //   {
-  //     id: "ridwan-adewole",
-  //     name: "Ridwan Adewole",
-  //     role: "Software Engineer",
-  //     company: "AlgramX",
-  //     image: "https://ibb.co/TMcRTW4p",
-  //     session: {
-  //       title:
-  //         "Welcome to Web3: The Internet of Ownership, Trust, and Transparency",
-  //       track: "Pre-DevFest Series",
-  //       time: "Online",
-  //       day: "Pre-DevFest",
-  //     },
-  //   },
-  //   // Day 1 - Workshop Speakers
-  //   {
-  //     id: "timothy-ogundipe",
-  //     name: "Timothy Ogundipe",
-  //     role: "Design & Product Expert",
-  //     image: "/api/placeholder/400/400",
-  //     session: {
-  //       title:
-  //         "Designing the Invisible: Prototyping Trust and Feedback in Intelligent Interfaces",
-  //       track: "Design and Product",
-  //       time: "10:00 AM - 11:00 AM",
-  //       day: "Day 1 - Workshop",
-  //     },
-  //   },
-  //   {
-  //     id: "david-oluwabusayo",
-  //     name: "David Oluwabusayo",
-  //     role: "Engineering & Security",
-  //     image: "/api/placeholder/400/400",
-  //     session: {
-  //       title:
-  //         "Flutter + WebAssembly: Building High-Performance Cross-Platform Apps",
-  //       track: "Engineering and Security",
-  //       time: "10:00 AM - 11:00 AM",
-  //       day: "Day 1 - Workshop",
-  //     },
-  //   },
-  //   {
-  //     id: "ojo-ilesanmi",
-  //     name: "Ojo Ilesanmi",
-  //     role: "AI & Cloud Specialist",
-  //     image: "/api/placeholder/400/400",
-  //     session: {
-  //       title: "Building a Real-Time Fraud Detection System with AI and Cloud",
-  //       description: "Secure, Scalable, and Hands-On",
-  //       track: "AI and Cloud",
-  //       time: "10:00 AM - 11:00 AM",
-  //       day: "Day 1 - Workshop",
-  //     },
-  //   },
-  //   {
-  //     id: "oluwatobi-immanuel",
-  //     name: "Oluwatobi Immanuel",
-  //     role: "Design Expert",
-  //     image: "/api/placeholder/400/400",
-  //     session: {
-  //       title: "Design - Intentional Creativity, Not Automation",
-  //       track: "Design and Product",
-  //       time: "11:00 AM - 12:00 PM",
-  //       day: "Day 1 - Workshop",
-  //     },
-  //   },
-  //   {
-  //     id: "adeniji-oluwaferanmi",
-  //     name: "Adeniji Oluwaferanmi",
-  //     role: "Engineering Specialist",
-  //     image: "/api/placeholder/400/400",
-  //     session: {
-  //       title: "Migration to Microfrontends",
-  //       track: "Engineering and Security",
-  //       time: "11:00 AM - 12:00 PM",
-  //       day: "Day 1 - Workshop",
-  //     },
-  //   },
-  //   {
-  //     id: "ahmd-olanrewaju",
-  //     name: "Ahm'd Olanrewaju",
-  //     role: "AI Specialist",
-  //     image: "/api/placeholder/400/400",
-  //     session: {
-  //       title:
-  //         "Hands-On with Gemini and Google ADK: Building Full-Stack AI Agents MaaS",
-  //       track: "AI and Cloud",
-  //       time: "11:00 AM - 12:00 PM",
-  //       day: "Day 1 - Workshop",
-  //     },
-  //   },
-  //   {
-  //     id: "titcombe-michael",
-  //     name: "Titcombe Michael",
-  //     role: "Design & Product",
-  //     image: "/api/placeholder/400/400",
-  //     session: {
-  //       title:
-  //         "Designing Trust: Building Human-Centered Brands and Interfaces in the Age of AI",
-  //       track: "Design and Product",
-  //       time: "12:00 PM - 1:00 PM",
-  //       day: "Day 1 - Workshop",
-  //     },
-  //   },
-  //   {
-  //     id: "mudasiru-rasheed",
-  //     name: "Mudasiru Rasheed Taiwo",
-  //     role: "AI & Cloud DevOps",
-  //     image: "/api/placeholder/400/400",
-  //     session: {
-  //       title: "Gemma: Inferences and building a MaaS",
-  //       track: "AI and Cloud DevOps",
-  //       time: "12:00 PM - 1:00 PM",
-  //       day: "Day 1 - Workshop",
-  //     },
-  //   },
-  //   // Main Conference
-  //   {
-  //     id: "jd-keynote",
-  //     name: "JD",
-  //     role: "Keynote Speaker",
-  //     image: "/api/placeholder/400/400",
-  //     session: {
-  //       title: "Keynote Address 1",
-  //       track: "Keynote",
-  //       time: "9:30 AM - 10:00 AM",
-  //       day: "Main Conference",
-  //     },
-  //   },
-  //   {
-  //     id: "aderinto-keynote",
-  //     name: "Aderinto",
-  //     role: "Keynote Speaker",
-  //     image: "/api/placeholder/400/400",
-  //     session: {
-  //       title: "Keynote Address 2",
-  //       track: "Keynote",
-  //       time: "10:00 AM - 10:30 AM",
-  //       day: "Main Conference",
-  //     },
-  //   },
-  //   {
-  //     id: "daniel",
-  //     name: "Daniel",
-  //     role: "AI Specialist",
-  //     image: "/api/placeholder/400/400",
-  //     session: {
-  //       title:
-  //         "The Fine Art of Prompting: Getting Unbeatable Results with Gemini",
-  //       track: "AI & ML",
-  //       time: "10:30 AM - 11:15 AM",
-  //       day: "Main Conference",
-  //     },
-  //   },
-  //   {
-  //     id: "kruse",
-  //     name: "Kruse",
-  //     role: "Cloud Expert",
-  //     image: "/api/placeholder/400/400",
-  //     session: {
-  //       title: "From Logs to Insights: AI-Powered Observability with GCP",
-  //       track: "Cloud & DevOps",
-  //       time: "11:15 AM - 12:00 PM",
-  //       day: "Day 2 - Main Conference",
-  //     },
-  //   },
-  //   {
-  //     id: "tope",
-  //     name: "Tope",
-  //     role: "Community Leader",
-  //     image: "/api/placeholder/400/400",
-  //     session: {
-  //       title: "Community & People: Leveraging Community for Growth",
-  //       track: "Community",
-  //       time: "12:00 PM - 12:45 PM",
-  //       day: "Day 2 - Main Conference",
-  //     },
-  //   },
-  //   {
-  //     id: "boluwatife-olaifa",
-  //     name: "Boluwatife Olaifa",
-  //     role: "Engineering Expert",
-  //     image: "/api/placeholder/400/400",
-  //     session: {
-  //       title: "Becoming a 10x engineer with AI",
-  //       track: "Engineering",
-  //       time: "12:45 PM - 1:30 PM",
-  //       day: "Day 2 - Main Conference",
-  //     },
-  //   },
-  //   {
-  //     id: "joy-ndukwe",
-  //     name: "Joy Ndukwe",
-  //     role: "AI & Community",
-  //     image: "/api/placeholder/400/400",
-  //     session: {
-  //       title:
-  //         "How AI Is Powering the Future of Communities: Lessons for Builders & Creators",
-  //       track: "AI & Community",
-  //       time: "3:15 PM - 4:00 PM",
-  //       day: "Day 2 - Main Conference",
-  //     },
-  //   },
-  // ];
-
   const currentSpeakers: Speaker[] = [
     // Pre-DevFest Series
     {
@@ -723,7 +475,9 @@ function SpeakersSection({ data }: any) {
       role: "CTO",
       company: "Afrinvest West Africa",
       image: "./speakers/paule.jpg",
-      bio: "A seasoned software engineer and CTO with over a decade of experience building and scaling financial technology solutions that power millions of transactions.",
+      bio: "CTO with 12+ years architecting high-performance fintech systems. Built open-source tools with 300K+ downloads worldwide.",
+      bioLong:
+        "A seasoned software engineer and CTO with 12 years of experience architecting and scaling secure, high-performance web and mobile systems across fintech, DevOps, and developer tooling. He has worked with leading companies globally, delivering mission-critical platforms to millions of users. Paul has led large-scale system redesigns handling millions of transactions, built advanced fraud detection pipelines, and created open-source developer tools with over 300,000 downloads worldwide. He is also the founder of Infinite Community, empowering developers through mentorship and collaborative projects.",
       session: {
         title:
           "Scaling Databases for the Future: Strategies That Power Millions",
@@ -738,7 +492,9 @@ function SpeakersSection({ data }: any) {
       role: "CTO, Co-founder",
       company: "Preview AI",
       image: "./speakers/asoluka.jpeg",
-      bio: "A systems builder and educator with over 10 years of experience who has taught thousands of learners while co-founding PreviewAI and SlikRide.",
+      bio: "CTO & Co-founder with 10+ years building systems and educating thousands. Full-stack expert in AI, web3, and system design.",
+      bioLong:
+        "A systems builder and educator with over 10 years of experience who has taught thousands of learners through platforms such as Ustacky, HNG Tech, Zuri Team and the freeCodeCamp community while co-founding PreviewAI and SlikRide. With expertise spanning full-stack development, system design, web3 and emerging AI technologies, he brings a unique blend of engineering practice and teaching experience to his sessions, equipping audiences to learn, build, and innovate in the AI-driven future.",
       session: {
         title:
           "Testing the Limits of Frontier AI Models - Understanding their Strengths and Differences",
@@ -753,7 +509,9 @@ function SpeakersSection({ data }: any) {
       role: "Android Technology Lead",
       company: "Absa",
       image: "./speakers/tashinga.jpeg",
-      bio: "An Android Technology Lead with 20 years of software development experience, specializing in building mobile apps that solve real-world problems across multiple platforms.",
+      bio: "Android Technology Lead with 20 years building mobile solutions. Specialist in cross-platform apps solving real-world problems.",
+      bioLong:
+        "An Android Technology Lead at Absa with 20 years of software development experience, specializing in building mobile apps that solve real-world problems across multiple platforms. With deep expertise in Android development and a passion for innovation, Tashinga creates user-centric applications that deliver exceptional experiences on Africa's mobile platform of choice. He is dedicated to enriching user experiences through cutting-edge mobile technology.",
       session: {
         title:
           "AI on Android: Enriching User Experience on Africa's Mobile Platform of Choice",
@@ -768,7 +526,9 @@ function SpeakersSection({ data }: any) {
       role: "Software Engineer",
       company: "AlgramX",
       image: "./speakers/ridwan.jpg",
-      bio: "A curious software engineer passionate about building intuitive mobile apps and exploring AI for social impact while actively mentoring in tech communities.",
+      bio: "Software Engineer building intuitive mobile apps with AI. Active mentor exploring tech for social impact.",
+      bioLong:
+        "A curious software engineer at AlgramX passionate about building intuitive mobile apps and exploring AI for social impact while actively mentoring in tech communities. Ridwan combines technical expertise with a deep commitment to using technology as a force for positive change, particularly in Web3 and blockchain technologies. His work focuses on creating transparent, trustworthy digital experiences that empower users and communities across Africa.",
       session: {
         title:
           "Welcome to Web3: The Internet of Ownership, Trust, and Transparency",
@@ -785,7 +545,9 @@ function SpeakersSection({ data }: any) {
       role: "Product Designer",
       company: "Grey",
       image: "./speakers/timothyo.jpg",
-      bio: "A Product and Interaction Designer with 5+ years of experience creating intuitive digital experiences at the intersection of design and code.",
+      bio: "Product Designer with 5+ years at Grey. Expert in creating intuitive experiences at design-code intersection.",
+      bioLong:
+        "A Product and Interaction Designer at Grey with 5+ years of experience creating intuitive digital experiences at the intersection of design and code. Timothy specializes in prototyping trust and feedback in intelligent interfaces, focusing on making AI-powered systems more transparent, predictable, and user-friendly. His work emphasizes the invisible aspects of UX that build user confidence and enable seamless human-AI interaction.",
       session: {
         title:
           "Designing the Invisible: Prototyping Trust and Feedback in Intelligent Interfaces",
@@ -800,7 +562,9 @@ function SpeakersSection({ data }: any) {
       role: "CTO",
       company: "Paperless",
       image: "./speakers/davido.jpg",
-      bio: "A mobile engineer with 4+ years of Flutter expertise, passionate about building high-quality, cross-platform apps that deliver exceptional user experiences.",
+      bio: "CTO at Paperless with 4+ years Flutter expertise. Building high-performance cross-platform mobile experiences.",
+      bioLong:
+        "A mobile engineer and CTO at Paperless with 4+ years of Flutter expertise, passionate about building high-quality, cross-platform apps that deliver exceptional user experiences. David specializes in leveraging cutting-edge technologies like WebAssembly to create blazing-fast mobile applications that work seamlessly across platforms. His focus on performance optimization and modern architecture patterns makes him a leader in next-generation mobile development.",
       session: {
         title:
           "Flutter + WebAssembly: Building High-Performance Cross-Platform Apps",
@@ -815,7 +579,9 @@ function SpeakersSection({ data }: any) {
       role: "Java Backend Engineer",
       company: "ATBTech",
       image: "./speakers/ojoi.jpg",
-      bio: "A Software Engineer at ATBTech with 5+ years building secure, scalable cloud-native systems while expanding expertise at the intersection of data and software engineering.",
+      bio: "Java Backend Engineer at ATBTech with 5+ years. Expert in secure, scalable cloud-native systems.",
+      bioLong:
+        "A Software Engineer at ATBTech with 5+ years building secure, scalable cloud-native systems while expanding expertise at the intersection of data and software engineering. Ojo specializes in real-time fraud detection systems and AI-powered cloud solutions, combining robust backend architecture with intelligent data processing. His work focuses on building production-ready systems that are both highly secure and infinitely scalable.",
       session: {
         title: "Building a Real-Time Fraud Detection System with AI and Cloud",
         description: "Secure, Scalable, and Hands-On",
@@ -830,7 +596,9 @@ function SpeakersSection({ data }: any) {
       role: "Founder",
       company: "Concreap Technology Solutions",
       image: "./speakers/oluwatobii.jpg",
-      bio: "A Fullstack Software & Blockchain Engineer with 10+ years of experience who has led engineering teams processing billions in transactions and built innovative gaming platforms.",
+      bio: "Founder at Concreap with 10+ years fullstack & blockchain experience. Led teams processing billions in transactions.",
+      bioLong:
+        "A Fullstack Software & Blockchain Engineer and Founder of Concreap Technology Solutions with 10+ years of experience who has led engineering teams processing billions in transactions and built innovative gaming platforms. His technical journey spans from creating Gamr's Gaming and Tournament Bracket Software (considered the first in Africa) to leading payment switching systems processing over 1 Billion Naira. A Technical Force Multiplier who combines engineering excellence with product design thinking.",
       session: {
         title: "Design - Intentional Creativity, Not Automation",
         track: "Design and Product",
@@ -844,7 +612,9 @@ function SpeakersSection({ data }: any) {
       role: "Software Engineer",
       company: "Moniepoint",
       image: "./speakers/adenijio.png",
-      bio: "A Senior Software Engineer at Moniepoint specializing in React, TypeScript, and microfrontend architectures with open-source libraries used across 15+ projects.",
+      bio: "Senior Software Engineer at Moniepoint. Microfrontend expert with open-source libraries in 15+ projects.",
+      bioLong:
+        "A Senior Software Engineer at Moniepoint specializing in React, TypeScript, and microfrontend architectures with open-source libraries like Connectic (3K+ downloads) used across 15+ projects. Oluwaferanmi leads cross-team engineering efforts and focuses on practical solutions that scale in production environments. His expertise in migrating legacy applications to modern architectures and creating reusable development templates makes him a key contributor to large-scale frontend innovation.",
       session: {
         title: "Migration to Microfrontends",
         track: "Engineering and Security",
@@ -858,7 +628,9 @@ function SpeakersSection({ data }: any) {
       role: "Fullstack Software Engineer",
       company: "INDICINA",
       image: "./speakers/ahmd.jpg",
-      bio: "A full-stack software engineer building AI-powered applications with Gemini and Google ADK while teaching and mentoring developers in tech communities.",
+      bio: "Fullstack Engineer at INDICINA building AI agents. Teacher and mentor in tech communities.",
+      bioLong:
+        "A full-stack software engineer at INDICINA building AI-powered applications with Gemini and Google ADK while teaching and mentoring developers in tech communities. Ahm'd specializes in creating full-stack AI agents and Model-as-a-Service (MaaS) solutions, bridging the gap between cutting-edge AI capabilities and practical application development. His passion for education drives him to make complex AI concepts accessible to developers at all levels.",
       session: {
         title:
           "Hands-On with Gemini and Google ADK: Building Full-Stack AI Agents MaaS",
@@ -873,7 +645,9 @@ function SpeakersSection({ data }: any) {
       role: "CEO/Brand Identity Designer",
       company: "HUELUMINATE",
       image: "./speakers/titcombe.JPG",
-      bio: "A Brand Identity Designer with 4+ years of experience working with organizations like NITDA, passionate about leveraging design and AI to build brand trust.",
+      bio: "CEO at HUELUMINATE with 4+ years. Brand designer building trust in the AI age.",
+      bioLong:
+        "A Brand Identity Designer and CEO of HUELUMINATE with 4+ years of experience working with organizations like NITDA, passionate about leveraging design and AI to build brand trust. Titcombe focuses on designing human-centered brands and interfaces that communicate safety, reliability, and authenticity in the age of AI. His expertise in visual hierarchy, color psychology, and scalable design systems helps brands create trustworthy digital experiences.",
       session: {
         title:
           "Designing Trust: Building Human-Centered Brands and Interfaces in the Age of AI",
@@ -890,7 +664,9 @@ function SpeakersSection({ data }: any) {
       role: "Founder & Errand Boy",
       company: "Provolo",
       image: "./speakers/esuola.png",
-      bio: "Esuola Daniel is a multidisciplinary creative and digital builder who transforms ideas into scalable online experiences while exploring AI's impact on technology and business.",
+      bio: "Founder at Provolo transforming ideas into scalable digital experiences. Multidisciplinary creative exploring AI innovation.",
+      bioLong:
+        "Esuola Daniel is a multidisciplinary creative, digital builder, and Founder at Provolo who transforms ideas into scalable online experiences while exploring AI's impact on technology and business. Beyond software development, Daniel actively contributes to conversations on how artificial intelligence is reshaping technology and business with multiple published articles. His ability to bridge strategy, aesthetics, and technical execution positions him at the forefront of AI-driven digital innovation.",
       session: {
         title:
           "The Fine Art of Prompting: Getting Unbeatable Results with Gemini",
@@ -905,7 +681,9 @@ function SpeakersSection({ data }: any) {
       role: "Senior Software Engineer",
       company: "Rocksteady Technology",
       image: "./speakers/chukwuemeka.jpg",
-      bio: "A Senior Software Engineer focused on systems design and infrastructure, co-leading GDG Cloud Lagos while building large-scale, resilient backend systems.",
+      bio: "Senior Engineer at Rocksteady, co-lead of GDG Cloud Lagos. Expert in large-scale resilient systems.",
+      bioLong:
+        "A Senior Software Engineer at Rocksteady Technology focused on systems design and infrastructure, co-leading GDG Cloud Lagos while building large-scale, resilient backend systems. Chukwuemeka specializes in AI-powered observability with Google Cloud Platform, helping teams transform raw logs into actionable insights. His expertise in cloud-native architectures and production monitoring makes him invaluable for teams running mission-critical services at scale.",
       session: {
         title: "From Logs to Insights: AI-Powered Observability with GCP",
         track: "Cloud & DevOps",
@@ -919,7 +697,9 @@ function SpeakersSection({ data }: any) {
       role: "Co-Founder",
       company: "ATC Africa",
       image: "./speakers/topejames.jpg",
-      bio: "An award-winning Program and Community Manager with 6+ years of experience who co-founded ATC Africa and grew it across the continent.",
+      bio: "Co-Founder of ATC Africa with 6+ years. Award-winning community manager growing ecosystems.",
+      bioLong:
+        "An award-winning Program and Community Manager and Co-Founder of ATC Africa with 6+ years of experience growing developer communities across the continent. Tope's work focuses on leveraging community as a catalyst for professional and personal growth, demonstrating how active participation, open-source contribution, and genuine networking directly impact career trajectories. His expertise in community building has empowered thousands of developers across Africa.",
       session: {
         title: "Community & People: Leveraging Community for Growth",
         track: "Community",
@@ -933,7 +713,9 @@ function SpeakersSection({ data }: any) {
       role: "Software Engineer",
       company: "Wewire",
       image: "./speakers/boluwatifeo.jpg",
-      bio: "Boluwatife Busta is a Software Engineer at Wewire who stays on the edge of latest tech trends, building products with blockchain and AI expertise.",
+      bio: "Software Engineer at Wewire on the cutting edge. Building with blockchain and AI expertise.",
+      bioLong:
+        "Boluwatife Busta is a Software Engineer at Wewire who stays on the edge of latest tech trends, building products with blockchain and AI expertise. Specializing in backend development with Python, Django, Flask, and FastAPI, he is deeply invested in developer productivity, clean code, and workflows that improve speed and quality. His passion for leveraging AI to become a 10x engineer makes him a valuable voice on modern development practices.",
       session: {
         title: "Becoming a 10x engineer with AI",
         track: "Engineering",
@@ -941,21 +723,23 @@ function SpeakersSection({ data }: any) {
         day: "Main Conference",
       },
     },
-    {
-      id: "joy-ndukwe",
-      name: "Joy Ndukwe",
-      role: "Community Manager & Content Creator",
-      company: "Independent / Freelance",
-      image: "./speakers/joyn.png",
-      bio: "An independent Community Manager and Content Creator with 3+ years leading tech communities across Africa and creating content on AI and developer growth.",
-      session: {
-        title:
-          "How AI Is Powering the Future of Communities: Lessons for Builders & Creators",
-        track: "AI & Community",
-        time: "3:15 PM - 4:00 PM",
-        day: "Main Conference",
-      },
-    },
+    // {
+    //   id: "joy-ndukwe",
+    //   name: "Joy Ndukwe",
+    //   role: "Community Manager & Content Creator",
+    //   company: "Independent / Freelance",
+    //   image: "./speakers/joyn.png",
+    //   bio: "Community Manager & Content Creator with 3+ years. Leading tech ecosystems across Africa.",
+    //   bioLong:
+    //     "An independent Community Manager and Content Creator with 3+ years leading tech communities across Africa and creating content on AI and developer growth. Joy specializes in showing how AI can power the future of communities through safer spaces, personalized learning, and scalable content creation. Her experience managing developer ecosystems positions her as a bridge between AI innovation and practical community building for builders and creators.",
+    //   session: {
+    //     title:
+    //       "How AI Is Powering the Future of Communities: Lessons for Builders & Creators",
+    //     track: "AI & Community",
+    //     time: "3:15 PM - 4:00 PM",
+    //     day: "Main Conference",
+    //   },
+    // },
   ];
 
   const filteredSpeakers =
@@ -964,8 +748,7 @@ function SpeakersSection({ data }: any) {
       : currentSpeakers.filter((speaker) => {
           if (activeTab === "pre-devfest")
             return speaker.session?.day === "Pre-DevFest";
-          if (activeTab === "day1")
-            return speaker.session?.day === "Workshop";
+          if (activeTab === "day1") return speaker.session?.day === "Workshop";
           if (activeTab === "day2")
             return speaker.session?.day === "Main Conference";
           return true;
@@ -1098,16 +881,23 @@ function SpeakersSection({ data }: any) {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.05, duration: 0.5 }}
               viewport={{ once: true }}
-              className="relative h-[485px]"
+              className="relative h-[460px]"
               style={{ perspective: "1000px" }}
-              onMouseEnter={() => setFlippedCard(speaker.id)}
-              onMouseLeave={() => setFlippedCard(null)}
             >
               <motion.div
-                className="relative w-full h-full"
+                className="relative w-full h-full cursor-pointer"
                 style={{ transformStyle: "preserve-3d" }}
                 animate={{ rotateY: flippedCard === speaker.id ? 180 : 0 }}
                 transition={{ duration: 0.6, type: "spring", stiffness: 100 }}
+                onClick={() =>
+                  setFlippedCard(flippedCard === speaker.id ? null : speaker.id)
+                }
+                onMouseEnter={() =>
+                  window.innerWidth >= 768 && setFlippedCard(speaker.id)
+                }
+                onMouseLeave={() =>
+                  window.innerWidth >= 768 && setFlippedCard(null)
+                }
               >
                 {/* Front of Card */}
                 <div
@@ -1116,7 +906,6 @@ function SpeakersSection({ data }: any) {
                 >
                   <div className="relative w-90 h-60 m-6 -mb-4 rounded-2xl p-1 bg-gradient-to-br from-[#4d8bee] to-[#47a760] overflow-hidden">
                     {speaker.image ? (
-                      // eslint-disable-next-line @next/next/no-img-element
                       <img
                         src={speaker.image}
                         alt={speaker.name}
@@ -1155,15 +944,21 @@ function SpeakersSection({ data }: any) {
                       )}
                     </div>
 
-                    <p className="text-xs text-[#1e1e1e]/60 mt-2 font-semibold">
+                    {/* Use short bio on front */}
+                    <p className="text-xs text-[#1e1e1e]/60 mt-2 font-semibold line-clamp-3">
                       {speaker.bio}
+                    </p>
+
+                    {/* Mobile hint */}
+                    <p className="text-xs text-[#4285f4] mt-2 font-bold md:hidden">
+                      Tap to see session details
                     </p>
                   </div>
                 </div>
 
                 {/* Back of Card */}
                 <div
-                  className="absolute inset-0 bg-gradient-to-br from-[#4d8bee] to-[#47a760] rounded-2xl p-6 shadow-lg text-white"
+                  className="absolute inset-0 bg-gradient-to-br from-[#4d8bee] to-[#47a760] rounded-2xl p-6 shadow-lg text-white overflow-y-auto"
                   style={{
                     backfaceVisibility: "hidden",
                     transform: "rotateY(180deg)",
@@ -1182,6 +977,11 @@ function SpeakersSection({ data }: any) {
                           {speaker.session.description}
                         </p>
                       )}
+
+                      {/* Use long bio on back */}
+                      <p className="text-xs opacity-90 mb-3 font-normal leading-relaxed">
+                        {speaker.bioLong}
+                      </p>
                     </div>
 
                     <div className="mt-auto space-y-2">
@@ -1195,6 +995,11 @@ function SpeakersSection({ data }: any) {
                         <MapPin className="w-3 h-3" />
                         <span>{speaker.session?.day}</span>
                       </div>
+
+                      {/* Mobile hint to flip back */}
+                      <p className="text-xs opacity-75 text-center pt-2 md:hidden">
+                        Tap again to flip back
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -1291,24 +1096,24 @@ function SpeakersSection({ data }: any) {
                       {speaker.socials && (
                         <div className="flex justify-center gap-2">
                           {speaker.socials.twitter && (
-                            <a
+                            <Link
                               href={`https://twitter.com/${speaker.socials.twitter}`}
                               target="_blank"
                               rel="noopener noreferrer"
                               className="w-8 h-8 border-2 border-[#4285f4]/20 text-[#4285f4] rounded-full flex items-center justify-center hover:bg-[#4285f4] hover:text-white hover:border-[#4285f4] transition-all duration-300"
                             >
                               <Twitter className="w-3 h-3" />
-                            </a>
+                            </Link>
                           )}
                           {speaker.socials.linkedin && (
-                            <a
+                            <Link
                               href={`https://linkedin.com/in/${speaker.socials.linkedin}`}
                               target="_blank"
                               rel="noopener noreferrer"
                               className="w-8 h-8 border-2 border-[#4285f4]/20 text-[#4285f4] rounded-full flex items-center justify-center hover:bg-[#4285f4] hover:text-white hover:border-[#4285f4] transition-all duration-300"
                             >
                               <Linkedin className="w-3 h-3" />
-                            </a>
+                            </Link>
                           )}
                         </div>
                       )}
