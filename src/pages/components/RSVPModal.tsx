@@ -277,4 +277,5 @@ const RSVPModal: React.FC<RSVPModalProps> = (props) => {
   return createPortal(<ModalContent {...props} />, document.body);
 };
 
-export { RSVPModal, getEventDays, getModalContent };
+export default RSVPModal;
+export { getEventDays, getModalContent };
