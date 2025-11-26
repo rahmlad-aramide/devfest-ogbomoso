@@ -4,7 +4,7 @@ import { MapPin, Calendar, Clock, ImageIcon } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import Header from "./Header";
-import { RSVPModal } from "./RSVPModal";
+import RSVPModal from "./RSVPModal";
 
 type EventStatus = "COUNTDOWN" | "ON_DAY" | "SUCCESSFUL";
 

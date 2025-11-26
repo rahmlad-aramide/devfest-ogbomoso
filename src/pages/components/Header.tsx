@@ -12,7 +12,7 @@ import {
 import Image from "next/image";
 import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
-import { RSVPModal } from "./RSVPModal";
+import RSVPModal from "./RSVPModal";
 
 interface HeaderProps {
   buttonText: string;
@@ -128,7 +128,7 @@ const Header = ({ buttonText, rsvpLink }: HeaderProps) => {
     {
       href: "/#team",
       label: "Team",
-      icon: <Users className="w-4 h-4" />
+      icon: <Users className="w-4 h-4" />,
     },
     {
       href: "/#schedule",
