@@ -9,7 +9,7 @@ type MetaTagsProps = {
 };
 
 const MetaTags = ({ title, description, image, keywords }: MetaTagsProps) => {
-  const OG_IMAGE = image || `${WEBSITE_URL}/og-image.jpg`;
+  const OG_IMAGE = image || `${WEBSITE_URL}/og-image.png`;
 
   return (
     <>
