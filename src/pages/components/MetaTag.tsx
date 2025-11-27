@@ -33,7 +33,6 @@ const MetaTags = ({ title, description, image, keywords }: MetaTagsProps) => {
       />
       <meta name="robots" content="index, follow" />
       <link rel="canonical" href={WEBSITE_URL} />
-
       {/* Open Graph / Facebook */}
       <meta property="og:type" content="website" />
       <meta property="og:url" content={WEBSITE_URL} />
@@ -45,14 +44,13 @@ const MetaTags = ({ title, description, image, keywords }: MetaTagsProps) => {
       <meta property="og:image:alt" content={title} />
       <meta property="og:site_name" content="GDG Ogbomoso" />
       <meta property="og:locale" content="en_GB" />
-
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:url" content={WEBSITE_URL} />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={OG_IMAGE} />
-      <meta property="twitter:domain" content="devfest-ogbomoso.vercel.app" />
+      <meta property="twitter:domain" content="https://devfestogbomoso.com" />
     </>
   );
 };
