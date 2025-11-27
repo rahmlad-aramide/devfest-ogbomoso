@@ -1,3 +1,5 @@
+import { WEBSITE_URL } from "gdg/lib/constants";
+
 type MetaTagsProps = {
   title?: string;
   description?: string;
@@ -6,18 +8,12 @@ type MetaTagsProps = {
   skipTitleFormatting?: boolean;
 };
 
-const MetaTags = ({
-  title,
-  description,
-  image,
-  keywords,
-}: MetaTagsProps) => {
-  const WEBSITE_URL = process.env.WEBSITE_URL || "https://devfestogbomoso.com";
+const MetaTags = ({ title, description, image, keywords }: MetaTagsProps) => {
   const OG_IMAGE = image || `${WEBSITE_URL}/og-image.jpg`;
-  
+
   return (
     <>
-      <title>{title!}</title>
+      <title>{title}</title>
       <meta name="description" content={description} />
       <meta
         name="keywords"
@@ -37,15 +33,15 @@ const MetaTags = ({
       />
       <meta name="robots" content="index, follow" />
       <link rel="canonical" href={WEBSITE_URL} />
-      
+
       {/* TWITTER - OG */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:url" content={WEBSITE_URL} />
-      <meta name="twitter:title" content={title!} />
+      <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={OG_IMAGE} />
-      
-      <meta property="og:title" content={title!} />
+
+      <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:type" content="website" />
       <meta property="og:url" content={WEBSITE_URL} />
@@ -54,7 +50,7 @@ const MetaTags = ({
       <meta property="og:image" content={OG_IMAGE} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
-      <meta property="og:image:alt" content={title!} />
+      <meta property="og:image:alt" content={title} />
     </>
   );
 };
