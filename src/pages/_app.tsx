@@ -33,7 +33,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <MetaTags
         title="DevFest Ogbomoso"
         description="DevFest Ogbomoso is a community-run, developer event that offers speaker sessions across multiple product areas, codelabs, hackathon, and more."
-        image={`${WEBSITE_URL}/og-image.jpg`}
+        image={`${WEBSITE_URL}/og-image.png`}
       />
       <main className={`${raleway.variable} ${poppins.variable} font-sans`}>
         <Component {...pageProps} />
