@@ -19,10 +19,7 @@ const poppins = Poppins({
   variable: "--font-poppins",
 });
 
-
-
 function MyApp({ Component, pageProps }: AppProps) {
-
   return (
     <>
       <Head>
@@ -30,13 +27,12 @@ function MyApp({ Component, pageProps }: AppProps) {
           name="viewport"
           content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=6, user-scalable=yes"
         />
-        <title>DevFest Ogbomoso</title>
+        <meta name="theme-color" content="#FF9800" />
         <MetaTags
           title="DevFest Ogbomoso"
           description="DevFest Ogbomoso is a community-run, developer event that offers speaker sessions across multiple product areas, codelabs, hackathon, and more."
           image={`${WEBSITE_URL}/og-image.png`}
         />
-        <meta name="theme-color" content="#FF9800" />
       </Head>
       <main className={`${raleway.variable} ${poppins.variable} font-sans`}>
         <Component {...pageProps} />
