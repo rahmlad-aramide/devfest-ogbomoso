@@ -453,46 +453,64 @@ function ScheduleSection({ data }: any) {
         {
           time: "8:00 AM - 9:00 AM",
           duration: "60mins",
-          title: "Registration and Networking",
+          title: "Registration",
+          speaker: "",
         },
         {
           time: "9:00 AM - 9:30 AM",
           duration: "30mins",
-          title: "Welcome to DevFest Ogbomoso 2025",
+          title: "Welcome to Devfest Ogbomoso 2025, Ground Rules",
+          speaker: "Glory Olaifa",
         },
         {
-          time: "9:30 AM - 9:50 AM",
-          duration: "20mins",
-          title: "Career Session",
+          time: "9:35 AM - 10:05 AM",
+          duration: "30mins",
+          title:
+            "Breaking Barriers: How to Build a High-Impact Tech Career from Anywhere",
+          speaker: "Ola Okegbemi",
         },
         {
-          time: "9:50 AM - 10:00 AM",
-          duration: "10mins",
-          title: "BreakOut Session",
+          time: "10:05AM - 10:30AM",
+          duration: "25mins",
+          title: "Career Session: The Power of Doing: Learning by Building",
+          speaker: "Favour Afolabi",
         },
         {
-          time: "10:00 AM - 11:00 AM",
-          duration: "60mins",
+          time: "10:40AM - 11:50PM",
+          duration: "70mins",
           title: "Track 1 - Parallel Sessions",
           track: "TRACK 1",
           description:
-            "• Designing the Invisible: Prototyping Trust and Feedback in Intelligent Interfaces (Design and Product) - Timothy Ogundipe\n• Flutter + WebAssembly: Building High-Performance Cross-Platform Apps (Engineering and Security) - David Oluwabusayo\n• Building a Real-Time Fraud Detection System with AI and Cloud (AI and Cloud) - Ojo Ilesanmi",
+            "\n• Designing the Invisible: Prototyping Trust and Feedback in Intelligent Interfaces. (Design and Product) - Timothy Ogundipe\n\n • Flutter + WebAssembly: Building High-Performance Cross-Platform Apps (Engineering and Security) - David Oluwabusayo\n\n • Building a Real-Time Fraud Detection System with AI and Cloud (AI and Cloud) - Ojo Ilesanmi",
         },
         {
-          time: "11:00 AM - 12:00 PM",
-          duration: "60mins",
+          time: "11:50PM - 1:00PM",
+          duration: "70mins",
           title: "Track 2 - Parallel Sessions",
           track: "TRACK 2",
           description:
-            "• Design - Intentional Creativity, Not Automation (Design and Product) - Oluwatobi Immanuel\n• Migration to Microfrontends (Engineering and Security) - Adeniji Oluwaferanmi\n• Hands-On with Gemini and Google ADK: Building Full-Stack AI Agents MaaS (AI and Cloud) - Ahm'd Olanrewaju",
+            "\n• Design - Intentional Creativity, Not Automation (Design and Product) - Oluwatobi Immanuel\n\n • Migration to Microfrontends (Engineering and Security) - Adeniji Oluwaferanmi\n\n • Hands-On with Gemini and Google ADK: Building Full-Stack AI Agents MaaS (AI and Cloud) - Ahm'd Olanrewaju",
         },
         {
-          time: "12:00 PM - 1:00 PM",
-          duration: "60mins",
+          time: "1:00PM - 2:50PM",
+          duration: "110mins",
+          title: "JUMAT/LUNCH BREAK",
+        },
+        {
+          time: "2:50PM - 4PM",
+          duration: "70mins",
           title: "Track 3 - Parallel Sessions",
           track: "TRACK 3",
           description:
-            "• Designing Trust: Building Human-Centered Brands and Interfaces in the Age of AI (Design and Product) - TITCOMBE MICHAEL\n• Gemma: Inferences and building a MaaS (AI and Cloud DevOps) - MUDASIRU Rasheed Taiwo",
+            "\n• Designing Trust: Building Human-Centered Brands and Interfaces in the Age of AI (Design and Product) - TITCOMBE MICHAEL\n\n • Building Clean and Scalable AI Powered Flutter Apps (Engineering and Security) - Taiwo Farinu \n\n • Gemma: Inferences and building a MaaS (AI and Cloud DevOps) - MUDASIRU Rasheed Taiwo",
+        },
+        {
+          time: "Bonus Session",
+          duration: "TBD",
+          title:
+            "Hands-On: Building an AI-Powered Website Builder Like Bolt & Lovable — From Scratch",
+          speaker: "Daniel Olowoniyi",
+          track: "AI & Engineering",
         },
       ],
     },
@@ -511,64 +529,74 @@ function ScheduleSection({ data }: any) {
           title: "Welcome to DevFest Ogbomoso 2025",
         },
         {
-          time: "9:30 AM - 10:00 AM",
+          time: "10:00AM - 10:30AM",
           duration: "30mins",
-          title: "Keynote 1",
-          speaker: "JD",
-        },
-        {
-          time: "10:00 AM - 10:30 AM",
-          duration: "30mins",
-          title: "Keynote 2",
-          speaker: "Aderinto",
-        },
-        {
-          time: "10:30 AM - 11:15 AM",
-          duration: "45mins",
           title:
-            "The Fine Art of Prompting: Getting Unbeatable Results with Gemini",
-          speaker: "Daniel",
+            "Keynote 1 - ENGINEERING TRUST: The Future of Safe, Secure and Scalable AI Systems for Africa’s Digital Economy.",
+          speaker: "Dr Aderinto",
         },
         {
-          time: "11:15 AM - 12:00 PM",
-          duration: "45mins",
-          title: "From Logs to Insights: AI-Powered Observability with GCP",
-          speaker: "Kruse",
+          time: "10:35AM - 11:10AM",
+          duration: "35mins",
+          title:
+            "Keynote 2 - Building Beyond Boundaries: Raising Africa's Next Generation of Scalable Solution Builders",
+          speaker: "Dr Niyi Olubiri",
         },
         {
-          time: "12:00 PM - 12:45 PM",
-          duration: "45mins",
-          title: "Community & People: Leveraging Community for Growth",
-          speaker: "Tope",
-        },
-        {
-          time: "12:45 PM - 1:30 PM",
-          duration: "45mins",
+          time: "11:10AM - 11:30AM",
+          duration: "20mins",
           title: "Becoming a 10x engineer with AI",
           speaker: "Boluwatife Olaifa",
         },
         {
-          time: "1:30 PM - 2:30 PM",
-          duration: "60mins",
-          title: "Panel Discussion",
-          speaker: "Aderinto, JD & Prof Justice",
-        },
-        {
-          time: "2:30 PM - 3:15 PM",
-          duration: "45mins",
-          title: "Speaker Session",
-          speaker: "Timothy",
-        },
-        {
-          time: "3:15 PM - 4:00 PM",
+          time: "11:35AM - 12:20AM",
           duration: "45mins",
           title:
-            "How AI Is Powering the Future of Communities: Lessons for Builders & Creators",
-          speaker: "Joy Ndukwe",
+            "PANEL 1: Building Nigeria's Tech Talent Pipeline: Realities, Challenges, and the Road Ahead",
+          speaker: "Dr Aderinto and Dr Niyi",
         },
         {
-          time: "4:00 PM - 5:00 PM",
-          duration: "60mins",
+          time: "12:25PM - 12: 45PM",
+          duration: "20mins",
+          title: "Community & People: Leveraging Community for Growth",
+          speaker: "Tope James",
+        },
+        {
+          time: "12:50:PM - 1:00PM",
+          duration: "10mins",
+          title: "Sponsors Slot",
+          speaker: "ORC (Oluseun Onigbinde Resource Center)",
+        },
+        {
+          time: "1:00PM - 1:40PM",
+          duration: "40mins",
+          title: "Photograph, Lunch Break",
+          speaker: "All Attendees",
+        },
+        {
+          time: "1:40PM-1:50PM",
+          duration: "10mins",
+          title:
+            "Challenging the Social Perception Around Self Promotion in Tech",
+          speaker: "Steven Edache Paul",
+        },
+        {
+          time: "1:50PM - 2:35PM",
+          duration: "45mins",
+          title:
+            "PANEL 2: The Secrets Behind Successful Engineering Careers: Tools, Mindsets, and Habits",
+          speaker: "Immanuel, Feranmi, Rasheed, Favour",
+        },
+        {
+          time: "2:35PM - 2:50PM",
+          duration: "15mins",
+          title:
+            "The Fine Art of Prompting: Getting Unbeatable Results with Gemini",
+          speaker: "Daniel Esuola",
+        },
+        {
+          time: "2:50PM - 4:00PM",
+          duration: "70mins",
           title: "Games and Networking",
         },
       ],
@@ -647,7 +675,7 @@ function ScheduleSection({ data }: any) {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.8 }}
-            className="text-4xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-gray-900 via-[#4285f4] to-[#34a853] bg-clip-text text-transparent"
+            className="text-4xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-gray-900 via-[#4285f4] to-[#34a853] bg-clip-text py-2 text-transparent"
           >
             Event Agenda
           </motion.h2>
@@ -716,7 +744,6 @@ function ScheduleSection({ data }: any) {
                 whileHover={{ scale: 1.02, x: 10 }}
                 className="group relative bg-white rounded-2xl p-6 shadow-md hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-[#4285f4]/30 overflow-hidden"
               >
-                {/* Google Color Accent Bar */}
                 <div
                   className={`absolute left-0 top-0 bottom-0 w-1.5 transition-all duration-300 ${
                     index % 4 === 0
@@ -767,7 +794,7 @@ function ScheduleSection({ data }: any) {
                           )}
 
                           {session.description && (
-                            <p className="text-gray-600 text-sm leading-relaxed whitespace-pre-line mt-2">
+                            <p className="text-gray-600 textbase font-medium leading-relaxed whitespace-pre-line mt-2">
                               {session.description}
                             </p>
                           )}
@@ -780,14 +807,12 @@ function ScheduleSection({ data }: any) {
                           )}
                         </div>
 
-                        {/* Hover Arrow */}
                         <ChevronRight className="w-6 h-6 text-[#4285f4] opacity-0 group-hover:opacity-100 transform translate-x-0 group-hover:translate-x-2 transition-all duration-300" />
                       </div>
                     </div>
                   </div>
                 </div>
 
-                {/* Gradient Overlay on Hover */}
                 <div className="absolute inset-0 bg-gradient-to-r from-[#4285f4]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
               </motion.div>
             ))}
@@ -795,7 +820,7 @@ function ScheduleSection({ data }: any) {
         </motion.div>
 
         {/* Download Schedule CTA */}
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.7 }}
@@ -806,13 +831,13 @@ function ScheduleSection({ data }: any) {
             <button className="inline-flex items-center gap-2 bg-[#4285f4] hover:bg-[#3367d6] text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
               <Download className="w-5 h-5" />
               Download Full Schedule
-            </button>
-            {/* <button className="inline-flex items-center gap-2 border-2 border-[#34a853] text-[#34a853] hover:bg-[#34a853] hover:text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105">
+            </button> */}
+        {/* <button className="inline-flex items-center gap-2 border-2 border-[#34a853] text-[#34a853] hover:bg-[#34a853] hover:text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105">
               <Calendar className="w-5 h-5" />
               Add to Calendar
             </button> */}
-          </div>
-        </motion.div>
+        {/* </div>
+        </motion.div> */}
       </div>
     </section>
   );
