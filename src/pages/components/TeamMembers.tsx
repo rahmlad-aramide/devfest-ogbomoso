@@ -190,7 +190,7 @@ function TeamMembers() {
               className="relative group cursor-pointer rounded-2xl overflow-hidden shadow-xl bg-white border border-[#f0f0f0] transition-all duration-300"
             >
               {member.image ? (
-                <div className="relative w-full h-[380px] overflow-hidden">
+                <div className="relative w-full h-[320px] overflow-hidden">
                   <Image
                     src={member.image}
                     alt={member.name}
@@ -231,12 +231,12 @@ function TeamMembers() {
                   )}
 
                   {/* Display Team Lead Badge */}
-                  {isMemberLeadForFilter(member, activeFilter) &&
+                  {/* {isMemberLeadForFilter(member, activeFilter) &&
                     activeFilter !== "Organizers" && (
                       <span className="bg-[#47a760] text-white text-xs font-bold px-2 py-0.5 rounded-full mt-2 inline-block">
                         Team LEAD
                       </span>
-                    )}
+                    )} */}
                 </div>
               </div>
             </motion.div>
