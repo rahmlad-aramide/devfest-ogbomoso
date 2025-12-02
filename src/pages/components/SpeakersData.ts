@@ -217,10 +217,10 @@ export const currentSpeakers = [
     name: "Taiwo Faniru",
     role: "Software Engineer",
     company: "—",
-    image: "./speakers/placeholder.jpg",
-    bio: "Engineer building clean and scalable AI‑powered Flutter applications.",
+    image: "./speakers/faniru.jpg",
+    bio: "Mobile developer with 5+ years building clean, scalable, and high-performing Flutter applications.",
     bioLong:
-      "Faniru is a software engineer specializing in building clean, scalable, AI‑powered Flutter applications. He focuses on improving developer workflows, code quality, and performance for large-scale mobile products.",
+      "Taiwo Faniru is a mobile developer with over five years of experience building clean, scalable, and high-performing Flutter applications. He has led projects across fintech, real estate, and social platforms, with strong expertise in Flutter, Dart, and mobile architecture. He is passionate about applying AI to improve mobile experiences and actively mentors developers while contributing to community growth.",
     session: {
       title: "Building Clean and Scalable AI‑Powered Flutter Apps",
       track: "Engineering and Security",
@@ -233,12 +233,12 @@ export const currentSpeakers = [
   {
     id: "mudasiru-rasheed",
     name: "Mudasiru Rasheed Taiwo",
-    role: "AI Engineer",
-    company: "—",
-    image: "./speakers/mudasirur.jpg",
-    bio: "AI engineer specializing in LLMs, inference systems, and model serving.",
+    role: "DevOps Engineer",
+    company: "",
+    image: "./speakers/mudasirur.jpeg",
+    bio: "Google Developer Expert–level community leader and DevOps Engineer driving automation, open-source impact, and global tech community growth.",
     bioLong:
-      "Rasheed Mudasiru is an AI Engineer focused on model inference systems, LLM deployment, and MaaS architectures. He builds scalable machine learning pipelines and experiments with Gemma for real-time inference optimization.",
+      "Rasheed Mudasiru is a DevOps Engineer and community leader with experience spanning automation, CI/CD, and cloud-native systems. He has served on program committees for global conferences like BuildStuffConf and cdCon Japan while holding roles such as AWS Ambassador and GitHub Campus Expert. Known for his public speaking and community impact, he builds tools, leads initiatives, and empowers developers worldwide.",
     session: {
       title: "Gemma: Inferences and Building a MaaS",
       track: "AI and Cloud",
@@ -254,11 +254,11 @@ export const currentSpeakers = [
     id: "daniel-olowoniyi",
     name: "Daniel Olowoniyi",
     role: "Software Engineer",
-    company: "—",
+    company: "Alveum",
     image: "./speakers/danielo.jpg",
-    bio: "Engineer building AI-powered website builders and automation workflows.",
+    bio: "Software engineer with 4+ years building scalable, user-focused full-stack systems and shipping products end-to-end.",
     bioLong:
-      "Daniel Olowoniyi is a software engineer known for creating fast AI-powered website builders and automation pipelines. His work focuses on rapid prototyping, automation, and developer tools for building practical AI products.",
+      "Daniel Olowoniyi is a software engineer with 4+ years of experience building scalable, user-focused full-stack systems. He has shipped products like Voto and Sugarbox end-to-end, leading development from concept to deployment. His work blends strong product thinking with performance-driven engineering, and he enjoys solving real problems and building tools that enhance developer and user experience.",
     session: {
       title:
         "Hands-On: Building an AI-Powered Website Builder Like Bolt & Lovable — From Scratch",
@@ -296,8 +296,8 @@ export const currentSpeakers = [
     id: "dr-niyi-olubiri",
     name: "Dr. Niyi Olubiri",
     role: "Technology Leader & Innovation Strategist",
-    company: "—",
-    image: "./speakers/niyi.jpg",
+    company: "",
+    image: "./speakers/niyi.png",
     bio: "Technology strategist raising Africa's next generation of scalable solution builders.",
     bioLong:
       "Dr. Niyi Olubiri is a technology leader focused on innovation, digital transformation, and building scalable tech ecosystems across Africa. His work centers on empowering engineers and founders with the mindset, tools, and strategy to build globally competitive solutions. He also joined Panel 1 to discuss the future of Nigeria's tech talent pipeline and long-term ecosystem growth.",

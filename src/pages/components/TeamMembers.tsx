@@ -15,16 +15,17 @@ function TeamMembers() {
     role: string;
     image: string;
     team: string;
-    subTeam?: Array<string>;
+    subTeam?: string;
     isTeamLead?: Array<boolean> | boolean;
   }
 
   const filters = [
     "All",
     "Organizers",
-    "Media and Publicity Team",
-    "Design Team",
-    "Dev Team",
+    "Content",
+    "Operations",
+    "Partnership",
+    "Campus Liaison",
   ];
 
   // Helper function to check if a member is a lead for the currently active team filter
@@ -32,27 +33,17 @@ function TeamMembers() {
     member: TeamMember,
     activeFilter: string
   ): boolean => {
-    // Case 1: Simple boolean check (Applies to main team or if they lead all listed teams)
+    // Case 1: Simple boolean check
     if (typeof member.isTeamLead === "boolean") {
-      // If the main team or any subteam is the active filter, and isTeamLead is true.
       const isMemberOfFilter =
-        member.team === activeFilter ||
-        (member.subTeam && member.subTeam.includes(activeFilter));
-      //@ts-ignore subteam can be undefined
+        member.team === activeFilter || member.subTeam === activeFilter;
       return member.isTeamLead && isMemberOfFilter;
     }
 
-    // Case 2: Array<boolean> check (Tied to subTeam indices)
-    if (Array.isArray(member.isTeamLead) && member.subTeam) {
-      const filterIndex = member.subTeam.indexOf(activeFilter);
-      // The main 'team' property is not indexed in subTeam, so it's not checked here.
-
-      // If the active filter is found in subTeam, check the corresponding boolean in isTeamLead array
-      if (filterIndex !== -1) {
-        return member.isTeamLead[filterIndex] === true;
-      }
+    // Check if they have lead role
+    if (member.role === "Lead Organizer" || member.role === "Co-Organizer") {
+      return true;
     }
-    if (member.role === "Lead Organizer") return true;
 
     return false;
   };
@@ -63,8 +54,8 @@ function TeamMembers() {
       return true;
     }
 
-    // Check the subTeam array (if it exists)
-    if (member.subTeam && member.subTeam.includes(activeFilter)) {
+    // Check the subTeam (if it exists)
+    if (member.subTeam === activeFilter) {
       return true;
     }
 
@@ -199,15 +190,14 @@ function TeamMembers() {
               className="relative group cursor-pointer rounded-2xl overflow-hidden shadow-xl bg-white border border-[#f0f0f0] transition-all duration-300"
             >
               {member.image ? (
-                // <div className="relative w-full h-[280px] overflow-hidden">
-                <div className="relative w-full h-[320px] overflow-hidden border border-red-500">
+                <div className="relative w-full h-[380px] overflow-hidden">
                   <Image
                     src={member.image}
                     alt={member.name}
                     fill
                     className="object-cover object-[center_10%] group-hover:scale-105 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0  bg-gradient-to-bl from-[#4d8bee] via-transparent to-[#47a760] opacity-80 group-hover:opacity-0 transition-all duration-500" />
+                  <div className="absolute inset-0 bg-gradient-to-bl from-[#4d8bee] via-transparent to-[#47a760] opacity-80 group-hover:opacity-0 transition-all duration-500" />
                 </div>
               ) : (
                 /* Image/Placeholder Container */
@@ -233,17 +223,22 @@ function TeamMembers() {
                     {member.role}
                   </p>
 
-                  {/* 👇 **New: Display Team Lead Badge only if they are the lead of the current active filter** */}
+                  {/* Display sub-team if exists */}
+                  {member.subTeam && (
+                    <p className="text-white/80 text-xs font-medium">
+                      {member.subTeam}
+                    </p>
+                  )}
+
+                  {/* Display Team Lead Badge */}
                   {isMemberLeadForFilter(member, activeFilter) &&
                     activeFilter !== "Organizers" && (
-                      <span className="bg-[#47a760] text-white text-xs font-bold px-2 py-0.5 rounded-full mb-2 inline-block">
+                      <span className="bg-[#47a760] text-white text-xs font-bold px-2 py-0.5 rounded-full mt-2 inline-block">
                         Team LEAD
                       </span>
                     )}
                 </div>
               </div>
-
-              {/* <div className="absolute inset-0 border-2 border-transparent group-hover:border-[#4285f4]/50 rounded-2xl transition-all duration-300" /> */}
             </motion.div>
           ))}
         </motion.div>
@@ -253,9 +248,9 @@ function TeamMembers() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8, duration: 0.7 }}
-          className="hidden mt-16 bg-white/80 backdrop-blur-sm rounded-2xl p-8 border-2 border-[#f0f0f0] max-w-4xl mx-auto"
+          className="mt-16 bg-white/80 backdrop-blur-sm rounded-2xl p-8 border-2 border-[#f0f0f0] max-w-4xl mx-auto"
         >
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-6 text-center">
             <div>
               <p className="text-4xl font-extrabold text-[#4285f4] mb-2">
                 {teamData.filter((m) => m.team === "Organizers").length}
@@ -266,25 +261,28 @@ function TeamMembers() {
             </div>
             <div>
               <p className="text-4xl font-extrabold text-[#ea4335] mb-2">
-                {
-                  teamData.filter((m) => m.team === "Media and Publicity Team")
-                    .length
-                }
+                {teamData.filter((m) => m.team === "Content").length}
               </p>
-              <p className="text-sm text-[#1e1e1e]/70 font-semibold">
-                Social Media
-              </p>
+              <p className="text-sm text-[#1e1e1e]/70 font-semibold">Content</p>
             </div>
             <div>
               <p className="text-4xl font-extrabold text-[#f9ab00] mb-2">
-                {teamData.filter((m) => m.team === "Dev Team").length}
+                {teamData.filter((m) => m.team === "Operations").length}
               </p>
               <p className="text-sm text-[#1e1e1e]/70 font-semibold">
-                Developers
+                Operations
               </p>
             </div>
             <div>
               <p className="text-4xl font-extrabold text-[#34a853] mb-2">
+                {teamData.filter((m) => m.team === "Partnership").length}
+              </p>
+              <p className="text-sm text-[#1e1e1e]/70 font-semibold">
+                Partnership
+              </p>
+            </div>
+            <div>
+              <p className="text-4xl font-extrabold text-[#9334e9] mb-2">
                 {teamData.length}
               </p>
               <p className="text-sm text-[#1e1e1e]/70 font-semibold">
