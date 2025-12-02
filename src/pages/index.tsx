@@ -25,7 +25,7 @@ export default function Home({ data }: any) {
 export async function getServerSideProps() {
   const apiURL =
     process.env.NODE_ENV === "development"
-      ? "http://localhost:3000"
+      ? "http://localhost:3002"
       : "https://devfest-ogbomoso.vercel.app";
   const res = await fetch(`${apiURL}/details.json`);
   const data = await res.json();

@@ -342,13 +342,13 @@ export default function DPPreview() {
       // Calendar icon for date
       {
         src: createIconDataUrl(Calendar, "#444", 16),
-        position: { x: 53, y: 600 },
+        position: { x: 53, y: 630 },
         size: { width: 53, height: 53 },
       },
       // Clock icon for time
       {
         src: createIconDataUrl(Clock, "#444", 16),
-        position: { x: 53, y: 707 },
+        position: { x: 53, y: 727 },
         size: { width: 53, height: 53 },
       },
     ],
@@ -360,18 +360,26 @@ export default function DPPreview() {
         color: "#2b2b2b",
         size: 48,
       },
-      // Location
+      // Location - Line 1
       {
-        content: "Ogbomoso, Nigeria",
+        content: "The Assembly",
         position: { x: 133, y: 547 },
         font: "poppins",
         color: "#444",
-        size: 43,
+        size: 35,
+      },
+      // Location - Line 2
+      {
+        content: "Ogbomoso, Oyo State",
+        position: { x: 133, y: 590 },
+        font: "poppins",
+        color: "#444",
+        size: 35,
       },
       // Date
       {
         content: "December 5&6, 2025",
-        position: { x: 133, y: 640 },
+        position: { x: 133, y: 670 },
         font: "poppins",
         color: "#444",
         size: 40,
@@ -379,7 +387,7 @@ export default function DPPreview() {
       // Time
       {
         content: "9:00 AM - 5:00 PM",
-        position: { x: 133, y: 747 },
+        position: { x: 133, y: 767 },
         font: "poppins",
         color: "#444",
         size: 43,

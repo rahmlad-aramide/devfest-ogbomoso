@@ -66,7 +66,7 @@ function DPGenerator({ data }: any) {
 export async function getServerSideProps() {
   const apiURL =
     process.env.NODE_ENV === "development"
-      ? "http://localhost:3000"
+      ? "http://localhost:3002"
       : "https://devfestogbomoso.netlify.app";
   console.log(apiURL, process.env.NODE_ENV);
   const res = await fetch(`${apiURL}/details.json`);

@@ -225,7 +225,7 @@ const CanvasPreview = forwardRef<HTMLCanvasElement, CanvasPreviewProps>(
                 ctx.fill();
 
                 // Add border
-                ctx.strokeStyle = "rgba(255, 255, 255, 0.3)";
+                ctx.strokeStyle = "rgba(255, 255, 255, 0.5)";
                 ctx.lineWidth = 1;
                 ctx.stroke();
                 ctx.restore();
