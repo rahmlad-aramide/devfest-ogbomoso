@@ -19,7 +19,7 @@
     "images": ["/devfest-1.jpg", "/devfest-2.jpg", "/devfest-3.jpg"]
   },
   "theme": "#FF9800",
-  "actionButtonText": "RSVP Now",
+  "actionButtonText": "Register Now",
   "speakers": [
     {
       "id": "adeola",
@@ -164,13 +164,13 @@
   "community": {
     "title": "GDG Ogbomoso",
     "subtitle": "A community-led tech conference bringing together developers, designers, and tech enthusiasts.",
-    "twitter": "gdgogbomoso",
-    "gdg": "gdgogbomoso"
+    "twitter": "https://x.com/gdgogbomoso",
+    "gdg": "https://gdg.community.dev/events/details/google-gdg-ogbomoso-presents-devfest-ogbomoso-2025/"
   },
   "faqs": [
     {
       "question": "What is DevFest Ogbomoso?",
-      "answer": "DevFest Ogbomoso is a community-led developer conference focused on community building and learning about Google's technologies. The theme for 2025 is 'Building Safe, Secure and Scalable Solutions with AI and Cloud.'"
+      "answer": "DevFest Ogbomoso is a community-led developer conference focused on community building and learning about Google's technologies. The theme for 2025 is Building Safe, Secure and Scalable Solutions with AI and Cloud."
     },
     {
       "question": "When and where is it happening?",

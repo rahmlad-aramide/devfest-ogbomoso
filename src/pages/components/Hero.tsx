@@ -1,10 +1,12 @@
 "use client";
 import { motion, Transition } from "framer-motion";
 import { MapPin, Calendar, Clock, ImageIcon } from "lucide-react";
-import Header from "./Header";
-import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import Header from "./Header";
+import RSVPModal from "./RSVPModal";
+
+type EventStatus = "COUNTDOWN" | "ON_DAY" | "SUCCESSFUL";
 
 function Hero({ data }: any) {
   const [timeLeft, setTimeLeft] = useState({
@@ -16,14 +18,23 @@ function Hero({ data }: any) {
 
   const [currentTime, setCurrentTime] = useState("");
   const [currentDate, setCurrentDate] = useState("");
+  const [showRSVPModal, setShowRSVPModal] = useState<boolean>(false);
+
+  const [eventStatus, setEventStatus] = useState<EventStatus>("COUNTDOWN");
 
   useEffect(() => {
-    const targetDate = new Date(Date.UTC(2025, 11, 5, 9, 0, 0));
+    // Target date: December 6 2025, 9:00 AM UTC
+    const targetDate = new Date(Date.UTC(2025, 11, 6, 9, 0, 0));
+
+    // Day After Date: December 7, 2025, 12:00 AM UTC
+    const dayAfterDate = new Date(Date.UTC(2025, 11, 7, 0, 0, 0));
 
     const updateTime = () => {
       const now = new Date();
+      const difference = targetDate.getTime() - now.getTime();
+      const diffSinceStart = now.getTime() - targetDate.getTime();
 
-      // Update current time and date in WAT (UTC+1)
+      // --- Update Current Time and Date (No change needed here) ---
       const watOptions: Intl.DateTimeFormatOptions = {
         timeZone: "Africa/Lagos",
         hour12: true,
@@ -31,7 +42,6 @@ function Hero({ data }: any) {
         minute: "2-digit",
         second: "2-digit",
       };
-
       const dateOptions: Intl.DateTimeFormatOptions = {
         timeZone: "Africa/Lagos",
         weekday: "long",
@@ -42,11 +52,13 @@ function Hero({ data }: any) {
 
       setCurrentTime(now.toLocaleTimeString("en-NG", watOptions));
       setCurrentDate(now.toLocaleDateString("en-NG", dateOptions));
+      // -----------------------------------------------------------
 
-      // Update countdown
-      const difference = targetDate.getTime() - now.getTime();
-
+      // Update Countdown & Status
       if (difference > 0) {
+        // Event is in the future (Countdown)
+        setEventStatus("COUNTDOWN");
+
         const days = Math.floor(difference / (1000 * 60 * 60 * 24));
         const hours = Math.floor(
           (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
@@ -57,19 +69,21 @@ function Hero({ data }: any) {
         const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
         setTimeLeft({ days, hours, minutes, seconds });
+      } else if (diffSinceStart > 0 && now.getTime() < dayAfterDate.getTime()) {
+        // Event has started but is still on the target day (D-Day)
+        setEventStatus("ON_DAY");
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 }); // Optionally set to 0
       } else {
-        // Event has started
+        // Event is over (Successful)
+        setEventStatus("SUCCESSFUL");
         setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
       }
     };
 
-    // Initial update
+    // Initial update and interval setup
     updateTime();
-
-    // Set up intervals
     const timerId = setInterval(updateTime, 1000);
 
-    // Clean up
     return () => clearInterval(timerId);
   }, []);
 
@@ -123,6 +137,24 @@ function Hero({ data }: any) {
     },
   };
 
+  useEffect(() => {
+    if (showRSVPModal) {
+      // Prevent background scroll
+      document.body.style.overflow = "hidden";
+      document.documentElement.style.overflow = "hidden";
+    } else {
+      // Re-enable scroll
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
+    }
+
+    // Cleanup
+    return () => {
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
+    };
+  }, [showRSVPModal]);
+
   return (
     <section className="min-h-[60vh] lg:min-h-[70vh] relative bg-black text-white pt-20 pb-5">
       {/* Background Image */}
@@ -136,9 +168,7 @@ function Hero({ data }: any) {
         >
           <source src={"/2d.mp4"} type="video/mp4" />
         </video>
-        {/* Gradient overlay - fade to black at the top */}
         <div className="absolute inset-0 bg-gradient-to-b from-black via-black/70 to-black/30" />
-        {/* Additional gradient for better text contrast */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/30 to-black/10" />
       </div>
 
@@ -147,7 +177,6 @@ function Hero({ data }: any) {
       {/* Main Content */}
       <div className="pt-10 relative z-10 flex items-center justify-center min-h-[60vh] lg:min-h-[70vh]">
         <div className="w-full max-w-6xl mx-auto px-4 lg:px-6">
-          {/* Centered Content */}
           <motion.div
             className="text-center space-y-6 lg:space-y-8"
             variants={containerVariants}
@@ -155,7 +184,6 @@ function Hero({ data }: any) {
             whileInView="visible"
             viewport={{ once: true }}
           >
-            {/* Badge - Google Blue */}
             <motion.div
               variants={itemVariants}
               className="inline-flex items-center justify-center px-4 py-2 bg-[#4285f4]/10 backdrop-blur-sm rounded-full border border-[#4285f4]/30"
@@ -165,9 +193,8 @@ function Hero({ data }: any) {
               </span>
             </motion.div>
 
-            {/* Main Heading - EXACTLY YOUR ORIGINAL FORMATTING with animation */}
             <motion.h1
-              className="text-6xl lg:text-9xl font-black leading-tight lg:leading-none px-4"
+              className="text-6xl lg:text-9xl font-black lg:font-extrabold leading-tight lg:leading-none px-4"
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
@@ -255,7 +282,7 @@ function Hero({ data }: any) {
             {/* Description */}
             <motion.p
               variants={itemVariants}
-              className="text-lg lg:text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed px-4"
+              className="text-sm lg:text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed px-4"
             >
               Step into the future of technology at DevFest! Discover the latest
               trends, sharpen your skills with expert-led sessions, and explore
@@ -272,57 +299,77 @@ function Hero({ data }: any) {
                 variants={itemVariants}
                 className="text-sm lg:text-base text-gray-300 mb-6 uppercase tracking-widest font-semibold"
               >
-                Event Starts In
+                {eventStatus === "SUCCESSFUL"
+                  ? "Is A"
+                  : eventStatus === "ON_DAY"
+                  ? null
+                  : "Event Starts In"}
               </motion.h3>
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-6">
-                {[
-                  { value: timeLeft.days, label: "Days" },
-                  { value: timeLeft.hours, label: "Hours" },
-                  { value: timeLeft.minutes, label: "Minutes" },
-                  { value: timeLeft.seconds, label: "Seconds" },
-                ].map((item, index) => (
-                  <motion.div
-                    key={index}
-                    variants={itemVariants}
-                    custom={index}
-                    className="text-center"
-                  >
-                    <div className="bg-black/60 rounded-xl p-3 lg:p-4 shadow-lg">
-                      <span className="text-xl lg:text-3xl font-bold text-white block">
-                        {item.value.toString().padStart(2, "0")}
+              {eventStatus === "SUCCESSFUL" ? (
+                <div className="bg-black/60 rounded-xl p-3 lg:p-4 shadow-lg">
+                  <span className="text-2xl md:text-3xl lg:text-4xl font-bold text-white block">
+                    SUCCESS
+                  </span>
+                </div>
+              ) : eventStatus === "ON_DAY" ? (
+                <div className="bg-black/60 rounded-xl p-3 lg:p-4 shadow-lg">
+                  <span className="text-2xl md:text-3xl lg:text-4xl font-bold text-white block">
+                    D - DAY
+                  </span>
+                </div>
+              ) : (
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-6">
+                  {[
+                    { value: timeLeft.days, label: "Days" },
+                    { value: timeLeft.hours, label: "Hours" },
+                    { value: timeLeft.minutes, label: "Minutes" },
+                    { value: timeLeft.seconds, label: "Seconds" },
+                  ].map((item, index) => (
+                    <motion.div
+                      key={index}
+                      variants={itemVariants}
+                      custom={index}
+                      className="text-center"
+                    >
+                      <div className="bg-black/60 rounded-xl p-3 lg:p-4 shadow-lg">
+                        <span className="text-xl lg:text-3xl font-bold text-white block">
+                          {item.value.toString().padStart(2, "0")}
+                        </span>
+                      </div>
+                      <span className="text-xs lg:text-sm text-gray-400 mt-2 block uppercase tracking-wide font-medium">
+                        {item.label}
                       </span>
-                    </div>
-                    <span className="text-xs lg:text-sm text-gray-400 mt-2 block uppercase tracking-wide font-medium">
-                      {item.label}
-                    </span>
-                  </motion.div>
-                ))}
-              </div>
+                    </motion.div>
+                  ))}
+                </div>
+              )}
 
               {/* Event Details */}
-              <motion.div
-                variants={itemVariants}
-                className="mt-6 pt-4 border-t border-white/10"
-              >
-                <div className="flex flex-col gap-1 text-gray-200 w-max mx-auto">
-                  <div className="flex items-center gap-2">
-                    <Calendar className="w-4 h-4 text-[#34a853]" />
-                    <span className="font-semibold">
-                      Fri & Sat, December 5-6, 2025
-                    </span>
+              {(eventStatus === "COUNTDOWN" || eventStatus === "ON_DAY") && (
+                <motion.div
+                  variants={itemVariants}
+                  className="mt-6 pt-4 border-t border-white/10"
+                >
+                  <div className="flex flex-col gap-1 text-gray-200 w-max mx-auto">
+                    <div className="flex items-center gap-2">
+                      <Calendar className="w-4 h-4 text-[#34a853]" />
+                      <span className="font-semibold">
+                        Fri & Sat, December 5-6, 2025
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Clock className="w-4 h-4 text-[#34a853]" />
+                      <span className="font-semibold">10:00 AM WAT</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <MapPin className="w-4 h-4 text-[#34a853]" />
+                      <span className="font-semibold">
+                        T.B.A (To be announced)
+                      </span>
+                    </div>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <Clock className="w-4 h-4 text-[#34a853]" />
-                    <span className="font-semibold">10:00 AM WAT</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <MapPin className="w-4 h-4 text-[#34a853]" />
-                    <span className="font-semibold">
-                      T.B.A (To be announced)
-                    </span>
-                  </div>
-                </div>
-              </motion.div>
+                </motion.div>
+              )}
 
               {/* Live Current Time & Date */}
               <motion.div
@@ -348,28 +395,32 @@ function Hero({ data }: any) {
               </motion.div>
             </motion.div>
 
-            {/* CTA Buttons - Google Colors */}
             <motion.div
               variants={itemVariants}
               className="flex flex-col sm:flex-row gap-3 lg:gap-4 justify-center items-center pt-4 px-4 pb-8"
             >
-              {/* RSVP Button - Google Blue */}
-              <a
-                href="https://tinyurl.com/devfestogbo2025"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full sm:w-auto"
-              >
+              <div className="w-full sm:w-auto">
                 <motion.button
+                  onClick={() => {
+                    setShowRSVPModal(true);
+                  }}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className="w-full bg-[#4285f4] hover:bg-[#3367d6] text-white px-6 py-3 lg:px-8 lg:py-4 rounded-full font-semibold text-base lg:text-lg transition-all duration-300 shadow-lg hover:shadow-xl"
                 >
-                  RSVP NOW
+                  Get Your Free Ticket
                 </motion.button>
-              </a>
+              </div>
 
-              {/* Get DP Button - Transparent with Green Outline */}
+              {/* RSVP Modal */}
+              {showRSVPModal && (
+                <RSVPModal
+                  isOpen={showRSVPModal}
+                  onClose={() => setShowRSVPModal(false)}
+                  eventType="devfest"
+                />
+              )}
+
               <Link href="/dp" className="w-full sm:w-auto">
                 <motion.button
                   whileHover={{ scale: 1.05 }}

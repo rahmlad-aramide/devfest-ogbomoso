@@ -8,6 +8,7 @@ import Header from "./components/Header";
 import MetaTags from "./components/MetaTag";
 import Footer from "./components/Footer";
 import Image from "next/image";
+import Link from "next/link";
 
 const days: any = [];
 
@@ -160,7 +161,7 @@ function Speakers({ data }: any) {
             ))}
           </div>
         </div>
-        <Footer data={data} />
+        <Footer />
       </div>
       {speaker && (
         <motion.div
@@ -198,28 +199,28 @@ function Speakers({ data }: any) {
               {speaker.socials && (
                 <div className="flex gap-4 mt-2">
                   {speaker.socials?.twitter && (
-                    <a
+                    <Link
                       href={`https://twitter.com/${speaker.socials?.twitter}`}
                       target="_blank"
                     >
                       <Twitter className="w-5 h-5 text-gray-400 hover:text-black cursor-pointer" />
-                    </a>
+                    </Link>
                   )}
                   {speaker.socials?.linkedin && (
-                    <a
+                    <Link
                       href={`https://linkedin.com/in/${speaker.socials?.linkedin}`}
                       target="_blank"
                     >
                       <Linkedin className="w-5 h-5 text-gray-400 hover:text-black cursor-pointer" />
-                    </a>
+                    </Link>
                   )}
                   {speaker.socials?.github && (
-                    <a
+                    <Link
                       href={`https://github.com/${speaker.socials?.github}`}
                       target="_blank"
                     >
                       <Github className="w-5 h-5 text-gray-400 hover:text-black cursor-pointer" />
-                    </a>
+                    </Link>
                   )}
                 </div>
               )}
@@ -242,7 +243,7 @@ export async function getServerSideProps() {
   const apiURL =
     process.env.NODE_ENV === "development"
       ? "http://localhost:3000"
-      : "https://devfestogbomoso.netlify.app";
+      : "https://www.devfestogbomoso.com";
   console.log(apiURL, process.env.NODE_ENV);
   const res = await fetch(`${apiURL}/details.json`);
   const data = await res.json();
