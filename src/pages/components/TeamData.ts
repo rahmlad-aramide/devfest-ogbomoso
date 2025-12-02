@@ -39,7 +39,7 @@ export const teamData: TeamMember[] = [
     role: "Co-Organizer",
     image: "/team/blessed.jpeg",
     team: "Organizers",
-    subTeam: "Photography/Videography",
+    subTeam: "Dev Team",
     isTeamLead: true,
   },
   {
@@ -47,7 +47,7 @@ export const teamData: TeamMember[] = [
     role: "Co-Organizer",
     image: "/team/abdrahman.jpg",
     team: "Organizers",
-    subTeam: "Logistics/Technical",
+    subTeam: "Dev Team",
     isTeamLead: true,
   },
   {
@@ -55,7 +55,7 @@ export const teamData: TeamMember[] = [
     role: "Member",
     image: "/speakers/ridwan.jpg",
     team: "Operations",
-    subTeam: "Logistics/Technical",
+    subTeam: "Dev Team",
   },
   {
     name: "Isaac Oke",
@@ -104,7 +104,7 @@ export const teamData: TeamMember[] = [
     role: "Member",
     image: "/team/william.jpeg",
     team: "Operations",
-    subTeam: "Logistics/Technical",
+    subTeam: "Dev Team",
   },
   {
     name: "Babatunde Abdullahi",

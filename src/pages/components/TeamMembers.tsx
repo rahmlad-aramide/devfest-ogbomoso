@@ -25,7 +25,7 @@ function TeamMembers() {
     "Content",
     "Operations",
     "Partnership",
-    "Campus Liaison",
+    "Dev Team",
   ];
 
   // Helper function to check if a member is a lead for the currently active team filter
@@ -190,7 +190,7 @@ function TeamMembers() {
               className="relative group cursor-pointer rounded-2xl overflow-hidden shadow-xl bg-white border border-[#f0f0f0] transition-all duration-300"
             >
               {member.image ? (
-                <div className="relative w-full h-[320px] overflow-hidden">
+                <div className="relative w-full h-[30px] overflow-hidden">
                   <Image
                     src={member.image}
                     alt={member.name}
@@ -218,7 +218,8 @@ function TeamMembers() {
                     {member.name}
                   </h3>
 
-                  {/* Display Main Role/Title */}
+                  <div className="flex gap-2 justify-between items-center">
+                    {/* Display Main Role/Title */}
                   <p className="text-white text-sm font-semibold mb-2">
                     {member.role}
                   </p>
@@ -229,6 +230,7 @@ function TeamMembers() {
                       {member.subTeam}
                     </p>
                   )}
+                  </div>
 
                   {/* Display Team Lead Badge */}
                   {/* {isMemberLeadForFilter(member, activeFilter) &&
