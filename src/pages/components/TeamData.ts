@@ -1,0 +1,187 @@
+interface TeamMember {
+  name: string;
+  role: string;
+  image: string;
+  team: string;
+  subTeam?: string;
+  isTeamLead?: Array<boolean> | boolean;
+}
+
+export const teamData: TeamMember[] = [
+  {
+    name: "Miracle Olabode",
+    role: "Lead Organizer",
+    image: "/team/miracle.jpg",
+    team: "Organizers",
+  },
+  {
+    name: "Boluwatife Adebisi",
+    role: "Lead Organizer",
+    image: "/team/boluwatife.jpg",
+    team: "Organizers",
+  },
+  {
+    name: "Esuola Daniel",
+    role: "Co-Organizer",
+    image: "/team/daniel.png",
+    team: "Organizers",
+    subTeam: "Graphics Design",
+    isTeamLead: true,
+  },
+  {
+    name: "Glory Olaifa",
+    role: "Co-Organizer",
+    image: "/team/glory.jpg",
+    team: "Organizers",
+  },
+  {
+    name: "Blessed-Agboola Jesujoba",
+    role: "Co-Organizer",
+    image: "/team/blessed.jpeg",
+    team: "Organizers",
+    subTeam: "Dev Team",
+    isTeamLead: true,
+  },
+  {
+    name: "Abdrahman Oladimeji",
+    role: "Co-Organizer",
+    image: "/team/abdrahman.jpg",
+    team: "Organizers",
+    subTeam: "Dev Team",
+    isTeamLead: true,
+  },
+  {
+    name: "Adewole Ridwan",
+    role: "Member",
+    image: "/speakers/ridwan.jpg",
+    team: "Operations",
+    subTeam: "Dev Team",
+  },
+  {
+    name: "Isaac Oke",
+    role: "Member",
+    image: "/team/isaac.jpg",
+    team: "Content",
+    subTeam: "Graphics Design",
+  },
+  {
+    name: "Olatunji Ezekiel",
+    role: "Member",
+    image: "/team/olatunji.jpg",
+    team: "Content",
+    subTeam: "Graphics Design",
+  },
+  {
+    name: "Olurinto Boluwatife",
+    role: "Member",
+    image: "/team/olurinto.jpeg",
+    team: "Content",
+    subTeam: "Graphics Design",
+  },
+  {
+    name: "Eniola Adesina",
+    role: "Member",
+    image: "/team/eniola.jpg",
+    team: "Content",
+    subTeam: "Content Writing",
+  },
+  {
+    name: "Peter Awoniyi",
+    role: "Member",
+    image: "/team/peter.jpg",
+    team: "Content",
+    subTeam: "Social Media Management",
+  },
+  {
+    name: "Gbadero Hiqmah Fadeke",
+    role: "Member",
+    image: "/team/hiqmah.jpg",
+    team: "Content",
+    subTeam: "Social Media Management",
+  },
+  {
+    name: "Afolabi William",
+    role: "Member",
+    image: "/team/william.jpeg",
+    team: "Operations",
+    subTeam: "Dev Team",
+  },
+  {
+    name: "Babatunde Abdullahi",
+    role: "Partner",
+    image: "/team/babatunde.jpg",
+    team: "Organizers",
+    subTeam: "Social Media Management",
+    isTeamLead: true,
+  },
+  {
+    name: "Surajudeen Muhamad",
+    role: "Member",
+    image: "/team/awwal.jpeg",
+    team: "Partnership",
+    subTeam: "Speaker Support",
+  },
+  {
+    name: "Akinrinde Joel",
+    role: "Member",
+    image: "/team/akinrinde.jpeg",
+    team: "Content",
+    subTeam: "Photography/Videography",
+  },
+  {
+    name: "Elijah Ayanlere",
+    role: "Member",
+    image: "/team/elijah.jpeg",
+    team: "Operations",
+    subTeam: "Logistics/Technical",
+  },
+  {
+    name: "Ayanlere Victoria Ayooluwa",
+    role: "Member",
+    image: "/team/ayooluwa.jpg",
+    team: "Operations",
+    subTeam: "Ushering",
+  },
+  {
+    name: "Blessed-Agboola Jesutobi Jesse",
+    role: "Member",
+    image: "/team/jesutobi.JPG",
+    team: "Operations",
+    subTeam: "Logistics/Technical",
+  },
+  {
+    name: "Favour Adebisi",
+    role: "Member",
+    image: "/team/adebisi.jpg",
+    team: "Operations",
+    subTeam: "Welfare",
+  },
+  {
+    name: "Iminsioluwa Adedunmoye",
+    role: "Member",
+    image: "/team/iminsioluwa.JPG",
+    team: "Content",
+    subTeam: "Photography/Videography",
+  },
+  {
+    name: "Emmanuel Olusegun",
+    role: "Member",
+    image: "/team/olusegun.webp",
+    team: "Partnership",
+    subTeam: "Speaker Support",
+  },
+  {
+    name: "Favour Alfred",
+    role: "Member",
+    image: "/team/favoura.png",
+    team: "Operations",
+    subTeam: "Ushering",
+  },
+  {
+    name: "Favour Mayowa Adebanjo",
+    role: "Member",
+    image: "/team/adebanjo.jpg",
+    team: "Operations",
+    subTeam: "Welfare",
+  },
+];
