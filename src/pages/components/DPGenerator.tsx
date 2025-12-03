@@ -3,7 +3,7 @@ import { Image as ImageIcon, Upload, PencilIcon } from "lucide-react";
 import Image from "next/image";
 import { useState, useRef } from "react";
 
-const dbBgColors = ["#4285f4", "#ea4335", "#34a853", "#f9ab00"];
+const dbBgColors = ["#FFF", "#F8D8D8", "#CCF6C5", "#C3EBF5"];
 
 function DPGeneratorComponent() {
   const [name, setName] = useState("");
