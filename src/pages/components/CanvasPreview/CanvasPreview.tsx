@@ -1,10 +1,6 @@
 "use client";
-import React, {
-  useRef,
-  useEffect,
-  forwardRef,
-  useImperativeHandle,
-} from "react";
+
+import { useRef, useEffect, forwardRef, useImperativeHandle } from "react";
 
 type TextConfig = {
   content: string;
@@ -12,9 +8,9 @@ type TextConfig = {
   font: string;
   color: string;
   size: number;
+  weight?: "normal" | "bold" | number;
   textAlign?: "left" | "center" | "right";
-  hasGlassmorphism?: boolean;
-  glassPadding?: { top: number; right: number; bottom: number; left: number };
+  isPill?: boolean;
 };
 
 type ImageConfig = {
@@ -24,12 +20,13 @@ type ImageConfig = {
 };
 
 type CanvasConfig = {
-  baseImage: string; // imageU (green icons background)
-  userImage: string; // user uploaded photo
+  userImage: string;
+  userName: string;
   texts: TextConfig[];
-  images?: ImageConfig[]; // Additional images
+  images?: ImageConfig[];
   userBox: { x: number; y: number; width: number; height: number };
-  backgroundColor?: string; // Background color for the canvas
+  backgroundColor?: string;
+  nameBoxBg?: string;
 };
 
 interface CanvasPreviewProps {
@@ -47,86 +44,146 @@ const CanvasPreview = forwardRef<HTMLCanvasElement, CanvasPreviewProps>(
     useEffect(() => {
       const canvas = canvasRef.current;
       if (!canvas) return;
+
       const ctx = canvas.getContext("2d");
       if (!ctx) return;
 
-      // Set canvas size
-      canvas.width = width!;
-      canvas.height = height!;
+      canvas.width = width;
+      canvas.height = height;
 
-      // If no baseImage is provided, create a simple background
-      if (!config.baseImage) {
-        // Use user-selected background color or create a gradient background
-        if (config.backgroundColor) {
-          ctx.fillStyle = config.backgroundColor;
-          ctx.fillRect(0, 0, width, height);
-        } else {
-          // Create a gradient background
-          const gradient = ctx.createLinearGradient(0, 0, 0, 50);
-          gradient.addColorStop(0, "#4285f4");
-          gradient.addColorStop(0.5, "#ffffff");
-          gradient.addColorStop(1, "#34a853");
+      const userImage = new Image();
+      userImage.crossOrigin = "anonymous";
+      const additionalImages: HTMLImageElement[] = [];
+      const imageLoadPromises: Promise<void>[] = [];
 
-          ctx.fillStyle = gradient;
-          ctx.fillRect(0, 0, width, height);
-        }
+      if (config.images) {
+        config.images.forEach((imgConfig) => {
+          const img = new Image();
+          img.crossOrigin = "anonymous";
+          img.src = imgConfig.src;
+          additionalImages.push(img);
+          imageLoadPromises.push(
+            new Promise<void>((resolve) => {
+              img.onload = () => resolve();
+              img.onerror = () => {
+                console.warn(`Failed to load image: ${imgConfig.src}`);
+                resolve();
+              };
+            })
+          );
+        });
+      }
 
-        // Draw user photo if available
-        if (config.userImage) {
-          const userImage = new Image();
-          userImage.crossOrigin = "anonymous";
-          userImage.src = config.userImage;
+      const userImagePromise = config.userImage
+        ? new Promise<void>((res) => {
+            userImage.onload = () => res();
+            userImage.onerror = () => {
+              console.warn("Failed to load user image");
+              res();
+            };
+            userImage.src = config.userImage;
+          })
+        : Promise.resolve();
 
-          userImage.onload = () => {
-            const { x, y, width: uW, height: uH } = config.userBox;
-            ctx.save();
+      Promise.all([userImagePromise, ...imageLoadPromises])
+        .then(() => {
+          // Clear and fill background
+          ctx.clearRect(0, 0, width, height);
+          if (config.backgroundColor) {
+            ctx.fillStyle = config.backgroundColor;
+            ctx.fillRect(0, 0, width, height);
+          }
 
-            // Create rounded rectangle path
-            const imageRadius = 10; // Adjust this value for desired roundness
+          // Draw decorative images first (background elements)
+          if (config.images && additionalImages.length > 0) {
+            config.images.forEach((imageConfig, index) => {
+              const img = additionalImages[index];
+              if (img && img.complete && img.naturalWidth > 0) {
+                try {
+                  ctx.drawImage(
+                    img,
+                    imageConfig.position.x,
+                    imageConfig.position.y,
+                    imageConfig.size.width,
+                    imageConfig.size.height
+                  );
+                } catch (e) {
+                  console.warn(`Error drawing image at index ${index}:`, e);
+                }
+              }
+            });
+          }
+
+          // Draw user photo with border
+          const { x, y, width: uW, height: uH } = config.userBox;
+
+          const borderWidth = 5;
+          const borderRadius = 8.64; // 0.54rem
+
+          // Helper to draw rounded rectangle path
+          const drawRoundedRect = (
+            rectX: number,
+            rectY: number,
+            rectW: number,
+            rectH: number,
+            radius: number
+          ) => {
             ctx.beginPath();
-            ctx.moveTo(x + imageRadius, y);
-            ctx.lineTo(x + uW - imageRadius, y);
-            ctx.quadraticCurveTo(x + uW, y, x + uW, y + imageRadius);
-            ctx.lineTo(x + uW, y + uH - imageRadius);
-            ctx.quadraticCurveTo(x + uW, y + uH, x + uW - imageRadius, y + uH);
-            ctx.lineTo(x + imageRadius, y + uH);
-            ctx.quadraticCurveTo(x, y + uH, x, y + uH - imageRadius);
-            ctx.lineTo(x, y + imageRadius);
-            ctx.quadraticCurveTo(x, y, x + imageRadius, y);
+            ctx.moveTo(rectX + radius, rectY);
+            ctx.lineTo(rectX + rectW - radius, rectY);
+            ctx.arcTo(
+              rectX + rectW,
+              rectY,
+              rectX + rectW,
+              rectY + radius,
+              radius
+            );
+            ctx.lineTo(rectX + rectW, rectY + rectH - radius);
+            ctx.arcTo(
+              rectX + rectW,
+              rectY + rectH,
+              rectX + rectW - radius,
+              rectY + rectH,
+              radius
+            );
+            ctx.lineTo(rectX + radius, rectY + rectH);
+            ctx.arcTo(
+              rectX,
+              rectY + rectH,
+              rectX,
+              rectY + rectH - radius,
+              radius
+            );
+            ctx.lineTo(rectX, rectY + radius);
+            ctx.arcTo(rectX, rectY, rectX + radius, rectY, radius);
             ctx.closePath();
+          };
+
+          // Draw border
+          ctx.save();
+          ctx.strokeStyle = "#000";
+          ctx.lineWidth = borderWidth;
+          drawRoundedRect(x, y, uW, uH, borderRadius);
+          ctx.stroke();
+          ctx.restore();
+
+          // Draw user image if exists
+          if (config.userImage && userImage.complete && userImage.width > 0) {
+            ctx.save();
+            drawRoundedRect(x, y, uW, uH, borderRadius);
             ctx.clip();
 
-            // Draw image with cover behavior
+            // Calculate crop for cover effect
             const imgAspect = userImage.width / userImage.height;
             const boxAspect = uW / uH;
-
-            let drawWidth,
-              drawHeight,
-              drawX,
-              drawY,
-              sourceX,
-              sourceY,
-              sourceWidth,
-              sourceHeight;
+            let sourceX, sourceY, sourceWidth, sourceHeight;
 
             if (imgAspect > boxAspect) {
-              // Image is wider than box, fit to height and crop width
-              drawHeight = uH;
-              drawWidth = uH * imgAspect;
-              drawX = x - (drawWidth - uW) / 2;
-              drawY = y;
-
               sourceHeight = userImage.height;
               sourceWidth = userImage.height * boxAspect;
               sourceX = (userImage.width - sourceWidth) / 2;
               sourceY = 0;
             } else {
-              // Image is taller than box, fit to width and crop height
-              drawWidth = uW;
-              drawHeight = uW / imgAspect;
-              drawX = x;
-              drawY = y - (drawHeight - uH) / 2;
-
               sourceWidth = userImage.width;
               sourceHeight = userImage.width / boxAspect;
               sourceX = 0;
@@ -145,477 +202,120 @@ const CanvasPreview = forwardRef<HTMLCanvasElement, CanvasPreviewProps>(
               uH
             );
             ctx.restore();
-
-            // Draw texts after image is loaded
-            config.texts.forEach((text) => {
-              // Handle different font weights
-              let fontWeight = "normal";
-              let fontFamily = text.font;
-
-              if (text.font.includes("bold")) {
-                fontWeight = "bold";
-                fontFamily = text.font.replace("bold ", "");
-              } else if (text.font.match(/^\d+/)) {
-                // Handle numeric font weights
-                const weight = text.font.match(/^\d+/)?.[0];
-                if (weight) {
-                  if (parseInt(weight) >= 700) fontWeight = "bold";
-                  else if (parseInt(weight) >= 600) fontWeight = "600";
-                  else if (parseInt(weight) >= 500) fontWeight = "500";
-                  else fontWeight = "normal";
-                  fontFamily = text.font.replace(/^\d+\s/, "");
-                }
-              }
-
-              ctx.font = `${fontWeight} ${text.size}px ${fontFamily}`;
-
-              // Draw glassmorphism box if needed
-              if (text.hasGlassmorphism) {
-                const padding = text.glassPadding || {
-                  top: 8,
-                  right: 16,
-                  bottom: 8,
-                  left: 16,
-                };
-                const metrics = ctx.measureText(text.content);
-                const textWidth = metrics.width;
-                const textHeight = text.size;
-
-                let boxX = text.position.x - padding.left;
-                if (text.textAlign === "center") {
-                  boxX = text.position.x - textWidth / 2 - padding.left;
-                } else if (text.textAlign === "right") {
-                  boxX = text.position.x - textWidth - padding.left;
-                }
-
-                const boxY = text.position.y - textHeight - padding.top;
-                const boxWidth = textWidth + padding.left + padding.right;
-                const boxHeight = textHeight + padding.top + padding.bottom;
-                const boxRadius = 8;
-
-                // Draw glassmorphism background
-                ctx.save();
-                ctx.fillStyle = "rgba(255, 255, 255, 0.5)";
-                ctx.beginPath();
-                ctx.moveTo(boxX + boxRadius, boxY);
-                ctx.lineTo(boxX + boxWidth - boxRadius, boxY);
-                ctx.quadraticCurveTo(
-                  boxX + boxWidth,
-                  boxY,
-                  boxX + boxWidth,
-                  boxY + boxRadius
-                );
-                ctx.lineTo(boxX + boxWidth, boxY + boxHeight - boxRadius);
-                ctx.quadraticCurveTo(
-                  boxX + boxWidth,
-                  boxY + boxHeight,
-                  boxX + boxWidth - boxRadius,
-                  boxY + boxHeight
-                );
-                ctx.lineTo(boxX + boxRadius, boxY + boxHeight);
-                ctx.quadraticCurveTo(
-                  boxX,
-                  boxY + boxHeight,
-                  boxX,
-                  boxY + boxHeight - boxRadius
-                );
-                ctx.lineTo(boxX, boxY + boxRadius);
-                ctx.quadraticCurveTo(boxX, boxY, boxX + boxRadius, boxY);
-                ctx.closePath();
-                ctx.fill();
-
-                // Add border
-                ctx.strokeStyle = "rgba(255, 255, 255, 0.5)";
-                ctx.lineWidth = 1;
-                ctx.stroke();
-                ctx.restore();
-              }
-
-              ctx.fillStyle = text.color;
-              ctx.textAlign = text.textAlign || "left";
-              ctx.fillText(
-                text.content.toUpperCase(),
-                text.position.x,
-                text.position.y
-              );
-            });
-
-            // Draw additional images if any
-            if (config.images) {
-              config.images.forEach((imageConfig) => {
-                const additionalImage = new Image();
-                additionalImage.crossOrigin = "anonymous";
-                additionalImage.src = imageConfig.src;
-                additionalImage.onload = () => {
-                  ctx.drawImage(
-                    additionalImage,
-                    imageConfig.position.x,
-                    imageConfig.position.y,
-                    imageConfig.size.width,
-                    imageConfig.size.height
-                  );
-                };
-              });
-            }
-          };
-
-          userImage.onerror = () => {
-            console.error("Failed to load user image");
-            // Draw texts even if image fails
-            config.texts.forEach((text) => {
-              // Handle different font weights
-              let fontWeight = "normal";
-              let fontFamily = text.font;
-
-              if (text.font.includes("bold")) {
-                fontWeight = "bold";
-                fontFamily = text.font.replace("bold ", "");
-              } else if (text.font.match(/^\d+/)) {
-                // Handle numeric font weights
-                const weight = text.font.match(/^\d+/)?.[0];
-                if (weight) {
-                  if (parseInt(weight) >= 700) fontWeight = "bold";
-                  else if (parseInt(weight) >= 600) fontWeight = "600";
-                  else if (parseInt(weight) >= 500) fontWeight = "500";
-                  else fontWeight = "normal";
-                  fontFamily = text.font.replace(/^\d+\s/, "");
-                }
-              }
-
-              ctx.font = `${fontWeight} ${text.size}px ${fontFamily}`;
-              ctx.fillStyle = text.color;
-              ctx.textAlign = text.textAlign || "left";
-              ctx.fillText(text.content, text.position.x, text.position.y);
-            });
-          };
-        } else {
-          // Draw texts if no user image
-          config.texts.forEach((text) => {
-            // Handle different font weights
-            let fontWeight = "normal";
-            let fontFamily = text.font;
-
-            if (text.font.includes("bold")) {
-              fontWeight = "bold";
-              fontFamily = text.font.replace("bold ", "");
-            } else if (text.font.match(/^\d+/)) {
-              // Handle numeric font weights
-              const weight = text.font.match(/^\d+/)?.[0];
-              if (weight) {
-                if (parseInt(weight) >= 700) fontWeight = "bold";
-                else if (parseInt(weight) >= 600) fontWeight = "600";
-                else if (parseInt(weight) >= 500) fontWeight = "500";
-                else fontWeight = "normal";
-                fontFamily = text.font.replace(/^\d+\s/, "");
-              }
-            }
-
-            ctx.font = `${fontWeight} ${text.size}px ${fontFamily}`;
-            ctx.fillStyle = text.color;
-            ctx.textAlign = text.textAlign || "left";
-            ctx.fillText(text.content, text.position.x, text.position.y);
-          });
-        }
-        return;
-      }
-
-      // Original logic for when baseImage is provided
-      const baseImage = new Image();
-      baseImage.crossOrigin = "anonymous";
-      baseImage.src = config.baseImage;
-
-      const userImage = new Image();
-      userImage.crossOrigin = "anonymous";
-      userImage.src = config.userImage;
-
-      Promise.all([
-        new Promise<void>((res, rej) => {
-          baseImage.onload = () => res();
-          baseImage.onerror = () => rej(new Error("Failed to load base image"));
-        }),
-        new Promise<void>((res, rej) => {
-          userImage.onload = () => res();
-          userImage.onerror = () => rej(new Error("Failed to load user image"));
-        }),
-      ])
-        .then(() => {
-          // Clear canvas and fill with background color
-          ctx.clearRect(0, 0, width, height);
-
-          // Fill with user-selected background color if provided
-          if (config.backgroundColor) {
-            ctx.fillStyle = config.backgroundColor;
-            ctx.fillRect(0, 0, width, height);
           }
 
-          // === Draw top imageU with object-cover ===
-          const topHeight = 140;
-          const baseImgAspect = baseImage.width / baseImage.height;
-          const topBoxAspect = width / topHeight;
+          const nameBoxWidth = 320;
+          const nameBoxHeight = 72;
+          const nameBoxX = x + (uW - nameBoxWidth) / 2;
+          const nameBoxY = y + uH - nameBoxHeight / 2;
 
-          let topSrcX, topSrcY, topSrcWidth, topSrcHeight;
-          if (baseImgAspect > topBoxAspect) {
-            // Image is wider, crop sides
-            topSrcHeight = baseImage.height;
-            topSrcWidth = baseImage.height * topBoxAspect;
-            topSrcX = (baseImage.width - topSrcWidth) / 2;
-            topSrcY = 0;
-          } else {
-            // Image is taller, crop top/bottom
-            topSrcWidth = baseImage.width;
-            topSrcHeight = baseImage.width / topBoxAspect;
-            topSrcX = 0;
-            topSrcY = (baseImage.height - topSrcHeight) / 2;
-          }
-          ctx.drawImage(
-            baseImage,
-            topSrcX,
-            topSrcY,
-            topSrcWidth,
-            topSrcHeight,
-            0,
-            0,
-            width,
-            topHeight
-          );
-
-          // === Draw bottom imageU with object-cover ===
-          const bottomHeight = 140;
-          const bottomBoxAspect = width / bottomHeight;
-
-          let bottomSrcX, bottomSrcY, bottomSrcWidth, bottomSrcHeight;
-          if (baseImgAspect > bottomBoxAspect) {
-            // Image is wider, crop sides
-            bottomSrcHeight = baseImage.height;
-            bottomSrcWidth = baseImage.height * bottomBoxAspect;
-            bottomSrcX = (baseImage.width - bottomSrcWidth) / 2;
-            bottomSrcY = 0;
-          } else {
-            // Image is taller, crop top/bottom
-            bottomSrcWidth = baseImage.width;
-            bottomSrcHeight = baseImage.width / bottomBoxAspect;
-            bottomSrcX = 0;
-            bottomSrcY = (baseImage.height - bottomSrcHeight) / 2;
-          }
-          ctx.drawImage(
-            baseImage,
-            bottomSrcX,
-            bottomSrcY,
-            bottomSrcWidth,
-            bottomSrcHeight,
-            0,
-            height - bottomHeight,
-            width,
-            bottomHeight
-          );
-
-          // === Draw user photo on right ===
-          const { x, y, width: uW, height: uH } = config.userBox;
           ctx.save();
+          ctx.fillStyle = config.nameBoxBg || "#FFFBF1";
+          drawRoundedRect(nameBoxX, nameBoxY, nameBoxWidth, nameBoxHeight, 4);
+          ctx.fill();
 
-          // Create rounded rectangle path
-          const imageRadius = 10; // Adjust this value for desired roundness
-          ctx.beginPath();
-          ctx.moveTo(x + imageRadius, y);
-          ctx.lineTo(x + uW - imageRadius, y);
-          ctx.quadraticCurveTo(x + uW, y, x + uW, y + imageRadius);
-          ctx.lineTo(x + uW, y + uH - imageRadius);
-          ctx.quadraticCurveTo(x + uW, y + uH, x + uW - imageRadius, y + uH);
-          ctx.lineTo(x + imageRadius, y + uH);
-          ctx.quadraticCurveTo(x, y + uH, x, y + uH - imageRadius);
-          ctx.lineTo(x, y + imageRadius);
-          ctx.quadraticCurveTo(x, y, x + imageRadius, y);
-          ctx.closePath();
-          ctx.clip();
-
-          // Draw image with cover behavior
-          const imgAspect = userImage.width / userImage.height;
-          const boxAspect = uW / uH;
-
-          let drawWidth,
-            drawHeight,
-            drawX,
-            drawY,
-            sourceX,
-            sourceY,
-            sourceWidth,
-            sourceHeight;
-
-          if (imgAspect > boxAspect) {
-            // Image is wider than box, fit to height and crop width
-            drawHeight = uH;
-            drawWidth = uH * imgAspect;
-            drawX = x - (drawWidth - uW) / 2;
-            drawY = y;
-
-            sourceHeight = userImage.height;
-            sourceWidth = userImage.height * boxAspect;
-            sourceX = (userImage.width - sourceWidth) / 2;
-            sourceY = 0;
-          } else {
-            // Image is taller than box, fit to width and crop height
-            drawWidth = uW;
-            drawHeight = uW / imgAspect;
-            drawX = x;
-            drawY = y - (drawHeight - uH) / 2;
-
-            sourceWidth = userImage.width;
-            sourceHeight = userImage.width / boxAspect;
-            sourceX = 0;
-            sourceY = (userImage.height - sourceHeight) / 2;
-          }
-
-          ctx.drawImage(
-            userImage,
-            sourceX,
-            sourceY,
-            sourceWidth,
-            sourceHeight,
-            x,
-            y,
-            uW,
-            uH
-          );
           ctx.restore();
 
-          // === Draw texts ===
+          if (config.userName) {
+            ctx.save();
+            ctx.font = `normal 27px Product Sans, Arial, sans-serif`;
+            ctx.fillStyle = "#000000";
+            ctx.textAlign = "center";
+            ctx.textBaseline = "middle";
+            ctx.fillText(
+              config.userName,
+              nameBoxX + nameBoxWidth / 2,
+              nameBoxY + nameBoxHeight / 2
+            );
+            ctx.restore();
+          }
+
+          // Draw other texts
           config.texts.forEach((text) => {
-            // Handle different font weights
-            let fontWeight = "normal";
-            let fontFamily = text.font;
+            const weight = text.weight || "normal";
+            const weightStr =
+              typeof weight === "number"
+                ? weight.toString()
+                : weight === "bold"
+                ? "bold"
+                : "normal";
 
-            if (text.font.includes("bold")) {
-              fontWeight = "bold";
-              fontFamily = text.font.replace("bold ", "");
-            } else if (text.font.match(/^\d+/)) {
-              // Handle numeric font weights
-              const weight = text.font.match(/^\d+/)?.[0];
-              if (weight) {
-                if (parseInt(weight) >= 700) fontWeight = "bold";
-                else if (parseInt(weight) >= 600) fontWeight = "600";
-                else if (parseInt(weight) >= 500) fontWeight = "500";
-                else fontWeight = "normal";
-                fontFamily = text.font.replace(/^\d+\s/, "");
-              }
-            }
+            ctx.font = `${weightStr} ${text.size}px ${text.font}`;
+            ctx.fillStyle = text.color;
+            ctx.textAlign = text.textAlign || "left";
+            ctx.textBaseline = "top";
 
-            ctx.font = `${fontWeight} ${text.size}px ${fontFamily}`;
-
-            // Draw glassmorphism box if needed
-            if (text.hasGlassmorphism) {
-              const padding = text.glassPadding || {
-                top: 8,
-                right: 16,
-                bottom: 8,
-                left: 16,
-              };
+            // Handle 2025 pill
+            if (text.isPill) {
               const metrics = ctx.measureText(text.content);
               const textWidth = metrics.width;
-              const textHeight = text.size;
+              const pillPaddingX = 16;
+              const pillPaddingY = 8;
+              const pillWidth = textWidth + pillPaddingX * 2;
+              const pillHeight = text.size + pillPaddingY * 2;
+              const pillX = text.position.x - pillWidth / 2;
+              const pillY = text.position.y - pillPaddingY;
 
-              let boxX = text.position.x - padding.left;
-              if (text.textAlign === "center") {
-                boxX = text.position.x - textWidth / 2 - padding.left;
-              } else if (text.textAlign === "right") {
-                boxX = text.position.x - textWidth - padding.left;
-              }
-
-              const boxY = text.position.y - textHeight - padding.top;
-              const boxWidth = textWidth + padding.left + padding.right;
-              const boxHeight = textHeight + padding.top + padding.bottom;
-              const boxRadius = 8;
-
-              // Draw glassmorphism background
+              // Draw pill background
               ctx.save();
-              ctx.fillStyle = "rgba(255, 255, 255, 0.2)";
+              ctx.fillStyle = "#FFF";
               ctx.beginPath();
-              ctx.moveTo(boxX + boxRadius, boxY);
-              ctx.lineTo(boxX + boxWidth - boxRadius, boxY);
-              ctx.quadraticCurveTo(
-                boxX + boxWidth,
-                boxY,
-                boxX + boxWidth,
-                boxY + boxRadius
+              const pillRadius = pillHeight / 2;
+              ctx.moveTo(pillX + pillRadius, pillY);
+              ctx.lineTo(pillX + pillWidth - pillRadius, pillY);
+              ctx.arcTo(
+                pillX + pillWidth,
+                pillY,
+                pillX + pillWidth,
+                pillY + pillRadius,
+                pillRadius
               );
-              ctx.lineTo(boxX + boxWidth, boxY + boxHeight - boxRadius);
-              ctx.quadraticCurveTo(
-                boxX + boxWidth,
-                boxY + boxHeight,
-                boxX + boxWidth - boxRadius,
-                boxY + boxHeight
+              ctx.lineTo(pillX + pillWidth, pillY + pillHeight - pillRadius);
+              ctx.arcTo(
+                pillX + pillWidth,
+                pillY + pillHeight,
+                pillX + pillWidth - pillRadius,
+                pillY + pillHeight,
+                pillRadius
               );
-              ctx.lineTo(boxX + boxRadius, boxY + boxHeight);
-              ctx.quadraticCurveTo(
-                boxX,
-                boxY + boxHeight,
-                boxX,
-                boxY + boxHeight - boxRadius
+              ctx.lineTo(pillX + pillRadius, pillY + pillHeight);
+              ctx.arcTo(
+                pillX,
+                pillY + pillHeight,
+                pillX,
+                pillY + pillHeight - pillRadius,
+                pillRadius
               );
-              ctx.lineTo(boxX, boxY + boxRadius);
-              ctx.quadraticCurveTo(boxX, boxY, boxX + boxRadius, boxY);
+              ctx.lineTo(pillX, pillY + pillRadius);
+              ctx.arcTo(pillX, pillY, pillX + pillRadius, pillY, pillRadius);
               ctx.closePath();
               ctx.fill();
 
-              // Add border
-              ctx.strokeStyle = "rgba(255, 255, 255, 0.3)";
-              ctx.lineWidth = 1;
+              ctx.strokeStyle = "#1e1e1e";
+              ctx.lineWidth = 1.6;
               ctx.stroke();
               ctx.restore();
-            }
 
-            ctx.fillStyle = text.color;
-            ctx.textAlign = text.textAlign || "left";
-            ctx.fillText(text.content, text.position.x, text.position.y);
-          });
-
-          // === Draw additional images ===
-          if (config.images) {
-            config.images.forEach((imageConfig) => {
-              const additionalImage = new Image();
-              additionalImage.crossOrigin = "anonymous";
-              additionalImage.src = imageConfig.src;
-              additionalImage.onload = () => {
-                ctx.drawImage(
-                  additionalImage,
-                  imageConfig.position.x,
-                  imageConfig.position.y,
-                  imageConfig.size.width,
-                  imageConfig.size.height
+              // Draw text centered in pill
+              ctx.fillStyle = text.color;
+              ctx.textAlign = "center";
+              ctx.fillText(text.content, text.position.x, text.position.y);
+            } else {
+              // Handle multi-line text
+              const lines = text.content.split("\n");
+              const lineHeight = text.size * 1.2;
+              lines.forEach((line, index) => {
+                ctx.fillText(
+                  line,
+                  text.position.x,
+                  text.position.y + index * lineHeight
                 );
-              };
-            });
-          }
+              });
+            }
+          });
         })
         .catch((error) => {
-          console.error("Error loading images:", error);
-          // Fallback: draw without images
-          ctx.fillStyle = "#f0f0f0";
-          ctx.fillRect(0, 0, width, height);
-          config.texts.forEach((text) => {
-            // Handle different font weights
-            let fontWeight = "normal";
-            let fontFamily = text.font;
-
-            if (text.font.includes("bold")) {
-              fontWeight = "bold";
-              fontFamily = text.font.replace("bold ", "");
-            } else if (text.font.match(/^\d+/)) {
-              // Handle numeric font weights
-              const weight = text.font.match(/^\d+/)?.[0];
-              if (weight) {
-                if (parseInt(weight) >= 700) fontWeight = "bold";
-                else if (parseInt(weight) >= 600) fontWeight = "600";
-                else if (parseInt(weight) >= 500) fontWeight = "500";
-                else fontWeight = "normal";
-                fontFamily = text.font.replace(/^\d+\s/, "");
-              }
-            }
-
-            ctx.font = `${fontWeight} ${text.size}px ${fontFamily}`;
-            ctx.fillStyle = text.color;
-            ctx.textAlign = text.textAlign || "left";
-            ctx.fillText(text.content, text.position.x, text.position.y);
-          });
+          console.error("Error rendering canvas:", error);
         });
     }, [config, width, height]);
 
@@ -624,8 +324,12 @@ const CanvasPreview = forwardRef<HTMLCanvasElement, CanvasPreviewProps>(
         ref={canvasRef}
         width={width}
         height={height}
-        className="border rounded-lg shadow-lg w-full h-full"
-        style={{ maxWidth: "100%", maxHeight: "100%" }}
+        className="w-full h-full"
+        style={{
+          imageRendering: "crisp-edges",
+          maxWidth: "100%",
+          maxHeight: "100%",
+        }}
       />
     );
   }
