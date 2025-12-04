@@ -1,9 +1,9 @@
-interface TeamMember {
+export interface TeamMember {
   name: string;
   role: string;
   image: string;
   team: string;
-  subTeam?: string;
+  subTeam?: string[] | string;
   isTeamLead?: Array<boolean> | boolean;
 }
 
@@ -39,7 +39,7 @@ export const teamData: TeamMember[] = [
     role: "Co-Organizer",
     image: "/team/blessed.jpeg",
     team: "Organizers",
-    subTeam: "Dev Team",
+    subTeam: ["Dev Team", "Content Writing"],
     isTeamLead: true,
   },
   {
@@ -48,6 +48,14 @@ export const teamData: TeamMember[] = [
     image: "/team/abdrahman.jpg",
     team: "Organizers",
     subTeam: "Dev Team",
+    isTeamLead: true,
+  },
+  {
+    name: "Babatunde Abdullahi",
+    role: "Partner",
+    image: "/team/babatunde.jpg",
+    team: "Organizers",
+    subTeam: "Social Media Management",
     isTeamLead: true,
   },
   {
@@ -93,7 +101,7 @@ export const teamData: TeamMember[] = [
     subTeam: "Social Media Management",
   },
   {
-    name: "Gbadero Hiqmah Fadeke",
+    name: "Gbadero Hiqmah",
     role: "Member",
     image: "/team/hiqmah.jpg",
     team: "Content",
@@ -105,14 +113,6 @@ export const teamData: TeamMember[] = [
     image: "/team/william.jpeg",
     team: "Operations",
     subTeam: "Dev Team",
-  },
-  {
-    name: "Babatunde Abdullahi",
-    role: "Partner",
-    image: "/team/babatunde.jpg",
-    team: "Organizers",
-    subTeam: "Social Media Management",
-    isTeamLead: true,
   },
   {
     name: "Surajudeen Muhamad",
@@ -136,14 +136,14 @@ export const teamData: TeamMember[] = [
     subTeam: "Logistics/Technical",
   },
   {
-    name: "Ayanlere Victoria Ayooluwa",
+    name: "Ayanlere Victoria",
     role: "Member",
     image: "/team/ayooluwa.jpg",
     team: "Operations",
     subTeam: "Ushering",
   },
   {
-    name: "Blessed-Agboola Jesutobi Jesse",
+    name: "Blessed-Agboola Jesutobi",
     role: "Member",
     image: "/team/jesutobi.JPG",
     team: "Operations",
@@ -178,10 +178,59 @@ export const teamData: TeamMember[] = [
     subTeam: "Ushering",
   },
   {
-    name: "Favour Mayowa Adebanjo",
+    name: "Favour Adebanjo",
     role: "Member",
     image: "/team/adebanjo.jpg",
     team: "Operations",
     subTeam: "Welfare",
+  },
+  {
+    name: "Goodness Adewuyi",
+    role: "Member",
+    image: "/team/goodness.jpg",
+    team: "Partnership",
+    subTeam: "Speaker Support",
+  },
+  {
+    name: "Omotolani Afolayan",
+    role: "Member",
+    image: "/team/omotolani.jpg",
+    team: "Operations",
+    subTeam: "Welfare",
+  },
+  {
+    name: "Adesanwo Joshua",
+    role: "Member",
+    image: "/team/adesanwo.jpg",
+    team: "Content",
+    subTeam: "Social Media Management",
+  },
+  {
+    name: "Precious Ojiaku",
+    role: "Member",
+    image: "/team/precious.jpeg",
+    team: "Content",
+    subTeam: "Content Writing",
+  },
+  {
+    name: "Adedapo Oketona",
+    role: "Member",
+    image: "/team/adedapo.jpeg",
+    team: "Content",
+    subTeam: "Graphics Design",
+  },
+  {
+    name: "Ishola Ayodeji",
+    role: "Member",
+    image: "/team/ishola.webp",
+    team: "Content",
+    subTeam: "Photography/Videography",
+  },
+  {
+    name: "Rachael Afolabi",
+    role: "Member",
+    image: "/team/rachael.jpg",
+    team: "Operations",
+    subTeam: "Registration and Check-in",
   },
 ];

@@ -168,7 +168,7 @@ function Hero({ data }: any) {
         >
           <source src={"/2d.mp4"} type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-b from-black via-black/70 to-black/30" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black via-black/60 to-black/30" />
         <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/30 to-black/10" />
       </div>
 
@@ -363,8 +363,9 @@ function Hero({ data }: any) {
                     </div>
                     <div className="flex items-center gap-2">
                       <MapPin className="w-4 h-4 text-[#34a853]" />
+                      <span className="font-bold">The Assembly,</span>
                       <span className="font-semibold">
-                        T.B.A (To be announced)
+                        Beside Bon Nest Hotel, Lautech Ogbomoso
                       </span>
                     </div>
                   </div>

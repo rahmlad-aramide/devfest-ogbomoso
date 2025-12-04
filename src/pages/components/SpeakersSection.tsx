@@ -156,7 +156,7 @@ function SpeakersSection({ data }: any) {
             {[
               { id: "all", label: "All Speakers" },
               { id: "pre-devfest", label: "Pre-DevFest" },
-              { id: "day1", label: "Day 1 - Workshop" },
+              { id: "day1", label: "Workshop" },
               { id: "day2", label: "Conference" },
             ].map((tab) => (
               <button
@@ -183,7 +183,7 @@ function SpeakersSection({ data }: any) {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.05, duration: 0.5 }}
               viewport={{ once: true }}
-              className="relative h-[460px]"
+              className="relative h-[480px] lg:h-[460px]"
               style={{ perspective: "1000px" }}
             >
               <motion.div

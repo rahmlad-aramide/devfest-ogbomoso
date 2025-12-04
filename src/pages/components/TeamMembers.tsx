@@ -5,19 +5,10 @@ import { useState } from "react";
 
 import Footer from "./Footer";
 import Link from "next/link";
-import { teamData } from "./TeamData";
+import { teamData, TeamMember } from "./TeamData";
 
 function TeamMembers() {
   const [activeFilter, setActiveFilter] = useState<string>("Organizers");
-
-  interface TeamMember {
-    name: string;
-    role: string;
-    image: string;
-    team: string;
-    subTeam?: string;
-    isTeamLead?: Array<boolean> | boolean;
-  }
 
   const filters = [
     "All",
@@ -33,15 +24,19 @@ function TeamMembers() {
     member: TeamMember,
     activeFilter: string
   ): boolean => {
-    // Case 1: Simple boolean check
-    if (typeof member.isTeamLead === "boolean") {
-      const isMemberOfFilter =
-        member.team === activeFilter || member.subTeam === activeFilter;
-      return member.isTeamLead && isMemberOfFilter;
+    // Check for explicit team leads for the current filter
+    if (
+      member.isTeamLead &&
+      (member.team === activeFilter || member.subTeam === activeFilter)
+    ) {
+      return true;
     }
 
-    // Check if they have lead role
-    if (member.role === "Lead Organizer" || member.role === "Co-Organizer") {
+    // Organizers are implicitly leads only for the "Organizers" filter
+    if (
+      activeFilter === "Organizers" &&
+      (member.role === "Lead Organizer" || member.role === "Co-Organizer")
+    ) {
       return true;
     }
 
@@ -190,7 +185,7 @@ function TeamMembers() {
               className="relative group cursor-pointer rounded-2xl overflow-hidden shadow-xl bg-white border border-[#f0f0f0] transition-all duration-300"
             >
               {member.image ? (
-                <div className="relative w-full h-[30px] overflow-hidden">
+                <div className="relative w-full h-[320px] overflow-hidden">
                   <Image
                     src={member.image}
                     alt={member.name}
@@ -213,23 +208,23 @@ function TeamMembers() {
               )}
 
               <div className="absolute bottom-0 left-0 right-0 pb-8 p-6 transform translate-y-10 group-hover:hidden duration-500">
-                <div className="bg-black/50 backdrop-blur-md rounded-xl p-4 border-2 border-white/20">
-                  <h3 className="font-bold text-white text-lg mb-1">
+                <div className="bg-black/50 backdrop-blur-md rounded-xl py-2 px-4 border-2 border-white/20">
+                  <h3 className="font-extrabold text-white mb-1">
                     {member.name}
                   </h3>
 
                   <div className="flex gap-2 justify-between items-center">
                     {/* Display Main Role/Title */}
-                  <p className="text-white text-sm font-semibold mb-2">
-                    {member.role}
-                  </p>
-
-                  {/* Display sub-team if exists */}
-                  {member.subTeam && (
-                    <p className="text-white/80 text-xs font-medium">
-                      {member.subTeam}
+                    <p className="text-white text-xs font-semibold mb-2">
+                      {member.role}
                     </p>
-                  )}
+
+                    {/* Display sub-team if exists */}
+                    {/* {member.subTeam && (
+                      <p className="text-white/80 text-xs font-medium">
+                        {member.subTeam}
+                      </p>
+                    )} */}
                   </div>
 
                   {/* Display Team Lead Badge */}

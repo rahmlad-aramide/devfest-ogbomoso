@@ -86,7 +86,7 @@ export const currentSpeakers = [
       title:
         "Designing the Invisible: Prototyping Trust and Feedback in Intelligent Interfaces",
       track: "Design and Product",
-      time: "10:40 AM – 11:50 AM",
+      time: "10:40 AM - 11:50 AM",
       day: "Workshop",
     },
     description: "",
@@ -98,14 +98,14 @@ export const currentSpeakers = [
     role: "CTO",
     company: "Paperless",
     image: "./speakers/davido.jpg",
-    bio: "Flutter Engineer & CTO at Paperless building high-performance cross‑platform systems.",
+    bio: "Flutter Engineer & CTO at Paperless building high-performance cross-platform systems.",
     bioLong:
       "David Oluwabusayo is the CTO of Paperless and a seasoned Flutter engineer with deep experience in high-performance mobile development. He builds scalable cross-platform systems and explores cutting-edge technologies like WebAssembly to improve speed and performance across devices.",
     session: {
       title:
-        "Flutter + WebAssembly: Building High‑Performance Cross‑Platform Apps",
+        "Flutter + WebAssembly: Building High-Performance Cross-Platform Apps",
       track: "Engineering and Security",
-      time: "10:40 AM – 11:50 AM",
+      time: "10:40 AM - 11:50 AM",
       day: "Workshop",
     },
     description: "",
@@ -117,14 +117,14 @@ export const currentSpeakers = [
     role: "Java Backend Engineer",
     company: "ATBTech",
     image: "./speakers/ojoi.jpg",
-    bio: "Backend Engineer building secure and scalable cloud‑native systems.",
+    bio: "Backend Engineer building secure and scalable cloud-native systems.",
     bioLong:
       "Ojo Ilesanmi is a backend engineer specializing in secure, cloud-native architectures and AI-assisted fraud detection systems. With over 5 years of experience, he builds production-ready systems with robust data pipelines and scalable microservice patterns.",
     session: {
       title:
-        "Building a Real-Time Fraud Detection System with AI and Cloud: Secure, Scalable, and Hands‑On",
+        "Building a Real-Time Fraud Detection System with AI and Cloud: Secure, Scalable, and Hands-On",
       track: "AI and Cloud",
-      time: "10:40 AM – 11:50 AM",
+      time: "10:40 AM - 11:50 AM",
       day: "Workshop",
     },
     description: "",
@@ -140,13 +140,13 @@ export const currentSpeakers = [
     role: "Founder",
     company: "Concreap Technology Solutions",
     image: "./speakers/oluwatobii.jpg",
-    bio: "Full‑stack & blockchain engineer building payment and gaming systems.",
+    bio: "Full-stack & blockchain engineer building payment and gaming systems.",
     bioLong:
-      "Oluwatobi Immanuel is a full‑stack engineer and founder of Concreap Technology Solutions. He has led engineering teams processing billions in transactions and built gaming infrastructure used across Africa. His work blends engineering, product thinking, and intentional creativity.",
+      "Oluwatobi Immanuel is a full-stack engineer and founder of Concreap Technology Solutions. He has led engineering teams processing billions in transactions and built gaming infrastructure used across Africa. His work blends engineering, product thinking, and intentional creativity.",
     session: {
-      title: "Design – Intentional Creativity, Not Automation",
+      title: "Design - Intentional Creativity, Not Automation",
       track: "Design and Product",
-      time: "11:50 AM – 1:00 PM",
+      time: "11:50 AM - 1:00 PM",
       day: "Workshop",
     },
     description: "",
@@ -164,7 +164,7 @@ export const currentSpeakers = [
     session: {
       title: "Migration to Microfrontends",
       track: "Engineering and Security",
-      time: "11:50 AM – 1:00 PM",
+      time: "11:50 AM - 1:00 PM",
       day: "Workshop",
     },
     description: "",
@@ -176,14 +176,14 @@ export const currentSpeakers = [
     role: "Fullstack Software Engineer",
     company: "INDICINA",
     image: "./speakers/ahmd.jpg",
-    bio: "Full‑stack engineer building AI‑powered applications with Gemini & Google ADK.",
+    bio: "Full-stack engineer building AI-powered applications with Gemini & Google ADK.",
     bioLong:
-      "Ahm'd Olanrewaju is a full‑stack engineer at INDICINA focused on integrating Gemini and Google ADK into real-world software systems. He builds full-stack AI agents and teaches AI development in various tech communities.",
+      "Ahm'd Olanrewaju is a full-stack engineer at INDICINA focused on integrating Gemini and Google ADK into real-world software systems. He builds full-stack AI agents and teaches AI development in various tech communities.",
     session: {
       title:
-        "Hands‑On with Gemini and Google ADK: Building Full‑Stack AI Agents",
+        "Hands-On with Gemini and Google ADK: Building Full-Stack AI Agents",
       track: "AI and Cloud",
-      time: "11:50 AM – 1:00 PM",
+      time: "11:50 AM - 1:00 PM",
       day: "Workshop",
     },
     description: "",
@@ -204,9 +204,9 @@ export const currentSpeakers = [
       "Michael Titcombe is a Brand Identity Designer and the CEO of HUELUMINATE. He works with organizations such as NITDA to design brands, interfaces, and systems that communicate trust, safety, and clarity—especially in AI-driven products.",
     session: {
       title:
-        "Designing Trust: Building Human‑Centered Brands and Interfaces in the Age of AI",
+        "Designing Trust: Building Human-Centered Brands and Interfaces in the Age of AI",
       track: "Design and Product",
-      time: "2:50 PM – 4:00 PM",
+      time: "2:50 PM - 4:00 PM",
       day: "Workshop",
     },
     description: "",
@@ -222,9 +222,9 @@ export const currentSpeakers = [
     bioLong:
       "Taiwo Faniru is a mobile developer with over five years of experience building clean, scalable, and high-performing Flutter applications. He has led projects across fintech, real estate, and social platforms, with strong expertise in Flutter, Dart, and mobile architecture. He is passionate about applying AI to improve mobile experiences and actively mentors developers while contributing to community growth.",
     session: {
-      title: "Building Clean and Scalable AI‑Powered Flutter Apps",
+      title: "Building Clean and Scalable AI-Powered Flutter Apps",
       track: "Engineering and Security",
-      time: "2:50 PM – 4:00 PM",
+      time: "2:50 PM - 4:00 PM",
       day: "Workshop",
     },
     description: "",
@@ -236,13 +236,13 @@ export const currentSpeakers = [
     role: "DevOps Engineer",
     company: "",
     image: "./speakers/mudasirur.jpeg",
-    bio: "Google Developer Expert–level community leader and DevOps Engineer driving automation, open-source impact, and global tech community growth.",
+    bio: "Google Developer Expert-level community leader and DevOps Engineer driving automation, open-source impact, and global tech community growth.",
     bioLong:
       "Rasheed Mudasiru is a DevOps Engineer and community leader with experience spanning automation, CI/CD, and cloud-native systems. He has served on program committees for global conferences like BuildStuffConf and cdCon Japan while holding roles such as AWS Ambassador and GitHub Campus Expert. Known for his public speaking and community impact, he builds tools, leads initiatives, and empowers developers worldwide.",
     session: {
       title: "Gemma: Inferences and Building a MaaS",
       track: "AI and Cloud",
-      time: "2:50 PM – 4:00 PM",
+      time: "2:50 PM - 4:00 PM",
       day: "Workshop",
     },
     description: "",
@@ -263,7 +263,7 @@ export const currentSpeakers = [
       title:
         "Hands-On: Building an AI-Powered Website Builder Like Bolt & Lovable — From Scratch",
       track: "Engineering",
-      time: "4:00 PM – 5:00 PM",
+      time: "4:00 PM - 5:00 PM",
       day: "Workshop",
     },
     description: "",
@@ -281,12 +281,12 @@ export const currentSpeakers = [
     image: "./speakers/aderinto.jpg",
     bio: "C.E.O and Director of SQI College of ICT, training tech talents and building AI-powered solutions transforming education across Africa.",
     bioLong:
-      "Dr. Adeyemi C. Aderinto is the C.E.O and Director of SQI College of ICT, a government-accredited institution that has trained over 10,000 students and produced top tech talent for companies like Google, Microsoft, and Andela. He founded Edozzier, an AI-powered management system transforming education and enterprise operations in Nigeria. With 18+ years in software engineering, systems architecture, and technology consulting, he is dedicated to developing Africa’s tech ecosystem. Dr. Aderinto has personally mentored over 1,000 students and received multiple awards for leadership and innovation in ICT and education.",
+      "Dr. Adeyemi C. Aderinto is the C.E.O and Director of SQI College of ICT, a government-accredited institution that has trained over 10,000 students and produced top tech talent for companies like Google, Microsoft, and Andela. He founded Edozzier, an AI-powered management system transforming education and enterprise operations in Nigeria. With 18+ years in software engineering, systems architecture, and technology consulting, he is dedicated to developing Africa's tech ecosystem. Dr. Aderinto has personally mentored over 1,000 students and received multiple awards for leadership and innovation in ICT and education.",
     session: {
       title:
-        "ENGINEERING TRUST: The Future of Safe, Secure and Scalable AI Systems for Africa’s Digital Economy",
+        "ENGINEERING TRUST: The Future of Safe, Secure and Scalable AI Systems for Africa's Digital Economy",
       track: "AI & ML",
-      time: "10:00 AM – 10:30 AM",
+      time: "10:00 AM - 10:30 AM",
       day: "Main Conference",
     },
     description: "",
@@ -305,7 +305,7 @@ export const currentSpeakers = [
       title:
         "Building Beyond Boundaries: Raising Africa's Next Generation of Scalable Solution Builders",
       track: "Leadership & Innovation",
-      time: "10:35 AM – 11:10 AM",
+      time: "10:35 AM - 11:10 AM",
       day: "Main Conference",
     },
     description: "",
@@ -319,11 +319,11 @@ export const currentSpeakers = [
     image: "./speakers/boluwatifeo.jpg",
     bio: "Software Engineer using AI to elevate engineering productivity and modern workflows.",
     bioLong:
-      "Boluwatife (Busta) Olaifa is a software engineer at Wewire who builds modern software systems using Python, AI, and automation. He is passionate about developer productivity, clean code, and leveraging AI to accelerate problem‑solving. He also participated in Panel 2, sharing insights on successful engineering mindsets and habits.",
+      "Boluwatife (Busta) Olaifa is a software engineer at Wewire who builds modern software systems using Python, AI, and automation. He is passionate about developer productivity, clean code, and leveraging AI to accelerate problem-solving. He also participated in Panel 2, sharing insights on successful engineering mindsets and habits.",
     session: {
       title: "Becoming a 10x Engineer with AI",
       track: "Engineering and Security",
-      time: "11:10 AM – 11:30 AM",
+      time: "11:10 AM - 11:30 AM",
       day: "Main Conference",
     },
     description: "",
@@ -332,16 +332,16 @@ export const currentSpeakers = [
   {
     id: "tope-james",
     name: "Tope James Moses",
-    role: "Co‑Founder",
+    role: "Co-Founder",
     company: "ATC Africa",
     image: "./speakers/topejames.jpg",
-    bio: "Award‑winning community manager shaping developer ecosystems across Africa.",
+    bio: "Award-winning community manager shaping developer ecosystems across Africa.",
     bioLong:
-      "Tope James Moses is an award‑winning community and program manager who has led developer communities across Africa for over 6 years. His work focuses on community‑driven learning, open‑source culture, and mentorship as catalysts for growth. He also joined Panel 2, discussing habits and tools for long‑term engineering success.",
+      "Tope James Moses is an award-winning community and program manager who has led developer communities across Africa for over 6 years. His work focuses on community-driven learning, open-source culture, and mentorship as catalysts for growth. He also joined Panel 2, discussing habits and tools for long-term engineering success.",
     session: {
       title: "Community & People: Leveraging Community for Growth",
       track: "Community",
-      time: "12:25 PM – 12:45 PM",
+      time: "12:25 PM - 12:45 PM",
       day: "Main Conference",
     },
     description: "",
@@ -355,12 +355,12 @@ export const currentSpeakers = [
     image: "./speakers/esuola.png",
     bio: "AI creative building tools and experiences powered by modern prompting techniques.",
     bioLong:
-      "Esuola Daniel is a multidisciplinary digital creator and founder at Provolo who explores the boundaries of AI‑powered creativity. He teaches techniques for effective prompting and builds intelligent tools for digital experiences. He also contributed to community sessions through hands‑on AI workshops.",
+      "Esuola Daniel is a multidisciplinary digital creator and founder at Provolo who explores the boundaries of AI-powered creativity. He teaches techniques for effective prompting and builds intelligent tools for digital experiences. He also contributed to community sessions through hands-on AI workshops.",
     session: {
       title:
         "The Fine Art of Prompting: Getting Unbeatable Results with Gemini",
       track: "AI & ML",
-      time: "2:15 PM – 2:30 PM",
+      time: "2:15 PM - 2:30 PM",
       day: "Main Conference",
     },
     description: "",

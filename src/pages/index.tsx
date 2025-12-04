@@ -7,16 +7,20 @@ import ScheduleSection from "./components/ScheduleSection";
 import SpeakersSection from "./components/SpeakersSection";
 import ThrowbackSection from "./components/ThrowbackSection";
 import TeamSection from "./components/TeamSection";
+import SponsorScroll from "./components/SponsorScroll";
 
 export default function Home({ data }: any) {
   return (
     <>
       <Hero data={data} />
       {data?.throwback.show && <ThrowbackSection data={data?.throwback} />}
+      <SponsorScroll />
       <SpeakersSection data={data} />
       <TeamSection data={data} />
+      <SponsorScroll />
       <ScheduleSection data={data} suppressHydrationWarning />
       <DPSection />
+      <SponsorScroll />
       <FAQSection data={data} />
       <Footer />
     </>
