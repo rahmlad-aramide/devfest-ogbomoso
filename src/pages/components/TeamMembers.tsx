@@ -5,7 +5,7 @@ import { useState } from "react";
 
 import Footer from "./Footer";
 import Link from "next/link";
-import { teamData, TeamMember } from "./TeamData";
+import { teamData, TeamMember } from "../../lib/TeamData";
 
 function TeamMembers() {
   const [activeFilter, setActiveFilter] = useState<string>("Organizers");

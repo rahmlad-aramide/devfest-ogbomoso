@@ -12,7 +12,7 @@ import {
   Clock,
 } from "lucide-react";
 import Link from "next/link";
-import { currentSpeakers } from "./SpeakersData";
+import currentSpeakers from "../../lib/speakersData";
 
 interface Speaker {
   id: string;

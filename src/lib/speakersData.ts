@@ -365,5 +365,4 @@ const currentSpeakers = [
   },
 ];
 
-
 export default currentSpeakers;
