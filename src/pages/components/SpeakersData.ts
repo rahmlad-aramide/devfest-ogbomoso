@@ -1,6 +1,4 @@
-// === UPDATED SPEAKER SECTION (FULLY MATCHED TO DAY 1 & DAY 2 PDFs) ===
-
-export const currentSpeakers = [
+const currentSpeakers = [
   // Pre-DevFest Series
   {
     id: "paul-edward",
@@ -366,3 +364,6 @@ export const currentSpeakers = [
     description: "",
   },
 ];
+
+
+export default currentSpeakers;
