@@ -58,7 +58,7 @@ function DPGenerator({ data }: any) {
           </motion.div>
         </section>
       </main>
-      <Footer data={data} />
+      <Footer />
     </>
   );
 }
