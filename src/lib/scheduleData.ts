@@ -89,7 +89,7 @@ const scheduleData: DaySchedule[] = [
       },
       {
         time: "10:40AM - 11:50PM",
-        duration: "70mins",
+        duration: "60mins",
         title: "Track 1 - Parallel Sessions",
         track: "TRACK 1",
         description:
@@ -97,7 +97,7 @@ const scheduleData: DaySchedule[] = [
       },
       {
         time: "11:50PM - 1:00PM",
-        duration: "70mins",
+        duration: "60mins",
         title: "Track 2 - Parallel Sessions",
         track: "TRACK 2",
         description:
@@ -109,8 +109,8 @@ const scheduleData: DaySchedule[] = [
         title: "JUMAT/LUNCH BREAK",
       },
       {
-        time: "2:50PM - 4PM",
-        duration: "70mins",
+        time: "2:50PM - 4:00PM",
+        duration: "60mins",
         title: "Track 3 - Parallel Sessions",
         track: "TRACK 3",
         description:
